@@ -1,8 +1,14 @@
+import FavNav from './FavNav';
+import EventCardsProfile from './EventCardsProfile';
+
 import "../styles/fav.scss";
 
 function Fav() {
   return (
-    <div className="fav">Fav</div>
+    <div className="fav">
+      <FavNav />
+      <EventCardsProfile />
+    </div>
   );
 }
 

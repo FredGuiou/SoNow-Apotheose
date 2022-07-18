@@ -1,12 +1,9 @@
+import { Routes, Route } from 'react-router-dom';
+
 import '../styles/App.scss';
 import Authentification from './Authentification';
 import CreateAccount from './CreateAccount';
 import CreateEvent from './CreateEvent';
-import FeedEvent from './FeedEvent';
-import EventCardPrimary from './EventCardPrimary';
-import EventCardSecondary from './EventCardSecondary';
-import EventCardsSecondary from './EventCardsSecondary';
-import FeedEvents from './FeedEvents';
 import Fav from './Fav';
 import Feed from './Feed';
 import Filters from './Filters';
@@ -14,31 +11,79 @@ import FriendsList from './FriendsList';
 import Nav from './Nav';
 import Profile from './Profile';
 import Search from './Search';
-import UserCard from './UserCard';
 import Error404 from './Error404';
 
 function App() {
   return (
     <div className="App">
+
       <h1>Welcome to SoNow !</h1>
-      <Authentification />
-      <CreateAccount />
-      <CreateEvent />
-      <Feed />
-      <FeedEvents />
-      <FeedEvent />
-      <EventCardPrimary />
-      <EventCardsSecondary />
-      <EventCardSecondary />
-      <Fav />
-      <Filters />
-      <FriendsList />
-      <FriendsList />
+      <h4>SoNow is a social network for people who want to meet new people and share their events ! Enjoy !</h4>
       <Nav />
-      <Profile />
-      <Search />
-      <UserCard />
-      <Error404 />
+
+      <Routes>
+        <Route
+          path="/authentification"
+          element={(
+              <Authentification />
+          )}
+        />
+        <Route
+          path="/creer-un-compte"
+          element={(
+            <CreateAccount />
+          )}
+        />
+        <Route
+          path="/feed"
+          element={(
+            <Feed />
+          )}
+        />
+        <Route
+          path="/favoris"
+          element={(
+            <Fav />
+          )}
+        />
+        <Route
+          path="/autour-de-moi"
+          element={(
+            <Search />
+          )}
+        />
+        <Route
+          path="/autour-de-moi/filtres"
+          element={(
+            <Filters />
+          )}
+        />
+        <Route
+          path="/creer-un-evenement"
+          element={(
+            <CreateEvent /> 
+          )}
+        />
+        <Route
+          path="/mon-compte"
+          element={(
+            <Profile  />
+          )}
+        />
+        <Route
+          path="/mon-compte/amis"
+          element={(
+            <FriendsList />
+          )}
+        />
+        <Route
+          path="*"
+          element={(
+            <Error404 /> 
+          )}
+        />
+      </Routes>
+
     </div>
   );
 }

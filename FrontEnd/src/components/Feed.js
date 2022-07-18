@@ -1,8 +1,12 @@
+import FeedEvents from './Profile';
+
 import "../styles/feed.scss";
 
 function Feed() {
     return (
-      <div className="feed">Feed</div>
+      <div className="feed">
+        <FeedEvents />
+      </div>
     );
   }
   

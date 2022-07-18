@@ -1,8 +1,12 @@
+import EventCardProfile from './EventCardProfile';
+
 import "../styles/eventcardsprofile.scss";
 
 function EventCardsProfile() {
   return (
-    <div className="eventcardsprofile">EventCardsProfile</div>
+    <div className="eventcardsprofile">
+      <EventCardProfile />
+    </div>
   );
 }
 

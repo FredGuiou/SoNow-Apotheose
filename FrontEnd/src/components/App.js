@@ -15,69 +15,73 @@ import Error404 from './Error404';
 
 function App() {
   return (
-    <div className="App">
-
-      <h1>Welcome to SoNow !</h1>
-      <h4>SoNow is a social network for people who want to meet new people and share their events ! Enjoy !</h4>
+    <div className='App'>
+      
       <Nav />
 
       <Routes>
-        <Route
-          path="/authentification"
+      <Route
+          path='/'
           element={(
               <Authentification />
           )}
         />
         <Route
-          path="/creer-un-compte"
+          path='/authentification'
+          element={(
+              <Authentification />
+          )}
+        />
+        <Route
+          path='/creer-un-compte'
           element={(
             <CreateAccount />
           )}
         />
         <Route
-          path="/feed"
+          path='/feed'
           element={(
             <Feed />
           )}
         />
         <Route
-          path="/favoris"
+          path='/favoris'
           element={(
             <Fav />
           )}
         />
         <Route
-          path="/autour-de-moi"
+          path='/autour-de-moi'
           element={(
             <Search />
           )}
         />
         <Route
-          path="/autour-de-moi/filtres"
+          path='/autour-de-moi/filtres'
           element={(
             <Filters />
           )}
         />
         <Route
-          path="/creer-un-evenement"
+          path='/creer-un-evenement'
           element={(
             <CreateEvent /> 
           )}
         />
         <Route
-          path="/mon-compte"
+          path='/mon-compte'
           element={(
             <Profile  />
           )}
         />
         <Route
-          path="/mon-compte/amis"
+          path='/mon-compte/amis'
           element={(
             <FriendsList />
           )}
         />
         <Route
-          path="*"
+          path='*'
           element={(
             <Error404 /> 
           )}

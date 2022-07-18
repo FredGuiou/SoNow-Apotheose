@@ -1,8 +1,8 @@
-import "../styles/search.scss";
+import '../styles/search.scss';
 
 function Search() {
   return (
-    <div className="search">Search</div>
+    <div className='search'>Search</div>
   );
 }
 

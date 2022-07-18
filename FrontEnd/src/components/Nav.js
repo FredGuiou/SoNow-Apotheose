@@ -6,14 +6,14 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { TextField } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import "../styles/nav.scss";
-import logo from "../images/logo.png";
+import '../styles/nav.scss';
+import logo from '../images/logo.png';
 
 function Nav() {
   return (
-    <div className="navigation">
-    <div className="container">
-      <img className="logo" src={logo} alt="sonow logo" />
+    <div className='navigation'>
+    <div className='container'>
+      <img className='logo' src={logo} alt='sonow logo' />
       <HomeOutlinedIcon className='homeIcon'/>
       <StarBorderOutlinedIcon className='starIcon'/>
       <SearchOutlinedIcon className='searchIcon'/>
@@ -21,19 +21,19 @@ function Nav() {
       <PermIdentityOutlinedIcon className='profileIcon'/>
       <TextField 
         className='search'
-        id="outlined-basic"
+        id='outlined-basic'
         placeholder='Chercher un évènement'
-        variant="outlined"
+        variant='outlined'
         InputProps={{
           startAdornment: (
-            <InputAdornment position="start">
+            <InputAdornment position='start'>
               <SearchOutlinedIcon />
             </InputAdornment>
           ),
         }}
         sx={{
         'background-color': 'white',
-        'border-radius': '5px'
+        'border': 'none'
         }}
       />
       

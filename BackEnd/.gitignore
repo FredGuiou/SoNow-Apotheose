@@ -1,0 +1,5 @@
+.env
+node_modules
+sqitch.conf
+.DS_Store
+package-lock.json

@@ -1,0 +1,106 @@
+@import "./properties.scss";
+
+.navigation {
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+  background-color: black;
+  width: 100%;
+  border-bottom: 1px solid $border-color-grey;
+
+    .container {
+      padding: 1em 0 0.9em 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 0 auto;
+
+      .logo {
+        padding: 0 1em;
+        width: 150px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .search {
+        border: 1px solid $border-color-grey;
+        border-radius: 3px;
+        background-color: $background-grey;
+        min-width: 225px;
+        min-height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .searchText {
+          color: $font-color-secondary;
+          font-size: 0.85em;
+          font-weight: 300;
+        }
+      }
+
+      .homeIcon {
+        color: white;
+        width: 50px;
+        margin-right: 0.3em;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .starIcon {
+        color: white;
+        width: 50px;
+        margin-right: 0.3em;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .searchIcon {
+        color: white;
+        width: 50px;
+        margin-right: 0.3em;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .messageIcon {
+        color: white;
+        width: 50px;
+        margin-right: 0.3em;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .profileIcon {
+        color: white;
+        width: 50px;
+        margin-right: 0.3em;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+    }
+}
+
+@media only screen and (max-width: 700px) {
+  .search {
+    display: none !important;
+  }
+
+  .logo {
+    display: none !important;
+  }
+}

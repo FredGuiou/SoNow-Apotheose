@@ -11,16 +11,18 @@ import logo from '../images/logo.png';
 
 function Nav() {
   return (
-    <div className='navigation'>
-    <div className='container'>
-      <img className='logo' src={logo} alt='sonow logo' />
-      <HomeOutlinedIcon className='homeIcon'/>
-      <StarBorderOutlinedIcon className='starIcon'/>
-      <SearchOutlinedIcon className='searchIcon'/>
-      <ChatBubbleOutlineOutlinedIcon className='messageIcon'/>
-      <PermIdentityOutlinedIcon className='profileIcon'/>
+    <div className='footer'>
+    <div className='footer__nav'>
+      <img className='footer__nav__logo' src={logo} alt='sonow logo' />
+      <div className='footer__nav__icons'>
+        <HomeOutlinedIcon className='homeIcon footer__nav__icons__item' sx={{ 'margin': '0px' }} />
+        <StarBorderOutlinedIcon className='starIcon footer__nav__icons__item' sx={{ 'margin': '0px' }} />
+        <SearchOutlinedIcon className='searchIcon footer__nav__icons__item' sx={{ 'margin': '0px' }} />
+        <ChatBubbleOutlineOutlinedIcon className='messageIcon footer__nav__icons__item' sx={{ 'margin': '0px' }} />
+        <PermIdentityOutlinedIcon className='profileIcon footer__nav__icons__item'sx={{ 'margin': '0px' }} />
+        </div>
       <TextField 
-        className='search'
+        className='footer__search'
         id='outlined-basic'
         placeholder='Chercher un évènement'
         variant='outlined'
@@ -29,14 +31,16 @@ function Nav() {
             <InputAdornment position='start'>
               <SearchOutlinedIcon />
             </InputAdornment>
-          ),
+          ), 
+          style: { fontSize: '0.7rem' }
         }}
         sx={{
-        'background-color': 'white',
-        'border': 'none'
+        'color': 'white',
+        'border': 'none',
+        'height' : '30px',
+        'marginRight': '2rem',
         }}
       />
-      
     </div>
   </div>
   );

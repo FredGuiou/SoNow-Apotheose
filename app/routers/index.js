@@ -7,7 +7,7 @@ const tagRouter = require('./tag');
 
 
 
-router.all('/', function(_, res) {
+router.get('/', function(_, res) {
   res.send("Coucou ça marche :D");
   console.log("Coucou ça marche :D");
 });

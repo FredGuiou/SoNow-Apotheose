@@ -1,56 +1,77 @@
+import React from "react";
 import "../styles/userCard.scss";
-import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
-import profile from "../images/profile.jpg";
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
-import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
-import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
-import { color } from "@mui/system";
+import { useParams } from "react-router";
 
 function UserCard() {
+
+  let { id } = useParams();
+  const [userImage, setUserImage] = React.useState();
+  React.useEffect(() => {
+    if (id === "Romain-Portanguen") {
+
+      setUserImage("https://avatars.githubusercontent.com/u/99121248");
+    } else {
+      //random profilPhoto
+      setUserImage("https://picsum.photos/200");
+    }
+  }, [id]);
+
   return (
-      <Box sx={{ width: '100%', height: 250, bgcolor: 'black' }}>
-
-        <div className="usercard-avatar">
-
-          <Avatar
-            sx={{ width: 70, height: 70 }}
-            alt="User Picture Profile" 
-            src={profile}
-          />
-
+    <div className="user-profile">
+    <header className="profileHeaderRow">
+      <div className="profilePhotoCol">
+        <img src={userImage} alt="profile" />
+      </div>
+      <div className="profileContentCol">
+        <div className="title">
+          <div className="username">
+            <span>{id}</span>
+          </div>
+          <div className="editProfile">
+            <span>Edit Profile</span>
+          </div>
+          <div className="settings">
+          </div>
         </div>
-
-        <p className="usercard__name">Romain P.</p>
-
-        <Box sx={{
-            display: 'flex',
-            alignItems: 'baseline',
-            justifyContent: 'center',
-            margin: '0 2.5em 0 0.75em',
-            color: 'white'
-            }}
-        >
-          <span className="usercard__stats-items">Events</span>
-          <span className="usercard__stats-items">Followers</span>
-          <span className="usercard__stats-items">Following</span>
-
-        </Box>
-
-        <Box sx={{
-            display: 'flex',
-            alignItems: 'baseline',
-            justifyContent: 'center',
-            margin: '0 2.5em 0 0.75em'
-            }}
-        >
-          <PersonAddOutlinedIcon className='messageIcon footer__nav__icons__item' sx={{ width: '30px', height: '30px', margin: '0 2.5em 0 0.75em'}} />
-          <AddBoxOutlinedIcon className='messageIcon footer__nav__icons__item' sx={{ width: '30px', height: '30px', margin: '0 2.5em 0 0.75em'}} />
-          <EventAvailableOutlinedIcon className='messageIcon footer__nav__icons__item' sx={{ width: '30px', height: '30px', margin: '0 2.5em 0 0.75em'}} />
-
-        </Box>
-
-      </Box>
+        <div className="counter">
+          <div>
+            <span> 263 </span>
+            Events
+          </div>
+          <div>
+            <span> 1235 </span>
+            Followers
+          </div>
+          <div>
+            <span> 146 </span>
+            Following
+          </div>
+        </div>
+        <div className="biographyRow">
+          <div className="displayName">
+            <span>{id}</span>
+          </div>
+          <div className="biography">
+            <span>Set your bio just here !</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div className="profileTabs">
+      <div className="tabItem active">
+        <span>Events</span>
+      </div>
+      <div className="tabItem">
+        <span>Friends</span>
+      </div>
+      <div className="tabItem">
+        <span>Saved</span>
+      </div>
+      <div className="tabItem">
+        <span>Tagged</span>
+      </div>
+    </div>
+  </div>
   );
 }
 

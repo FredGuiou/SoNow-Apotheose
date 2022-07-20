@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/userCard.scss";
+import "../styles/usercard.scss";
 import { useParams } from "react-router";
 
 function UserCard() {

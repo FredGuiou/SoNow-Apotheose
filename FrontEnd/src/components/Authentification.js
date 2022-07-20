@@ -1,6 +1,6 @@
 import '../styles/authentification.scss';
 import Login from './LoginForm';
-import loop from '../images/assets/sonow.mp4';
+import loop from '../images/assets/sonow.MOV';
 import logo from '../images/logo.png';
 
 function Authentification() {

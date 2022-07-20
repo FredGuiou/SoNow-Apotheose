@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true })); // On parse les body de type `x
 app.use(express.json()); // Pour parser les body de type JSON (optionnel car pas demandé par la spécification)
 
 // Service /api routes
-app.use("/", router);
+app.use("/api", router);
 
 // Start app
 const port = process.env.PORT ?? 3000;

@@ -5,8 +5,8 @@ import event from '../images/event.jpg'
 import EventCardInformations from './EventCardInformations'
 
 const EventCardProfile = () => (
-  <div class="ui column stackable aligned page grid">
-  <Grid columns={2} >
+  <div class="ui column stackable aligned page grid" style={{backgroundColor: 'black'}}>
+  <Grid  columns={2} >
 
     <Grid.Column>
       <Card
@@ -15,7 +15,32 @@ const EventCardProfile = () => (
         fluid
         label={{
           as: 'a',
-          color: 'black',
+          color: 'yellow',
+          content: 'Outdoor',
+          icon: 'chart area',
+          ribbon: true,
+        }}
+        
+        src={event}
+      />
+    }    
+     header='Pool Party'
+     meta='SoNow Event'
+     description='Crazy evening around the Duplex pool'
+     extra={<EventCardInformations />}
+     fluid
+     color='pink'
+      />
+    </Grid.Column>
+
+    <Grid.Column>
+    <Card
+    image={
+      <Image
+        fluid
+        label={{
+          as: 'a',
+          color: 'yellow',
           content: 'Outdoor',
           icon: 'chart area',
           ribbon: true,
@@ -40,7 +65,7 @@ const EventCardProfile = () => (
         fluid
         label={{
           as: 'a',
-          color: 'black',
+          color: 'yellow',
           content: 'Outdoor',
           icon: 'chart area',
           ribbon: true,
@@ -65,7 +90,7 @@ const EventCardProfile = () => (
         fluid
         label={{
           as: 'a',
-          color: 'black',
+          color: 'yellow',
           content: 'Outdoor',
           icon: 'chart area',
           ribbon: true,
@@ -90,7 +115,7 @@ const EventCardProfile = () => (
         fluid
         label={{
           as: 'a',
-          color: 'black',
+          color: 'yellow',
           content: 'Outdoor',
           icon: 'chart area',
           ribbon: true,
@@ -115,32 +140,7 @@ const EventCardProfile = () => (
         fluid
         label={{
           as: 'a',
-          color: 'black',
-          content: 'Outdoor',
-          icon: 'chart area',
-          ribbon: true,
-        }}
-        
-        src={event}
-      />
-    }
-     header='Pool Party'
-     meta='SoNow Event'
-     description='Crazy evening around the Duplex pool'
-     extra={<EventCardInformations />}
-     fluid
-     color='pink'
-      />
-    </Grid.Column>
-
-    <Grid.Column>
-    <Card
-    image={
-      <Image
-        fluid
-        label={{
-          as: 'a',
-          color: 'black',
+          color: 'yellow',
           content: 'Outdoor',
           icon: 'chart area',
           ribbon: true,

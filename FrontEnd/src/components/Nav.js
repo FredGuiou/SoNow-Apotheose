@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import {  Menu, Icon, Segment } from 'semantic-ui-react'
 
-export default class MenuExampleSecondaryPointing extends Component {
+
+export default class MenuExamplePointing extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -11,34 +12,36 @@ export default class MenuExampleSecondaryPointing extends Component {
 
     return (
       <div>
-        <Menu pointing secondary>
+          <Menu inverted icon fixed='bottom'  borderless widths={4}>
           <Menu.Item
-            name='home'
-            active={activeItem === 'home'}
+            name='home icon'
+            active={activeItem === 'home icon'}
             onClick={this.handleItemClick}
-          />
+          >
+            <Icon name='home' />
+          </Menu.Item>
           <Menu.Item
-            name='messages'
-            active={activeItem === 'messages'}
+            name='favorite icon'
+            active={activeItem === 'favorite icon'}
             onClick={this.handleItemClick}
-          />
+          >
+            <Icon name='favorite' />
+          </Menu.Item>
           <Menu.Item
-            name='friends'
-            active={activeItem === 'friends'}
+            name='search icon'
+            active={activeItem === 'search icon'}
             onClick={this.handleItemClick}
-          />
-          <Menu.Menu position='right'>
-            <Menu.Item
-              name='logout'
-              active={activeItem === 'logout'}
-              onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
+          >
+            <Icon name='search' />
+          </Menu.Item>
+          <Menu.Item
+            name='user profile icon'
+            active={activeItem === 'user profile icon'}
+            onClick={this.handleItemClick}
+          >
+            <Icon name='user' />
+          </Menu.Item>
         </Menu>
-
-        {/* <Segment>
-          <img src='/images/wireframe/media-paragraph.png' />
-        </Segment> */}
       </div>
     )
   }

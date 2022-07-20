@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {  Menu, Icon, Segment } from 'semantic-ui-react'
+import {  Menu, Icon } from 'semantic-ui-react'
 
 
-export default class MenuExamplePointing extends Component {
+export default class Nav extends Component {
   state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })

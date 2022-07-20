@@ -2,6 +2,6 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+DROP TABLE IF NOT EXISTS "position","detailsinfos","user","event","tag","user_pin_event","user_attend_event","event_has_tag","user_follow_user" CASCADE;
 
 COMMIT;

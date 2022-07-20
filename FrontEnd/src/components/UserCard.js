@@ -52,7 +52,9 @@ function UserCard() {
             <span>{id}</span>
           </div>
           <div className="biography">
-            <span>Set your bio just here !</span>
+            <span>Set your bio just here !
+                  Coucou je suis la bio d'un user de SoNow.
+            </span>
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ app.use(express.json()); // Pour parser les body de type JSON (optionnel car pas
 app.use("/api", router);
 
 // Start app
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ?? 3000;
 app.listen(port, () => {
-  console.log(`Listening at port : ${port}`);
+  console.log(`Server up, listening at port : ${port}`);
 });

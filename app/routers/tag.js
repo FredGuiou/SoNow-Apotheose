@@ -1,10 +1,11 @@
 const express = require('express');
+const router = express.Router();
+
 
 const { tagController: controller } = require('../controllers');
 
 const controllerHandler = require('../services/controllerHandler');
 
-const router = express.Router();
 
 router
     .route('/tags')

@@ -1,4 +1,4 @@
-const tagDataMapper = require('../../app/models/tag');
+const tagDataMapper = require('../models/tag');
 
 module.exports = {
 

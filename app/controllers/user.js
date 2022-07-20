@@ -1,4 +1,4 @@
-const userDataMapper = require('../../app/models/user');
+const userDataMapper = require('../models/user');
 
 module.exports = {
     

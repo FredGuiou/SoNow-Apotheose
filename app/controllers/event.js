@@ -1,4 +1,4 @@
-const eventDataMapper = require('../../app/models/event');
+const eventDataMapper = require('../models/event');
 
 module.exports = {
 
@@ -7,6 +7,10 @@ module.exports = {
     },
 
     async getOneEvent(req, res) {
+        
+    },
+
+    async getByTagId(req, res) {
         
     },
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { Container, Grid, Header, Image, Icon } from 'semantic-ui-react'
 import profile from '../images/profile.jpg'
@@ -6,7 +7,7 @@ import "../styles/userCard.scss"
 
 const HeaderExampleImage = () => (
   
-<Header attached='top' style={{backgroundColor: 'black', borderBottom: '1px solid white'}} dividing>
+<Header attached='top' style={{backgroundColor: 'black'}} dividing>
     
     <Grid
       style={{
@@ -68,7 +69,11 @@ const HeaderExampleImage = () => (
         <Grid.Column
         width={3}
         >
+
+      <Link to='/'>  
       <Icon circular name='setting' size='large' style={{ color: 'white', margin: '0.5em'}} />
+      </Link>
+
       </Grid.Column>
     </Grid>
 
@@ -77,13 +82,23 @@ const HeaderExampleImage = () => (
       style={{
         display: 'flex',
         justifyContent: 'space-evenly',
-        color: 'white'
+        color: 'white',
+        marginBottom: '0.5em',
+        borderBottom: '1px solid #F30067'
       }}
 
     >
-      <Icon circular size='large' name='add user' />
-      <Icon circular size='large' name='add' />
-      <Icon circular size='large' name='checked calendar' />
+      <Link to='/'>
+      <Icon circular size='large' name='add user' style={{ color: 'white', marginBottom: '0.5em'}} />
+      </Link>
+
+      <Link to="/">
+      <Icon circular size='large' name='add' style={{ color: 'white', marginBottom: '0.5em'}} />
+      </Link>
+
+      <Link to="/"> 
+      <Icon circular size='large' name='checked calendar' style={{ color: 'white', marginBottom: '0.5em'}} />
+      </Link>
     
     </Header.Subheader>
 

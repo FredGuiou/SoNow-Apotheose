@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Grid, Image, Card } from 'semantic-ui-react'
-import event from '../images/event.jpg'
 import EventCardInformations from './EventCardInformations'
 
 const EventCardProfile = () => (
@@ -21,7 +20,7 @@ const EventCardProfile = () => (
           ribbon: true,
         }}
         
-        src={event}
+        src='https://media.giphy.com/media/3NtY188QaxDdC/giphy.gif'
       />
     }    
      header='Pool Party'
@@ -46,7 +45,7 @@ const EventCardProfile = () => (
           ribbon: true,
         }}
         
-        src={event}
+        src='https://media.giphy.com/media/1xkMJIvxeKiDS/giphy.gif'
       />
     }
      header='Pool Party'
@@ -71,7 +70,7 @@ const EventCardProfile = () => (
           ribbon: true,
         }}
         
-        src={event}
+        src='https://media.giphy.com/media/ThHSCmkz0CUI8/giphy.gif'
       />
     }
      header='Pool Party'
@@ -96,7 +95,7 @@ const EventCardProfile = () => (
           ribbon: true,
         }}
         
-        src={event}
+        src='https://media.giphy.com/media/IG6i30q4DMT0Q/giphy.gif'
       />
     }
      header='Pool Party'
@@ -121,7 +120,7 @@ const EventCardProfile = () => (
           ribbon: true,
         }}
         
-        src={event}
+        src='https://media.giphy.com/media/3NtY188QaxDdC/giphy.gif'
       />
     }
      header='Pool Party'
@@ -146,7 +145,7 @@ const EventCardProfile = () => (
           ribbon: true,
         }}
         
-        src={event}
+        src='https://media.giphy.com/media/1xkMJIvxeKiDS/giphy.gif'
       />
     }
      header='Pool Party'

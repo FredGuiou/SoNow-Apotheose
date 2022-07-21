@@ -1,4 +1,4 @@
-// const client = require("../config/db");
+const client = require("../config/db");
 
 module.exports = {
   async findAll() {

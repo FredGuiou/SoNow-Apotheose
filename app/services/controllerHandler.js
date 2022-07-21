@@ -1,11 +1,9 @@
-const controller = {
-    async Handler (req, res, next) {
-        try {
-            await controller.Handler(req, res, next);
-        } catch (err) {
-            next(err);
-        }
+module.exports = (controller) => async (req, res, next) => {
+    try {
+        await controller(req, res, next);
+    } catch (err) {
+        next(err);
     }
 };
 
-module.exports = controller;
+//TODO: Gestion des erreurs via un controller error.

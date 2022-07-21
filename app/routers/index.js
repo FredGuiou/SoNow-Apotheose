@@ -12,7 +12,7 @@ router.all('/', function(_, res) {
   console.log("Coucou ça marche :D");
 });
 
-router.use('/users', userRouter);
+router.use('/user', userRouter);
 router.use('/event', eventRouter);
 router.use('/tag', tagRouter);
 

@@ -1,6 +1,7 @@
 import "../styles/createAccount.scss";
 import { useState } from "react";
 import { Container, Form, Grid, Header, Image } from 'semantic-ui-react';
+import loop from '../images/assets/sonow-bis.mp4';
 
 function CreateAccount() {
 
@@ -55,8 +56,20 @@ function CreateAccount() {
   }
 
   return (
-    <Container className="create-account">
-      <Image fluid className="create-account__img" src='https://picsum.photos/1080'/>
+    <Container className="create-account"
+      style={{ 
+        width: '100%',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+      >
+      {/* <Image fluid className="create-account__img" src='https://picsum.photos/1080'/> */}
+      <div className='create-account__video'>
+        <div className='create-account__video__overlay'></div>
+        <video className='create-account__video__content' src={loop} autoPlay loop muted />
+      </div>
       <Container className="create-account__grid-container">
       <Grid className="create-account__grid-content" textAlign='center' verticalAlign='middle'>
         <Grid.Column className="create-account__form-container">

@@ -4,7 +4,7 @@ const tagController = require('./tag');
 
 const apiController = {
     home(req, res) {
-    res.send("Welcome on homepage !")
+    res.send("Welcome on SoNow API homepage !")
 
     },
 

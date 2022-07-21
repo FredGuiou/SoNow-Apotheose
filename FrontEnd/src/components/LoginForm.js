@@ -25,21 +25,21 @@ function LoginForm() {
   }
 
   return (
-    <Form onSubmit={(e) => {handleSubmit(e)}} size='large' inverted>
-      <Form.Input
+    <Form onSubmit={(e) => {handleSubmit(e)}} size='large' inverted style={{margin: '0.1em 0', padding: '1em 0'}}>
+      <Form.Input className="login__form-input"
         value={emailInput}
         onChange={(e) => {handleEmailChange(e)}}
         fluid label='Email'
         placeholder='Email'
       />
-      <Form.Input
+      <Form.Input className="login__form-input"
         value={passwordInput}
         onChange={(e) => {handlePasswordChange(e)}}
         fluid type='password'
         label='Mot de passe'
         placeholder='Mot de passe'
         />
-      <Form.Button>C'est parti !</Form.Button>
+      <Form.Button style={{backgroundColor: '#F30067', color: 'white'}} className="login__form-button">C'est parti !</Form.Button>
     </Form>
   );
 

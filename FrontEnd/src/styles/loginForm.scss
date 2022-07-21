@@ -1,36 +1,8 @@
-@import './properties.scss';
+.login__form-input {
+  padding: 0.5em 1em 0.5em 1em;
+}
 
-.authentification {
-  position: relative;
-  width: 100%;
-  height: 90vh;
-  
-  &__video {
-    position: absolute;
-    width: 100vw;
-    height: 90vh;
-  
-    &__content {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  
-    &__overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.550);
-    }
-  }
-  
-  &__main {
-    position: relative;
-    margin: 0 auto;
-    width: 270px;
-    height: 92vh;
-    color: white;
-  }
+.login__form-button {
+  display: flex;
+  justify-content: center;
 }

@@ -2,6 +2,7 @@
 import React from 'react'
 import { Grid, Image, Card } from 'semantic-ui-react'
 import EventCardInformations from './EventCardInformations'
+import "../styles/eventcardprofile.scss"
 
 const EventCardProfile = () => (
   <div class="ui column stackable aligned page grid" style={{backgroundColor: 'black'}}>

@@ -1,80 +1,86 @@
-import React from "react";
-import "../styles/usercard.scss";
-import { useParams } from "react-router";
+import React from 'react'
+import { useState } from 'react'
+import { Container, Header, Image, Icon } from 'semantic-ui-react'
+import profile from '../images/profile.jpg'
+import "../styles/userCard.scss"
 
-function UserCard() {
+const HeaderExampleImage = () => (
+  
+  <div>
+  <Header as='h2' attached='top' style={{backgroundColor: 'black' }} dividing>
+    
+    <Container fluid
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}
+    >
+      <Container fluid>
+        <p className='profile-counter__name'>Romain P.</p>
+        <Image circular src={profile} size='tiny'/>
+      </Container>
+      <Header.Subheader fluid
+        style={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          color: 'white'
+        }}
+      >
+        <Container fluid
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <p className='profile-counter__content'>562</p>
+          <p className='profile-counter__title'>Evènements</p>
+        </Container>
+        <Container fluid
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }} 
+        >
+          <p className='profile-counter__content'>1364</p>
+          <p className='profile-counter__title'>Abonnements</p>
+        </Container>
+        <Container fluid
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }} 
+        >
+          <p className='profile-counter__content'>698</p>
+          <p className='profile-counter__title'>Abonnés</p>
+        </Container>
+    </Header.Subheader>
+      <Icon circular size='small' name='setting' style={{color: 'white'}} />
+    </Container>
 
-  let { id } = useParams();
-  const [userImage, setUserImage] = React.useState();
-  React.useEffect(() => {
-    if (id === "Romain-Portanguen") {
+    
 
-      setUserImage("https://avatars.githubusercontent.com/u/99121248");
-    } else {
-      //random profilPhoto
-      setUserImage("https://picsum.photos/200");
-    }
-  }, [id]);
+    <Header.Subheader
+      style={{
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        color: 'white'
+      }}
 
-  return (
-    <div className="user-profile">
-    <header className="profileHeaderRow">
-      <div className="profilePhotoCol">
-        <img src={userImage} alt="profile" />
-      </div>
-      <div className="profileContentCol">
-        <div className="title">
-          <div className="username">
-            <span>{id}</span>
-          </div>
-          <div className="editProfile">
-            <span>Edit Profile</span>
-          </div>
-          <div className="settings">
-          </div>
-        </div>
-        <div className="counter">
-          <div>
-            <span> 263 </span>
-            Events
-          </div>
-          <div>
-            <span> 1235 </span>
-            Followers
-          </div>
-          <div>
-            <span> 146 </span>
-            Following
-          </div>
-        </div>
-        <div className="biographyRow">
-          <div className="displayName">
-            <span>{id}</span>
-          </div>
-          <div className="biography">
-            <span>Set your bio just here !
-                  Coucou je suis la bio d'un user de SoNow.
-            </span>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div className="profileTabs">
-      <div className="tabItem active">
-        <span>Events</span>
-      </div>
-      <div className="tabItem">
-        <span>Friends</span>
-      </div>
-      <div className="tabItem">
-        <span>Saved</span>
-      </div>
-      <div className="tabItem">
-        <span>Tagged</span>
-      </div>
-    </div>
+    >
+      <Icon circular size='small' name='add user' style={{backgroundColor: '#F30067', marginBottom: '10px'}} />
+      <Icon circular size='small' name='add' style={{backgroundColor: '#F30067'}} />
+      <Icon circular size='small' name='checked calendar' style={{backgroundColor: '#F30067'}} />
+    
+    </Header.Subheader>
+
+
+  </Header>
   </div>
-  );
-}
 
-export default UserCard;
+)
+
+export default HeaderExampleImage

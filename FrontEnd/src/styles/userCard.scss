@@ -1,0 +1,23 @@
+.profile-counter {
+    color : white; 
+    
+    &__name {
+      font-size : 1.5rem;
+      font-weight : bold;
+      color : white;
+    }
+
+    &__content {
+
+    }
+
+
+}
+
+.profile-counter__name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    margin: 0 0 0.35em 0.35em;
+}
+

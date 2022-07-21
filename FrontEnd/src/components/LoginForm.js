@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Form } from 'semantic-ui-react';
-
+import { Form } from 'semantic-ui-react'
 import '../styles/loginForm.scss';
 
 function LoginForm() {
 
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
-  // const [isConnected, setIsConnected] = useState(false);
-  // const [isLoggingLoading, setIsLoggingLoading] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
+  const [isLoggingLoading, setIsLoggingLoading] = useState(false);
   
   const handleEmailChange =(e)=>{
     setEmailInput(e.target.value);

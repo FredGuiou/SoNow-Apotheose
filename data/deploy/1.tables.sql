@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS "event"
   "description"         text NOT NULL,
   "start"               timestamptz NOT NULL,
   "stop"                timestamptz NOT NULL,
-  "media"          		text DEFAULT 'default_event_picture',
+  "media"          		  text DEFAULT 'default_event_picture',
   "price_ttc"           float,
   "url"                 text,
   "code_detailsinfos"   integer,

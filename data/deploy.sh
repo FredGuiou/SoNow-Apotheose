@@ -1,3 +1,1 @@
-export PGUSER=kjjoanbdqvjdqd
-
-sqitch deploy db:pg:sonow
+sqitch deploy db:pg://kjjoanbdqvjdqd:708ceeb5d0de22e92302a9509f212983c1b89de880b7235ffef61e8830b99299@ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/d8acfg15h7us85

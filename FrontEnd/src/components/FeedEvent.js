@@ -1,27 +1,95 @@
-import { Card, Icon, Image, Label } from 'semantic-ui-react';
+import { Card, Container, Icon, Image, Label } from 'semantic-ui-react';
 
 import "../styles/feedEvent.scss"; 
 
 function FeedEvent({ event }) {
   return (
-  <div
+  <Card fluid
     style={{
-      position: 'relative',
+      borderRadius: '300px',
+      boxShadow: 'none',
+      background: 'black',
+      height: '100%'
     }}
   >
-
-    <div
+    <img
+      src={event.media}
+      style={{
+        objectFit: 'cover',
+        height: '70%',
+      }}
+      alt={event.title}
+    />
+    <Card.Content
       style={{
         display: 'flex',
-        flexDirection:'column',
-        position: 'absolute',
-        top: '35vh',
-        right: '4vw',
-        zIndex: 2,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '20%',
+      }}
+    >
+      <Card.Header
+        style={{
+          color: 'white'
+        }}
+      >
+        {event.title}
+        </Card.Header>
+      <Card.Meta
+        style={{
+          color: 'white'
+        }}
+      >
+        <span className='date'>{event.user}</span>
+      </Card.Meta>
+      <Card.Description
+        style={{
+          color: 'white'
+        }}
+      >
+        {event.description}
+      </Card.Description>
+    </Card.Content>
+    <Card.Content
+      style={{
+        border: 'none',
+        display: 'flex',
+        alignItems: 'center'
+      }}
+    >
+        {
+          event.tag.map((t) => {
+            return (
+            <Label 
+            key={t}
+            as='a' 
+            image
+            >
+        <Image src='https://react.semantic-ui.com/images/avatar/small/ade.jpg' />
+        {t}
+      </Label>
+          )
+          })
+        }
+
+    </Card.Content>
+    <Card.Content
+        style={{
+          border: 'none',
+          display:'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          height: '10%',
+        }}
+    >
+      <div
+      style={{
+        display: 'flex',
+        flexDirection: 'space-between'
       }}
       >
       <Icon 
-        name='star' 
+        name='favorite' 
         size='large' 
         circular
         style={{ 
@@ -54,76 +122,23 @@ function FeedEvent({ event }) {
         }}
         />
     </div>
-
-  <div     
+    <Container fluid
     style={{
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      zIndex: 1
-    }}>
-  <Card fluid>
-      <Image src={event.media}
-        style={{
-          height: '66vh',
-          objectFit: 'cover',
-          width: '100vw',
-        }}
-      />
-    <Card.Content
-      style={{
-        height: '13vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-      }}
+display: 'flex',
+justifyContent:'flex-end'
+    }}
     >
-      <Card.Header>{event.title}</Card.Header>
-      <Card.Meta>
-        <span className='date'>{event.user}</span>
-      </Card.Meta>
-      <Card.Description>
-        {event.description}
-      </Card.Description>
-    </Card.Content>
-    <Card.Content
-      style={{
-        height: '8vh',
-        border: 'none',
-        display: 'flex',
-        alignItems: 'center'
-      }}
-    >
-
-        {
-          event.tag.map((t) => {
-            return (
-            <Label 
-            key={t}
-            as='a' image
-            >
-        <Image src='https://react.semantic-ui.com/images/avatar/small/ade.jpg' />
-        {t}
-      </Label>
-          )
-          })
-        }
-
-    </Card.Content>
-    <Card.Content extra
-        style={{
-          height: '5vh',
-          border: 'none'
-        }}
-    >
-      <p>
         <Icon name='user' />
+        <p
+        style={{
+          color: 'white'
+        }}
+      >
         {event.participants} participants
       </p>
+    </Container>
     </Card.Content>
   </Card>
-  </div>
-  </div>
   );
 }
 

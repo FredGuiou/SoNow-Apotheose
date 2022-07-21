@@ -12,7 +12,11 @@ export default class Nav extends Component {
 
     return (
       <div>
-          <Menu inverted icon fixed='bottom'  borderless widths={4}>
+          <Menu inverted icon fixed='bottom'  borderless widths={4}
+            style= {{
+              height: '8vh',
+            }}
+          >
           <Menu.Item
             name='home icon'
             active={activeItem === 'home icon'}

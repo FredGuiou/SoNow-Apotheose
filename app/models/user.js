@@ -1,3 +1,5 @@
+//TODO: Gestion des erreurs via un controller error.
+
 const client = require("../config/db");
 
 module.exports = {
@@ -9,7 +11,7 @@ module.exports = {
   },
 
   //Retrouver un user par son email pour l'authentification
-  async findByEmail(email){
+  async findByEmail(reqEmail){
     try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons $1, et l'agument [email] également par souci de sécurité.
@@ -19,7 +21,7 @@ module.exports = {
           FROM public.user
           WHERE email = $1
         `,
-        values: [email],
+        values: [reqEmail],
       };
       //J'envoie ma requête auprès de la DB.
       const result = await client.query(preparedQuery);
@@ -34,9 +36,19 @@ module.exports = {
     }
   },
 
-  async insert(user) {
+  async insert(newUser) {
+    const savedUser = await client.query(
+      `
+          INSERT INTO public.user
+          (firstname, lastname, nickname, email, password) VALUES
+          ($1, $2, $3, $4, $5) RETURNING *
+      `,
+      [newUser.firstname, newUser.lastname, newUser.nickname, newUser.email, newUser.password],
+  );
 
+  return savedUser.rows[0];
   },
+
   async update(id, user) {
 
   },

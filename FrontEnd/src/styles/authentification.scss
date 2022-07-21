@@ -29,19 +29,34 @@
 
   &__main {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
     margin: 0 auto;
     width: 270px;
     height: 92vh;
     color: white;
-
+  
     &__logo {
       width: 300px;
     }
   }
 }
 
+.login {
+  width: 100vw;
+  color:white;
 
+  &__grid-container {
+    position: absolute;
+    top: 0; 
+    margin: 0 auto;
+  }
+
+  &__grid-content {
+    height: 100vh;
+  }
+
+  &__form-container {
+    max-width: 450px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: .28571429rem;
+  }
+}

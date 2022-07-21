@@ -4,7 +4,6 @@ import { Container, Header, Image, Icon } from 'semantic-ui-react'
 import profile from '../images/profile.jpg'
 import "../styles/userCard.scss"
 
-
 const HeaderExampleImage = () => (
   
   <div>

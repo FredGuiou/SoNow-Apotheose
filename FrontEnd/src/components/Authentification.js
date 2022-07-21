@@ -7,6 +7,7 @@ import loop from '../images/assets/sonow.mp4';
 import logo from '../images/logo.png';
 
 function Authentification() {
+
 return (
   <div className='authentification'>
     <div className='authentification__video'>

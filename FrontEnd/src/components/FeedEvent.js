@@ -40,14 +40,16 @@ function FeedEvent({ event }) {
           color: 'white'
         }}
       >
-        <span className='date'>{event.user}</span>
+        <span className='date'>
+          {event.code_user_manager.nickname}
+        </span>
       </Card.Meta>
       <Card.Description
         style={{
           color: 'white'
         }}
       >
-        {event.description}
+        {event.metadescription}
       </Card.Description>
     </Card.Content>
     <Card.Content
@@ -61,12 +63,12 @@ function FeedEvent({ event }) {
           event.tag.map((t) => {
             return (
             <Label 
-            key={t}
+            key={t.id}
             as='a' 
             image
             >
         <Image src='https://react.semantic-ui.com/images/avatar/small/ade.jpg' />
-        {t}
+        {t.name}
       </Label>
           )
           })

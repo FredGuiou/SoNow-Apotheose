@@ -7,29 +7,27 @@ import EventCardInformations from './EventCardInformations'
 const EventCardProfile = () => (
   <div class="ui column stackable aligned page grid" style={{backgroundColor: 'black'}}>
   <Grid  columns={2} >
-
     <Grid.Column>
       <Card
-    image={
-      <Image
+        image={
+          <Image
+            fluid
+            label={{
+              as: 'a',
+              color: 'yellow',
+              content: 'Outdoor',
+              icon: 'chart area',
+              ribbon: true,
+            }}
+            src={event}
+          />
+        }    
+        header='Pool Party'
+        meta='SoNow Event'
+        description='Crazy evening around the Duplex pool'
+        extra={<EventCardInformations />}
         fluid
-        label={{
-          as: 'a',
-          color: 'yellow',
-          content: 'Outdoor',
-          icon: 'chart area',
-          ribbon: true,
-        }}
-        
-        src={event}
-      />
-    }    
-     header='Pool Party'
-     meta='SoNow Event'
-     description='Crazy evening around the Duplex pool'
-     extra={<EventCardInformations />}
-     fluid
-     color='pink'
+        color='pink'
       />
     </Grid.Column>
 

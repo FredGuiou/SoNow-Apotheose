@@ -16,3 +16,16 @@ input {
   border-radius: 10px;
   height: 2rem;
 }
+
+// Gestion padding des cartes en colonne simple
+.ui.stackable.grid>.column:not(.row) {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+// Gestion alignement horizontal des cartes en double colonne
+.ui.column.stackable.aligned.page.grid {
+  display: flex !important;
+  justify-content: center !important;
+}
+

@@ -8,11 +8,11 @@ const controllerHandler = require('../services/controllerHandler');
 
 
 router
-    .route('/tags')
+    .route('/')
     .get(controllerHandler(controller.getAllTags));
 
 router
-    .route('/tags/:tag_id')
+    .route('/:tag_id')
     .get(controllerHandler(controller.getOneTag));
 
 module.exports = router;

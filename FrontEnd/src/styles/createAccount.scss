@@ -1,19 +1,42 @@
 .create-account {
-  width: 100vw;
-  color:white;
-
-  &__img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  
+  &__video {
     position: absolute;
-    top: 0; 
-    left: 0; 
-    object-fit:cover !important; 
-    height: 100vh !important;
+    width: 100vw;
+    height: 100vh;
+  
+    &__content {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.550);
+    }
   }
 
   &__grid-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     position: absolute;
     top: 0; 
-    margin: 0 auto;
+    margin: 1em 0 1em 0;
   }
 
   &__grid-content {
@@ -24,5 +47,10 @@
     max-width: 450px;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: .28571429rem;
+  }
+
+  p {
+    color: white;
+    margin-top: 0.5em;
   }
 }

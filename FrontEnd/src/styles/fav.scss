@@ -1,0 +1,9 @@
+.fav {
+  height: 92vh;
+  overflow-y: scroll;
+  background-color: black;
+}
+
+.fav::-webkit-scrollbar {
+  display: none;
+}

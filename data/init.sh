@@ -18,7 +18,7 @@ export SQITCHTARGET=db:pg:$SQITCHNAME                                   # Target
 # createdb -O $NEWDBUSER $NEWDBNAME
 
 ## Init de Sqitch
-read -p "Quel nom voulez vous donner à votre projet ?: "  SQITCHNAME
+read -p "Quelle est la cible de votre base de donnée (juste le nom de la base pour une BDD locale) ?: "  SQITCHNAME
 read -p "Dans quel dossier voulez vous initialiser Sqitch ?: "  SQITCHDIR
 sqitch init $SQITCHNAME --engine $ENGINE --top-dir $SQITCHDIR
 

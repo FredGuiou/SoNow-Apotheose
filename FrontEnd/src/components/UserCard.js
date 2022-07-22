@@ -1,37 +1,43 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { Container, Header, Image, Icon } from 'semantic-ui-react'
+import { Container, Grid, Header, Image, Icon } from 'semantic-ui-react'
 import profile from '../images/profile.jpg'
 import "../styles/userCard.scss"
 
 const HeaderExampleImage = () => (
   
-  <div>
-  <Header as='h2' attached='top' style={{backgroundColor: 'black' }} dividing>
+<Header attached='top' style={{backgroundColor: 'black', border: 'none'}} dividing>
     
-    <Container fluid
+    <Grid
       style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center'
       }}
     >
-      <Container fluid>
-        <p className='profile-counter__name'>Romain P.</p>
-        <Image circular src={profile} size='tiny'/>
-      </Container>
-      <Header.Subheader fluid
-        style={{
-          display: 'flex',
-          justifyContent: 'space-evenly',
-          color: 'white'
-        }}
+      <Grid.Column 
+       width={3}
+      >
+        <div style={{margin: '0.5em'}}>
+          <p className='profile-counter__name'>Romain P.</p>
+          <Image circular src={profile} size='tiny'/>
+        </div>
+      </Grid.Column>
+
+      <Grid.Column
+      width={8}
+      style={{
+        color:'white',
+        display: 'flex',
+      }}
       >
         <Container fluid
           style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            margin: '0.5em'
           }}
         >
           <p className='profile-counter__content'>562</p>
@@ -42,6 +48,7 @@ const HeaderExampleImage = () => (
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            margin: '0.5em'
           }} 
         >
           <p className='profile-counter__content'>1364</p>
@@ -52,35 +59,52 @@ const HeaderExampleImage = () => (
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            margin: '0.5em'
           }} 
         >
           <p className='profile-counter__content'>698</p>
           <p className='profile-counter__title'>Abonnés</p>
         </Container>
-    </Header.Subheader>
-      <Icon circular size='small' name='setting' style={{color: 'white'}} />
-    </Container>
+        </Grid.Column>
+        <Grid.Column
+        width={3}
+        >
+
+      <Link to='/'>  
+      <Icon circular name='setting' size='large' style={{ color: 'white', margin: '0.5em'}} />
+      </Link>
+
+      </Grid.Column>
+    </Grid>
 
     
-
     <Header.Subheader
       style={{
         display: 'flex',
         justifyContent: 'space-evenly',
-        color: 'white'
+        color: 'white',
+        marginBottom: '0.5em',
+        borderBottom: '1px solid #F30067'
       }}
 
     >
-      <Icon circular size='small' name='add user' style={{backgroundColor: '#F30067', marginBottom: '10px'}} />
-      <Icon circular size='small' name='add' style={{backgroundColor: '#F30067'}} />
-      <Icon circular size='small' name='checked calendar' style={{backgroundColor: '#F30067'}} />
+      <Link to='/'>
+      <Icon circular size='large' name='add user' style={{ color: 'white', marginBottom: '0.5em'}} />
+      </Link>
+
+      <Link to="/">
+      <Icon circular size='large' name='add' style={{ color: 'white', marginBottom: '0.5em'}} />
+      </Link>
+
+      <Link to="/"> 
+      <Icon circular size='large' name='checked calendar' style={{ color: 'white', marginBottom: '0.5em'}} />
+      </Link>
     
     </Header.Subheader>
 
 
   </Header>
-  </div>
-
+  
 )
 
 export default HeaderExampleImage

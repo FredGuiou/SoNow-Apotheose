@@ -1,163 +1,145 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
-import { Grid, Image, Card } from 'semantic-ui-react'
-import event from '../images/event.jpg'
-import EventCardInformations from './EventCardInformations'
+import { Card, Container, Icon, Image, Label } from 'semantic-ui-react';
 
-const EventCardProfile = () => (
-  <div class="ui column stackable aligned page grid" style={{backgroundColor: 'black'}}>
-  <Grid  columns={2} >
-    <Grid.Column>
-      <Card
-        image={
-          <Image
-            fluid
-            label={{
-              as: 'a',
-              color: 'yellow',
-              content: 'Outdoor',
-              icon: 'chart area',
-              ribbon: true,
-            }}
-            src={event}
-          />
-        }    
-        header='Pool Party'
-        meta='SoNow Event'
-        description='Crazy evening around the Duplex pool'
-        extra={<EventCardInformations />}
-        fluid
-        color='pink'
-      />
-    </Grid.Column>
+import "../styles/eventcardprofile.scss"
 
-    <Grid.Column>
-    <Card
-    image={
-      <Image
-        fluid
-        label={{
-          as: 'a',
-          color: 'yellow',
-          content: 'Outdoor',
-          icon: 'chart area',
-          ribbon: true,
+function EventCardProfile({ event }) {
+  return (
+    <Card fluid
+    style={{
+      boxShadow: 'none',
+      background: 'black',
+      height: '100%'
+    }}
+  >
+    <img
+      src={event.media}
+      style={{
+        objectFit: 'cover',
+        height: '70%',
+      }}
+      alt={event.title}
+    />
+    <Card.Content
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '20%',
+      }}
+    >
+      <Card.Header
+        style={{
+          color: 'white'
         }}
-        
-        src={event}
-      />
-    }
-     header='Pool Party'
-     meta='SoNow Event'
-     description='Crazy evening around the Duplex pool'
-     extra={<EventCardInformations />}
-     fluid
-     color='pink'
-      />
-    </Grid.Column>
-
-    <Grid.Column>
-    <Card
-    image={
-      <Image
-        fluid
-        label={{
-          as: 'a',
-          color: 'yellow',
-          content: 'Outdoor',
-          icon: 'chart area',
-          ribbon: true,
+      >
+        {event.title}
+        </Card.Header>
+      <Card.Meta
+        style={{
+          color: 'white'
         }}
-        
-        src={event}
-      />
-    }
-     header='Pool Party'
-     meta='SoNow Event'
-     description='Crazy evening around the Duplex pool'
-     extra={<EventCardInformations />}
-     fluid
-     color='pink'
-      />
-    </Grid.Column>
-
-    <Grid.Column>
-    <Card
-    image={
-      <Image
-        fluid
-        label={{
-          as: 'a',
-          color: 'yellow',
-          content: 'Outdoor',
-          icon: 'chart area',
-          ribbon: true,
+      >
+        <span className='date'>{event.user}</span>
+      </Card.Meta>
+      <Card.Description
+        style={{
+          color: 'white'
         }}
-        
-        src={event}
-      />
-    }
-     header='Pool Party'
-     meta='SoNow Event'
-     description='Crazy evening around the Duplex pool'
-     extra={<EventCardInformations />}
-     fluid
-     color='pink'
-      />
-    </Grid.Column>
+      >
+        {event.description}
+      </Card.Description>
+    </Card.Content>
+    <Card.Content
+      style={{
+        border: 'none',
+        display: 'flex',
+        alignItems: 'center'
+      }}
+    >
+        {
+          event.tag.map((t) => {
+            return (
+            <Label 
+            key={t}
+            as='a' 
+            image
+            >
+        <Image src='https://react.semantic-ui.com/images/avatar/small/ade.jpg' />
+        {t}
+      </Label>
+          )
+          })
+        }
 
-    <Grid.Column>
-    <Card
-    image={
-      <Image
-        fluid
-        label={{
-          as: 'a',
-          color: 'yellow',
-          content: 'Outdoor',
-          icon: 'chart area',
-          ribbon: true,
+    </Card.Content>
+    <Card.Content
+        style={{
+          border: 'none',
+          display:'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          height: '10%',
         }}
-        
-        src={event}
-      />
-    }
-     header='Pool Party'
-     meta='SoNow Event'
-     description='Crazy evening around the Duplex pool'
-     extra={<EventCardInformations />}
-     fluid
-     color='pink'
-      />
-    </Grid.Column>
-
-    <Grid.Column>
-    <Card
-    image={
-      <Image
-        fluid
-        label={{
-          as: 'a',
-          color: 'yellow',
-          content: 'Outdoor',
-          icon: 'chart area',
-          ribbon: true,
+    >
+      <div
+      style={{
+        display: 'flex',
+        flexDirection: 'space-between'
+      }}
+      >
+      <Icon 
+        name='favorite' 
+        size='large' 
+        circular
+        style={{ 
+          backgroundColor: 'black',
+          color: 'white',
+          marginTop: '0.6em',
+          marginBottom: '0.6em'
         }}
-        
-        src={event}
       />
-    }
-     header='Pool Party'
-     meta='SoNow Event'
-     description='Crazy evening around the Duplex pool'
-     extra={<EventCardInformations />}
-     fluid
-     color='pink'
-      />
-    </Grid.Column>
+      <Icon 
+        name='comment' 
+        size='large' 
+        circular
+        style={{ 
+          backgroundColor: 'black',
+          color: 'white',
+          marginTop: '0.6em',
+          marginBottom: '0.6em'
+        }}
+        />
+      <Icon 
+        name='share' 
+        size='large' 
+        circular
+        style={{ 
+          backgroundColor: 'black',
+          color: 'white',
+          marginTop: '0.6em',
+          marginBottom: '0.6em'
+        }}
+        />
+    </div>
+    <Container fluid
+    style={{
+      display: 'flex',
+      justifyContent:'flex-end'
+    }}
+    >
+        <Icon name='user' />
+        <p
+        style={{
+          color: 'white'
+        }}
+      >
+        {event.participants} participants
+      </p>
+    </Container>
+    </Card.Content>
+  </Card>
+  );
 
-  </Grid>
-  </div>
-)
+}
 
 export default EventCardProfile

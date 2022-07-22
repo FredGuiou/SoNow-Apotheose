@@ -7,7 +7,7 @@ import "../styles/userCard.scss"
 
 const HeaderExampleImage = () => (
   
-<Header attached='top' style={{backgroundColor: 'black'}} dividing>
+<Header attached='top' style={{backgroundColor: 'black', border: 'none'}} dividing>
     
     <Grid
       style={{

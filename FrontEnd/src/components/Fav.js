@@ -1,5 +1,5 @@
 import FavNav from './FavNav';
-import EventCardsProfile from './EventCardsProfile';
+import EventCardProfile from './EventCardProfile';
 
 import "../styles/fav.scss";
 
@@ -7,7 +7,7 @@ function Fav() {
   return (
     <div className="fav">
       <FavNav />
-      <EventCardsProfile />
+      <EventCardProfile />
     </div>
   );
 }

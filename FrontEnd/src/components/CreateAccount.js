@@ -1,6 +1,6 @@
 import "../styles/createAccount.scss";
 import { useState } from "react";
-import { Container, Form, Grid, Header, Image } from 'semantic-ui-react';
+import { Container, Form, Grid, Header } from 'semantic-ui-react';
 import loop from '../images/assets/sonow-bis.mp4';
 
 function CreateAccount() {

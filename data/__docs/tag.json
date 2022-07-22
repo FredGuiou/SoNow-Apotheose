@@ -1,0 +1,44 @@
+[
+  {
+    "name":"Concert",
+    "color":"#FFF655",
+    "emoji":"🎤",
+    "slug":"concert"
+  },
+  {
+    "name":"Festival",
+    "color":"#FF793B",
+    "emoji":"🎊",
+    "slug":"festival"
+  },
+  {
+    "name":"Médieval",
+    "color":"#E20100",
+    "emoji":"🏰",
+    "slug":"medieval"
+  },
+  {
+    "name":"Sport",
+    "color":"#C6047F",
+    "emoji":"🥇",
+    "slug":"sport"
+  },
+  {
+    "name":"Animation Cinéma",
+    "color":"#028E5A",
+    "emoji":"🎬",
+    "slug":"animation-cinema"
+  },
+  {
+    "name":"E-Sport",
+    "color":"#0FD3DE",
+    "emoji":"🎮",
+    "slug":"esport"
+  },
+  {
+    "name":"Sport Mécanique",
+    "color":"#3F4FEA",
+    "emoji":"🏎️",
+    "slug":"sport-mecanique"
+  }
+]

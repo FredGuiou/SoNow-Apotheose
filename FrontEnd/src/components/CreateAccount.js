@@ -65,7 +65,6 @@ function CreateAccount() {
         alignItems: 'center'
       }}
       >
-      {/* <Image fluid className="create-account__img" src='https://picsum.photos/1080'/> */}
       <div className='create-account__video'>
         <div className='create-account__video__overlay'></div>
         <video className='create-account__video__content' src={loop} autoPlay loop muted />
@@ -86,7 +85,7 @@ function CreateAccount() {
           <Form.Input fluid type='password' label='Mot de passe' placeholder='Mot de passe' value={passwordInput} required onChange={(e) => {handlePasswordChange(e)}}/>
           <Form.Input fluid type='password' label='Confirmation du mot de passe' placeholder='Confirmation du mot de passe' value={confirmedPasswordInput} required onChange={(e) => {handleConfirmedPasswordChange(e)}}/>
         <Form.Checkbox label="En vous inscrivant sur SoNow vous acceptez nos conditions d'utilisation et notre politique de confidentialité" defaultChecked/>
-        <Form.Button>C'est parti !</Form.Button>
+        <Form.Button style={{backgroundColor: '#F30067', color: 'white'}}>C'est parti !</Form.Button>
         </Form>
           <p>Vous avez déjà un compte ?</p>
           <a href='/'>Connectez-vous</a>

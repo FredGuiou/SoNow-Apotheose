@@ -28,12 +28,14 @@ function LoginForm() {
     <Form onSubmit={(e) => {handleSubmit(e)}} size='large' inverted style={{margin: '0.1em 0', padding: '1em 0'}}>
       <Form.Input className="login__form-input"
         value={emailInput}
+        required
         onChange={(e) => {handleEmailChange(e)}}
         fluid label='Email'
         placeholder='Email'
       />
       <Form.Input className="login__form-input"
         value={passwordInput}
+        required
         onChange={(e) => {handlePasswordChange(e)}}
         fluid type='password'
         label='Mot de passe'

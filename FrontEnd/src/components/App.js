@@ -17,17 +17,9 @@ function App() {
   return (
     <div className='App'>
       
-      <Nav />
-
       <Routes>
       <Route
           path='/'
-          element={(
-              <Authentification />
-          )}
-        />
-        <Route
-          path='/authentification'
           element={(
               <Authentification />
           )}
@@ -41,49 +33,73 @@ function App() {
         <Route
           path='/feed'
           element={(
+            <>
             <Feed />
+            <Nav />
+            </>
           )}
         />
         <Route
           path='/favoris'
           element={(
+            <>
             <Fav />
+            <Nav />
+            </>
           )}
         />
         <Route
           path='/autour-de-moi'
           element={(
+            <>
             <Search />
+            <Nav />
+            </>
           )}
         />
         <Route
           path='/autour-de-moi/filtres'
           element={(
+            <>
             <Filters />
+            <Nav />
+            </>
           )}
         />
         <Route
           path='/creer-un-evenement'
           element={(
-            <CreateEvent /> 
+            <>
+            <CreateEvent />
+            <Nav />
+            </>
           )}
         />
         <Route
           path='/mon-compte'
           element={(
+            <>
             <Profile  />
+            <Nav />
+            </>
           )}
         />
         <Route
           path='/mon-compte/amis'
           element={(
+            <>
             <FriendsList />
+            <Nav />
+            </>
           )}
         />
         <Route
           path='*'
           element={(
-            <Error404 /> 
+            <>
+            <Error404 />
+            <Nav />
+            </> 
           )}
         />
       </Routes>

@@ -1,22 +1,3 @@
-.event-grid {
-  width: 100%;
-  height: 90vw;
-  background-color: white;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 10px;
-  @media (max-width: 700px) {
-    grid-column-gap: 5px;
-    margin-bottom: 5px;
-  }
-  .exploreItem {
-    display: flex;
-    &:last-child {
-      margin: 0px;
-    }
-    img {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
+.lol::-webkit-scrollbar {
+  display: none;
 }

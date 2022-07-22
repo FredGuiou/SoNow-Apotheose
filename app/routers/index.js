@@ -4,12 +4,15 @@ const router = express.Router();
 const userRouter = require('./user');
 const eventRouter = require('./event');
 const tagRouter = require('./tag');
+const bcrypt = require('bcrypt');
 
 
 
-router.all('/', function(_, res) {
+router.all('/', async function(_, res) {
+  const mdp = "motdepassepardefaut";
+  const mdpcrypt = await bcrypt.hash(mdp, 10)
+  console.log(mdpcrypt);
   res.send("Coucou ça marche :D");
-  console.log("Coucou ça marche :D");
 });
 
 router.use('/user', userRouter);

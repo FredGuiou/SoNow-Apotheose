@@ -3,14 +3,6 @@ import { Card, Container, Icon, Image, Label } from 'semantic-ui-react';
 import "../styles/feedEvent.scss"; 
 
 function FeedEvent({ event }) {
-  const datevalues = [
-    event.start.getFullYear(),
-    event.start.getMonth()+1,
-    event.start.getDate(),
-    event.start.getHours(),
-    event.start.getMinutes(),
-    event.start.getSeconds(),
-  ];
   return (
     <Card fluid
       style={{
@@ -72,10 +64,12 @@ function FeedEvent({ event }) {
               <Label 
               key={t.id}
               as='a' 
-              color={t.color}
               image
+              style={{
+                color: 'white',
+                background: t.color,
+              }}
               >
-          <Image src='https://react.semantic-ui.com/images/avatar/  small/ade.jpg' />
           {t.name}
         </Label>
             )

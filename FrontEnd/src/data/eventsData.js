@@ -7,15 +7,18 @@ const eventsData = [
     description: 'Crazy evening around the Duplex pool, Crazy evening around the Duplex pool, Crazy evening around the Duplex pool',
     start: new Date(),
     tag: [{
-        name: 'Entre amis', 
-        color: '#f30067'
+        id: 1, 
+        name: '👯 Entre amis', 
+        color: '#f8efea'
       }, 
       {
-        name: 'Danse', 
-        color: '#f30067'
+        id: 2,
+        name: '🕺 Danse', 
+        color: '#ded369'
       }, 
       {
-        name: 'Musique',
+        id: 3,
+        name: '🎶 Musique',
         color: '#f30067'
       }
     ],
@@ -33,15 +36,18 @@ const eventsData = [
     description: 'Crazy evening around the Duplex pool, Crazy evening around the Duplex pool, Crazy evening around the Duplex pool',
     start: new Date(),
     tag: [{
-        name: 'Entre amis', 
-        color: '#f30067'
+        id: 1, 
+        name: '👯 Entre amis', 
+        color: '#f8efea'
       }, 
       {
-        name: 'Danse', 
-        color: '#f30067'
+        id: 2,
+        name: '🕺 Danse', 
+        color: '#ded369'
       }, 
       {
-        name: 'Musique',
+        id: 3,
+        name: '🎶 Musique',
         color: '#f30067'
       }
     ],
@@ -59,18 +65,18 @@ const eventsData = [
     description: 'Crazy evening around the Duplex pool, Crazy evening around the Duplex pool, Crazy evening around the Duplex pool',
     start: new Date(),
     tag: [{
-        id: 1,
-        name: 'Entre amis', 
-        color: '#f30067'
+      id: 1, 
+      name: '👯 Entre amis', 
+      color: '#f8efea'
       }, 
       {
         id: 2,
-        name: 'Danse', 
-        color: '#f30067'
+        name: '🕺 Danse', 
+        color: '#ded369'
       }, 
       {
-        id: 3, 
-        name: 'Musique',
+        id: 3,
+        name: '🎶 Musique',
         color: '#f30067'
       }
     ],

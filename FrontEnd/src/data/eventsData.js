@@ -8,17 +8,23 @@ const eventsData = [
     start: new Date(),
     tag: [{
         id: 1, 
-        name: '👯 Entre amis', 
+        emoji: '👯 ',
+        name: 'Entre amis', 
+        slug: 'entre-amis',
         color: '#f8efea'
       }, 
       {
         id: 2,
-        name: '🕺 Danse', 
-        color: '#ded369'
+        emoji: '🕺 ',
+        name: 'Danse', 
+        slug: 'danse',
+        color: '#ded369',
       }, 
       {
         id: 3,
-        name: '🎶 Musique',
+        emoji: '🎶 ',
+        name: 'Musique',
+        slug: 'musique',
         color: '#f30067'
       }
     ],

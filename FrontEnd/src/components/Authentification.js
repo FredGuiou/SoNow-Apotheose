@@ -16,7 +16,7 @@ return (
     </div>
     <div className='authentification__main'>
         <img className='authentification__main__logo' src={logo} alt='SoNow application logo' />
-        <Container className="login__grid-container">
+        <Container className="login__grid-container" style={{display: 'flex', justifyContent: 'center'}}>
           <Grid className="login__grid-content" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
             <Grid.Column className="login__form-container" style={{margin: '1em 0 1em 0', padding: '0.5em 0 0.5em 0'}}>
               <Header inverted as='h1' textAlign='center' style={{marginTop: '15px'}}>
@@ -34,8 +34,5 @@ return (
   </div>
 );
 }
-
-
-// TODO: Remove navbar when the user is on the authentification page.
 
 export default Authentification;

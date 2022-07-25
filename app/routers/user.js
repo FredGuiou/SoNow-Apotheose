@@ -25,8 +25,13 @@ router
 //Routes pour récupérer, modifier, supprimer un utilisateur .
 router
     .route('/:user_id')
-    .get(controllerHandler(controller.getOneUser))
+    .get(controllerHandler(controller.getOneUserById))
     .patch(controllerHandler(controller.updateUser))
     .delete(controllerHandler(controller.deleteUser));
+
+router
+    .route('/name-or-nickname')
+    .get(controllerHandler(controller.getOneUserById))
+
 
 module.exports = router;

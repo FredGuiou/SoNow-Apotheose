@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // import DistanceCalculator from 'distance-calculator-js';
 
@@ -34,27 +34,27 @@ console.log(m);
 
 function App() {
 
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   
-  const [isLocationLoading, setIsLocationLoading] = useState(false);
-  const [latitude, setLatitude] = useState([]);
-  const [longitude, setLongitude] = useState([]);
+  // const [isLocationLoading, setIsLocationLoading] = useState(false);
+  // const [latitude, setLatitude] = useState([]);
+  // const [longitude, setLongitude] = useState([]);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    function successCallback (userPosition) {
-      setLatitude(userPosition.coords.latitude);
-      setLongitude(userPosition.coords.longitude);
-      setIsLocationLoading(false);
-    };
+  //   function successCallback (userPosition) {
+  //     setLatitude(userPosition.coords.latitude);
+  //     setLongitude(userPosition.coords.longitude);
+  //     setIsLocationLoading(false);
+  //   };
     
-    function errorCallback (err) {
-      console.error(err);
-    }; 
+  //   function errorCallback (err) {
+  //     console.error(err);
+  //   }; 
 
-    setIsLocationLoading(true);
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-  }, []);
+  //   setIsLocationLoading(true);
+  //   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  // }, []);
 
   return (
     <div className='App'>

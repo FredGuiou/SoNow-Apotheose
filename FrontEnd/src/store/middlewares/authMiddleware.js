@@ -5,11 +5,11 @@ import { SUBMIT_SIGNUP } from '../actions';
 const authMiddleware = (store) => (next) => (action) => {
   if (action.type === SUBMIT_SIGNUP) {
     next(action);
-    
+
     const state = store.getState();
 
     const config = {   
-      method: 'posts',
+      method: 'post',
       url: 'https://sonow.herokuapp.com/api/user/signup', 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
@@ -19,14 +19,14 @@ const authMiddleware = (store) => (next) => (action) => {
         firstname: state.signup.firtsnameInput,
         lastname:  state.signup.lastnameInput,
         nickname:  state.signup.nicknameInput,
-        email:  state.signup.email,
-        password:  state.signup.password
+        email:  state.signup.emailInput,
+        password:  state.signup.passwordInput
       }
     }
 
     axios(config)
       .then((response) => {
-        store.dispatch(submitSignupSuccess(response.data));
+        store.dispatch(submitSignupSuccess());
       })
       .catch(() => {
         store.dispatch(submitSignupError());
@@ -37,4 +37,4 @@ const authMiddleware = (store) => (next) => (action) => {
   }
 };
 
-export default authMiddleware;
+export default authMiddleware; 

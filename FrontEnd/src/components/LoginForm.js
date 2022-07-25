@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeLoginInputs, submitLogin } from '../store/actions';
 import { Form } from 'semantic-ui-react'
@@ -5,12 +7,15 @@ import '../styles/loginForm.scss';
 
 function LoginForm() {
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { 
     emailInput,
     passwordInput, 
   } = useSelector((state) => state.login);
 
-  const dispatch = useDispatch();
+  const isConnected = useSelector ((state) => state.user.isConnected);
   
   const handleSubmit=()=>{
     dispatch(submitLogin());
@@ -22,7 +27,7 @@ function LoginForm() {
 
   const handlePasswordChange =(e)=>{
     dispatch(changeLoginInputs('passwordInput', e.target.value));
-  }; 
+  };
 
   return (
     <Form 

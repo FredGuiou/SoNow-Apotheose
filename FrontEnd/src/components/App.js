@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import DistanceCalculator from 'distance-calculator-js';
 
 import '../styles/App.scss';
 import Authentification from './Authentification';
@@ -13,7 +15,47 @@ import Profile from './Profile';
 import Search from './Search';
 import Error404 from './Error404';
 
+/*
+// Test data
+const Tokyo = { lat: 35.652832, long: 139.839478 };
+const NewYork = { lat: 40.730610, long: -73.935242 };
+// Use of Haversine formula 
+// Result converted from meters to kilometers
+const m = DistanceCalculator.calculate(Tokyo, NewYork)/1000;
+console.log(m);
+*/
+
+// TODO: 
+// Créer un composant fournisseur => Importer useState et createContext de React.
+// Instancier createContext dans une constante michelisable.
+// Définir le contexte comme étant un array []. => Contexte qui sera appelé dans les composants enfants par le hook useCOntext.
+
+
+
 function App() {
+
+  const [user, setUser] = useState({});
+  
+  const [isLocationLoading, setIsLocationLoading] = useState(false);
+  const [latitude, setLatitude] = useState([]);
+  const [longitude, setLongitude] = useState([]);
+
+  useEffect(() => {
+
+    function successCallback (userPosition) {
+      setLatitude(userPosition.coords.latitude);
+      setLongitude(userPosition.coords.longitude);
+      setIsLocationLoading(false);
+    };
+    
+    function errorCallback (err) {
+      console.error(err);
+    }; 
+
+    setIsLocationLoading(true);
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  }, []);
+
   return (
     <div className='App'>
       

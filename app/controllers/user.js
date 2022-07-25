@@ -88,7 +88,7 @@ module.exports = {
             return res.json(userDb);
 
         } catch (ApiError) {
-            // throw new ApiError('Login Error', {statusCode: 401});
+            // throw new ApiError('', {statusCode: });
         };
     },
 
@@ -101,12 +101,12 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByPk(req.params.id);
             if(!userDb){
-                // throw new ApiError('This category does not exists', { statusCode: 404 });
+                // throw new ApiError('', { statusCode: });
             };
             return res.json(userDb);
 
         } catch (ApiError) {
-            // throw new ApiError('Login Error', {statusCode: 401});
+            // throw new ApiError('', {statusCode: });
         };
     },
 
@@ -123,11 +123,11 @@ module.exports = {
     
             const userDb = await userDataMapper.findByNickname(userParams);
             if(!userDb){
-                // throw new ApiError('This category does not exists', { statusCode: 404 });
+                // throw new ApiError('', { statusCode:  });
             };
             return res.json(userDb);
         } catch (ApiError) {
-            // throw new ApiError('Login Error', {statusCode: 401});
+            // throw new ApiError('', {statusCode: });
         };
         
     },
@@ -166,7 +166,7 @@ module.exports = {
                     //On envoie un message d'erreur
 
         } catch (ApiError) {
-            // throw new ApiError('Login Error', {statusCode: 401});
+            // throw new ApiError('', {statusCode: });
         };
     },
 
@@ -178,14 +178,14 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByPk(req.params.id);
             if (!userDb) {
-                //throw new ApiError('This category does not exists', { statusCode: 404 });
+                //throw new ApiError('', { statusCode: });
             };
             const body = req.body;
             const savedUser = await userDataMapper.update(body, req.params.id);
             return res.json(savedUser);
 
         } catch (ApiError) {
-            // throw new ApiError('Login Error', {statusCode: 401});
+            // throw new ApiError('', {statusCode: });
         };
     },
 
@@ -197,13 +197,13 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByPk(req.params.id);
             if (!userDb) {
-                // throw new ApiError('This category does not exists', { statusCode: 404 });
+                // throw new ApiError('', { statusCode: });
             };
             await userDataMapper.delete(req.params.id);
             return res.status(204).json();
 
         } catch (ApiError) {
-            // throw new ApiError('Login Error', {statusCode: 401});
+            // throw new ApiError('', {statusCode: });
         };
     }
 };

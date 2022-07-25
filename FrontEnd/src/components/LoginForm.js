@@ -1,28 +1,28 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { changeLoginInputs, submitLogin } from '../store/actions';
 import { Form } from 'semantic-ui-react'
 import '../styles/loginForm.scss';
 
 function LoginForm() {
 
-  const [emailInput, setEmailInput] = useState('');
-  const [passwordInput, setPasswordInput] = useState('');
-  const [isConnected, setIsConnected] = useState(false);
-  const [isLoggingLoading, setIsLoggingLoading] = useState(false);
-  
-  const handleEmailChange =(e)=>{
-    setEmailInput(e.target.value);
-  }
+  const { 
+    emailInput,
+    passwordInput, 
+  } = useSelector((state) => state.login);
 
-  const handlePasswordChange =(e)=>{
-    setPasswordInput(e.target.value);
-  }
+  const dispatch = useDispatch();
   
   const handleSubmit=(e)=>{
-      alert('An attempt was made with Email :"' + emailInput +
-      '" ,Password :"'+ passwordInput + '"');
-      e.preventDefault();
+    dispatch(submitLogin());
+  };
 
-  }
+  const handleEmailChange =(e)=>{
+    dispatch(changeLoginInputs('emailInput', e.target.value));
+  };
+
+  const handlePasswordChange =(e)=>{
+    dispatch(changeLoginInputs('passwordInput', e.target.value));
+  }; 
 
   return (
     <Form onSubmit={(e) => {handleSubmit(e)}} size='large' inverted style={{margin: '0.1em 0', padding: '1em 0'}}>

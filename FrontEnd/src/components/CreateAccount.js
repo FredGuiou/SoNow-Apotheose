@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { changeSignupInputs, submitSignup } from '../store/actions';
 import { Container, Form, Grid, Header } from 'semantic-ui-react';
 import loop from '../images/assets/sonow-bis.mp4';
 
@@ -7,94 +7,44 @@ import "../styles/createAccount.scss";
 
 function CreateAccount() {
 
-  const [user, setUser] = useState({});
-  const [firtsnameInput, setFirstnameInput] = useState('');
-  const [lastnameInput, setLastnameInput] = useState('');
-  const [nicknameInput, setNicknameInput] = useState('');
-  const [emailInput, setEmailInput] = useState('');
-  const [passwordInput, setPasswordInput] = useState('');
-  const [confirmedPasswordInput, setConfirmedPasswordInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  
-  const handleFirstnameChange =(e)=>{
-    setFirstnameInput(e.target.value);
-  }
+  const { 
+    firtsnameInput,
+    lastnameInput,
+    nicknameInput,
+    emailInput,
+    passwordInput, 
+    confirmedPasswordInput, 
+  } = useSelector((state) => state.signup);
 
-  const handleLastnameChange =(e)=>{
-    setLastnameInput(e.target.value);
-  } 
-
-  const handleNicknameChange =(e)=>{
-    setNicknameInput(e.target.value);
-  }
-
-  const handleEmailChange =(e)=>{
-    setEmailInput(e.target.value);
-  }
-
-  const handlePasswordChange =(e)=>{
-    setPasswordInput(e.target.value);
-  }
-
-  const handleConfirmedPasswordChange =(e)=>{
-    setConfirmedPasswordInput(e.target.value);
-  }
+  const dispatch = useDispatch();
 
   const handleSubmit=(e)=>{
-    if(passwordInput!==confirmedPasswordInput)
-    {
-      // if 'password' and 'confirmedPassword'
-      // does not match.
-      alert("password don't Match");
-    }
-    else{
-      // alert 
-      // a new form is created .
-      alert('A new form has been sent !');
-    }
+    dispatch(submitSignup());
+  };
 
-    const formData = {
-      "firstname":  `${firtsnameInput}`,
-      "lastname":  `${lastnameInput}`,
-      "nickname":  `${firtsnameInput}`,
-      "email":  `${emailInput}`,
-      "password":  `${passwordInput}`
-    }
+  const handleFirstnameChange =(e)=>{
+    dispatch(changeSignupInputs('firstnameInput', e.target.value));
+  };
 
-    const config = {     
-        headers: { 
-          'content-type': 'application/json; charset=utf-8', 
-          'Access-Control-Allow-Origin': '*'
-        }
-    }
-    
-    setIsLoading(true);
-    axios.post(`https://sonow.herokuapp.com/api/user/signup`, formData, config)
-      .then((response) => {
-        setUser({
-          id: response.data.id,
-          email: response.data.email,
-          password: response.data.password,
-          accessToken: response.headers.Authorization,
-          isConnected: false,
-        })
-      localStorage.setItem('accessToken', `${response.data.token.accessToken}`);
-      setFirstnameInput('');
-      setLastnameInput('');
-      setNicknameInput('');
-      setEmailInput('');
-      setPasswordInput('');
-      console.log(response);
-      })
-      .catch((error) => {
-        console.log('oups : ', error.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-    e.preventDefault();
+  const handleLastnameChange =(e)=>{
+    dispatch(changeSignupInputs('lastnameInput', e.target.value));
+  };
 
-  }
+  const handleNicknameChange =(e)=>{
+    dispatch(changeSignupInputs('nicknameInput', e.target.value));
+  };
+
+  const handleEmailChange =(e)=>{
+    dispatch(changeSignupInputs('emailInput', e.target.value));
+  };
+
+  const handlePasswordChange =(e)=>{
+    dispatch(changeSignupInputs('passwordInput', e.target.value));
+  };
+  
+  const handleConfirmedPasswordChange =(e)=>{
+    dispatch(changeSignupInputs('confirmedPasswordInput', e.target.value));
+  };
 
   return (
     <Container className="create-account"

@@ -61,12 +61,16 @@ function CreateAccount() {
     formData.append('password', passwordInput);
 
     const config = {     
-        headers: { 'content-type': 'multipart/form-data' }
+        headers: { 
+          'content-type': 'application/json; charset=utf-8', 
+          //application/json; charset=utf-8
+          //'Access-Control-Allow-Origin': 'http://62.241.121.23:3000'
+          'Access-Control-Allow-Origin': '*'
+        }
     }
     
     setIsLoading(true);
-
-    axios.post(`https://sonow.herokuapp.com/api/signup`, formData, config)
+    axios.post(`https://sonow.herokuapp.com/api/user/signup`, formData, config)
       .then((response) => {
         setUser({
           id: response.data.id,
@@ -81,6 +85,7 @@ function CreateAccount() {
       setNicknameInput('');
       setEmailInput('');
       setPasswordInput('');
+      console.log(response);
       })
       .catch((error) => {
         console.log('oups : ', error.message);

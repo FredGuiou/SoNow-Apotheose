@@ -18,7 +18,7 @@ app.use(session({
 }));
 
 app.use(cors({
-      origin:"http://62.241.121.23:3000"
+      origin:"http://localhost:3000"
   }));
 // app.use(cors('*'));
 

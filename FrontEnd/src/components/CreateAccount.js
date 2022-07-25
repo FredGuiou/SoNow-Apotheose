@@ -52,13 +52,21 @@ function CreateAccount() {
       // a new form is created .
       alert('A new form has been sent !');
     }
-    let formData = new FormData();    //formdata object
+    /*let formData = new FormData();    //formdata object
 
     formData.append('firstname', firtsnameInput);   //append the values with key, value pair
     formData.append('lastname', lastnameInput);
     formData.append('nickname', nicknameInput);
     formData.append('email', emailInput);
-    formData.append('password', passwordInput);
+    formData.append('password', passwordInput);*/
+
+    const formData = {
+      "firstname":  `${firtsnameInput}`,
+      "lastname":  `${lastnameInput}`,
+      "nickname":  `${firtsnameInput}`,
+      "email":  `${emailInput}`,
+      "password":  `${passwordInput}`
+    }
 
     const config = {     
         headers: { 

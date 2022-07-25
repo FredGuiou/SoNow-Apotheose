@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import DistanceCalculator from 'distance-calculator-js';
+// import DistanceCalculator from 'distance-calculator-js';
 
 import '../styles/App.scss';
 import Authentification from './Authentification';

@@ -84,7 +84,7 @@ function CreateAccount() {
           id: response.data.id,
           email: response.data.email,
           password: response.data.password,
-          accessToken: response.data.token,
+          // authorization: response.headers.token,
           isConnected: false,
         })
       localStorage.setItem('accessToken', `${response.data.token.accessToken}`);

@@ -22,16 +22,17 @@ router
     .route('/signup')
     .post(controllerHandler(controller.createUser));
 
-//Routes pour récupérer, modifier, supprimer un utilisateur .
+//Routes pour récupérer, modifier, supprimer un utilisateur.
 router
     .route('/:user_id')
     .get(controllerHandler(controller.getOneUserById))
     .patch(controllerHandler(controller.updateUser))
     .delete(controllerHandler(controller.deleteUser));
 
+//Routes pour qu'un utilisateur recherche un autre utilisateur par son surnom.
 router
-    .route('/name-or-nickname')
-    .get(controllerHandler(controller.getOneUserById))
+    .route('/nickname')
+    .get(controllerHandler(controller.getOneUserByNickname));
 
 
 module.exports = router;

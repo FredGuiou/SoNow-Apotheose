@@ -18,7 +18,7 @@ app.use(session({
 }));
 
 app.use(cors({
-      origin:"http://sonow.herokuapp.com/"
+      origin:"http://localhost:3000"
   }));
 // app.use(cors('*'));
 

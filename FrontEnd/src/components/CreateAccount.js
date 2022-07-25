@@ -66,7 +66,7 @@ function CreateAccount() {
     
     setIsLoading(true);
 
-    axios.post(`https://sonow.herokuapp.com/api/signup`, formData, config)
+    axios.post(`https://sonow.herokuapp.com/api/user/signup`, formData, config)
       .then((response) => {
         setUser({
           id: response.data.id,

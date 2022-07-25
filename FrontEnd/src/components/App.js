@@ -15,6 +15,7 @@ import Profile from './Profile';
 import Search from './Search';
 import Error404 from './Error404';
 
+/*
 // Test data
 const Tokyo = { lat: 35.652832, long: 139.839478 };
 const NewYork = { lat: 40.730610, long: -73.935242 };
@@ -22,6 +23,7 @@ const NewYork = { lat: 40.730610, long: -73.935242 };
 // Result converted from meters to kilometers
 const m = DistanceCalculator.calculate(Tokyo, NewYork)/1000;
 console.log(m);
+*/
 
 // TODO: 
 // Créer un composant fournisseur => Importer useState et createContext de React.

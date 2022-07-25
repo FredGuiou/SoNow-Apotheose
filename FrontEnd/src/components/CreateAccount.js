@@ -7,6 +7,7 @@ import "../styles/createAccount.scss";
 
 function CreateAccount() {
 
+  const [user, setUser] = useState({});
   const [firtsnameInput, setFirstnameInput] = useState('');
   const [lastnameInput, setLastnameInput] = useState('');
   const [nicknameInput, setNicknameInput] = useState('');
@@ -51,8 +52,21 @@ function CreateAccount() {
       // a new form is created .
       alert('A new form has been sent !');
     }
+    let formData = new FormData();    //formdata object
+
+    formData.append('firstname', firtsnameInput);   //append the values with key, value pair
+    formData.append('lastname', lastnameInput);
+    formData.append('nickname', nicknameInput);
+    formData.append('email', emailInput);
+    formData.append('password', passwordInput);
+
+    const config = {     
+        headers: { 'content-type': 'multipart/form-data' }
+    }
+    
     setIsLoading(true);
-    axios.get(`https://sonow.herokuapp.com/api`)
+
+    axios.post(`https://sonow.herokuapp.com/api/signup`, formData, config)
       .then((response) => {
         setUser({
           id: response.data.id,
@@ -98,7 +112,13 @@ function CreateAccount() {
           <Header inverted as='h1' textAlign='center'>
             Créer un compte
           </Header>
-          <Form size='large' inverted onSubmit={(e) => {handleSubmit(e)}}>
+          <Form 
+            id='login'
+            name='login'
+            inverted 
+            size='large' 
+            onSubmit={(e) => {handleSubmit(e)}}
+          >
         <Form.Group widths='equal'>
           <Form.Input 
             fluid
@@ -148,6 +168,7 @@ function CreateAccount() {
           fluid
           required
           type='password'
+          name='confirmedPassword'
           label='Confirmation du mot de passe'
           placeholder='Confirmation du mot de passe' 
           value={confirmedPasswordInput}

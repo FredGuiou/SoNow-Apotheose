@@ -22,12 +22,27 @@ function LoginForm() {
     alert('An attempt was made with Email :"' + emailInput +
     '" ,Password :"'+ passwordInput + '"');
     e.preventDefault();
-    axios.get(`https://sonow.herokuapp.com/api`)
+
+    let formData = new FormData();  
+
+    formData.append('email', emailInput);
+    formData.append('password', passwordInput);
+
+    const config = {     
+      headers: { 
+        'content-type': 'multipart/form-data', 
+        /*'Authorization': `Bearer ${user.AcessToken}`*/ 
+      }
+    }
+
+    axios.post(`https://sonow.herokuapp.com/api`, formData, config)
       .then((response) => {
+        /*
         setUser({
           ...user, 
           isConnected: true
         })
+        */
         setEmailInput('');
         setPasswordInput('');
       })

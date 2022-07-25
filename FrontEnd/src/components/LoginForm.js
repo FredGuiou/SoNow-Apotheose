@@ -23,15 +23,16 @@ function LoginForm() {
     '" ,Password :"'+ passwordInput + '"');
     e.preventDefault();
 
-    let formData = new FormData();  
-
-    formData.append('email', emailInput);
-    formData.append('password', passwordInput);
+    let formData = {
+      "email":  `${emailInput}`,
+      "password":  `${passwordInput}`
+    }
 
     const config = {     
       headers: { 
         'content-type': 'multipart/form-data', 
-        /*'Authorization': `Bearer ${user.AcessToken}`*/ 
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `Bearer ${user.AcessToken}` 
       }
     }
 

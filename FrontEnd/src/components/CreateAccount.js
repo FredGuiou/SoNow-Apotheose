@@ -71,8 +71,6 @@ function CreateAccount() {
     const config = {     
         headers: { 
           'content-type': 'application/json; charset=utf-8', 
-          //application/json; charset=utf-8
-          //'Access-Control-Allow-Origin': 'http://62.241.121.23:3000'
           'Access-Control-Allow-Origin': '*'
         }
     }
@@ -84,7 +82,7 @@ function CreateAccount() {
           id: response.data.id,
           email: response.data.email,
           password: response.data.password,
-          // authorization: response.headers.token,
+          accessToken: response.headers.Authorization,
           isConnected: false,
         })
       localStorage.setItem('accessToken', `${response.data.token.accessToken}`);

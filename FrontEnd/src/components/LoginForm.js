@@ -1,59 +1,28 @@
-import axios from 'axios';
-import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { changeLoginInputs, submitLogin } from '../store/actions';
 import { Form } from 'semantic-ui-react'
 import '../styles/loginForm.scss';
 
 function LoginForm() {
 
-  const [emailInput, setEmailInput] = useState('');
-  const [passwordInput, setPasswordInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const { 
+    emailInput,
+    passwordInput, 
+  } = useSelector((state) => state.login);
+
+  const dispatch = useDispatch();
   
+  const handleSubmit=(e)=>{
+    dispatch(submitLogin());
+  };
+
   const handleEmailChange =(e)=>{
-    setEmailInput(e.target.value);
-  }
+    dispatch(changeLoginInputs('emailInput', e.target.value));
+  };
 
   const handlePasswordChange =(e)=>{
-    setPasswordInput(e.target.value);
-  }
-    
-  const handleSubmit=(e)=>{
-    setIsLoading(true);
-    alert('An attempt was made with Email :"' + emailInput +
-    '" ,Password :"'+ passwordInput + '"');
-    e.preventDefault();
-
-    let formData = {
-      "email":  `${emailInput}`,
-      "password":  `${passwordInput}`
-    }
-
-    const config = {     
-      headers: { 
-        'content-type': 'multipart/form-data', 
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': `Bearer ${user.AcessToken}` 
-      }
-    }
-
-    axios.post(`https://sonow.herokuapp.com/api`, formData, config)
-      .then((response) => {
-        /*
-        setUser({
-          ...user, 
-          isConnected: true
-        })
-        */
-        setEmailInput('');
-        setPasswordInput('');
-      })
-      .catch((error) => {
-        console.log('oups : ', error.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
+    dispatch(changeLoginInputs('passwordInput', e.target.value));
+  }; 
 
   return (
     <Form 

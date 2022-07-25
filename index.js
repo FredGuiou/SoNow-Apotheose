@@ -17,15 +17,11 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'insert a secret' //Mise en place d'un secret pour générer la clé.
 }));
 
-// app.use(cors({
-//       origin:"http://sonow.herokuapp.com/*"
-//   }));
-app.use(cors('*'));
 
 app.use(express.static('dist'));
 
 // Service /api routes
-app.use("/api", router);
+app.use("/api", cors({ origin: "*" }), router);
 
 
 

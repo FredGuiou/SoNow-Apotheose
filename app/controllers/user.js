@@ -1,38 +1,52 @@
 //TODO: Gestion des erreurs via un controller error.
 //TODO: Implémentation de JOI validation schema.
 
+require('dotenv').config();
 const userDataMapper = require('../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = process.env.ACCES_SECRET_KEY;
+const REFRESH_SECRET_KEY = process.env.REFRESH_SECRET_KEY;
+
 
 module.exports = {
 
     //Méthode qui permet à l'utilisateur de se connecter.
     async loginUser(req, res) {
+        const { email, password } = req.body;
+
         try {
-            const reqEmail = req.body.email
-            const reqPassword = req.body.password
+            let user = await userDataMapper.findByEmail(email);
 
-            const userDb = await userDataMapper.findByEmail(reqEmail);
-            if(!userDb){
-                //on renvoit une erreur
-                // throw new ApiError('Login Error', {statusCode: 401});
-                console.log("J'ai planté dans if !user");
-            };
-            //On compare le mdp donnée par l'ulisateur avec celui de la bdd
-            const checkPassword = await bcrypt.compare(reqPassword, userDb.password);
-            if (!checkPassword) {
-                //alors je renvoie une erreur
-                // throw new ApiError('Login Error', {statusCode: 401});
-                console.log("J'ai planté dans le truc du machin chose password compare la j'sais plus quoi");
-            };
-            req.session.user = userDb
-            delete req.session.user.password;
-            res.json(req.session.user);
+            if (user) {
+                bcrypt.compare(password, user.password, function(err, response) {
+                    if (err) {
+                        throw new Error(err);
+                    }
+                    if (response) {
+                        req.session.user = user
+                        delete req.session.password;
 
-        } catch (ApiError) {
-            // throw new ApiError('Login Error', {statusCode: 401});
-        };
+                        const expireIn = 24 * 60 * 60;
+                        const accesToken = jwt.sign({ user },SECRET_KEY,{ expiresIn: expireIn });
+
+                        const refreshToken = jwt.sign({ user },REFRESH_SECRET_KEY,{ expiresIn: expireIn });
+                        res.header('Authorization', 'Bearer ' + accesToken);
+                        res.header('RefreshToken', 'Bearer ' + refreshToken);
+                        delete req.session.user.password;
+                        return res.status(200).json(req.session.user);
+                    }
+
+                    return res.status(403).json('wrong_credentials');
+                });
+            } else {
+                return res.status(404).json('user_not_found');
+            }
+        } catch (error) {
+            return res.status(501).json(error);
+        }
     },
+
     
 
 

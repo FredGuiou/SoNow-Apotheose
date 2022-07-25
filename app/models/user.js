@@ -84,7 +84,7 @@ module.exports = {
   },
 
   //Rechercher un utilisateur par son surnom, son nom ou son prénom.
-  async findByNameOrNickname(nickName, firstName, lastName){
+  async findByNickname(nickName){
     try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
@@ -93,11 +93,8 @@ module.exports = {
           SELECT *
           FROM public.user
           WHERE nickname = $1
-          OR firstname = $2
-          OR lastname = $3
-          OR id = $4
         `,
-        values: [nickName, firstName, lastName, id],
+        values: [nickName],
       };
 
       const result = await client.query(preparedQuery);

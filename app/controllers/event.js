@@ -3,7 +3,7 @@ const eventDataMapper = require('../models/event');
 module.exports = {
 
     async getAllEvents(_, res) {
-        
+        res.json({message : 'Tout est ok'})
     },
 
     async getOneEvent(req, res) {

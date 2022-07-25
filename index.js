@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const session = require('express-session');
 const router = require("./app/routers");
+const cors = require("cors");
 const app = express();
 
 
@@ -16,8 +17,16 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'insert a secret' //Mise en place d'un secret pour générer la clé.
 }));
 
+// app.use(cors({
+//       origin:"http://sonow.herokuapp.com/*"
+//   }));
+
+app.use(express.static('dist'));
+
 // Service /api routes
 app.use("/api", router);
+
+
 
 // Start app
 const port = process.env.PORT ?? 3000;

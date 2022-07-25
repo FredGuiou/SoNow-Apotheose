@@ -20,6 +20,7 @@ app.use(session({
 // app.use(cors({
 //       origin:"http://sonow.herokuapp.com/*"
 //   }));
+app.use(cors('*'));
 
 app.use(express.static('dist'));
 

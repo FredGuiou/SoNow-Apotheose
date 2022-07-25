@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { submitSignupSuccess, submitLoginError } from '../actions';
-import { SUBMIT_LOGIN, } from '../actions';
+import { submitSignupSuccess, submitSignupError } from '../actions';
+import { SUBMIT_SIGNUP } from '../actions';
 
 const authMiddleware = (store) => (next) => (action) => {
-  if (action.type === SUBMIT_LOGIN) {
+  if (action.type === SUBMIT_SIGNUP) {
     next(action);
     
     const state = store.getState();
@@ -29,7 +29,7 @@ const authMiddleware = (store) => (next) => (action) => {
         store.dispatch(submitSignupSuccess(response.data));
       })
       .catch(() => {
-        store.dispatch(submitLoginError());
+        store.dispatch(submitSignupError());
       });
   }
   else {

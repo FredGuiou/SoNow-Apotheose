@@ -12,7 +12,7 @@ function LoginForm() {
 
   const dispatch = useDispatch();
   
-  const handleSubmit=(e)=>{
+  const handleSubmit=()=>{
     dispatch(submitLogin());
   };
 

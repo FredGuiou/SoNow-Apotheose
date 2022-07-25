@@ -22,7 +22,7 @@ export const submitSignupSuccess= (user) => ({
   user,
 });
 
-export const submitSignupError= (user) => ({
+export const submitSignupError= () => ({
   type: SUBMIT_SIGNUP_ERROR,
 });
 
@@ -40,6 +40,6 @@ export const submitLoginSuccess = () => ({
   type: SUBMIT_LOGIN_SUCCESS,
 });
 
-export const submitLoginError= (user) => ({
+export const submitLoginError= () => ({
   type: SUBMIT_LOGIN_ERROR,
 });

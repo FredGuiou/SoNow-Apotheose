@@ -36,7 +36,7 @@ module.exports = {
                         return res.status(200).json({accesToken, refreshToken ,user: req.session.user});
                     }
 
-                    return res.status(403).json('wrong_credentials');
+                    return res.status(403).json({ errorStatus: 403, message: 'Mauvais identifiant ou mot de passe' });
                 });
             } else {
                 return res.status(404).json('user_not_found');

@@ -5,12 +5,21 @@ import "../styles/feedEvent.scss";
 
 function FeedEvent({ event }) {
   return (
+    <Link to={`/event/${event.id}`}>
+      <div className="feed-event">
+        <img
+          className="feed-event__img"
+          src={event.media}
+          alt={event.title}
+        />
       <Card 
         fluid
         style={{
           boxShadow: 'none',
           background: 'black',
-          height: '100%',
+          display: 'absolute', 
+          bottom: '0px',
+          left: '0px'
         }}
       >
         <div
@@ -21,32 +30,7 @@ function FeedEvent({ event }) {
             position: 'relative'
           }}
         >
-          <Link to={`/event/${event.id}`}>
-            <img
-              src={event.media}
-              style={{
-                objectFit: 'cover',
-                height: '100%',
-                width: '100%', 
-                display: 'absolute', 
-                top: '0px',
-                bottom: '0px'
-              }}
-              alt={event.title}
-            />
-          </Link>
-          <Label
-            style={{
-              position: 'absolute',
-              bottom:'1em',
-              left:'1em',
-              textAlign: 'center',
-              background: '#f30067',
-              color: 'white',
-              paddingRight: '0.833em',
-              paddingLeft: '0.833em',
-            }}
-          >
+                  <Label className="feed-event__date">
             <p
               style={{
                 paddingTop: '0.5833em',
@@ -61,15 +45,9 @@ function FeedEvent({ event }) {
             >
               {event.start.toLocaleString('fr-fr', { month: 'long' })}
             </p>
-          </Label>
+      </Label>
           <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            position: 'absolute',
-            bottom:'1em',
-            right:'1em',
-          }}
+          className="feed-event__icons"
           >
             <Icon 
               name='favorite' 
@@ -196,6 +174,8 @@ function FeedEvent({ event }) {
           </section>
         </Card.Content>
       </Card>
+    </div>
+    </Link>
   );
 }
 

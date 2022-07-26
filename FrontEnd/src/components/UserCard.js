@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import { Container, Grid, Header, Image, Icon } from 'semantic-ui-react'
 import profile from '../images/profile.jpg'
 import "../styles/userCard.scss"
@@ -17,7 +16,7 @@ const HeaderExampleImage = () => (
       }}
     >
       <Grid.Column 
-       width={3}
+        width={3}
       >
         <div style={{margin: '0.5em'}}>
           <p className='profile-counter__name'>Romain P.</p>

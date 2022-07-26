@@ -54,7 +54,7 @@ function FeedEvent({ event }) {
           >
             <Card.Header
               style={{
-                fontSize: '1.3rem',
+                fontSize: '1.2rem',
                 fontWeight: 'bold',
                 color: 'white',
                 paddingBottom: '0.6rem'
@@ -71,7 +71,8 @@ function FeedEvent({ event }) {
             <Card.Description
               style={{
                 color: 'white',
-                paddingBottom: '0.6rem'
+                paddingBottom: '0.6rem',
+                fontSize: '0.8rem'
               }}
             >
               {event.metadescription}

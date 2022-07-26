@@ -2,7 +2,6 @@
   position: relative;
   height: 100%;
   width: 100%;
-  background-color: green;
 
   &__img {
     position: absolute;
@@ -29,6 +28,7 @@
         bottom:8.8rem;
         left: 6rem;
         display: flex;
+        font-size: 0.8rem;
 
         &__content {
           color: white;

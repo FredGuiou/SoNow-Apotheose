@@ -1,33 +1,54 @@
 .feed-event {
+  position: relative;
   height: 100%;
   width: 100%;
-  display: relative;
   background-color: green;
 
   &__img {
-      height: 100%;
-      width: 100%; 
-      object-fit: cover;
-      display: absolute;
-      top: 0px;
-      left: 0px;
-    }
-  
-  &__icons {
     position: absolute;
-    bottom: 12rem;
-    right: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
+    top: 0rem;
+    left: 0rem;
+    height: 100%;
+    width: 100%; 
+    object-fit: cover;
+    }
 
   &__date {
     position: absolute;
     bottom: 12rem;
     left: 1rem;
-    background-color: '#f30067';
-    color: white;
     padding-right: '0.833em';
     padding-left: '0.833em';
+    background-color: '#f30067';
+    color: white;
   }
+
+  &__details {
+
+    &__participants {
+      position: absolute;
+      bottom: 12rem;
+      left: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__social-icons {
+      position: absolute;
+      bottom: 12rem;
+      right: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    &__card {
+      position: absolute;
+      bottom: 3rem;
+      left: 0rem;
+      width: 100vw;
+    }
+
+  }
+
 }

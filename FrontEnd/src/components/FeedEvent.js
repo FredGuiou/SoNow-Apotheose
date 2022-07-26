@@ -1,36 +1,17 @@
-import { Link } from "react-router-dom";
 import { Card, Icon, Label } from 'semantic-ui-react';
 
 import "../styles/feedEvent.scss"; 
 
 function FeedEvent({ event }) {
   return (
-    <Link to={`/event/${event.id}`}>
-      <div className="feed-event">
-        <img
-          className="feed-event__img"
-          src={event.media}
-          alt={event.title}
-        />
-      <Card 
-        fluid
-        style={{
-          boxShadow: 'none',
-          background: 'black',
-          display: 'absolute', 
-          bottom: '0px',
-          left: '0px'
-        }}
-      >
-        <div
-          style={{
-            objectFit: 'cover',
-            height: '70%',
-            width: '100%',
-            position: 'relative'
-          }}
-        >
-                  <Label className="feed-event__date">
+    <div className="feed-event">
+      <img
+        className="feed-event__img"
+        src={event.media}
+        alt={event.title}
+      />
+      <section className="feed-event__date">
+          <Label>
             <p
               style={{
                 paddingTop: '0.5833em',
@@ -45,10 +26,25 @@ function FeedEvent({ event }) {
             >
               {event.start.toLocaleString('fr-fr', { month: 'long' })}
             </p>
-      </Label>
-          <div
-          className="feed-event__icons"
+          </Label>
+      </section>
+      <section className='feed-event__details'>
+        <section className="feed-event__details__participants">
+          <Icon 
+            name='user' 
+            style={{
+              color:'white'
+            }} 
+          />
+          <p
+          style={{
+            color: 'white',
+          }}
           >
+            {event.participants} participants
+          </p>
+        </section>
+        <section className="feed-event__details__social-icons">
             <Icon 
               name='favorite' 
               size='large' 
@@ -82,100 +78,72 @@ function FeedEvent({ event }) {
                 cursor: 'pointer'
               }}
               />
-          </div>
-        </div>
-        <Card.Content
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            height: '20%',
-          }}
-          href={`/event/${event.id}`}
-        >
-          <Card.Header
+        </section>
+        <section className="feed-event__details__card">
+          <Card 
+            fluid
             style={{
-              color: 'white'
+              boxShadow: 'none',
+              background: 'black',
+              display: 'absolute', 
+              bottom: '0px',
+              left: '0px'
             }}
           >
-            {event.title}
-            </Card.Header>
-          <Card.Meta
-            style={{
-              color: 'white'
-            }}
-          >
-            <span className='date'>
-              {event.code_user_manager.nickname}
-            </span>
-          </Card.Meta>
-          <Card.Description
-            style={{
-              color: 'white'
-            }}
-          >
-            {event.metadescription}
-          </Card.Description>
-        </Card.Content>
-        <Card.Content
-          style={{
-            border: 'none',
-            display: 'flex',
-            alignItems: 'center'
-          }}
-        >
-            {
-              event.tag.map((t) => {
-                return (
-                <Label 
-                key={t.id}
-                as='a' 
-                image
-                //remove white spaces to use category name as slug
-                href={`/categorie/${t.name.replace(' ', '')}`}
-                style={{
-                  color: 'white',
-                  background: t.color,
-                }}
-                >
-            {t.emoji} {t.name}
-          </Label>
-              )
-              })
-            }
-        </Card.Content>
-        <Card.Content
-            style={{
-              border: 'none',
-              display:'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              height: '10%',
-            }}
-        >
-          <section
-            style={{
-              display: 'flex'
-            }}
-          >
-              <Icon 
-                name='user' 
-                style={{
-                  color:'white'
-                }} 
-              />
-              <p
+            <Card.Header
               style={{
-                color: 'white',
+                color: 'white'
               }}
             >
-              {event.participants} participants
-            </p>
-          </section>
-        </Card.Content>
-      </Card>
+              {event.title}
+            </Card.Header>
+            <Card.Meta
+              style={{
+                color: 'white'
+              }}
+            >
+              <span className='date'>
+                {event.code_user_manager.nickname}
+              </span>
+            </Card.Meta>
+            <Card.Description
+              style={{
+                color: 'white'
+              }}
+            >
+              {event.metadescription}
+            </Card.Description>
+            <Card.Content
+              style={{
+                border: 'none',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              {
+                event.tag.map((t) => {
+                  return (
+                    <Label 
+                    key={t.id}
+                    as='a' 
+                    image
+                    //remove white spaces to use category name as slug
+                    href={`/categorie/${t.name.replace(' ', '')}`}
+                    style={{
+                      color: 'white',
+                      background: t.color,
+                    }}
+                    >
+                      {t.emoji} {t.name}
+                    </Label>
+                  )
+                })
+              }
+            </Card.Content>
+          </Card>
+        </section>
+      </section>
     </div>
-    </Link>
   );
 }
 

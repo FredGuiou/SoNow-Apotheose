@@ -34,7 +34,7 @@ module.exports = {
                         res.header('RefreshToken', 'Bearer ' + refreshToken);
 
                         delete req.session.user.password;
-                        return res.status(200).json(req.session.user);
+                        return res.status(200).json({accesToken, refreshToken ,user: req.session.user});
                     }
 
                     return res.status(403).json('wrong_credentials');

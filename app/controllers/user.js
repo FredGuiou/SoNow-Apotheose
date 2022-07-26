@@ -14,10 +14,10 @@ module.exports = {
     //Méthode qui permet à l'utilisateur de se connecter.
     async loginUser(req, res) {
         const { email, password } = req.body;
-
+        console.log(password, email);
         try {
             let user = await userDataMapper.findByEmail(email);
-
+            console.log(user);
             if (user) {
                 bcrypt.compare(password, user.password, function(err, response) {
                     if (err) {

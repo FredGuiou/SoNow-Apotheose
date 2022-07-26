@@ -1,0 +1,108 @@
+.description-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 92vh;
+  width: 100vw;
+  background-color: pink;
+
+  &__event {
+    height: 92vh;
+    width: 100vw;
+    background-color: blue;
+  }
+}
+
+.description-container::-webkit-scrollbar {
+  display: none;
+}
+
+.event-description {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  &__img {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    height: 100%;
+    width: 100%; 
+    object-fit: cover;
+    }
+
+  &__details {
+
+    &__card {
+      position: absolute;
+      top: 2.5rem;
+      left: 0rem;
+      width: 100vw;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      color:white;
+
+      &__participants {
+        position: absolute;
+        bottom:8.8rem;
+        left: 6rem;
+        display: flex;
+        font-size: 0.8rem;
+
+        &__content {
+          color: white;
+        }
+      }
+
+      &__description {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 0rem;
+        width: 100vw;
+        padding: 2rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        text-align: center;
+        color:white;
+
+        &__content {
+          color: white;
+        }
+      }
+
+      &__date {
+        position: absolute;
+        bottom: 9.2rem;
+        left: 2rem;
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+    
+        &__day {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 1.8rem;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          background-color: white;
+          color: black;
+          font-size: 1.4rem;
+        }
+      
+        &__month {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 1.4rem;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+          background-color: #f30067;
+          color:white;
+          font-size: 0.9rem;
+        }  
+      }
+    }
+
+  }
+
+}

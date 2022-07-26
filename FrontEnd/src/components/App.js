@@ -14,6 +14,7 @@ import Nav from './Nav';
 import Profile from './Profile';
 import Search from './Search';
 import Error404 from './Error404';
+import EventCardDescription from './EventCardDescription';
 
 /*
 // Test data
@@ -60,6 +61,15 @@ function App() {
     <div className='App'>
       
       <Routes>
+      <Route
+          path='/discribe'
+          element={(
+            <>
+              <EventCardDescription />
+              <Nav />
+            </>
+          )}
+        />
       <Route
           path='/'
           element={(

@@ -1,9 +1,18 @@
-.fav {
-  height: 92vh;
+.fav-container {
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
-  background-color: black;
+  height: 92vh;
+  width: 100vw;
+  background-color: pink;
+
+  &__event {
+    height: 92vh;
+    width: 100vw;
+    background-color: blue;
+  }
 }
 
-.fav::-webkit-scrollbar {
+.fav-container::-webkit-scrollbar {
   display: none;
 }

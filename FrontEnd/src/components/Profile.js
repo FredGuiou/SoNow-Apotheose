@@ -5,30 +5,19 @@ import "../styles/profile.scss";
 // Import data en dur pour préparer la connexion API 
 import events from '../data/eventsData';
 
-import { Grid } from 'semantic-ui-react';
-
 function Profile() {
   return (
-    <div className="profile">
+    <div className="profile-container">
       <UserCard />
-      <div class="ui column stackable aligned page grid" style={{backgroundColor: 'black'}}>
-        <Grid  
-            fluid
-            columns={2}
-          >
-              {
-              events.map((e) => (
-                <Grid.Column
-                  fluid
-                  key={e.id}
-                  >
-                    <EventCardProfile
-                      event={e}
-                    />
-                  </Grid.Column>
-              ))
-            }
-        </Grid>
+      <div className='profile-container__event'>
+        {
+          events.map((e) => (
+            <EventCardProfile
+              key={e.id}
+              event={e}
+            />
+          ))
+        }
       </div>
     </div>
   );

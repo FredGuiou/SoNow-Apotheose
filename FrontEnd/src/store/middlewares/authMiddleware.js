@@ -4,10 +4,12 @@ import { SUBMIT_SIGNUP } from '../actions';
 
 const authMiddleware = (store) => (next) => (action) => {
   if (action.type === SUBMIT_SIGNUP) {
+
+    console.log('authMiddleware');
+
     next(action);
 
     const state = store.getState();
-    console.log(state.signup.firstnameInput);
 
     const config = {   
       method: 'post',
@@ -23,12 +25,11 @@ const authMiddleware = (store) => (next) => (action) => {
         email:  state.signup.emailInput,
         password:  state.signup.passwordInput
       }
-    }
-
-    console.log(config);
+    };
 
     axios(config)
-      .then((response) => {
+      .then(() => {
+        console.log('submit success');
         store.dispatch(submitSignupSuccess());
       })
       .catch(() => {

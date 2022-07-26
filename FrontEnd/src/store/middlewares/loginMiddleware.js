@@ -3,7 +3,9 @@ import { submitLoginSuccess, submitLoginError } from '../actions';
 import { SUBMIT_LOGIN, } from '../actions';
 
 const loginMiddleware = (store) => (next) => (action) => {
-    if (action.type === SUBMIT_LOGIN) {
+  if (action.type === SUBMIT_LOGIN) {
+
+    console.log('loginMiddleware');
  
     next(action);
 
@@ -24,8 +26,8 @@ const loginMiddleware = (store) => (next) => (action) => {
 
     axios(config)
       .then((response) => {
-        store.dispatch(submitLoginSuccess(response.data));
         console.log(response.data);
+        store.dispatch(submitLoginSuccess(response.data.accessToken, response.data.refreshToken, response.data.user));
       })
       .catch(() => {
         store.dispatch(submitLoginError());

@@ -36,8 +36,11 @@ export const submitLogin= () => ({
   type: SUBMIT_LOGIN,
 });
 
-export const submitLoginSuccess = () => ({
+export const submitLoginSuccess = (accessToken, refreshToken, user) => ({
   type: SUBMIT_LOGIN_SUCCESS,
+  accessToken,
+  refreshToken,
+  user
 });
 
 export const submitLoginError= () => ({

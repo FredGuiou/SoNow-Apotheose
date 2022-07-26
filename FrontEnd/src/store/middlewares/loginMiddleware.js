@@ -25,7 +25,7 @@ const loginMiddleware = (store) => (next) => (action) => {
     axios(config)
       .then((response) => {
         store.dispatch(submitLoginSuccess(response.data));
-        console.log(response);
+        console.log(response.data);
       })
       .catch(() => {
         store.dispatch(submitLoginError());

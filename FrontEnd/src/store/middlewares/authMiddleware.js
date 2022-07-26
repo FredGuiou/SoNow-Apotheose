@@ -7,6 +7,7 @@ const authMiddleware = (store) => (next) => (action) => {
     next(action);
 
     const state = store.getState();
+    console.log(state.signup.firstnameInput);
 
     const config = {   
       method: 'post',
@@ -16,13 +17,15 @@ const authMiddleware = (store) => (next) => (action) => {
         'Access-Control-Allow-Origin': '*'
       }, 
       data: {
-        firstname: state.signup.firtsnameInput,
+        firstname: state.signup.firstnameInput,
         lastname:  state.signup.lastnameInput,
         nickname:  state.signup.nicknameInput,
         email:  state.signup.emailInput,
         password:  state.signup.passwordInput
       }
     }
+
+    console.log(config);
 
     axios(config)
       .then((response) => {

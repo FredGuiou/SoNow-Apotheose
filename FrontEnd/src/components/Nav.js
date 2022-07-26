@@ -16,6 +16,7 @@ export default class Nav extends Component {
           <Menu inverted icon fixed='bottom'  borderless widths={4}
             style= {{
               height: '8vh',
+              width: '100vw'
             }}
           >
           <Menu.Item

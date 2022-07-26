@@ -1,9 +1,18 @@
-.feed {
-  height: 92vh;
+.feed-container {
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
-  background-color: black;
+  height: 92vh;
+  width: 100vw;
+  background-color: pink;
+
+  &__event {
+    height: 92vh;
+    width: 100vw;
+    background-color: blue;
+  }
 }
 
-.feed::-webkit-scrollbar {
+.feed-container::-webkit-scrollbar {
   display: none;
 }

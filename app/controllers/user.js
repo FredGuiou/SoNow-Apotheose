@@ -14,10 +14,8 @@ module.exports = {
     //Méthode qui permet à l'utilisateur de se connecter.
     async loginUser(req, res) {
         const { email, password } = req.body;
-        console.log(password, email);
         try {
             let user = await userDataMapper.findByEmail(email);
-            console.log(user);
             if (user) {
                 bcrypt.compare(password, user.password, function(err, response) {
                     if (err) {
@@ -29,7 +27,6 @@ module.exports = {
                         const expireIn = 24 * 60 * 60;
                         const accesToken = jwt.sign({ user },SECRET_KEY,{ expiresIn: expireIn });
                         const refreshToken = jwt.sign({ user },REFRESH_SECRET_KEY,{ expiresIn: expireIn });
-                        console.log(accesToken + '2ieme : ' + refreshToken);
                         res.header('Authorization', 'Bearer ' + accesToken);
                         res.header('RefreshToken', 'Bearer ' + refreshToken);
 

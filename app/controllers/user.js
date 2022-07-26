@@ -29,6 +29,7 @@ module.exports = {
                         const expireIn = 24 * 60 * 60;
                         const accesToken = jwt.sign({ user },SECRET_KEY,{ expiresIn: expireIn });
                         const refreshToken = jwt.sign({ user },REFRESH_SECRET_KEY,{ expiresIn: expireIn });
+                        console.log(accesToken + '2ieme : ' + refreshToken);
                         res.header('Authorization', 'Bearer ' + accesToken);
                         res.header('RefreshToken', 'Bearer ' + refreshToken);
 

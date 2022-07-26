@@ -30,6 +30,7 @@ function LoginForm() {
   };
 
   return (
+    <>
     <Form 
       inverted 
       size='large' 
@@ -68,8 +69,13 @@ function LoginForm() {
         C'est parti !
       </Form.Button>
     </Form>
+    {
+      isConnected && navigate(`/feed`)
+    }
+    </>
   );
 
 }
 
 export default LoginForm;
+

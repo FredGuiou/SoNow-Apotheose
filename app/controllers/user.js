@@ -5,7 +5,7 @@ require('dotenv').config();
 const userDataMapper = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = process.env.ACCES_SECRET_KEY;
+const SECRET_KEY = process.env.ACCESS_SECRET_KEY;
 const REFRESH_SECRET_KEY = process.env.REFRESH_SECRET_KEY;
 
 
@@ -31,7 +31,7 @@ module.exports = {
                         const refreshToken = jwt.sign({ user },REFRESH_SECRET_KEY,{ expiresIn: expireIn });
                         res.header('Authorization', 'Bearer ' + accesToken);
                         res.header('RefreshToken', 'Bearer ' + refreshToken);
-                        
+
                         delete req.session.user.password;
                         return res.status(200).json(req.session.user);
                     }

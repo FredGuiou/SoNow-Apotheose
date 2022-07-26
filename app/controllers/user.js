@@ -99,7 +99,7 @@ module.exports = {
     //Méthode qui permet de récupérer un utilisateur par son Id.
     async getOneUserById(req, res) {
         try {
-            const userDb = await userDataMapper.findByPk(req.params.id);
+            const userDb = await userDataMapper.findByPk(req.params.user_id);
             if(!userDb){
                 // throw new ApiError('', { statusCode: });
             };
@@ -176,12 +176,12 @@ module.exports = {
     //Méthode qui permet à l'utilisateur de mettre à jour son profil.
     async updateUser(req, res) {
         try {
-            const userDb = await userDataMapper.findByPk(req.params.id);
+            const userDb = await userDataMapper.findByPk(req.params.user_id);
             if (!userDb) {
                 //throw new ApiError('', { statusCode: });
             };
             const body = req.body;
-            const savedUser = await userDataMapper.update(body, req.params.id);
+            const savedUser = await userDataMapper.update(req.params.user_id, body.user, body.details);
             return res.json(savedUser);
 
         } catch (ApiError) {
@@ -195,11 +195,11 @@ module.exports = {
     //Méthode qui permet à l'utilisateur de supprimer son compte.
     async deleteUser(req, res) {
         try {
-            const userDb = await userDataMapper.findByPk(req.params.id);
+            const userDb = await userDataMapper.findByPk(req.params.user_id);
             if (!userDb) {
                 // throw new ApiError('', { statusCode: });
             };
-            await userDataMapper.delete(req.params.id);
+            await userDataMapper.delete(req.params.user_id);
             return res.status(204).json();
 
         } catch (ApiError) {

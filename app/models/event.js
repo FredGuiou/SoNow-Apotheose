@@ -45,7 +45,7 @@ module.exports = {
           FROM public.event
           WHERE id = $1
         `,
-        values: [userId],
+        values: [eventId],
       };
       const result = await client.query(preparedQuery);
       if (result.rowCount === 0) {
@@ -96,7 +96,7 @@ module.exports = {
 
 
 
-  //REchercher un évènement en fonction de son tag.
+  //Rechercher un évènement en fonction de son tag.
   async findByTagId(tagId) {
     // On veut d'abord vérifié que la category demandé existe
     const tag = await tagDataMapper.findByPk(tagId);

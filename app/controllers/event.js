@@ -3,9 +3,6 @@
 
 require('dotenv').config();
 const eventDataMapper = require('../models/event');
-const jwt = require('jsonwebtoken');
-const SECRET_KEY = process.env.ACCES_SECRET_KEY;
-const REFRESH_SECRET_KEY = process.env.REFRESH_SECRET_KEY;
 
 module.exports = {
 
@@ -89,7 +86,7 @@ module.exports = {
                 console.log(req.body);
                 const newEvent = {
                     
-                    //Implémenter les propriétés du newEvent
+                    //TODO:Implémenter les propriétés du newEvent
 
                 };
                 const insertEvent = await eventDataMapper.insert(newEvent);

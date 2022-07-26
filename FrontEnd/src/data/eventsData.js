@@ -3,7 +3,7 @@ const eventsData = [
     id: 12,
     title: 'Pool Party',
     media: 'https://picsum.photos/1080', 
-    metadescription: 'Crazy evening around the Duplex pool',
+    metadescription: 'Crazy evening around the Duplex pool, Crazy evening around the Duplex pool',
     description: 'Crazy evening around the Duplex pool, Crazy evening around the Duplex pool, Crazy evening around the Duplex pool',
     start: new Date(),
     tag: [{

@@ -10,72 +10,33 @@ function FeedEvent({ event }) {
         src={event.media}
         alt={event.title}
       />
-      <section className="feed-event__date">
-          <Label>
-            <p
-              style={{
-                paddingTop: '0.5833em',
-              }}
-            >
-                {event.start.getDate()} 
-            </p>
-            <p
-              style={{
-                paddingBottom: '0.5833em',
-              }}
-            >
-              {event.start.toLocaleString('fr-fr', { month: 'long' })}
-            </p>
-          </Label>
-      </section>
       <section className='feed-event__details'>
-        <section className="feed-event__details__participants">
-          <Icon 
-            name='user' 
-            style={{
-              color:'white'
-            }} 
-          />
-          <p
-          style={{
-            color: 'white',
-          }}
-          >
-            {event.participants} participants
-          </p>
-        </section>
         <section className="feed-event__details__social-icons">
             <Icon 
-              name='favorite' 
-              size='large' 
-              circular
+              name='heart' 
+              size='large'
               style={{ 
-                backgroundColor: 'black',
-                color: 'white',
+                color: '#E0E0E0',
                 marginTop: '0.6em',
-                cursor: 'pointer'
+                cursor: 'pointer',
               }}
             />
             <Icon 
               name='comment' 
-              size='large' 
-              circular
+              size='large'
               style={{ 
-                backgroundColor: 'black',
-                color: 'white',
+                color: '#E0E0E0',
                 marginTop: '0.6em',
-                cursor: 'pointer'
+                cursor: 'pointer',
               }}
               />
             <Icon 
               name='share' 
-              size='large' 
-              circular
+              size='large'
               style={{ 
-                backgroundColor: 'black',
-                color: 'white',
+                color: '#E0E0E0',
                 marginTop: '0.6em',
-                cursor: 'pointer'
+                cursor: 'pointer',
               }}
               />
         </section>
@@ -83,32 +44,34 @@ function FeedEvent({ event }) {
           <Card 
             fluid
             style={{
+              height: '5.6rem',
               boxShadow: 'none',
-              background: 'black',
-              display: 'absolute', 
-              bottom: '0px',
-              left: '0px'
+              background: 'transparent',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
             }}
           >
             <Card.Header
               style={{
-                color: 'white'
+                fontSize: '1.3rem',
+                fontWeight: 'bold',
+                color: 'white',
+                paddingBottom: '0.6rem'
               }}
             >
               {event.title}
             </Card.Header>
             <Card.Meta
               style={{
-                color: 'white'
+                color: 'white',
               }}
             >
-              <span className='date'>
-                {event.code_user_manager.nickname}
-              </span>
             </Card.Meta>
             <Card.Description
               style={{
-                color: 'white'
+                color: 'white',
+                paddingBottom: '0.6rem'
               }}
             >
               {event.metadescription}
@@ -117,7 +80,8 @@ function FeedEvent({ event }) {
               style={{
                 border: 'none',
                 display: 'flex',
-                alignItems: 'center'
+                alignItems: 'center',
+                padding: '0px',
               }}
             >
               {
@@ -125,14 +89,8 @@ function FeedEvent({ event }) {
                   return (
                     <Label 
                     key={t.id}
-                    as='a' 
-                    image
                     //remove white spaces to use category name as slug
                     href={`/categorie/${t.name.replace(' ', '')}`}
-                    style={{
-                      color: 'white',
-                      background: t.color,
-                    }}
                     >
                       {t.emoji} {t.name}
                     </Label>
@@ -141,6 +99,21 @@ function FeedEvent({ event }) {
               }
             </Card.Content>
           </Card>
+          <section className="feed-event__details__card__participants">
+            <Icon 
+              name='user' 
+              style={{
+                color:'white'
+              }} 
+            />
+            <p className="feed-event__details__card__participants__content" >
+              {event.participants} participants
+            </p>
+          </section>
+          <section className="feed-event__details__card__date">
+            <div className="feed-event__details__card__date__day"><div>{event.start.getDate()}</div></div>
+            <div className="feed-event__details__card__date__month"><div>{event.start.toLocaleString('fr-fr', { month: 'short' }).toUpperCase().replace('.', '')}</div></div>
+          </section>
         </section>
       </section>
     </div>

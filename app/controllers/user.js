@@ -27,13 +27,13 @@ module.exports = {
                         req.session.user = user
 
                         const expireIn = 24 * 60 * 60;
-                        const accesToken = jwt.sign({ user },SECRET_KEY,{ expiresIn: expireIn });
+                        const accessToken = jwt.sign({ user },SECRET_KEY,{ expiresIn: expireIn });
                         const refreshToken = jwt.sign({ user },REFRESH_SECRET_KEY,{ expiresIn: expireIn });
-                        res.header('Authorization', 'Bearer ' + accesToken);
+                        res.header('Authorization', 'Bearer ' + accessToken);
                         res.header('RefreshToken', 'Bearer ' + refreshToken);
 
                         delete req.session.user.password;
-                        return res.status(200).json({accesToken, refreshToken ,user: req.session.user});
+                        return res.status(200).json({accessToken, refreshToken ,user: req.session.user});
                     }
 
                     return res.status(403).json({ errorStatus: 403, message: 'Mauvais identifiant ou mot de passe' });

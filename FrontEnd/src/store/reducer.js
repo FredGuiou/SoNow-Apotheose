@@ -83,9 +83,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: {
-          ...state.user, 
+          ...action.user,
+          accessToken: action.accessToken,
+          refreshToken: action.refreshToken,
           isConnected:true,
-          hasLoginError: false,
+          hasLoginError: false
         }
       };
     case SUBMIT_LOGIN_ERROR:

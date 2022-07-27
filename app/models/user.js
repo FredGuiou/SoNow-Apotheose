@@ -138,43 +138,59 @@ module.exports = {
   //Mettre à jours les infos d'un utilisateur en BDD.
   async update(id, user, details) {
     try {
-          const userObj = JSON.parse(user);
-          const detailsObj = JSON.parse(details);
-          let settingFieldsUser = '';
-          let settingFieldsDetails = '';
-          for (const [key, value] of Object.entries(userObj)) {
-            settingFieldsUser += key + '=' + value + ','
-          }
-          const sliceSFU = settingFieldsUser.substring(0, settingFieldsUser.length - 1)
-          console.log(sliceSFU);
-          for (const [key, value] of Object.entries(detailsObj)) {
-            settingFieldsDetails += key + '=' + value + ','
-          }
-          const sliceSFD = settingFieldsDetails.substring(0, settingFieldsDetails.length - 1)
-          console.log(sliceSFD);
+      if(user) {
+        const userObj = JSON.parse(user);
+        const fieldsUser = Object.keys(userObj);
+        const valuesUser = Object.values(userObj);
+      
+        // Je prépare une requête sql séparément pour éviter les injections.
+        // J'utilise les jetons sql également par souci de sécurité.
+        const preparedQuery = {
+          text: `UPDATE public.user SET ${fieldsUser} WHERE id = ${id} RETURNING *`,
+          values: [...valuesUser]
+        };
+        console.log(preparedQuery);
+        const result = await client.query(preparedQuery); 
+      }    
+      if(details) {
+        // const fieldsDetails = Object.keys(detailsObj);
+        // const valuesDetails = Object.values(detailsObj);
+        // const detailsObj = JSON.parse(details);
+        // const preparedQuery2 = {
+        //   text: `UPDATE public.detailsinfos SET ${fieldsDetails} WHERE id = ${id} RETURNING *`,
+        //   values: [...valuesDetails]
+        // };
+        
+        // console.log(preparedQuery2);  
+        // const result2 = await client.query(preparedQuery2);
+      }
+      // return result.rows[0];
 
-      //On récupère les champs et les valeurs de l'utilisateur
-    //   const userObj = JSON.parse(user);
-    //   const detailsObj = JSON.parse(details);
-    //   const fieldsUser = Object.keys(userObj);
-    //   const valuesUser = Object.values(userObj);
-    //   const fieldsDetails = Object.keys(detailsObj);
-    //   const valuesDetails = Object.values(detailsObj);
-    //   // Je prépare une requête sql séparément pour éviter les injections.
-    //   // J'utilise les jetons sql également par souci de sécurité.
-    //   const preparedQuery = {
-    //     text: `UPDATE public.user SET ${fieldsUser} WHERE id = ${id} RETURNING *`,
-    //     values: [...valuesUser]
-    //   };
-    //   const preparedQuery2 = {
-    //     text: `UPDATE public.detailsinfos SET ${fieldsDetails} WHERE id = ${id} RETURNING *`,
-    //     values: [...valuesDetails]
-    //   };
-    //   console.log(preparedQuery);
-    //   console.log(preparedQuery2);
-    //   const result = await client.query(preparedQuery);  
-    //   const result2 = await client.query(preparedQuery2);
-    //   // return result.rows[0];
+      // On récupère les champs et les valeurs de l'utilisateur
+      const userObj = JSON.parse(user);
+      const fieldsUser = Object.keys(userObj);
+      const valuesUser = Object.values(userObj);
+    
+      // Je prépare une requête sql séparément pour éviter les injections.
+      // J'utilise les jetons sql également par souci de sécurité.
+      const preparedQuery = {
+        text: `UPDATE public.user SET ${fieldsUser} WHERE id = ${id} RETURNING *`,
+        values: [...valuesUser]
+      };
+      console.log(preparedQuery);
+      const result = await client.query(preparedQuery); 
+
+      // const fieldsDetails = Object.keys(detailsObj);
+      // const valuesDetails = Object.values(detailsObj);
+      // const detailsObj = JSON.parse(details);
+      // const preparedQuery2 = {
+      //   text: `UPDATE public.detailsinfos SET ${fieldsDetails} WHERE id = ${id} RETURNING *`,
+      //   values: [...valuesDetails]
+      // };
+      
+      // console.log(preparedQuery2);  
+      // const result2 = await client.query(preparedQuery2);
+      // return result.rows[0];
 
     } catch (error) {
       console.log(error);

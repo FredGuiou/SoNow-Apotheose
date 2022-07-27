@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // import DistanceCalculator from 'distance-calculator-js';
 
@@ -25,12 +24,6 @@ const NewYork = { lat: 40.730610, long: -73.935242 };
 const m = DistanceCalculator.calculate(Tokyo, NewYork)/1000;
 console.log(m);
 */
-
-// TODO: 
-// Créer un composant fournisseur => Importer useState et createContext de React.
-// Instancier createContext dans une constante michelisable.
-// Définir le contexte comme étant un array []. => Contexte qui sera appelé dans les composants enfants par le hook useCOntext.
-
 
 
 function App() {

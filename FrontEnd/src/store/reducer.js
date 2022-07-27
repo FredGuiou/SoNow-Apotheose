@@ -7,6 +7,9 @@ import {
   SUBMIT_LOGIN, 
   SUBMIT_LOGIN_SUCCESS,
   SUBMIT_LOGIN_ERROR,
+  GET_EVENTS,
+  GET_EVENTS_SUCCESS,
+  GET_EVENTS_ERROR
 } from './actions';
 
 const initialState = {
@@ -99,6 +102,32 @@ const reducer = (state = initialState, action) => {
           hasLoginError: true,
         }
       };
+      case GET_EVENTS:
+        return {
+          ...state,
+          events: {
+            isLoading:true,
+          }
+        };
+      case GET_EVENTS_SUCCESS:
+        return {
+          ...state,
+          events: {
+            ...state.events,
+            ...action.events,
+            isLoading:false, 
+            hasError: false,
+          }
+        };
+      case GET_EVENTS_ERROR:
+        return {
+          ...state,
+          events: {
+            ...state.events,
+            isLoading:false,
+            hasError: true
+          }
+        };
     default:
       return state;
   }

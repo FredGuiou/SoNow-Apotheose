@@ -25,7 +25,7 @@ module.exports = {
     //Méthode qui permet de récupérer un évènement par son ID.
     async getOneEventById(req, res) {
         try {
-            const eventDb = await eventDataMapper.findByPk(req.params.id);
+            const eventDb = await eventDataMapper.findByPk(req.params.event_id);
             if(!eventDb){
                 // throw new ApiError('', { statusCode:  });
             };
@@ -43,11 +43,7 @@ module.exports = {
     //Méthode qui permet de rechercher un évènement par son titre.
     async getOneEventByTitle(req, res) {
         try {
-            const eventParams = {
-                title: req.body.title
-            };
-    
-            const eventDb = await eventDataMapper.findByTitle(eventParams);
+            const eventDb = await eventDataMapper.findByTitle(req.body.title);
             if(!eventDb){
                 // throw new ApiError('', { statusCode:  });
             };
@@ -64,7 +60,7 @@ module.exports = {
     //Méthode qui permet de rechercher un évènement en fonction de leur catégorie.
     async getByTagId(req, res) {
         try {
-            const events = await eventDataMapper.findByTagId(req.params.id);
+            const events = await eventDataMapper.findByTagId(req.params.event_id);
             res.json(events);
 
         } catch (ApiError) {
@@ -83,13 +79,7 @@ module.exports = {
         try {
             const eventDb = await eventDataMapper.findByTitle(req.body.title);
             if (!eventDb) {
-                console.log(req.body);
-                const newEvent = {
-                    
-                    //TODO:Implémenter les propriétés du newEvent
-
-                };
-                const insertEvent = await eventDataMapper.insert(newEvent);
+                const insertEvent = await eventDataMapper.insert(req.body);
                 res.json(insertEvent);
             } else {
                 // throw new ApiError('', {statusCode: });
@@ -108,12 +98,11 @@ module.exports = {
     //Méthode qui permet de mettre à jour un évènement par son créateur.
     async updateEvent(req, res) {
         try {
-            const eventDb = await eventDataMapper.findByPk(req.params.id);
+            const eventDb = await eventDataMapper.findByPk(req.params.event_id);
             if (!eventDb) {
-                //throw new ApiError('', { statusCode: });
+                console.log("Ça bug dans l'updateEvent");
             };
-            const body = req.body;
-            const savedEvent = await eventDataMapper.update(body, req.params.id);
+            const savedEvent = await eventDataMapper.update(req.params.event_id, req.body);
             return res.json(savedEvent);
 
         } catch (ApiError) {
@@ -128,11 +117,11 @@ module.exports = {
     //Méthode qui permet de supprimer un évènement par son créateur.
     async deleteEvent(req, res) {
         try {
-            const eventDb = await eventDataMapper.findByPk(req.params.id);
+            const eventDb = await eventDataMapper.findByPk(req.params.event_id);
             if (!eventDb) {
                 // throw new ApiError('This category does not exists', { statusCode: 404 });
             };
-            await eventDataMapper.delete(req.params.id);
+            await eventDataMapper.delete(req.params.event_id);
             return res.status(204).json();
 
         } catch (ApiError) {

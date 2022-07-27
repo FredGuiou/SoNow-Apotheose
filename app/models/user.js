@@ -84,7 +84,7 @@ module.exports = {
   },
 
   //Rechercher un utilisateur par son surnom, son nom ou son prénom.
-  async findByNickname(nickName){
+  async findByNickname(nickname){
     try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
@@ -92,9 +92,9 @@ module.exports = {
         text: `
           SELECT *
           FROM public.user
-          WHERE nickname = $1
+          WHERE nickname ILIKE $1
         `,
-        values: [nickName],
+        values: [`%${nickname}%`],
       };
 
       const result = await client.query(preparedQuery);
@@ -136,61 +136,20 @@ module.exports = {
   },
 
   //Mettre à jours les infos d'un utilisateur en BDD.
-  async update(id, user, details) {
+  async update(id, user) {
     try {
-      if(user) {
-        const userObj = JSON.parse(user);
-        const fieldsUser = Object.keys(userObj);
-        const valuesUser = Object.values(userObj);
-      
-        // Je prépare une requête sql séparément pour éviter les injections.
-        // J'utilise les jetons sql également par souci de sécurité.
-        const preparedQuery = {
-          text: `UPDATE public.user SET ${fieldsUser} WHERE id = ${id} RETURNING *`,
-          values: [...valuesUser]
-        };
-        console.log(preparedQuery);
-        const result = await client.query(preparedQuery); 
-      }    
-      if(details) {
-        // const fieldsDetails = Object.keys(detailsObj);
-        // const valuesDetails = Object.values(detailsObj);
-        // const detailsObj = JSON.parse(details);
-        // const preparedQuery2 = {
-        //   text: `UPDATE public.detailsinfos SET ${fieldsDetails} WHERE id = ${id} RETURNING *`,
-        //   values: [...valuesDetails]
-        // };
-        
-        // console.log(preparedQuery2);  
-        // const result2 = await client.query(preparedQuery2);
-      }
-      // return result.rows[0];
-
-      // On récupère les champs et les valeurs de l'utilisateur
-      const userObj = JSON.parse(user);
-      const fieldsUser = Object.keys(userObj);
-      const valuesUser = Object.values(userObj);
-    
-      // Je prépare une requête sql séparément pour éviter les injections.
-      // J'utilise les jetons sql également par souci de sécurité.
-      const preparedQuery = {
-        text: `UPDATE public.user SET ${fieldsUser} WHERE id = ${id} RETURNING *`,
-        values: [...valuesUser]
-      };
-      console.log(preparedQuery);
-      const result = await client.query(preparedQuery); 
-
-      // const fieldsDetails = Object.keys(detailsObj);
-      // const valuesDetails = Object.values(detailsObj);
-      // const detailsObj = JSON.parse(details);
-      // const preparedQuery2 = {
-      //   text: `UPDATE public.detailsinfos SET ${fieldsDetails} WHERE id = ${id} RETURNING *`,
-      //   values: [...valuesDetails]
-      // };
-      
-      // console.log(preparedQuery2);  
-      // const result2 = await client.query(preparedQuery2);
-      // return result.rows[0];
+      const fields = Object.keys(user).map((prop, index) => `"${prop}" = $${index + 1}`);
+      const values = Object.values(user);
+      const savedUser = await client.query(
+          `
+              UPDATE public.user SET
+                  ${fields}
+              WHERE id = $${fields.length + 1}
+              RETURNING *
+          `,
+          [...values, id],
+        );
+      return savedUser.rows[0];
 
     } catch (error) {
       console.log(error);

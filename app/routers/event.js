@@ -23,8 +23,8 @@ router
     .get(controllerHandler(controller.getByTagId));
 
 router
-    .route('/event_title')
-    .get(controllerHandler(controller.getOneEventByTitle))
+    .route('/search')
+    .post(controllerHandler(controller.getOneEventByTitle));
 
 
 module.exports = router;

@@ -14,13 +14,17 @@ router
 
 router
     .route('/:event_id(\\d+)')
-    .get(controllerHandler(controller.getOneEvent))
+    .get(controllerHandler(controller.getOneEventById))
     .patch(controllerHandler(controller.updateEvent))
     .delete(controllerHandler(controller.deleteEvent));
 
 router
     .route('/tag/:tag_id(\\d+)')
     .get(controllerHandler(controller.getByTagId));
+
+router
+    .route('/event_title')
+    .get(controllerHandler(controller.getOneEventByTitle))
 
 
 module.exports = router;

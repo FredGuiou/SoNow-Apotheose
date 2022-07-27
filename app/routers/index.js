@@ -13,8 +13,8 @@ router.all('/', async function(_, res) {
 });
 
 router.use('/user', userRouter);
-router.use('/event', authTokenMiddleware, eventRouter);
-router.use('/tag', authTokenMiddleware, tagRouter);
+router.use('/event', eventRouter);
+router.use('/tag', tagRouter);
 
 
 module.exports = router;

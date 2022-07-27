@@ -1,3 +1,5 @@
+import ProtectedRoute from './ProtectedRoute';
+
 import '../styles/search.scss';
 
 function Search() {
@@ -6,4 +8,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default ProtectedRoute(Search);

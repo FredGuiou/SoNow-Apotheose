@@ -1,3 +1,4 @@
+import ProtectedRoute from './ProtectedRoute';
 // import FavNav from './FavNav';
 // TODO: Add FavNav
 import EventCardProfile from './EventCardProfile';
@@ -24,4 +25,4 @@ function Fav() {
   );
 }
 
-export default Fav;
+export default ProtectedRoute(Fav);

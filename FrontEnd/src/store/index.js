@@ -12,6 +12,7 @@ const store = createStore(
       authMiddleware,
 			loginMiddleware, 
       eventsMiddleware,
+      authMiddleware,
     ),
   ),
 );

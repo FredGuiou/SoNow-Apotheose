@@ -1,3 +1,4 @@
+import ProtectedRoute from './ProtectedRoute';
 import EventCardProfile from './EventCardProfile';
 import UserCard from './UserCard';
 import "../styles/profile.scss";
@@ -23,4 +24,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProtectedRoute(Profile);

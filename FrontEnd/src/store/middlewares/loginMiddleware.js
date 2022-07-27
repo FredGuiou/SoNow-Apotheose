@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { submitLoginSuccess, submitLoginError, getEvents} from '../actions';
+import { submitLoginSuccess, submitLoginError, getEvents, getUsers} from '../actions';
 import { SUBMIT_LOGIN, } from '../actions';
 
 const loginMiddleware = (store) => (next) => (action) => {
@@ -29,6 +29,7 @@ const loginMiddleware = (store) => (next) => (action) => {
         console.log(`submit login success ${response.data}`);
         store.dispatch(submitLoginSuccess(response.data.accessToken, response.data.refreshToken, response.data.user));
         store.dispatch(getEvents());
+        store.dispatch(getUsers());
       })
       .catch(() => {
         store.dispatch(submitLoginError());

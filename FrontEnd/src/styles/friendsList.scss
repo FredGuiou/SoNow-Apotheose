@@ -1,0 +1,17 @@
+.friends {
+  background-color: black;
+  color: white;
+  height: 92vh;
+
+  &__menu{
+    height: 8vh;
+  }
+
+  &__list{
+    height: 84vh; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: space-between;
+  }
+}

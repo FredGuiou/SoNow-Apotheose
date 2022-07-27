@@ -1,15 +1,31 @@
 import {
+  CHANGE_FRIENDS_ACTIVE_ITEM, 
+  CHANGE_USERS_SEARCH_INPUT, 
+  CHANGE_LOGIN_INPUTS, 
   CHANGE_SIGNUP_INPUTS,
+  GET_EVENTS,
+  GET_EVENTS_ERROR, 
+  GET_EVENTS_SUCCESS,
+  GET_FOLLOWERS,
+  GET_FOLLOWERS_ERROR, 
+  GET_FOLLOWERS_SUCCESS,
+  GET_SUBSCRIPTIONS,
+  GET_SUBSCRIPTIONS_ERROR,
+  GET_SUBSCRIPTIONS_SUCCESS,
+
+  GET_USERS, 
+  GET_USERS_ERROR, 
+  GET_USERS_SUCCESS,
+
+  SUBMIT_USERS_SEARCH,
+  SUBMIT_USERS_SEARCH_SUCCESS,
+  SUBMIT_USERS_SEARCH_ERROR,
   SUBMIT_SIGNUP,
   SUBMIT_SIGNUP_SUCESS,
   SUBMIT_SIGNUP_ERROR,
-  CHANGE_LOGIN_INPUTS, 
   SUBMIT_LOGIN, 
   SUBMIT_LOGIN_SUCCESS,
-  SUBMIT_LOGIN_ERROR,
-  GET_EVENTS,
-  GET_EVENTS_SUCCESS,
-  GET_EVENTS_ERROR
+  SUBMIT_LOGIN_ERROR, 
 } from './actions';
 
 const initialState = {
@@ -27,11 +43,38 @@ const initialState = {
     emailInput: '',
     passwordInput:'',
     isLoading: false,
+  },
+  users: {
+    activeItem: 'Abonnes',
+    searchInput: '',
+    searchResults: [],
+    list:[],
+    followers:[],
+    subscription:[],
+    isGetFollowersLoading: false,
+    isGetSubscriptionLoading: false,
+    isSearchLoading: false,
   }
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_FRIENDS_ACTIVE_ITEM:
+      return {
+        ...state,
+        user : {
+          ...state.users, 
+          activeItem: action.activeItem,
+        }
+      };
+    case CHANGE_USERS_SEARCH_INPUT:
+      return {
+        ...state,
+        users : {
+          ...state.users, 
+          searchInput: action.newValue
+        }
+      };
     case CHANGE_SIGNUP_INPUTS:
       return {
         ...state,
@@ -103,31 +146,139 @@ const reducer = (state = initialState, action) => {
         }
       };
       case GET_EVENTS:
-        return {
-          ...state,
-          events: {
-            isLoading:true,
-          }
-        };
-      case GET_EVENTS_SUCCESS:
-        return {
-          ...state,
-          events: {
-            ...state.events,
-            ...action.events,
-            isLoading:false, 
-            hasError: false,
-          }
-        };
-      case GET_EVENTS_ERROR:
-        return {
-          ...state,
-          events: {
-            ...state.events,
-            isLoading:false,
-            hasError: true
-          }
-        };
+      return {
+        ...state,
+        events: {
+          isLoading:true,
+        }
+      };
+    case GET_EVENTS_SUCCESS:
+      return {
+        ...state,
+        events: {
+          ...state.events,
+          ...action.events,
+          isLoading:false, 
+          hasError: false,
+        }
+      };
+    case GET_EVENTS_ERROR:
+      return {
+        ...state,
+        events: {
+          ...state.events,
+          isLoading:false,
+          hasError: true
+        }
+      };
+    case GET_FOLLOWERS:
+      return {
+        ...state,
+        friends: {
+          ...state.friends, 
+          isGetFollowersLoading: true,
+        }
+      };
+    case GET_FOLLOWERS_SUCCESS:
+      return {
+        ...state,
+        friends: {
+          ...state.friends,
+          followers:[...action.followers],
+          isGetFollowersLoading: false, 
+          hasGetFollowersError: false,
+        }
+      };
+    case GET_FOLLOWERS_ERROR:
+      return {
+        ...state,
+        friends: {
+          ...state.friends,
+          isGetFollowersLoading:false, 
+          hasGetFollowersError: true,
+        }
+      };
+    case GET_SUBSCRIPTIONS:
+      return {
+        ...state,
+        friends: {
+          ...state.friends, 
+          isGetSubscriptionsLoading: true,
+        }
+      };
+    case GET_SUBSCRIPTIONS_SUCCESS:
+      return {
+        ...state,
+        friends: {
+          ...state.friends,
+          subscriptions:[...action.subscriptions],
+          isGetSubcriptionsLoading: false, 
+          hasGetSubcriptionsError: false,
+        }
+      };
+    case GET_SUBSCRIPTIONS_ERROR:
+      return {
+        ...state,
+        friends: {
+          ...state.friends,
+          isGetSubscriptionsLoading:false, 
+          hasGetSubscriptionsError: true,
+        }
+      };
+    case GET_USERS:
+      return {
+        ...state,
+        friends: {
+          ...state.friends, 
+          isGetUsersLoading: true,
+        }
+      };
+    case GET_USERS_SUCCESS:
+      return {
+        ...state,
+        friends: {
+          ...state.friends,
+          users:[...action.users],
+          isGetUsersLoading: false, 
+          hasGetUsersError: false,
+        }
+      };
+    case GET_USERS_ERROR:
+      return {
+        ...state,
+        friends: {
+          ...state.friends,
+          isGetSUsersLoading:false, 
+          hasGetSUsersError: true,
+        }
+      };
+    case SUBMIT_USERS_SEARCH:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          isSearchLoading: true
+        }
+      };
+    case SUBMIT_USERS_SEARCH_ERROR:
+      return {
+        ...state,
+        user: {
+          ...state.user, 
+          isSearchLoading: false, 
+          hasSearchError: true 
+        }
+      };
+    case SUBMIT_USERS_SEARCH_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          searchResults: [action.users],
+          isSearchLoading: false, 
+          hasSearchError: false
+        }
+      };
     default:
       return state;
   }

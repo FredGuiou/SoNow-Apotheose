@@ -128,21 +128,21 @@ function App() {
           )}
         />
         <Route
-          path='*'
-          element={(
-            <>
-            <Error404 />
-            <Nav />
-            </> 
-          )}
-        />
-        <Route
           path="/event/:slug"
           element={(
             <>
               <EventCardDescription />
               <Nav />
             </>
+          )}
+        />
+        <Route
+          path='*'
+          element={(
+            <>
+            <Error404 />
+            <Nav />
+            </> 
           )}
         />
       </Routes>

@@ -17,7 +17,7 @@ function EventCardDescription() {
     <div className="event-card">
       {
       eventsFiltered.map ((e) => (
-        <div className='description-container'>
+        <div className='description-container' key={e.id}>
             <div className="event-description">
             <img
               style={{borderBottom: "1px solid #ffffff"}}

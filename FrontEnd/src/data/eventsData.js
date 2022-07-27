@@ -32,7 +32,7 @@ const eventsData = [
       nickname: 'SoNow Event',
       defaut_profile_picture: 'src/images/profile.jpg'
     }, 
-    participants: 22,
+    user_attend_event: [1, 12, 18, 25, 42]
   },
   {
     id: 14,
@@ -61,7 +61,7 @@ const eventsData = [
       nickname: 'SoNow Event',
       defaut_profile_picture: 'src/images/profile.jpg'
     }, 
-    participants: 1300,
+    user_attend_event: [1, 12, 18, 25, 42, 78, 85, 90, 312 ,580, 1028]
   },
   {
     id: 15,
@@ -90,7 +90,7 @@ const eventsData = [
       nickname: 'SoNow Event',
       defaut_profile_picture: 'src/images/profile.jpg'
     }, 
-    participants: 812,
+    user_attend_event: [1, 12, 18, 25, 42, 98, 123]
   },
   {
     id: 16,
@@ -119,7 +119,7 @@ const eventsData = [
       nickname: 'SoNow Event',
       defaut_profile_picture: 'src/images/profile.jpg'
     }, 
-    participants: 346,
+    user_attend_event: [1, 12, 18, 25, 42]
   }
 ];
 

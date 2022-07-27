@@ -6,7 +6,6 @@ function FeedEvent({ event }) {
   return (
     <div className="feed-event">
       <img
-        style={{borderBottom: "2px solid #ffffff"}}
         className="feed-event__img"
         src={event.media}
         alt={event.title}
@@ -109,7 +108,7 @@ function FeedEvent({ event }) {
               }} 
             />
             <p className="feed-event__details__card__participants__content" >
-              {event.participants} participants
+              {event.user_attend_event.length} participants
             </p>
           </section>
           <section className="feed-event__details__card__date">

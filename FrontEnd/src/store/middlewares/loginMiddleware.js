@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { submitLoginSuccess, submitLoginError } from '../actions';
+import { submitLoginSuccess, submitLoginError, getEvents} from '../actions';
 import { SUBMIT_LOGIN, } from '../actions';
 
 const loginMiddleware = (store) => (next) => (action) => {
@@ -26,8 +26,9 @@ const loginMiddleware = (store) => (next) => (action) => {
 
     axios(config)
       .then((response) => {
-        console.log(response.data);
+        console.log(`submit login success ${response.data}`);
         store.dispatch(submitLoginSuccess(response.data.accessToken, response.data.refreshToken, response.data.user));
+        store.dispatch(getEvents());
       })
       .catch(() => {
         store.dispatch(submitLoginError());

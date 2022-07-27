@@ -8,11 +8,15 @@ import eventsData from '../data/eventsData';
 function EventCardDescription() {
 
   const event = eventsData;
+
+  const eventsFiltered = event.filter(e => {
+    return e.id === 12;
+  });
   
   return (
     <div className="event-card">
       {
-      event.map ((e) => (
+      eventsFiltered.map ((e) => (
         <div className='description-container'>
             <div className="event-description">
             <img

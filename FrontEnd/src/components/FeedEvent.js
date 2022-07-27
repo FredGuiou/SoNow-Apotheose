@@ -6,6 +6,7 @@ function FeedEvent({ event }) {
   return (
     <div className="feed-event">
       <img
+        style={{borderBottom: "2px solid #ffffff"}}
         className="feed-event__img"
         src={event.media}
         alt={event.title}

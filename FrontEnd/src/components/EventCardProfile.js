@@ -6,6 +6,7 @@ function EventCardProfile({ event }) {
   return (
     <div className="event-card-profile">
       <img
+        style={{borderBottom: "2px solid #ffffff"}}
         className="event-card-profile__img"
         src={event.media}
         alt={event.title}

@@ -20,7 +20,7 @@ function EventCardDescription() {
         <div className='description-container' key={e.id}>
             <div className="event-description">
             <img
-              style={{borderBottom: "1px solid #ffffff"}}
+              style={{borderBottom: "2px solid #ffffff"}}
               className="event-description__img"
               src={e.media}
               alt={e.title}

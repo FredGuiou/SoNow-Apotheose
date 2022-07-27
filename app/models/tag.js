@@ -1,3 +1,6 @@
+//TODO: Gestion des erreurs via un controller error.
+
+
 const client = require("../config/db");
 
 module.exports = {

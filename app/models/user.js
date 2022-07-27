@@ -84,7 +84,7 @@ module.exports = {
   },
 
   //Rechercher un utilisateur par son surnom, son nom ou son prénom.
-  async findByNickname(nickName){
+  async findByNickname(nickname){
     try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
@@ -92,9 +92,9 @@ module.exports = {
         text: `
           SELECT *
           FROM public.user
-          WHERE nickname = $1
+          WHERE nickname ILIKE $1
         `,
-        values: [nickName],
+        values: [`%${nickname}%`],
       };
 
       const result = await client.query(preparedQuery);
@@ -136,29 +136,19 @@ module.exports = {
   },
 
   //Mettre à jours les infos d'un utilisateur en BDD.
-  async update(id, user, details) {
+  async update(id, user) {
     try {
-      myObj = JSON.parse(user);
-      console.log(Object.entries(myObj));
-      if(user) {
-        console.log(user);
-        // Je prépare une requête sql séparément pour éviter les injections.
-        // J'utilise les jetons sql également par souci de sécurité.
-        console.log("2. je passe par le user models");
-        const savedUser = await client.query(
+      const fields = Object.keys(user).map((prop, index) => `"${prop}" = $${index + 1}`);
+      const values = Object.values(user);
+      const savedUser = await client.query(
           `
-              UPDATE post SET
-                  ${fieldsUser}
-              WHERE id = $${fieldsUser.length + 1}
+              UPDATE public.user SET
+                  ${fields}
+              WHERE id = $${fields.length + 1}
               RETURNING *
           `,
-          [...valuesUser, id],
+          [...values, id],
         );
-      }     
-      if(details) {
-
-      }
-      console.log("3. Je termine mon user models");
       return savedUser.rows[0];
 
     } catch (error) {

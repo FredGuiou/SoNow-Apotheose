@@ -66,17 +66,15 @@ module.exports = {
 
 
   //Rechercher un évènement par son nom.
-  async findByTitle(reqTitle){
+  async findByTitle(eventParams){
     try {
-      //Je prépare une requête sql séparément pour éviter les injections.
-      //J'utilise les jetons sql également par souci de sécurité.
       const preparedQuery = {
         text: `
           SELECT *
           FROM public.event
-          WHERE title = $1
+          WHERE title ILIKE $1
         `,
-        values: [reqTitle],
+        values: [`%${eventParams}%`],
       };
 
       const result = await client.query(preparedQuery);
@@ -85,7 +83,7 @@ module.exports = {
         return undefined;
     };
 
-    return result.rows[0];
+    return result.rows;
 
     } catch (error) {
       console.log(error);
@@ -95,7 +93,7 @@ module.exports = {
 
 
 
-
+// TODO: YA CA A FAIRE ENCORE LA !! x'D
   //Rechercher un évènement en fonction de son tag.
   async findByTagId(tagId) {
     // On veut d'abord vérifié que la category demandé existe
@@ -104,52 +102,48 @@ module.exports = {
         //throw new ApiError('', { statusCode:  });
     }
 
-    const result = await client.query('SELECT * FROM event WHERE tag_id = $1', [tagId]);
+    const result = await client.query('SELECT * FROM public.event WHERE code_tag = $1', [tagId]);
     return result.rows;
 },
 
 
 
 
-//TODO: Voir avec Seb la création de l'évent. table detail info, user ? Requête sql.
+
 //Créer un nouvel évènement.
   async insert(event) {
     try {
-      //On s'occupe en premier de la table event
-      //Je prépare une requête sql séparément pour éviter les injections.
-      //J'utilise les jetons sql également par souci de sécurité.
-      const preparedQuery = {
-        text: `
-        INSERT INTO public.event
-        () VALUES
-        () RETURNING *
-        `,
-        values: [],
-      };
-  
-      const result = await client.query(preparedQuery);
-  
-    return result.rows[0];
+      const fields = Object.keys(event).map((props) => `${props}`);
+      const fieldsToken = Object.keys(event).map((_, index) => `$${index + 1}`);
+      const values = Object.values(event);
 
+      const savedEvent = await client.query(
+        `
+            INSERT INTO public.event (${fields}) VALUES (${fieldsToken})
+            RETURNING *
+        `,
+        [...values],
+      );
+      return savedEvent.rows[0];
 
     } catch (error) {
       console.log(error);
       return null;
-    };
+    }
   },
 
 
 
 
-//TODO: Transposition possible à partir du model user ?
+
+
+
 //mettre à jour un évènement.
   async update(id, event) {
     try {
-      //On récupère les champs et les valeurs de l'utilisateur
       const fields = Object.keys(event).map((prop, index) => `"${prop}" = $${index + 1}`);
+      console.log(event)
       const values = Object.values(event);
-      //Je prépare une requête sql séparément pour éviter les injections.
-      //J'utilise les jetons sql également par souci de sécurité.
       const preparedQuery = {
         text: `
         UPDATE public.event SET
@@ -159,7 +153,8 @@ module.exports = {
         `,
         values: [...values, id],
       };
-  
+
+      console.log(preparedQuery)
       const result = await client.query(preparedQuery);
   
     return result.rows[0];

@@ -117,11 +117,7 @@ module.exports = {
     //Méthode qui permet de rechercher les utilisateurs par leur surnom, leur nom ou prénom.
     async getOneUserByNickname(req, res) {
         try {
-            const userParams = {
-                nickname: req.body.nickname
-            };
-    
-            const userDb = await userDataMapper.findByNickname(userParams);
+            const userDb = await userDataMapper.findByNickname(req.body.nickname);
             if(!userDb){
                 // throw new ApiError('', { statusCode:  });
             };
@@ -141,7 +137,6 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByEmail(req.body.email);
             if (!userDb) {
-                console.log(req.body);
                 //On crypte le mot de passe.
                 const encryptedPwd = await bcrypt.hash(req.body.password, 10);
                 const newUser = {
@@ -180,12 +175,8 @@ module.exports = {
             if (!userDb) {
                 //throw new ApiError('', { statusCode: });
             };
-            const body = req.body;
-            console.log("1. Je passe par updateUser du Controller");
-            const savedUser = await userDataMapper.update(req.params.user_id, body.user, body.details);
-            console.log("4. Je termine par updateUser du controller");
+            const savedUser = await userDataMapper.update(req.params.user_id, req.body);
             return res.json(savedUser);
-
         } catch (ApiError) {
             // throw new ApiError('', {statusCode: });
         };
@@ -202,7 +193,7 @@ module.exports = {
                 // throw new ApiError('', { statusCode: });
             };
             await userDataMapper.delete(req.params.user_id);
-            return res.status(204).json();
+            return res.status(204).json({code: 204, message: "Cet utilisateur a bien été supprimer"});
 
         } catch (ApiError) {
             // throw new ApiError('', {statusCode: });

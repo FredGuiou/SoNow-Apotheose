@@ -1,5 +1,4 @@
 //TODO: Gestion des erreurs via un controller error.
-//TODO: Implémentation de JOI validation schema.
 
 
 const tagDataMapper = require('../models/tag');
@@ -20,7 +19,7 @@ module.exports = {
     //Méthode qui permet de récupérer un tag par son ID.
     async getOneTag(req, res) {
         try {
-            const tagDb = await tagDataMapper.findByPk(req.params.id);
+            const tagDb = await tagDataMapper.findByPk(req.params.tag_id);
             if(!tagDb){
                 // throw new ApiError('', { statusCode:  });
             };

@@ -1,29 +1,23 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
+import { useParams } from 'react-router-dom';
 import { Card, Icon, Label } from 'semantic-ui-react';
 
 import "../styles/eventCardDescription.scss";
 
-import eventsData from '../data/eventsData';
+import events from '../data/eventsData';
 
 function EventCardDescription() {
 
-  const event = eventsData;
-
-  const eventsFiltered = event.filter(e => {
-    return e.id === 12;
-  });
+  const params = useParams();
+  const event = events.find((e) => e.slug === params.slug);
   
   return (
     <div className="event-card">
-      {
-      eventsFiltered.map ((e) => (
-        <div className='description-container' key={e.id}>
+        <div className='description-container' key={event.id}>
             <div className="event-description">
             <img
-              style={{borderBottom: "2px solid #ffffff"}}
               className="event-description__img"
-              src={e.media}
-              alt={e.title}
+              src={event.media}
+              alt={event.title}
             />
             <section className='event-description__details'>
               <section className="event-description__details__card">
@@ -46,7 +40,7 @@ function EventCardDescription() {
                       paddingBottom: '0.6rem'
                     }}
                   >
-                    {e.title}
+                    {event.title}
                   </Card.Header>
                   <Card.Meta
                     style={{
@@ -61,7 +55,7 @@ function EventCardDescription() {
                       fontSize: '0.8rem'
                     }}
                   >
-                    {e.metadescription}
+                    {event.description}
                   </Card.Description>
                   <Card.Content
                     style={{
@@ -72,7 +66,7 @@ function EventCardDescription() {
                     }}
                   >
                     {
-                      e.tag.map((t) => {
+                      event.tag.map((t) => {
                         return (
                           <Label 
                           key={t.id}
@@ -94,32 +88,19 @@ function EventCardDescription() {
                     }} 
                   />
                   <p className="event-description__details__card__participants__content" >
-                    {e.participants} participants
+                    {event.user_attend_event.length} participants
                   </p>
                 </section>
                 <section className="event-description__details__card__date">
-                  <div className="event-description__details__card__date__day"><div>{e.start.getDate()}</div></div>
-                  <div className="event-description__details__card__date__month"><div>{e.start.toLocaleString('fr-fr', { month: 'short' }).toUpperCase().replace('.', '')}</div></div>
+                  <div className="event-description__details__card__date__day"><div>{event.start.getDate()}</div></div>
+                  <div className="event-description__details__card__date__month"><div>{event.start.toLocaleString('fr-fr', { month: 'short' }).toUpperCase().replace('.', '')}</div></div>
                 </section>
               </section>
             </section>
             <section className="event-description__details__card__description">
-              <Card.Description
-                  style={{
-                    color: 'white',
-                    paddingBottom: '0.6rem',
-                    fontSize: '0.9rem'
-                  }}
-                >
-              <p className="event-description__details__card__description__content">
-                {e.description}
-              </p>
-              </Card.Description>
             </section>
           </div>
       </div>
-      ))
-      }
     </div>
   );
 }

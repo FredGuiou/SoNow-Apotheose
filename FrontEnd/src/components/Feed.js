@@ -1,3 +1,4 @@
+import ProtectedRoute from './ProtectedRoute';
 import FeedEvent from './FeedEvent';
 import "../styles/feed.scss";
 import events from '../data/eventsData';
@@ -19,4 +20,4 @@ function Feed() {
   );
 }
   
-export default Feed;
+export default ProtectedRoute(Feed);

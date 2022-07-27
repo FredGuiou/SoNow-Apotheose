@@ -4,12 +4,10 @@
   overflow-y: scroll;
   height: 92vh;
   width: 100vw;
-  background-color: pink;
 
   &__event {
     height: 92vh;
     width: 100vw;
-    background-color: blue;
   }
 }
 
@@ -35,7 +33,7 @@
 
     &__card {
       position: absolute;
-      top: 2.5rem;
+      bottom: 2.5rem;
       left: 0rem;
       width: 100vw;
       padding: 2rem;
@@ -60,7 +58,6 @@
         left: 0rem;
         width: 100vw;
         padding: 2rem;
-        background-color: rgba(0, 0, 0, 0.5);
         text-align: center;
         color:white;
 

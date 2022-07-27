@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 // import DistanceCalculator from 'distance-calculator-js';
 
-import '../styles/App.scss';
 import Authentification from './Authentification';
 import CreateAccount from './CreateAccount';
 import CreateEvent from './CreateEvent';
@@ -15,6 +14,8 @@ import Search from './Search';
 import Error404 from './Error404';
 import EventCardDescription from './EventCardDescription';
 
+import '../styles/App.scss';
+
 /*
 // Test data
 const Tokyo = { lat: 35.652832, long: 139.839478 };
@@ -27,8 +28,6 @@ console.log(m);
 
 
 function App() {
-
-  // const [user, setUser] = useState({});
   
   // const [isLocationLoading, setIsLocationLoading] = useState(false);
   // const [latitude, setLatitude] = useState([]);
@@ -52,18 +51,8 @@ function App() {
 
   return (
     <div className='App'>
-      
       <Routes>
-      <Route
-          path='/discribe'
-          element={(
-            <>
-              <EventCardDescription />
-              <Nav />
-            </>
-          )}
-        />
-      <Route
+        <Route
           path='/'
           element={(
               <Authentification />
@@ -147,8 +136,16 @@ function App() {
             </> 
           )}
         />
+        <Route
+          path="/event/:slug"
+          element={(
+            <>
+              <EventCardDescription />
+              <Nav />
+            </>
+          )}
+        />
       </Routes>
-
     </div>
   );
 }

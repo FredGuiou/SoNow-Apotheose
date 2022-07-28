@@ -13,7 +13,8 @@ function FavNav() {
     <div className="fav-nav">
       <Menu className='fav-nav__menu' inverted pointing secondary
         style={{
-          backgroundColor: 'black'
+          backgroundColor: 'black',
+          height: '6vh',
         }}
       >
         <Menu.Item

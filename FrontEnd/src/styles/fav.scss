@@ -2,15 +2,17 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: 92vh;
   width: 100vw;
 
   &__events {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100%;
+    justify-content: start;
+    align-items: start;
     background-color: pink;
   }
 }

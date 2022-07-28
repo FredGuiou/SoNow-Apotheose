@@ -7,7 +7,7 @@ import FavEvent from './FavEvent';
 import "../styles/fav.scss";
 
 // Import data en dur pour préparer la connexion API 
-// import events from '../data/eventsData';
+import events from '../data/eventsData';
 
 function Fav() {
   return (
@@ -25,14 +25,16 @@ function Fav() {
         }
       </div>
       */}
-          <div className="fav__events">
-            <FavEvent />
-            <FavEvent />
-            <FavEvent />
-            <FavEvent />
-            <FavEvent />
-            <FavEvent />
-          </div>
+      <div className="fav__events">
+        {
+          events.map((e) => (
+            <FavEvent 
+              key={e.id}
+              event={e}
+            />
+          ))
+        }
+      </div>
     </div>
   );
 }

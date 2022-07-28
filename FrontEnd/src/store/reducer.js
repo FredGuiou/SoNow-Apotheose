@@ -1,4 +1,5 @@
 import {
+  CHANGE_FAVORITES_ACTIVE_ITEM, 
   CHANGE_FRIENDS_ACTIVE_ITEM, 
   CHANGE_PROFIL_ACTIVE_ITEM,
   CHANGE_USERS_SEARCH_INPUT, 
@@ -57,11 +58,22 @@ const initialState = {
     isGetFollowersLoading: false,
     isGetSubscriptionLoading: false,
     isSearchLoading: false,
+  }, 
+  favorites: {
+    activeItem: `Tous mes favoris`,
   }
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_FAVORITES_ACTIVE_ITEM:
+      return {
+        ...state,
+        favorites : {
+          ...state.favorites, 
+          activeItem: action.activeItem,
+        }
+      };
     case CHANGE_FRIENDS_ACTIVE_ITEM:
       return {
         ...state,

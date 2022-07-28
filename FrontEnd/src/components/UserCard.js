@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Grid, Header, Image, Icon } from 'semantic-ui-react'
+
 import profile from '../images/profile.jpg'
 import "../styles/userCard.scss"
 

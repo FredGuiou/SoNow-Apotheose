@@ -3,6 +3,7 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 import authMiddleware from './middlewares/authMiddleware';
 import eventsMiddleware from './middlewares/eventsMiddleware';
 import loginMiddleware from './middlewares/loginMiddleware';
+import usersMiddleware from './middlewares/usersMiddleware';
 import reducer from './reducer';
 
 const store = createStore(
@@ -12,7 +13,7 @@ const store = createStore(
       authMiddleware,
 			loginMiddleware, 
       eventsMiddleware,
-      authMiddleware,
+      usersMiddleware
     ),
   ),
 );

@@ -9,6 +9,7 @@ import Feed from './Feed';
 import Filters from './Filters';
 import FriendsList from './FriendsList';
 import Nav from './Nav';
+import Page from './Page';
 import Profile from './Profile';
 import Search from './Search';
 import Error404 from './Error404';
@@ -25,7 +26,6 @@ const NewYork = { lat: 40.730610, long: -73.935242 };
 const m = DistanceCalculator.calculate(Tokyo, NewYork)/1000;
 console.log(m);
 */
-
 
 function App() {
   
@@ -55,94 +55,98 @@ function App() {
         <Route
           path='/'
           element={(
+            <Page title="SoNow">
               <Authentification />
+            </Page>
           )}
         />
         <Route
           path='/creer-un-compte'
           element={(
-            <CreateAccount />
+            <Page title="Creer un compte | SoNow">
+              <CreateAccount />
+            </Page>
           )}
         />
         <Route
           path='/feed'
           element={(
-            <>
-            <Feed />
-            <Nav />
-            </>
+            <Page title="Feed | SoNow">
+              <Feed />
+              <Nav />
+            </Page>
           )}
         />
         <Route
           path='/favoris'
           element={(
-            <>
-            <Fav />
-            <Nav />
-            </>
+            <Page title="Favoris | SoNow">
+              <Fav />
+              <Nav />
+            </Page>
           )}
         />
         <Route
           path='/autour-de-moi'
           element={(
-            <>
-            <Search />
-            <Nav />
-            </>
+            <Page title="Rechercher les événements autour de moi | SoNow">
+              <Search />
+              <Nav />
+            </Page>
           )}
         />
         <Route
           path='/autour-de-moi/filtres'
           element={(
-            <>
-            <Filters />
-            <Nav />
-            </>
+            <Page title="Rechercher les événements autour de moi | SoNow">
+              <Filters />
+              <Nav />
+            </Page>
           )}
         />
         <Route
           path='/creer-un-evenement'
           element={(
-            <>
-            <CreateEvent />
-            <Nav />
-            </>
+            <Page title="Créer un événement | SoNow">
+              <CreateEvent />
+              <Nav />
+            </Page>
           )}
         />
         <Route
           path='/mon-compte'
           element={(
-            <>
-            <Profile  />
-            <Nav />
-            </>
+            <Page title="Mon compte | SoNow">
+              <Profile  />
+              <Nav />
+            </Page>
           )}
         />
         <Route
           path='/mon-compte/amis'
           element={(
-            <>
-            <FriendsList />
-            <Nav />
-            </>
-          )}
-        />
-        <Route
-          path='*'
-          element={(
-            <>
-            <Error404 />
-            <Nav />
-            </> 
+            <Page title="Mes amis | SoNow">
+              <FriendsList />
+              <Nav />
+            </Page>
           )}
         />
         <Route
           path="/event/:slug"
           element={(
-            <>
+            <Page title="Événement | SoNow">
               <EventCardDescription />
               <Nav />
-            </>
+            </Page>
+          )}
+        />
+        <Route
+          path='*'
+          element={(
+            <Page title="404 Page introuvable | SoNow">
+              <Error404 />
+              <Nav />
+            </Page>
           )}
         />
       </Routes>

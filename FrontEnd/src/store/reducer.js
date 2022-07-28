@@ -1,5 +1,6 @@
 import {
   CHANGE_FRIENDS_ACTIVE_ITEM, 
+  CHANGE_PROFIL_ACTIVE_ITEM,
   CHANGE_USERS_SEARCH_INPUT, 
   CHANGE_LOGIN_INPUTS, 
   CHANGE_SIGNUP_INPUTS,
@@ -12,11 +13,9 @@ import {
   GET_SUBSCRIPTIONS,
   GET_SUBSCRIPTIONS_ERROR,
   GET_SUBSCRIPTIONS_SUCCESS,
-
   GET_USERS, 
   GET_USERS_ERROR, 
   GET_USERS_SUCCESS,
-
   SUBMIT_USERS_SEARCH,
   SUBMIT_USERS_SEARCH_SUCCESS,
   SUBMIT_USERS_SEARCH_ERROR,
@@ -25,7 +24,8 @@ import {
   SUBMIT_SIGNUP_ERROR,
   SUBMIT_LOGIN, 
   SUBMIT_LOGIN_SUCCESS,
-  SUBMIT_LOGIN_ERROR, 
+  SUBMIT_LOGIN_ERROR,
+  LOGOUT, 
 } from './actions';
 
 const initialState = {
@@ -43,6 +43,9 @@ const initialState = {
     emailInput: '',
     passwordInput:'',
     isLoading: false,
+  },
+  profil: {
+    activeItem: 'Mes événements',
   },
   users: {
     activeItem: 'Abonnes',
@@ -64,6 +67,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         user : {
           ...state.users, 
+          activeItem: action.activeItem,
+        }
+      };
+    case CHANGE_PROFIL_ACTIVE_ITEM:
+      return {
+        ...state,
+        profil : {
+          ...state.profil, 
           activeItem: action.activeItem,
         }
       };
@@ -157,7 +168,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         events: {
           ...state.events,
-          ...action.events,
+          list: action.events,
           isLoading:false, 
           hasError: false,
         }
@@ -223,6 +234,30 @@ const reducer = (state = initialState, action) => {
           ...state.friends,
           isGetSubscriptionsLoading:false, 
           hasGetSubscriptionsError: true,
+        }
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        user: {},
+        users: {
+          ...state.users,
+          activeItem: 'Abonnes',
+          searchInput: '',
+          searchResults: [],
+          list:[],
+          followers:[],
+          subscription:[],
+          isGetFollowersLoading: false,
+          isGetSubscriptionLoading: false,
+          isSearchLoading: false,
+        }, 
+        events: {
+          ...state.events,
+          list:[],
+          searchInput: '',
+          searchResults:[],
+          isLoading: false,
         }
       };
     case GET_USERS:

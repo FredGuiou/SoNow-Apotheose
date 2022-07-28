@@ -1,5 +1,6 @@
-export const CHANGE_FRIENDS_ACTIVE_ITEM = 'CHANGE_FRIEND_MENU_ACTIVE_ITEM';
-export const CHANGE_USERS_SEARCH_INPUT= 'CHANGE_FRIEND_SEARCH_INPUT';
+export const CHANGE_FRIENDS_ACTIVE_ITEM = 'CHANGE_FRIENDS_ACTIVE_ITEM';
+export const CHANGE_PROFIL_ACTIVE_ITEM = 'CHANGE_PROFIL_ACTIVE_ITEM';
+export const CHANGE_USERS_SEARCH_INPUT= 'CHANGE_USERS_SEARCH_INPUT';
 export const CHANGE_LOGIN_INPUTS = 'CHANGE_LOGIN_INPUTS';
 export const CHANGE_SIGNUP_INPUTS = 'CHANGE_SIGNUP_INPUTS';
 export const GET_EVENTS = 'GET_EVENTS';
@@ -14,6 +15,7 @@ export const GET_SUBSCRIPTIONS_SUCCESS = 'GET_SUBSCRIPTION_SUCESS';
 export const GET_USERS = 'GET_USERS';
 export const GET_USERS_ERROR = 'GET_USERS_ERROR'; 
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
+export const LOGOUT = 'LOGOUT';
 export const SUBMIT_USERS_SEARCH = 'SUBMIT_USERS_SEARCH';
 export const SUBMIT_USERS_SEARCH_SUCCESS = 'SUBMIT_USERS_SEARCH_SUCCESS';
 export const SUBMIT_USERS_SEARCH_ERROR = 'SUBMIT_USERS_SEARCH_ERROR';
@@ -26,6 +28,11 @@ export const SUBMIT_LOGIN_SUCCESS = 'SUBMIT_LOGIN_SUCCESS';
 
 export const changeFriendsActiveItem= (activeItem) => ({
   type: CHANGE_FRIENDS_ACTIVE_ITEM,
+  activeItem
+});
+
+export const changeProfilActiveItem= (activeItem) => ({
+  type: CHANGE_PROFIL_ACTIVE_ITEM,
   activeItem
 });
 
@@ -138,4 +145,8 @@ export const getUsersSuccess= (users) => ({
 
 export const getUsersError= () => ({
   type: GET_USERS_ERROR,
+});
+
+export const logout = () => ({
+  type: LOGOUT,
 });

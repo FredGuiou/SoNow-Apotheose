@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { submitLoginSuccess, submitLoginError, getEvents, getUsers} from '../actions';
+import { submitLoginSuccess, submitLoginError, getEvents, getUsers, LOGOUT} from '../actions';
 import { SUBMIT_LOGIN, } from '../actions';
 
 const loginMiddleware = (store) => (next) => (action) => {
@@ -34,8 +34,28 @@ const loginMiddleware = (store) => (next) => (action) => {
       .catch(() => {
         store.dispatch(submitLoginError());
       });
-  }
-  else {
+  } else if (action.type === LOGOUT) {
+    console.log('loginMiddleware');
+    next(action);
+
+    const config = {   
+      method: 'get',
+      url: 'https://sonow.herokuapp.com/api/user/logout', 
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'Access-Control-Allow-Origin': '*'
+      }, 
+    }
+
+    axios(config)
+      .then((response) => {
+        console.log(`submit logout`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+  } else {
     next(action);
   }
 };

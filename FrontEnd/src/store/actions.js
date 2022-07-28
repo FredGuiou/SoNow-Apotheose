@@ -11,15 +11,12 @@ export const GET_FOLLOWERS_SUCCESS = 'GET_FOLLOWERS_SUCCESS';
 export const GET_SUBSCRIPTIONS = 'GET_SUBSCRIPTION';
 export const GET_SUBSCRIPTIONS_ERROR = 'GET_SUBSCRIPTION_ERROR';
 export const GET_SUBSCRIPTIONS_SUCCESS = 'GET_SUBSCRIPTION_SUCESS';
-
 export const GET_USERS = 'GET_USERS';
 export const GET_USERS_ERROR = 'GET_USERS_ERROR'; 
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
-
 export const SUBMIT_USERS_SEARCH = 'SUBMIT_USERS_SEARCH';
 export const SUBMIT_USERS_SEARCH_SUCCESS = 'SUBMIT_USERS_SEARCH_SUCCESS';
 export const SUBMIT_USERS_SEARCH_ERROR = 'SUBMIT_USERS_SEARCH_ERROR';
-
 export const SUBMIT_SIGNUP = 'SUBMIT_SIGNUP';
 export const SUBMIT_SIGNUP_ERROR = 'SUBMIT_SIGNUP_ERROR';
 export const SUBMIT_SIGNUP_SUCESS = 'SUBMIT_SIGNUP_SUCESS';
@@ -46,7 +43,7 @@ export const changeLoginInputs= (inputName, newValue) => ({
 export const changeSignupInputs= (inputName, newValue) => ({
   type: CHANGE_SIGNUP_INPUTS,
   inputName,
-  newValue,
+  newValue
 });
 
 export const submitSignup= () => ({

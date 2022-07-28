@@ -4,7 +4,6 @@ const router = express.Router();
 const userRouter = require('./user');
 const eventRouter = require('./event');
 const tagRouter = require('./tag');
-const authTokenMiddleware = require('../services/authToken');
 
 
 

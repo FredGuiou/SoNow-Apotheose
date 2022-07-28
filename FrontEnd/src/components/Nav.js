@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {  Menu, Icon } from 'semantic-ui-react';
 
+import '../styles/nav.scss';
 
-export default class Nav extends Component {
-  state = { activeItem: 'home' }
+function Nav() {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    const { activeItem } = this.state
-
-    return (
-      <div>
-          <Menu inverted icon fixed='bottom'  borderless widths={4}
+  return (
+      <footer className='footer'>
+          <Menu inverted icon fixed='bottom'  borderless widths={5}
             style= {{
               height: '8vh',
               width: '100vw'
@@ -21,42 +18,57 @@ export default class Nav extends Component {
           >
           <Menu.Item
             name='home icon'
-            active={activeItem === 'home icon'}
-            onClick={this.handleItemClick}
+            active={location.pathname === '/'}
+            onClick={()=> {navigate('/')}}
           >
-          <Link to='/feed'>
+          <div to='/feed' className='footer__nav__link'>
             <Icon name='home' />
-          </Link>
+            <p className='footer__nav__title'>Accueil</p>
+          </div>
           </Menu.Item>
           <Menu.Item
             name='favorite icon'
-            active={activeItem === 'favorite icon'}
-            onClick={this.handleItemClick}
+            active={location.pathname === '/favoris'}
+            onClick={()=> navigate('/favoris')}
           >
-          <Link to='/favoris'>
+          <div to='/favoris' className='footer__nav__link'>
             <Icon name='favorite' />
-          </Link>
+            <p className='footer__nav__title'>Favoris</p>
+          </div>
           </Menu.Item>
           <Menu.Item
             name='search icon'
-            active={activeItem === 'search icon'}
-            onClick={this.handleItemClick}
+            active={location.pathname === '/autour-de-moi'}
+            onClick={()=> navigate('/autour-de-moi')}
           >
-          <Link to='/autour-de-moi'>
+          <div to='/autour-de-moi' className='footer__nav__link'>
             <Icon name='search' />
-          </Link>
+            <p className='footer__nav__title'>Recherche</p>
+          </div>
+          </Menu.Item>
+          <Menu.Item
+            name='mail icon'
+            active={location.pathname === '/messagerie'}
+            onClick={()=> navigate('#')}
+          >
+          <div to='#' className='footer__nav__link'>
+            <Icon name='mail' />
+            <p className='footer__nav__title'>Messagerie</p>
+          </div>
           </Menu.Item>
           <Menu.Item
             name='user profile icon'
-            active={activeItem === 'user profile icon'}
-            onClick={this.handleItemClick}
+            active={location.pathname === '/mon-compte'}
+            onClick={()=> navigate('/mon-compte')}
           >
-          <Link to='/mon-compte'>
+          <div to='/mon-compte' className='footer__nav__link'>
             <Icon name='user' />
-          </Link>
+            <p className='footer__nav__title'>Profil</p>
+          </div>
           </Menu.Item>
         </Menu>
-      </div>
+      </footer>
     )
-  }
 }
+
+export default Nav;

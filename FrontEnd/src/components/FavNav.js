@@ -10,8 +10,8 @@ function FavNav() {
   const activeItem = useSelector((state) => state.favorites.activeItem);
   
   return (
-    <div className="fav">
-      <Menu className='fav__menu' inverted pointing secondary
+    <div className="fav-nav">
+      <Menu className='fav-nav__menu' inverted pointing secondary
         style={{
           backgroundColor: 'black'
         }}

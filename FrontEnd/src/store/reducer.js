@@ -26,6 +26,11 @@ import {
   SUBMIT_LOGIN, 
   SUBMIT_LOGIN_SUCCESS,
   SUBMIT_LOGIN_ERROR, 
+
+  CHANGE_EVENTS_SEARCH,
+  SUBMIT_EVENTS_SEARCH,
+  SUBMIT_EVENTS_SEARCH_SUCCESS,
+  SUBMIT_EVENTS_SEARCH_ERROR,
 } from './actions';
 
 const initialState = {
@@ -54,6 +59,12 @@ const initialState = {
     isGetFollowersLoading: false,
     isGetSubscriptionLoading: false,
     isSearchLoading: false,
+  },
+  events: {
+    list:[],
+    searchInput: '',
+    searchResults:[],
+    isLoading: false,
   }
 };
 
@@ -157,7 +168,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         events: {
           ...state.events,
-          ...action.events,
+          list: {...action.events},
           isLoading:false, 
           hasError: false,
         }
@@ -277,6 +288,40 @@ const reducer = (state = initialState, action) => {
           searchResults: [action.users],
           isSearchLoading: false, 
           hasSearchError: false
+        }
+      };
+    case CHANGE_EVENTS_SEARCH:
+      return {
+        ...state,
+        events : {
+          ...state.events, 
+          searchInput: action.searchInput,
+        }
+      };
+    case SUBMIT_EVENTS_SEARCH:
+        return {
+          ...state,
+          events : {
+            ...state.events, 
+            isLoading: true,
+          }
+        };
+    case SUBMIT_EVENTS_SEARCH_SUCCESS:
+      return {
+        ...state,
+        events : {
+          ...state.events, 
+          searchResults: action.eventsList,
+          hasError: false,
+        }
+      };
+    case SUBMIT_EVENTS_SEARCH_ERROR:
+      return {
+        ...state,
+        events : {
+          ...state.events, 
+          isLoading: false,
+          hasError: true,
         }
       };
     default:

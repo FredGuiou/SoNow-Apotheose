@@ -1,10 +1,18 @@
 import ProtectedRoute from './ProtectedRoute';
 
 import '../styles/search.scss';
-import { Input, Menu, Container, Image } from 'semantic-ui-react';
+import { Input, Menu, Container, Image, Form } from 'semantic-ui-react';
+import { changeEventsSearch, submitEventsSearch } from '../store/actions';
+import { useSelector, useDispatch} from 'react-redux';
 
 
 function SearchBar() {
+
+  const dispatch = useDispatch();
+  const { 
+    searchInput
+  } = useSelector((state) => state.events);
+
   return (
     <div className='search-container'>
       <Menu 
@@ -22,11 +30,15 @@ function SearchBar() {
           height: '50px',
         }}
       >
-          <Input
+        <Form onSubmit={()=> dispatch(submitEventsSearch())}>
+          <Form.Input
             icon= 'sliders horizontal'
             placeholder=' 🔍 Rechercher'
             size='large'
+            value={searchInput}
+            onChange={(e)=> dispatch(changeEventsSearch(e.target.value))}
           />
+        </Form>
           {/* <div className="searchInputs">
             <input type="text" placeholder={placeholder}/>
             <div className="searchIcon"><i class="search icon"></i></div>

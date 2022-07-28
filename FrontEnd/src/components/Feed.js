@@ -1,7 +1,10 @@
-import ProtectedRoute from './ProtectedRoute';
 import FeedEvent from './FeedEvent';
 import "../styles/feed.scss";
+// Import data en dur pour préparer la connexion API 
 import events from '../data/eventsData';
+import Search from './Search';
+
+
 
 function Feed() {
   return (
@@ -20,4 +23,4 @@ function Feed() {
   );
 }
   
-export default ProtectedRoute(Feed);
+  export default Feed;

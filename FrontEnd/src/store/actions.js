@@ -24,6 +24,11 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SUBMIT_LOGIN_ERROR = 'SUBMIT_LOGIN_ERROR';
 export const SUBMIT_LOGIN_SUCCESS = 'SUBMIT_LOGIN_SUCCESS';
 
+export const CHANGE_EVENTS_SEARCH = 'CHANGE_EVENTS_SEARCH';
+export const SUBMIT_EVENTS_SEARCH = 'SUBMIT_EVENTS_SEARCH';
+export const SUBMIT_EVENTS_SEARCH_SUCCESS = 'SUBMIT_EVENTS_SEARCH_SUCCESS';
+export const SUBMIT_EVENTS_SEARCH_ERROR = 'SUBMIT_EVENTS_SEARCH_ERROR';
+
 export const changeFriendsActiveItem= (activeItem) => ({
   type: CHANGE_FRIENDS_ACTIVE_ITEM,
   activeItem
@@ -138,4 +143,24 @@ export const getUsersSuccess= (users) => ({
 
 export const getUsersError= () => ({
   type: GET_USERS_ERROR,
+});
+
+
+
+export const changeEventsSearch= (searchInput) => ({
+  type: CHANGE_EVENTS_SEARCH,
+  searchInput, 
+});
+
+export const submitEventsSearch= () => ({
+  type: SUBMIT_EVENTS_SEARCH,
+});
+
+export const submitEventsSearchSuccess= (eventsList) => ({
+  type: SUBMIT_EVENTS_SEARCH_SUCCESS,
+  eventsList
+});
+
+export const submitEventsSearchError= () => ({
+  type: SUBMIT_EVENTS_SEARCH_ERROR,
 });

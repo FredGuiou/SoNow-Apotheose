@@ -1,68 +1,21 @@
 @import './properties.scss';
 
 .footer {
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  background-color: black;
-  height: 10vh;
-  width: 100%;
 
   &__nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
 
-    &__logo {
-      width: 150px;
-    
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    &__icons {
-      width: 60vw;
-      margin-right: 2rem;
-      margin-left: 2rem;
-      padding-left: 6rem;
+    &__link {
       display: flex;
-      justify-content: space-evenly;
-
-        &__item {
-          color: white;
-          width: 50px;
-          margin-right: 0.3em;
-
-            &:hover {
-              cursor: pointer;
-            }
-        }
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+      text-align: center;
     }
-
-  }
-
-  &__search {
-    border: 1px solid $border-color-grey;
-    border-radius: 3px;
-    background-color: $background-grey;
-    min-width: 225px;
-    min-height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .footer__search {
-    display: none !important;
-  }
-
-  .footer__nav__logo {
-    display: none !important;
+    
+    &__title {
+      margin-top: 0.2rem;
+      font-size: 0.6rem;
+      padding-right: 0.2rem;
+    }
   }
 }

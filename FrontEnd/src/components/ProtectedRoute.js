@@ -5,6 +5,7 @@ import Authentification from './Authentification';
 const withAuth = (Component) => {
   return () => {
       const user = useSelector((state)=> state.user.isConnected);
+      console.log('isConnected' + user);
       if (user) {
         return <Component/>;
       } else {

@@ -61,7 +61,7 @@ module.exports = {
     async getByTagId(req, res) {
         try {
             const events = await eventDataMapper.findByTagId(req.params.event_id);
-            res.json(events);
+            return res.json(events);
 
         } catch (ApiError) {
             // throw new ApiError('', {statusCode: });

@@ -36,7 +36,7 @@ module.exports = {
                         return res.status(200).json({accessToken, refreshToken ,user: req.session.user});
                     }
 
-                    return res.status(403).json({ errorStatus: 403, message: 'Mauvais identifiant ou mot de passe' });
+                    return res.status(403).json({ codeStatus: 403, message: 'Mauvais identifiant ou mot de passe' });
                 });
             } else {
                 return res.status(404).json('user_not_found');
@@ -46,7 +46,23 @@ module.exports = {
         }
     },
 
-    
+
+
+
+
+    //Méthode qui permet à l'utilisateur de se déconnecter de sa session.
+    async logoutUser (req, res) {
+        //On détruit la session utilisateur.
+        try {
+        req.session.destroy();
+
+        return res.status(204).json('Utilisateur déconnecté');
+
+        } catch (ApiError) {
+            // throw new ApiError('', {statusCode: });
+        }
+        
+    },
 
 
 
@@ -68,8 +84,6 @@ module.exports = {
     async followEvent () {
 
     },
-
-
 
 
     async unfollowEvent () {

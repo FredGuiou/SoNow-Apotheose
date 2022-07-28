@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_EVENTS, getEventsSuccess, getEventsError } from '../actions';
+import { GET_EVENTS, getEventsSuccess, getEventsError, SUBMIT_EVENTS_SEARCH, submitEventsSearchSuccess, submitEventsSearchError } from '../actions';
 
 const eventsMiddleware = (store) => (next) => (action) => {
   if (action.type === GET_EVENTS) {
@@ -27,6 +27,33 @@ const eventsMiddleware = (store) => (next) => (action) => {
         store.dispatch(getEventsError());
       });
 
+  } else if (action.type === SUBMIT_EVENTS_SEARCH) {
+    console.log('events search')
+    next(action);
+
+    const state = store.getState();
+
+    const config = {   
+      method: 'post',
+      url: 'https://sonow.herokuapp.com/api/event', 
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'Access-Control-Allow-Origin': '*'
+      }, 
+      data: {
+        events : state.events.title
+      }
+    }
+
+    axios(config)
+      .then((response) => {
+        console.log(`submit login success ${response.data}`);
+        store.dispatch(submitEventsSearchSuccess(response.data.events));
+      })
+      .catch(() => {
+        store.dispatch(submitEventsSearchError());
+      });
+  
   }
   else {
     next(action);

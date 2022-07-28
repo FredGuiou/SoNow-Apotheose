@@ -1,4 +1,3 @@
-//TODO: Gestion des erreurs via un controller error.
 //TODO: Implémentation de JOI validation schema.
 
 require('dotenv').config();
@@ -58,9 +57,10 @@ module.exports = {
 
         return res.status(204).json('Utilisateur déconnecté');
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
-        }
+    } catch (error) {
+        res.json({status: "Service Unvailable", code: 503, message: "User logoutUser throw an error"});
+        throw new ApiError('Service Unvailable', {statusCode: 503 });
+    };
         
     },
 
@@ -100,8 +100,9 @@ module.exports = {
             const userDb = await userDataMapper.findAll();
             return res.json(userDb);
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Not found", code: 404, message: "User getAllUsers throw an error"});
+            throw new ApiError('Users not found', {statusCode: 404 });
         };
     },
 
@@ -114,12 +115,13 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByPk(req.params.user_id);
             if(!userDb){
-                // throw new ApiError('', { statusCode: });
+                throw new ApiError('User not found', {statusCode: 404 });
             };
             return res.json(userDb);
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Not found", code: 404, message: "User getOneUserById throw an error"});
+            throw new ApiError('User not found', {statusCode: 404 });
         };
     },
 
@@ -132,11 +134,12 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByNickname(req.body.nickname);
             if(!userDb){
-                // throw new ApiError('', { statusCode:  });
+                throw new ApiError('User not found', {statusCode: 404 });
             };
             return res.json(userDb);
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Not found", code: 404, message: "User getOneUserByNickname throw an error"});
+            throw new ApiError('User not found', {statusCode: 404 });
         };
         
     },
@@ -162,7 +165,7 @@ module.exports = {
                 const insertUser = await userDataMapper.insert(newUser);
                 res.json(insertUser);
             } else {
-                console.log("Ça bug ! :D");
+                throw new ApiError('User not created', {statusCode: 503 });
             };
             //On vérifie que le format de l'email soit valide avec Joi validation
                 //Si le format de la regex n'est pas respecté
@@ -173,8 +176,9 @@ module.exports = {
                 //Si le format de mot de passe n'est pas respecté
                     //On envoie un message d'erreur
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Service Unvailable", code: 503, message: "User createUser throw an error"});
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
 
@@ -186,12 +190,13 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByPk(req.params.user_id);
             if (!userDb) {
-                //throw new ApiError('', { statusCode: });
+                throw new ApiError('User not updated', {statusCode: 503 });
             };
             const savedUser = await userDataMapper.update(req.params.user_id, req.body);
             return res.json(savedUser);
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Service Unvailable", code: 503, message: "User updateUser throw an error"});
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
 
@@ -203,13 +208,14 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByPk(req.params.user_id);
             if (!userDb) {
-                // throw new ApiError('', { statusCode: });
+                throw new ApiError('User not updated', {statusCode: 503 });
             };
             await userDataMapper.delete(req.params.user_id);
             return res.status(204).json({code: 204, message: "Cet utilisateur a bien été supprimer"});
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Service Unvailable", code: 503, message: "User deleteUser throw an error"});
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     }
 };

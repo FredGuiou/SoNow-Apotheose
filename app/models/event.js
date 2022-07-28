@@ -93,7 +93,7 @@ module.exports = {
 
 
 
-// TODO: YA CA A FAIRE ENCORE LA !! x'D
+// TODO: A TESTER QUAND LES DONNEES DE LA TABLE DE LIAISON SERONT INSCRITES EN BDD
   //Rechercher un évènement en fonction de son tag.
   async findByTagId(tagId) {
     // On veut d'abord vérifié que la category demandé existe
@@ -102,7 +102,8 @@ module.exports = {
         //throw new ApiError('', { statusCode:  });
     }
 
-    const result = await client.query('SELECT * FROM public.event WHERE code_tag = $1', [tagId]);
+    // const result = await client.query('SELECT * FROM public.event WHERE code_tag = $1', [tagId]);
+    const result = await client.query('SELECT * FROM public.event JOIN public.tag ON event.tag_id = tag.id WHERE code_tag = $1', [tagId]);
     return result.rows;
 },
 

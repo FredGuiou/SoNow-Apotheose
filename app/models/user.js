@@ -1,6 +1,5 @@
-//TODO: Gestion des erreurs via un controller error.
-
 const client = require("../config/db");
+const { ApiError } = require('../services/errorHandler');
 
 module.exports = {
 
@@ -25,8 +24,8 @@ module.exports = {
     return result.rows;
 
     } catch (error) {
-      console.log(error);
-      return null;
+      res.json({status: "Not Found", code: 404, message: "User findAll throw an error"});
+      throw new ApiError('Users not found', {statusCode: 404 });
     };
   },
 
@@ -50,8 +49,8 @@ module.exports = {
 
     return result.rows[0];
     } catch (error) {
-      console.log(error);
-      return null;
+      res.json({status: "Not Found", code: 404, message: "User findByPk throw an error"});
+      throw new ApiError('User not found', {statusCode: 404 });
     };
   },
 
@@ -78,8 +77,8 @@ module.exports = {
     return result.rows[0];
 
     } catch (error) {
-      console.log(error);
-      return null;
+      res.json({status: "Not Found", code: 404, message: "User findByEmail throw an error"});
+      throw new ApiError('Users not found', {statusCode: 404 });
     };
   },
 
@@ -106,8 +105,9 @@ module.exports = {
     return result.rows[0];
 
     } catch (error) {
-      console.log(error);
-      return null;
+      res.json({status: "Not Found", code: 404, message: "User findByNickname throw an error"});
+      throw new ApiError('Users not found', {statusCode: 404 });
+      
     };
   },
 
@@ -130,9 +130,9 @@ module.exports = {
     return result.rows[0];
 
     } catch (error) {
-      console.log(error);
-      return null;
-    }
+      res.json({status: "Service Unvailable", code: 503, message: "User insert throw an error"});
+      throw new ApiError('User non inserted', {statusCode: 503 });
+    };
   },
 
   //Mettre à jours les infos d'un utilisateur en BDD.
@@ -152,9 +152,9 @@ module.exports = {
       return savedUser.rows[0];
 
     } catch (error) {
-      console.log(error);
-      return null;
-    }
+      res.json({status: "Service Unvailable", code: 503, message: "User update throw an error"});
+      throw new ApiError('User not updated', {statusCode: 503 });
+    };
   },
   
   //Supprimer un utilisateur de la BDD.
@@ -174,8 +174,8 @@ module.exports = {
       return !!result.rowCount;
       
     } catch (error) {
-      console.log(error);
-      return null;
-    }
+      res.json({status: "Service Unvailable", code: 503, message: "User delete throw an error"});
+      throw new ApiError('User not deleted', {statusCode: 503 });
+    };
   }
 };

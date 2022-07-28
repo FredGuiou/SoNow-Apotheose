@@ -1,3 +1,4 @@
+export const CHANGE_FAVORITES_ACTIVE_ITEM = 'CHANGE_FAVORITES_ACTIVE_ITEM';
 export const CHANGE_FRIENDS_ACTIVE_ITEM = 'CHANGE_FRIENDS_ACTIVE_ITEM';
 export const CHANGE_PROFIL_ACTIVE_ITEM = 'CHANGE_PROFIL_ACTIVE_ITEM';
 export const CHANGE_USERS_SEARCH_INPUT= 'CHANGE_USERS_SEARCH_INPUT';
@@ -25,6 +26,11 @@ export const SUBMIT_SIGNUP_SUCESS = 'SUBMIT_SIGNUP_SUCESS';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SUBMIT_LOGIN_ERROR = 'SUBMIT_LOGIN_ERROR';
 export const SUBMIT_LOGIN_SUCCESS = 'SUBMIT_LOGIN_SUCCESS';
+
+export const changeFavoritesActiveItem= (activeItem) => ({
+  type: CHANGE_FAVORITES_ACTIVE_ITEM,
+  activeItem
+});
 
 export const changeFriendsActiveItem= (activeItem) => ({
   type: CHANGE_FRIENDS_ACTIVE_ITEM,

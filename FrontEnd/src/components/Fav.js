@@ -1,5 +1,5 @@
 import ProtectedRoute from './ProtectedRoute';
-// import FavNav from './FavNav';
+import FavNav from './FavNav';
 // TODO: Add FavNav
 import EventCardProfile from './EventCardProfile';
 
@@ -11,6 +11,7 @@ import events from '../data/eventsData';
 function Fav() {
   return (
     <div className="fav-container">
+      <FavNav/>
       <div className='fav-container__event'>
         {
           events.map((e) => (

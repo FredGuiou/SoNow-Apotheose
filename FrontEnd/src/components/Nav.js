@@ -19,7 +19,7 @@ function Nav() {
           <Menu.Item
             name='home icon'
             active={location.pathname === '/'}
-            onClick={()=> {navigate('/')}}
+            onClick={()=> {navigate('/feed')}}
           >
           <div to='/feed' className='footer__nav__link'>
             <Icon name='home' />

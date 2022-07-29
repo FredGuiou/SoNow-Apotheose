@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_EVENT, GET_EVENTS, getEventsSuccess, getEventsError } from '../actions';
+import { GET_EVENT, GET_EVENTS, getEventsSuccess, getEventsError, SUBMIT_EVENTS_SEARCH, submitEventsSearchSuccess, submitEventsSearchError } from '../actions';
 
 const eventsMiddleware = (store) => (next) => (action) => {
   if (action.type === GET_EVENTS) {
@@ -12,9 +12,9 @@ const eventsMiddleware = (store) => (next) => (action) => {
       method: 'get',
       url: 'https://sonow.herokuapp.com/api/event', 
       headers: { 
-        'content-type': 'application/json; charset=utf-8', 
+        'content-type': 'application/json; charset=utf-8',
         'Access-Control-Allow-Origin': '*',
-        'Authorization': `${state.user.accessToken}`
+        'Authorization': `Bearer ${state.user.accessToken}`
       }, 
     };
 
@@ -54,10 +54,37 @@ const eventsMiddleware = (store) => (next) => (action) => {
         store.dispatch(getEventsError());
       });
 
+  } else if (action.type === SUBMIT_EVENTS_SEARCH) {
+    console.log('searchEventMiddleware');
+    next(action);
+
+    const state = store.getState();
+
+    const config = {   
+      method: 'post',
+      url: 'https://sonow.herokuapp.com/api/event/search', 
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `Bearer ${state.user.accessToken}`
+      }, 
+      data: {
+        title : state.events.searchInput
+      }
+    }
+
+    axios(config)
+      .then((response) => {
+        console.log(`submit events search success ${response.data}`);
+        store.dispatch(submitEventsSearchSuccess(response.data));
+      })
+      .catch(() => {
+        store.dispatch(submitEventsSearchError());
+      });
   }
   else {
     next(action);
   }
 };
 
-export default eventsMiddleware; 
+export default eventsMiddleware;   

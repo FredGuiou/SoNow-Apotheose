@@ -11,7 +11,9 @@ function UserCard() {
 
   const dispatch = useDispatch();
   const navigate= useNavigate();
+
   const activeItem = useSelector((state) => state.profil.activeItem);
+  const user = useSelector((state) => state.user);
   
   return (
   <Header attached='top' style={{backgroundColor: 'black', border: 'none'}}>  
@@ -26,7 +28,7 @@ function UserCard() {
         width={3}
       >
         <div style={{margin: '0.5em'}}>
-          <p className='profile-counter__name'>Romain P.</p>
+          <p className='profile-counter__name'>{user.nickname}</p>
           <Image circular src={profile} size='tiny'/>
         </div>
       </Grid.Column>
@@ -45,6 +47,7 @@ function UserCard() {
             margin: '0.5em'
           }}
         >
+          {/* En attente du back */}
           <p className='profile-counter__content'>562</p>
           <p className='profile-counter__title'>Evènements</p>
         </Container>
@@ -56,6 +59,7 @@ function UserCard() {
             margin: '0.5em'
           }} 
         >
+          {/* En attente du back */}
           <p className='profile-counter__content'>1364</p>
           <p className='profile-counter__title'>Abonnements</p>
         </Container>
@@ -67,6 +71,7 @@ function UserCard() {
             margin: '0.5em'
           }} 
         >
+          {/* En attente du back */}
           <p className='profile-counter__content'>698</p>
           <p className='profile-counter__title'>Abonnés</p>
         </Container>

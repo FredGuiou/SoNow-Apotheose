@@ -31,7 +31,7 @@ const errorHandler = (err, res) => {
     }
 };
 
-module.export = {
+module.exports = {
     ApiError,
     errorHandler,
 };

@@ -1,5 +1,9 @@
 import axios from 'axios';
+<<<<<<< HEAD
 import { GET_EVENTS, SUBMIT_EVENTS_SEARCH, getEventsSuccess, getEventsError, submitEventsSearchSuccess, submitEventsSearchError} from '../actions';
+=======
+import { GET_EVENT, GET_EVENTS, getEventsSuccess, getEventsError, SUBMIT_EVENTS_SEARCH, submitEventsSearchSuccess, submitEventsSearchError } from '../actions';
+>>>>>>> d7b58fa301c3eb09523f81865029279ba95059a5
 
 const eventsMiddleware = (store) => (next) => (action) => {
   if (action.type === GET_EVENTS) {
@@ -11,6 +15,33 @@ const eventsMiddleware = (store) => (next) => (action) => {
     const config = {   
       method: 'get',
       url: 'https://sonow.herokuapp.com/api/event', 
+      headers: { 
+        'content-type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `Bearer ${state.user.accessToken}`
+      }, 
+    };
+
+    axios(config)
+      .then((response) => {
+        console.log(response.data);
+        store.dispatch(getEventsSuccess(response.data));
+      })
+      .catch(() => {
+        store.dispatch(getEventsError());
+      });
+
+  } else if (action.type === GET_EVENT) {
+    console.log('eventMiddleware');
+    next(action);
+
+    const state = store.getState();
+
+    const id = state.event.activeEvent;
+
+    const config = {
+      method: 'get',
+      url: `https://sonow.herokuapp.com/api/event${id}`, 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -54,11 +85,11 @@ const eventsMiddleware = (store) => (next) => (action) => {
       .catch(() => {
         store.dispatch(submitEventsSearchError());
       });
-  
+
   }
   else {
     next(action);
   }
 };
 
-export default eventsMiddleware; 
+export default eventsMiddleware;   

@@ -1,16 +1,28 @@
 import {
+  CHANGE_ACTIVE_EVENT, 
+  CHANGE_EVENTS_SEARCH,
   CHANGE_FAVORITES_ACTIVE_ITEM, 
   CHANGE_FRIENDS_ACTIVE_ITEM, 
-  CHANGE_PROFIL_ACTIVE_ITEM,
-  CHANGE_USERS_SEARCH_INPUT, 
   CHANGE_LOGIN_INPUTS, 
+  CHANGE_PROFIL_ACTIVE_ITEM,
   CHANGE_SIGNUP_INPUTS,
+  CHANGE_USERS_SEARCH_INPUT, 
+  GET_EVENT,
+  GET_EVENT_ERROR, 
+  GET_EVENT_SUCCESS,
   GET_EVENTS,
   GET_EVENTS_ERROR, 
   GET_EVENTS_SUCCESS,
+  GET_FAVORITES,
+  GET_FAVORITES_ERROR, 
+  GET_FAVORITES_SUCCESS,
   GET_FOLLOWERS,
   GET_FOLLOWERS_ERROR, 
   GET_FOLLOWERS_SUCCESS,
+  LOGOUT,
+  SUBMIT_LOGIN, 
+  SUBMIT_LOGIN_SUCCESS,
+  SUBMIT_LOGIN_ERROR, 
   GET_SUBSCRIPTIONS,
   GET_SUBSCRIPTIONS_ERROR,
   GET_SUBSCRIPTIONS_SUCCESS,
@@ -26,10 +38,6 @@ import {
   SUBMIT_SIGNUP,
   SUBMIT_SIGNUP_SUCESS,
   SUBMIT_SIGNUP_ERROR,
-  SUBMIT_LOGIN, 
-  SUBMIT_LOGIN_SUCCESS,
-  SUBMIT_LOGIN_ERROR,
-  LOGOUT, 
 } from './actions';
 
 const initialState = {
@@ -75,11 +83,27 @@ const initialState = {
     isGetFollowersLoading: false,
     isGetSubscriptionLoading: false,
     isSearchLoading: false,
-  }, 
+  },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_ACTIVE_EVENT:
+      return {
+        ...state,
+        event : {
+          ...state.event, 
+          activeEvent: action.id
+        }
+      };
+    case CHANGE_EVENTS_SEARCH:
+      return {
+        ...state,
+        events : {
+          ...state.events, 
+          searchInput: action.searchInput,
+        }
+      };
     case CHANGE_FAVORITES_ACTIVE_ITEM:
       return {
         ...state,
@@ -96,20 +120,20 @@ const reducer = (state = initialState, action) => {
           activeItem: action.activeItem,
         }
       };
+    case CHANGE_LOGIN_INPUTS:
+      return {
+        ...state,
+        login: {
+          ...state.login,
+          [action.inputName]: action.newValue
+        }
+      };
     case CHANGE_PROFIL_ACTIVE_ITEM:
       return {
         ...state,
         profil : {
           ...state.profil, 
           activeItem: action.activeItem,
-        }
-      };
-    case CHANGE_USERS_SEARCH_INPUT:
-      return {
-        ...state,
-        users : {
-          ...state.users, 
-          searchInput: action.newValue
         }
       };
     case CHANGE_SIGNUP_INPUTS:
@@ -120,49 +144,48 @@ const reducer = (state = initialState, action) => {
           [action.inputName]: action.newValue,
         }
       };
-    case SUBMIT_SIGNUP:
+    case CHANGE_USERS_SEARCH_INPUT:
       return {
         ...state,
-        signup : {
-          ...state.signup, 
-          isLoading: true,
+        users : {
+          ...state.users, 
+          searchInput: action.newValue
         }
       };
-    case SUBMIT_SIGNUP_SUCESS:
+    case GET_EVENT:
       return {
         ...state,
-        signup : {
-          ...state.signup, 
-          isLoading: false,
-          hasSignupError: false,
+        event: {
+          isLoading:true,
         }
       };
-      case SUBMIT_SIGNUP_ERROR:
-        return {
-          ...state,
-          user: {
-            ...state.user, 
-            isConnected:false,
-            hasSignupError: true,
-          }
-        };
-    case CHANGE_LOGIN_INPUTS:
+    case GET_EVENT_SUCCESS:
       return {
         ...state,
-        login: {
-          ...state.login,
-          [action.inputName]: action.newValue
+        event: {
+          ...state.event,
+          list: action.event,
+          isLoading:false, 
+          hasError: false,
         }
       };
-    case SUBMIT_LOGIN:
+    case GET_EVENT_ERROR:
       return {
         ...state,
-        login: {
-          ...state.login,
-          isLoading: true
+        event: {
+          ...state.events,
+          isLoading:false,
+          hasError: true
         }
       };
-    case SUBMIT_LOGIN_SUCCESS:
+    case GET_EVENTS:
+    return {
+      ...state,
+      events: {
+        isLoading:true,
+      }
+    };
+    case GET_EVENTS_SUCCESS:
       return {
         ...state,
         user: {
@@ -172,37 +195,37 @@ const reducer = (state = initialState, action) => {
           hasLoginError: false
         }
       };
-    case SUBMIT_LOGIN_ERROR:
-      return {
-        ...state,
-        user: {
-          ...state.user, 
-          isConnected:false,
-          hasLoginError: true,
-        }
-      };
-      case GET_EVENTS:
-      return {
-        ...state,
-        events: {
-          isLoading:true,
-        }
-      };
-    case GET_EVENTS_SUCCESS:
-      return {
-        ...state,
-        events: {
-          ...state.events,
-          list: action.events,
-          isLoading:false, 
-          hasError: false,
-        }
-      };
     case GET_EVENTS_ERROR:
       return {
         ...state,
         events: {
           ...state.events,
+          isLoading:false,
+          hasError: true
+        }
+      };
+    case GET_FAVORITES:
+      return {
+        ...state,
+        favorites: {
+          isLoading:true,
+        }
+      };
+    case GET_FAVORITES_SUCCESS:
+      return {
+        ...state,
+        favorites: {
+          ...state.favorites,
+          list: action.events,
+          isLoading:false, 
+          hasError: false,
+        }
+      };
+    case GET_FAVORITES_ERROR:
+      return {
+        ...state,
+        favorites: {
+          ...state.favorites,
           isLoading:false,
           hasError: true
         }
@@ -261,6 +284,33 @@ const reducer = (state = initialState, action) => {
           hasGetSubscriptionsError: true,
         }
       };
+    case GET_USERS:
+      return {
+        ...state,
+        friends: {
+          ...state.friends, 
+          isGetUsersLoading: true,
+        }
+      };
+    case GET_USERS_SUCCESS:
+      return {
+        ...state,
+        friends: {
+          ...state.friends,
+          users:[...action.users],
+          isGetUsersLoading: false, 
+          hasGetUsersError: false,
+        }
+      };
+    case GET_USERS_ERROR:  
+      return {
+        ...state,
+        friends: {
+          ...state.friends,
+          isGetSUsersLoading:false, 
+          hasGetSUsersError: true,
+        }
+      };
     case LOGOUT:
       return {
         ...state,
@@ -283,33 +333,6 @@ const reducer = (state = initialState, action) => {
           searchInput: '',
           searchResults:[],
           isLoading: false,
-        }
-      };
-    case GET_USERS:
-      return {
-        ...state,
-        friends: {
-          ...state.friends, 
-          isGetUsersLoading: true,
-        }
-      };
-    case GET_USERS_SUCCESS:
-      return {
-        ...state,
-        friends: {
-          ...state.friends,
-          users:[...action.users],
-          isGetUsersLoading: false, 
-          hasGetUsersError: false,
-        }
-      };
-    case GET_USERS_ERROR:
-      return {
-        ...state,
-        friends: {
-          ...state.friends,
-          isGetSUsersLoading:false, 
-          hasGetSUsersError: true,
         }
       };
     case SUBMIT_EVENTS_SEARCH:
@@ -336,6 +359,60 @@ const reducer = (state = initialState, action) => {
           ...state.events, 
           isLoading: false,
           hasError: true,
+        }
+      };
+    case SUBMIT_SIGNUP:
+      return {
+        ...state,
+        signup : {
+          ...state.signup, 
+          isLoading: true,
+        }
+      };
+    case SUBMIT_SIGNUP_SUCESS:
+      return {
+        ...state,
+        signup : {
+          ...state.signup, 
+          isLoading: false,
+          hasSignupError: false,
+        }
+      };
+    case SUBMIT_SIGNUP_ERROR:
+      return {
+        ...state,
+        user: {
+          ...state.user, 
+          isConnected:false,
+          hasSignupError: true,
+        }
+      };
+    case SUBMIT_LOGIN:
+      return {
+        ...state,
+        login: {
+          ...state.login,
+          isLoading: true
+        }
+      };
+    case SUBMIT_LOGIN_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...action.user,
+          accessToken: action.accessToken,
+          refreshToken: action.refreshToken,
+          isConnected:true,
+          hasLoginError: false
+        }
+      };
+    case SUBMIT_LOGIN_ERROR:
+      return {
+        ...state,
+        user: {
+          ...state.user, 
+          isConnected:false,
+          hasLoginError: true,
         }
       };
     case SUBMIT_USERS_SEARCH:

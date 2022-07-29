@@ -26,4 +26,4 @@ function Feed() {
   );
 }
   
-export default ProtectedRoute(Feed);
+  export default ProtectedRoute(Feed);

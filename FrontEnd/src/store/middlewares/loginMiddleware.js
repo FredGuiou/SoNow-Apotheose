@@ -2,6 +2,7 @@ import axios from 'axios';
 import { SUBMIT_LOGIN, submitLoginSuccess, submitLoginError, LOGOUT} from '../actions';
 
 const loginMiddleware = (store) => (next) => (action) => {
+  
   if (action.type === SUBMIT_LOGIN) {
 
     // console.log('loginMiddleware');

@@ -1,7 +1,4 @@
 export const CHANGE_EVENTS_SEARCH = 'CHANGE_EVENTS_SEARCH';
-export const SUBMIT_EVENTS_SEARCH = 'SUBMIT_EVENTS_SEARCH';
-export const SUBMIT_EVENTS_SEARCH_SUCCESS = 'SUBMIT_EVENTS_SEARCH_SUCCESS';
-export const SUBMIT_EVENTS_SEARCH_ERROR = 'SUBMIT_EVENTS_SEARCH_ERROR';
 export const CHANGE_ACTIVE_EVENT = 'CHANGE_ACTIVE_EVENT';
 export const CHANGE_FAVORITES_ACTIVE_ITEM = 'CHANGE_FAVORITES_ACTIVE_ITEM';
 export const CHANGE_FRIENDS_ACTIVE_ITEM = 'CHANGE_FRIENDS_ACTIVE_ITEM';
@@ -220,17 +217,4 @@ export const submitEventsSearchError= () => ({
 
 export const logout = () => ({
   type: LOGOUT,
-});
-
-export const submitEventsSearch= () => ({
-  type: SUBMIT_EVENTS_SEARCH,
-});
-
-export const submitEventsSearchSuccess= (eventsList) => ({
-  type: SUBMIT_EVENTS_SEARCH_SUCCESS,
-  eventsList
-});
-
-export const submitEventsSearchError= () => ({
-  type: SUBMIT_EVENTS_SEARCH_ERROR,
 });

@@ -1,9 +1,5 @@
 import axios from 'axios';
-<<<<<<< HEAD
-import { GET_EVENTS, SUBMIT_EVENTS_SEARCH, getEventsSuccess, getEventsError, submitEventsSearchSuccess, submitEventsSearchError} from '../actions';
-=======
 import { GET_EVENT, GET_EVENTS, getEventsSuccess, getEventsError, SUBMIT_EVENTS_SEARCH, submitEventsSearchSuccess, submitEventsSearchError } from '../actions';
->>>>>>> d7b58fa301c3eb09523f81865029279ba95059a5
 
 const eventsMiddleware = (store) => (next) => (action) => {
   if (action.type === GET_EVENTS) {

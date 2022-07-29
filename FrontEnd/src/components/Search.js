@@ -29,7 +29,7 @@ function Search() {
       >
           <Input
             icon= 'sliders horizontal'
-            placeholder=' 🔍 Rechercher'
+            placeholder='Rechercher...'
             size='large'
           />
         </Menu.Item>

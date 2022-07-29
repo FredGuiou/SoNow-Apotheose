@@ -42,7 +42,7 @@ function Nav() {
             onClick={()=> navigate('/autour-de-moi')}
           >
           <div to='/autour-de-moi' className='footer__nav__link'>
-            <Icon name='search' />
+            <Icon name='compass' />
             <p className='footer__nav__title'>Recherche</p>
           </div>
           </Menu.Item>

@@ -1,12 +1,23 @@
+export const CHANGE_EVENTS_SEARCH = 'CHANGE_EVENTS_SEARCH';
+export const SUBMIT_EVENTS_SEARCH = 'SUBMIT_EVENTS_SEARCH';
+export const SUBMIT_EVENTS_SEARCH_SUCCESS = 'SUBMIT_EVENTS_SEARCH_SUCCESS';
+export const SUBMIT_EVENTS_SEARCH_ERROR = 'SUBMIT_EVENTS_SEARCH_ERROR';
+export const CHANGE_ACTIVE_EVENT = 'CHANGE_ACTIVE_EVENT';
 export const CHANGE_FAVORITES_ACTIVE_ITEM = 'CHANGE_FAVORITES_ACTIVE_ITEM';
 export const CHANGE_FRIENDS_ACTIVE_ITEM = 'CHANGE_FRIENDS_ACTIVE_ITEM';
 export const CHANGE_PROFIL_ACTIVE_ITEM = 'CHANGE_PROFIL_ACTIVE_ITEM';
 export const CHANGE_USERS_SEARCH_INPUT= 'CHANGE_USERS_SEARCH_INPUT';
 export const CHANGE_LOGIN_INPUTS = 'CHANGE_LOGIN_INPUTS';
 export const CHANGE_SIGNUP_INPUTS = 'CHANGE_SIGNUP_INPUTS';
+export const GET_EVENT = 'GET_EVENT';
+export const GET_EVENT_ERROR = 'GET_EVENT_ERROR';
+export const GET_EVENT_SUCCESS = 'GET_EVENT_SUCCESS';
 export const GET_EVENTS = 'GET_EVENTS';
 export const GET_EVENTS_ERROR = 'GET_EVENTS_ERROR';
 export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
+export const GET_FAVORITES = 'GET_FAVORITES';
+export const GET_FAVORITES_ERROR = 'GET_FAVORITES_ERROR';
+export const GET_FAVORITES_SUCCESS = 'GET_FAVORITES_SUCCESS';
 export const GET_FOLLOWERS = 'GET_FOLLOWERS';
 export const GET_FOLLOWERS_ERROR = 'GET_FOLLOWERS_ERROR';
 export const GET_FOLLOWERS_SUCCESS = 'GET_FOLLOWERS_SUCCESS';
@@ -27,10 +38,11 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SUBMIT_LOGIN_ERROR = 'SUBMIT_LOGIN_ERROR';
 export const SUBMIT_LOGIN_SUCCESS = 'SUBMIT_LOGIN_SUCCESS';
 
-export const CHANGE_EVENTS_SEARCH = 'CHANGE_EVENTS_SEARCH';
-export const SUBMIT_EVENTS_SEARCH = 'SUBMIT_EVENTS_SEARCH';
-export const SUBMIT_EVENTS_SEARCH_SUCCESS = 'SUBMIT_EVENTS_SEARCH_SUCCESS';
-export const SUBMIT_EVENTS_SEARCH_ERROR = 'SUBMIT_EVENTS_SEARCH_ERROR';
+export const changeActiveEvent= (id) => ({
+  type: CHANGE_ACTIVE_EVENT,
+  id
+});
+
 export const changeFavoritesActiveItem= (activeItem) => ({
   type: CHANGE_FAVORITES_ACTIVE_ITEM,
   activeItem
@@ -105,6 +117,19 @@ export const submitUsersSearchError= () => ({
   type: SUBMIT_USERS_SEARCH_ERROR,
 });
 
+export const getEvent= () => ({
+  type: GET_EVENT,
+});
+
+export const getEventSuccess= (event) => ({
+  type: GET_EVENT_SUCCESS,
+  event
+});
+
+export const getEventError= () => ({
+  type: GET_EVENT_ERROR,
+});
+
 export const getEvents= () => ({
   type: GET_EVENTS,
 });
@@ -116,6 +141,19 @@ export const getEventsSuccess= (events) => ({
 
 export const getEventsError= () => ({
   type: GET_EVENTS_ERROR,
+});
+
+export const getFavorites= () => ({
+  type: GET_FAVORITES,
+});
+
+export const getFavoritesSuccess= (events) => ({
+  type: GET_FAVORITES_SUCCESS,
+  events
+});
+
+export const getFavoritesError= () => ({
+  type: GET_FAVORITES_ERROR,
 });
 
 export const getFollowers= () => ({

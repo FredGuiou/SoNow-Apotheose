@@ -1,13 +1,20 @@
 import {
+  CHANGE_ACTIVE_EVENT, 
   CHANGE_FAVORITES_ACTIVE_ITEM, 
   CHANGE_FRIENDS_ACTIVE_ITEM, 
   CHANGE_PROFIL_ACTIVE_ITEM,
   CHANGE_USERS_SEARCH_INPUT, 
   CHANGE_LOGIN_INPUTS, 
   CHANGE_SIGNUP_INPUTS,
+  GET_EVENT,
+  GET_EVENT_ERROR, 
+  GET_EVENT_SUCCESS,
   GET_EVENTS,
   GET_EVENTS_ERROR, 
   GET_EVENTS_SUCCESS,
+  GET_FAVORITES,
+  GET_FAVORITES_ERROR, 
+  GET_FAVORITES_SUCCESS,
   GET_FOLLOWERS,
   GET_FOLLOWERS_ERROR, 
   GET_FOLLOWERS_SUCCESS,
@@ -71,12 +78,25 @@ const initialState = {
     isLoading: false,
   }, 
   favorites: {
+    list: [],
+    isLoading: false,
     activeItem: `Tous mes favoris`,
-  }
+  }, 
+  event: {
+    activeEvent: null,
+  },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_ACTIVE_EVENT:
+      return {
+        ...state,
+        event : {
+          ...state.event, 
+          activeEvent: action.id
+        }
+      };
     case CHANGE_FAVORITES_ACTIVE_ITEM:
       return {
         ...state,
@@ -179,6 +199,36 @@ const reducer = (state = initialState, action) => {
           hasLoginError: true,
         }
       };
+
+      case GET_EVENT:
+      return {
+        ...state,
+        event: {
+          isLoading:true,
+        }
+      };
+    case GET_EVENT_SUCCESS:
+      return {
+        ...state,
+        event: {
+          ...state.event,
+          list: action.event,
+          isLoading:false, 
+          hasError: false,
+        }
+      };
+    case GET_EVENT_ERROR:
+      return {
+        ...state,
+        event: {
+          ...state.events,
+          isLoading:false,
+          hasError: true
+        }
+      };
+
+
+
       case GET_EVENTS:
       return {
         ...state,
@@ -205,6 +255,33 @@ const reducer = (state = initialState, action) => {
           hasError: true
         }
       };
+
+      case GET_FAVORITES:
+        return {
+          ...state,
+          favorites: {
+            isLoading:true,
+          }
+        };
+      case GET_FAVORITES_SUCCESS:
+        return {
+          ...state,
+          favorites: {
+            ...state.favorites,
+            list: action.events,
+            isLoading:false, 
+            hasError: false,
+          }
+        };
+      case GET_FAVORITES_ERROR:
+        return {
+          ...state,
+          favorites: {
+            ...state.favorites,
+            isLoading:false,
+            hasError: true
+          }
+        };
     case GET_FOLLOWERS:
       return {
         ...state,

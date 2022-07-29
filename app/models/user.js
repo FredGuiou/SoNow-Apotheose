@@ -1,5 +1,4 @@
 const client = require("../config/db");
-const { ApiError } = require("../services/errorHandler");
 
 module.exports = {
 
@@ -17,7 +16,7 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       if (result.rowCount === 0) {
-        throw new ApiError('No user in database', { statusCode: 404 });
+        return null;
       };
 
       return result.rows;
@@ -36,8 +35,9 @@ module.exports = {
         values: [userId],
       };
       const result = await client.query(preparedQuery);
+      
       if (result.rowCount === 0) {
-        throw new ApiError('User not found', { statusCode: 404 });
+        return null;
       };
 
       return result.rows[0];
@@ -59,11 +59,32 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       if (result.rowCount === 0) {
-        throw new ApiError('User not found', { statusCode: 404 });
+        return null;
       };
 
       return result.rows[0];
   },
+
+  async findByEmailForLogin(reqEmail){
+    //Je prépare une requête sql séparément pour éviter les injections.
+    //J'utilise les jetons sql également par souci de sécurité.
+    const preparedQuery = {
+      text: `
+        SELECT *
+        FROM public.user
+        WHERE email = $1
+      `,
+      values: [reqEmail],
+    };
+
+    const result = await client.query(preparedQuery);
+    
+    if (result.rowCount === 0) {
+      return null;
+    }
+
+    return result.rows[0];
+},
 
   //Rechercher un utilisateur par son surnom, son nom ou son prénom.
   async findByNickname(nickname){
@@ -81,7 +102,7 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       if (result.rowCount === 0) {
-        throw new ApiError('Users not found', { statusCode: 404 });
+        return null;
       };
 
       return result.rows[0];
@@ -101,7 +122,7 @@ module.exports = {
       };
   
       const result = await client.query(preparedQuery);
-  
+        
       return result.rows[0];
   },
 
@@ -118,7 +139,8 @@ module.exports = {
           `,
           [...values, id],
         );
-      return savedUser.rows[0];
+       
+        return savedUser.rows[0];
 
   },
   

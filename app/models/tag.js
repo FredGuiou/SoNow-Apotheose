@@ -1,5 +1,4 @@
 const client = require("../config/db");
-const { ApiError } = require("../services/errorHandler");
 
 module.exports = {
 
@@ -17,7 +16,7 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       if (result.rowCount === 0) {
-        throw new ApiError('No tag in database', { statusCode: 404 });
+        return null;
       };
 
       return result.rows;
@@ -40,7 +39,7 @@ module.exports = {
       };
       const result = await client.query(preparedQuery);
       if (result.rowCount === 0) {
-        throw new ApiError('Tag not found', { statusCode: 404 });
+        return null;
       };
 
       return result.rows[0];

@@ -19,7 +19,7 @@ module.exports = {
       if(!result)
       
       if (result.rowCount === 0) {
-        throw new ApiError('No event in database', { statusCode: 404 });
+        return null;
       };
 
       return result.rows;
@@ -44,7 +44,7 @@ module.exports = {
       };
       const result = await client.query(preparedQuery);
       if (result.rowCount === 0) {
-        throw new ApiError('Event not found', { statusCode: 404 });
+        return null;
       };
 
       return result.rows[0];
@@ -69,10 +69,10 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       if (result.rowCount === 0) {
-        throw new ApiError('Event not found', { statusCode: 404 });
+        return null;
       };
 
-    return result.rows;
+     return result.rows;
 
   },
 
@@ -84,11 +84,14 @@ module.exports = {
         // On veut d'abord vérifié que la category demandé existe
     const tag = await tagDataMapper.findByPk(tagId);
     if (!tag) {
-      throw new ApiError('Event not found', { statusCode: 404 });
+      throw new ApiError('Tag not found', { statusCode: 404 });
+    }
+    //TODO: requête sql à finlaiser.
+    const result = await client.query('SELECT * FROM public.event JOIN public.tag ON event.tag_id = tag.id WHERE code_tag = $1', [tagId]);
+    if (result.rowCount === 0) {
+      return null;
     }
 
-    // const result = await client.query('SELECT * FROM public.event WHERE code_tag = $1', [tagId]);
-    const result = await client.query('SELECT * FROM public.event JOIN public.tag ON event.tag_id = tag.id WHERE code_tag = $1', [tagId]);
     return result.rows;
 
   },
@@ -99,7 +102,6 @@ module.exports = {
 
 //Créer un nouvel évènement.
   async insert(event) {
-    try {
       const fields = Object.keys(event).map((props) => `${props}`);
       const fieldsToken = Object.keys(event).map((_, index) => `$${index + 1}`);
       const values = Object.values(event);
@@ -112,10 +114,6 @@ module.exports = {
         [...values],
       );
       return savedEvent.rows[0];
-
-    } catch (error) {
-      throw new ApiError('Internal Server Error', { statusCode: 500 });
-    };
   },
 
 
@@ -126,9 +124,7 @@ module.exports = {
 
 //mettre à jour un évènement.
   async update(id, event) {
-    try {
       const fields = Object.keys(event).map((prop, index) => `"${prop}" = $${index + 1}`);
-      console.log(event)
       const values = Object.values(event);
       const preparedQuery = {
         text: `
@@ -140,14 +136,9 @@ module.exports = {
         values: [...values, id],
       };
 
-      console.log(preparedQuery)
       const result = await client.query(preparedQuery);
   
       return result.rows[0];
-
-    } catch (error) {
-      throw new ApiError('Internal Server Error', { statusCode: 500 });
-    };
   },
 
 
@@ -156,7 +147,6 @@ module.exports = {
 
 //supprimer un évènement.
   async delete(id) {
-    try {
       const preparedQuery = {
         text: `
           DELETE
@@ -169,9 +159,5 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       return !!result.rowCount;
-      
-    } catch (error) {
-      throw new ApiError('Internal Server Error', { statusCode: 500 });
-    };
   }
 };

@@ -2,6 +2,7 @@ const eventsData = [
   {
     id: 12,
     title: 'Pool Party',
+    flag: 'Ce soir, pas moyen, je sors !',
     slug:'pool-party',
     media: 'https://picsum.photos/1080', 
     metadescription: 'Crazy evening around the Duplex pool',
@@ -37,6 +38,7 @@ const eventsData = [
   },
   {
     id: 14,
+    flag: 'Juste envie de flaner',
     title: 'Autre Pool Party',
     slug: 'autre-pool-party',
     media: 'https://picsum.photos/1080', 
@@ -67,6 +69,7 @@ const eventsData = [
   },
   {
     id: 15,
+    flag: 'Chef... J\'ai grave la dalle !',
     title: 'Super-event',
     slug: 'super-event',
     media: 'https://picsum.photos/1080', 
@@ -97,6 +100,7 @@ const eventsData = [
   },
   {
     id: 16,
+    flag: 'On se fait une toile ?',
     title: 'Mega cool event',
     slug: 'mega-cool-event',
     media: 'https://picsum.photos/1080', 
@@ -127,6 +131,7 @@ const eventsData = [
   },
   {
     id: 17,
+    flag: 'L\'appel de la bière',
     title: 'Fête nationale',
     slug: 'fete-nationale',
     media: 'https://picsum.photos/1080', 
@@ -157,6 +162,7 @@ const eventsData = [
   },
   {
     id: 18,
+    flag: 'Let\'s party !',
     title: 'Oclock fiesta',
     slug: 'oclock-fiesta',
     media: 'https://picsum.photos/1080', 

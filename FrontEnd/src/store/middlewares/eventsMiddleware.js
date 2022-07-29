@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_EVENTS, getEventsSuccess, getEventsError } from '../actions';
+import { GET_EVENT, GET_EVENTS, getEventsSuccess, getEventsError } from '../actions';
 
 const eventsMiddleware = (store) => (next) => (action) => {
   if (action.type === GET_EVENTS) {
@@ -11,6 +11,33 @@ const eventsMiddleware = (store) => (next) => (action) => {
     const config = {   
       method: 'get',
       url: 'https://sonow.herokuapp.com/api/event', 
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `${state.user.accessToken}`
+      }, 
+    };
+
+    axios(config)
+      .then((response) => {
+        console.log(response.data);
+        store.dispatch(getEventsSuccess(response.data));
+      })
+      .catch(() => {
+        store.dispatch(getEventsError());
+      });
+
+  } else if (action.type === GET_EVENT) {
+    console.log('eventMiddleware');
+    next(action);
+
+    const state = store.getState();
+
+    const id = state.event.requested;
+
+    const config = {
+      method: 'get',
+      url: `https://sonow.herokuapp.com/api/event${id}`, 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',

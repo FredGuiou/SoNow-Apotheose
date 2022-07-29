@@ -1,16 +1,22 @@
-.fav-container {
+.fav {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: 92vh;
   width: 100vw;
 
-  &__event {
-    height: 92vh;
-    width: 100vw;
+  &__events {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    background-color: pink;
   }
 }
 
-.fav-container::-webkit-scrollbar {
+.fav::-webkit-scrollbar {
   display: none;
 }

@@ -1,8 +1,8 @@
 import {
+  CHANGE_ACTIVE_EVENT, 
   CHANGE_FAVORITES_ACTIVE_ITEM, 
   CHANGE_FRIENDS_ACTIVE_ITEM, 
   CHANGE_PROFIL_ACTIVE_ITEM,
-  CHANGE_REQUESTED_EVENT,
   CHANGE_USERS_SEARCH_INPUT, 
   CHANGE_LOGIN_INPUTS, 
   CHANGE_SIGNUP_INPUTS,
@@ -71,11 +71,21 @@ const initialState = {
     isLoading: false,
     activeItem: `Tous mes favoris`,
   }, 
-  event: [],
+  event: {
+    activeEvent: null,
+  },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_ACTIVE_EVENT:
+      return {
+        ...state,
+        event : {
+          ...state.event, 
+          activeEvent: action.id
+        }
+      };
     case CHANGE_FAVORITES_ACTIVE_ITEM:
       return {
         ...state,
@@ -100,14 +110,6 @@ const reducer = (state = initialState, action) => {
           activeItem: action.activeItem,
         }
       };
-      case CHANGE_REQUESTED_EVENT:
-        return {
-          ...state,
-          event: {
-            ...state.event, 
-            requested: action.id
-          }
-        };
     case CHANGE_USERS_SEARCH_INPUT:
       return {
         ...state,

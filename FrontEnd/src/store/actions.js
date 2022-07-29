@@ -1,4 +1,4 @@
-export const CHANGE_REQUESTED_EVENT = 'CHANGE_REQUESTED_EVENT';
+export const CHANGE_ACTIVE_EVENT = 'CHANGE_ACTIVE_EVENT';
 export const CHANGE_FAVORITES_ACTIVE_ITEM = 'CHANGE_FAVORITES_ACTIVE_ITEM';
 export const CHANGE_FRIENDS_ACTIVE_ITEM = 'CHANGE_FRIENDS_ACTIVE_ITEM';
 export const CHANGE_PROFIL_ACTIVE_ITEM = 'CHANGE_PROFIL_ACTIVE_ITEM';
@@ -34,8 +34,8 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SUBMIT_LOGIN_ERROR = 'SUBMIT_LOGIN_ERROR';
 export const SUBMIT_LOGIN_SUCCESS = 'SUBMIT_LOGIN_SUCCESS';
 
-export const changeRequestedEvent= (id) => ({
-  type: CHANGE_REQUESTED_EVENT,
+export const changeActiveEvent= (id) => ({
+  type: CHANGE_ACTIVE_EVENT,
   id
 });
 

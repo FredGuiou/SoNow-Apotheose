@@ -33,7 +33,7 @@ const eventsMiddleware = (store) => (next) => (action) => {
 
     const state = store.getState();
 
-    const id = state.event.requested;
+    const id = state.event.activeEvent;
 
     const config = {
       method: 'get',

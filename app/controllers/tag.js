@@ -11,8 +11,9 @@ module.exports = {
             const tagDb = await tagDataMapper.findAll();
             return res.json(tagDb);
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Not found", code: 404, message: "Tag getAllTags throw an error"});
+            throw new ApiError('Tags not found', {statusCode: 404 });
         };
     },
 
@@ -21,12 +22,13 @@ module.exports = {
         try {
             const tagDb = await tagDataMapper.findByPk(req.params.tag_id);
             if(!tagDb){
-                // throw new ApiError('', { statusCode:  });
+                throw new ApiError('Tag not found', {statusCode: 404 });
             };
             return res.json(tagDb);
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Not found", code: 404, message: "Tag getOneTag throw an error"});
+            throw new ApiError('Tag not found', {statusCode: 404 });
         };
     },
 

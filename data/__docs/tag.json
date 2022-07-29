@@ -2,43 +2,43 @@
   {
     "name":"Concert",
     "color":"#FFF655",
-    "emoji":"🎤",
+    "emoji":"🎸",
     "slug":"concert"
   },
   {
-    "name":"Festival",
+    "name":"Sorties entre amis",
     "color":"#FF793B",
-    "emoji":"🎊",
-    "slug":"festival"
-  },
-  {
-    "name":"Médieval",
-    "color":"#E20100",
-    "emoji":"🏰",
-    "slug":"medieval"
+    "emoji":"👯",
+    "slug":"sortie-entre-amis"
   },
   {
     "name":"Sport",
     "color":"#C6047F",
-    "emoji":"🥇",
+    "emoji":"🏅",
     "slug":"sport"
   },
   {
-    "name":"Animation Cinéma",
-    "color":"#028E5A",
-    "emoji":"🎬",
-    "slug":"animation-cinema"
-  },
-  {
-    "name":"E-Sport",
+    "name":"Afterwork",
     "color":"#0FD3DE",
-    "emoji":"🎮",
-    "slug":"esport"
+    "emoji":"🥂",
+    "slug":"afterwork"
   },
   {
-    "name":"Sport Mécanique",
+    "name":"Spectacle",
+    "color":"##E20100",
+    "emoji":"🎭",
+    "slug":"spectacle"
+  },
+  {
+    "name":"À la Une",
+    "color":"##028E5A",
+    "emoji":"⭐️",
+    "slug":"a-la-une"
+  },
+  {
+    "name":"Éducation",
     "color":"#3F4FEA",
-    "emoji":"🏎️",
-    "slug":"sport-mecanique"
+    "emoji":"📚",
+    "slug":"education"
   }
 ]

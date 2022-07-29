@@ -1,4 +1,3 @@
-//TODO: Gestion des erreurs via un controller error.
 //TODO: Implémentation de JOI validation schema (longueur des titre des events par exemple)
 
 const client = require("../config/db");
@@ -25,8 +24,7 @@ module.exports = {
     return result.rows;
 
     } catch (error) {
-      console.log(error);
-      return null;
+      throw new ApiError('Events not found', {statusCode: 404 });
     };
   },
 
@@ -55,8 +53,8 @@ module.exports = {
     return result.rows[0];
 
     } catch (error) {
-      console.log(error);
-      return null;
+      res.json({status: "Not Found", code: 404, message: "Event findByPk throw an error"});
+      throw new ApiError('Event not found', {statusCode: 404 });
     };
   },
 
@@ -86,24 +84,29 @@ module.exports = {
     return result.rows;
 
     } catch (error) {
-      console.log(error);
-      return null;
+      throw new ApiError('Event not found', {statusCode: 404 });
     };
   },
 
 
 
-// TODO: YA CA A FAIRE ENCORE LA !! x'D
+// TODO: A TESTER QUAND LES DONNEES DE LA TABLE DE LIAISON SERONT INSCRITES EN BDD
   //Rechercher un évènement en fonction de son tag.
   async findByTagId(tagId) {
-    // On veut d'abord vérifié que la category demandé existe
+    try {
+        // On veut d'abord vérifié que la category demandé existe
     const tag = await tagDataMapper.findByPk(tagId);
     if (!tag) {
-        //throw new ApiError('', { statusCode:  });
+        throw new ApiError('Not found', { statusCode: 404 });
     }
 
-    const result = await client.query('SELECT * FROM public.event WHERE code_tag = $1', [tagId]);
+    // const result = await client.query('SELECT * FROM public.event WHERE code_tag = $1', [tagId]);
+    const result = await client.query('SELECT * FROM public.event JOIN public.tag ON event.tag_id = tag.id WHERE code_tag = $1', [tagId]);
     return result.rows;
+
+    } catch (error) {
+      throw new ApiError('Event not found', {statusCode: 404 });
+    };
 },
 
 
@@ -127,9 +130,8 @@ module.exports = {
       return savedEvent.rows[0];
 
     } catch (error) {
-      console.log(error);
-      return null;
-    }
+      throw new ApiError('Event non inserted', {statusCode: 503 });
+    };
   },
 
 
@@ -159,10 +161,9 @@ module.exports = {
   
     return result.rows[0];
 
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
+  } catch (error) {
+    throw new ApiError('Event not updated', {statusCode: 503 });
+  };
   },
 
 
@@ -186,8 +187,7 @@ module.exports = {
       return !!result.rowCount;
       
     } catch (error) {
-      console.log(error);
-      return null;
-    }
+      throw new ApiError('Event not deleted', {statusCode: 503 });
+    };
   }
 };

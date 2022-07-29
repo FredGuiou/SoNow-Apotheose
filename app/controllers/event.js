@@ -1,4 +1,3 @@
-//TODO: Gestion des erreurs via un controller error.
 //TODO: Implémentation de JOI validation schema.
 
 require('dotenv').config();
@@ -13,8 +12,9 @@ module.exports = {
             const eventDb = await eventDataMapper.findAll();
             return res.json(eventDb);
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Not found", code: 404, message: "Event getAllUsers throw an error"});
+            throw new ApiError('Events not found', {statusCode: 404 });
         };
     },
 
@@ -27,12 +27,13 @@ module.exports = {
         try {
             const eventDb = await eventDataMapper.findByPk(req.params.event_id);
             if(!eventDb){
-                // throw new ApiError('', { statusCode:  });
+                throw new ApiError('Event not found', {statusCode: 404 });
             };
             return res.json(eventDb);
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Not found", code: 404, message: "Event getOneEventById throw an error"});
+            throw new ApiError('Event not found', {statusCode: 404 });
         };
     },
 
@@ -45,28 +46,29 @@ module.exports = {
         try {
             const eventDb = await eventDataMapper.findByTitle(req.body.title);
             if(!eventDb){
-                // throw new ApiError('', { statusCode:  });
+                throw new ApiError('Event not found', {statusCode: 404 });
             };
             return res.json(eventDb);
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Not found", code: 404, message: "Event getOneEventByTitle throw an error"});
+            throw new ApiError('Event not found', {statusCode: 404 });
         };
         
     },
 
 
 
-
+// TODO: A TESTER QUAND LES DONNEES DE LA TABLE DE LIAISON SERONT INSCRITES EN BDD
     //Méthode qui permet de rechercher un évènement en fonction de leur catégorie.
     async getByTagId(req, res) {
         try {
             const events = await eventDataMapper.findByTagId(req.params.event_id);
-            res.json(events);
+            return res.json(events);
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
-        }
-        
+        } catch (error) {
+            res.json({status: "Not found", code: 404, message: "Event getByTagId throw an error"});
+            throw new ApiError('Event not found', {statusCode: 404 });
+        };     
 
     },
 
@@ -82,11 +84,12 @@ module.exports = {
                 const insertEvent = await eventDataMapper.insert(req.body);
                 res.json(insertEvent);
             } else {
-                // throw new ApiError('', {statusCode: });
+                throw new ApiError('Event not created', {statusCode: 503 });
             };
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Service Unvailable", code: 503, message: "Event createEvent throw an error"});
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
 
@@ -100,13 +103,14 @@ module.exports = {
         try {
             const eventDb = await eventDataMapper.findByPk(req.params.event_id);
             if (!eventDb) {
-                console.log("Ça bug dans l'updateEvent");
+                throw new ApiError('Event not found', {statusCode: 404 });
             };
             const savedEvent = await eventDataMapper.update(req.params.event_id, req.body);
             return res.json(savedEvent);
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Service Unvailable", code: 503, message: "Event updateEvent throw an error"});
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
 
@@ -119,13 +123,14 @@ module.exports = {
         try {
             const eventDb = await eventDataMapper.findByPk(req.params.event_id);
             if (!eventDb) {
-                // throw new ApiError('This category does not exists', { statusCode: 404 });
+                throw new ApiError('Event not found', {statusCode: 404 });
             };
             await eventDataMapper.delete(req.params.event_id);
             return res.status(204).json();
 
-        } catch (ApiError) {
-            // throw new ApiError('', {statusCode: });
+        } catch (error) {
+            res.json({status: "Service Unvailable", code: 503, message: "Event deleteEvent throw an error"});
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     }
 };

@@ -1,90 +1,86 @@
 [
     {
-        "firstname":"GUIOU",
-        "lastname":"Frédéric",
+        "lastname":"GUIOU",
+        "firstname":"Frédéric",
         "nickname":"Zekiel",
         "email":"zekiel@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":1
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
 	},
 	{
-        "firstname":"PORTANGUEN",
-        "lastname":"Romain",
+        "lastname":"PORTANGUEN",
+        "firstname":"Romain",
         "nickname":"Duke_Artik",
         "email":"duke_artik@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":2
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
 	},
 	{
-        "firstname":"COMPAGNON",
-        "lastname":"Elinor",
+        "lastname":"COMPAGNON",
+        "firstname":"Elinor",
         "nickname":"Elinorcmp",
         "email":"elinorcmp@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":3
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
 	},
 	{
-        "firstname":"BRILLANT",
-        "lastname":"Raphael",
+        "lastname":"BRILLANT",
+        "firstname":"Raphael",
         "nickname":"KamaKTO",
         "email":"kamakto@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":4
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
 	},
 	{
-        "firstname":"LE QUELLEC",
-        "lastname":"Sébastien",
+        "lastname":"LE QUELLEC",
+        "firstname":"Sébastien",
         "nickname":"Kronik",
         "email":"kronik@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":5
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
 	},
 	{
-        "firstname":"MUCHE",
-        "lastname":"Truc",
+        "lastname":"MUCHE",
+        "firstname":"Truc",
         "nickname":"Trucmuche",
         "email":"trucmuche@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":6
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
 	},
 	{
-        "firstname":"CHOSE",
-        "lastname":"Machin",
+        "lastname":"CHOSE",
+        "firstname":"Machin",
         "nickname":"Machinchose",
         "email":"machinchose@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":7
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
 	},
 	{
-        "firstname":"BIDULE",
-        "lastname":"Truc",
+        "lastname":"BIDULE",
+        "firstname":"Truc",
         "nickname":"Trucbidule",
         "email":"trucbidule@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":8
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
 	},
 	{
-        "firstname":"LIPOPETTE",
-        "lastname":"Sapère",
+        "lastname":"LIPOPETTE",
+        "firstname":"Sapère",
         "nickname":"Sapèrelipopette",
         "email":"sapèrelipopette@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":9
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
 	},
     {
-        "firstname":"NURRIS",
-        "lastname":"Chuck",
+        "lastname":"NURRIS",
+        "firstname":"Chuck",
         "nickname":"NeverDie",
         "email":"neverdie@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":10
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
     },
     {
-        "firstname":"OUDDA",
-        "lastname":"Benji",
+        "lastname":"OUDDA",
+        "firstname":"Benji",
         "nickname":"La_Conscience",
         "email":"laconscience@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
-        "code_detailsinfos":11
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+    },
+    {
+        "lastname":"NomTest",
+        "firstname":"PrenomTest",
+        "nickname":"test",
+        "email":"test@test.fr",
+        "password":"$2b$10$JTjJg6L9JMNb/GYEbjGhhu5RN1tlCd6vmNLeUsQ8B9FxHEJuJWBRG"
     }
 ]

@@ -3,7 +3,7 @@ import { GET_EVENT, GET_EVENTS, getEventsSuccess, getEventsError, SUBMIT_EVENTS_
 
 const eventsMiddleware = (store) => (next) => (action) => {
   if (action.type === GET_EVENTS) {
-    console.log('eventsMiddleware');
+    // console.log('eventsMiddleware');
     next(action);
 
     const state = store.getState();
@@ -53,9 +53,9 @@ const eventsMiddleware = (store) => (next) => (action) => {
       .catch(() => {
         store.dispatch(getEventsError());
       });
-
-  } else if (action.type === SUBMIT_EVENTS_SEARCH) {
-    console.log('searchEventMiddleware');
+  }
+  else if (action.type === SUBMIT_EVENTS_SEARCH) {
+    console.log('events search')
     next(action);
 
     const state = store.getState();
@@ -81,6 +81,7 @@ const eventsMiddleware = (store) => (next) => (action) => {
       .catch(() => {
         store.dispatch(submitEventsSearchError());
       });
+
   }
   else {
     next(action);

@@ -19,6 +19,7 @@ import {
   GET_FOLLOWERS,
   GET_FOLLOWERS_ERROR, 
   GET_FOLLOWERS_SUCCESS,
+  LOGOUT,
   SUBMIT_LOGIN, 
   SUBMIT_LOGIN_SUCCESS,
   SUBMIT_LOGIN_ERROR, 
@@ -28,7 +29,6 @@ import {
   GET_USERS, 
   GET_USERS_ERROR, 
   GET_USERS_SUCCESS,
-  LOGOUT,
   SUBMIT_EVENTS_SEARCH,
   SUBMIT_EVENTS_SEARCH_SUCCESS,
   SUBMIT_EVENTS_SEARCH_ERROR,
@@ -41,7 +41,26 @@ import {
 } from './actions';
 
 const initialState = {
-  user: {},
+  event: {
+    activeEvent: null,
+  },
+  events: {
+    list:[],
+    searchInput: '',
+    searchResults:[],
+    isLoading: false,
+  }, 
+  favorites: {
+    activeItem: `Tous mes favoris`,
+  },
+  login: {
+    emailInput: '',
+    passwordInput:'',
+    isLoading: false,
+  },
+  profil: {
+    activeItem: 'Mes événements',
+  },
   signup: {
     firstnameInput: '',
     lastnameInput:'',
@@ -51,13 +70,8 @@ const initialState = {
     confirmedPasswordInput:'',
     isLoading: false,
   }, 
-  login: {
-    emailInput: '',
-    passwordInput:'',
-    isLoading: false,
-  },
-  profil: {
-    activeItem: 'Mes événements',
+  user: {
+    accessToken: null,
   },
   users: {
     activeItem: 'Abonnes',
@@ -69,20 +83,6 @@ const initialState = {
     isGetFollowersLoading: false,
     isGetSubscriptionLoading: false,
     isSearchLoading: false,
-  },
-  events: {
-    list:[],
-    searchInput: '',
-    searchResults:[],
-    isLoading: false,
-  }, 
-  favorites: {
-    list: [],
-    isLoading: false,
-    activeItem: `Tous mes favoris`,
-  }, 
-  event: {
-    activeEvent: null,
   },
 };
 
@@ -188,11 +188,11 @@ const reducer = (state = initialState, action) => {
     case GET_EVENTS_SUCCESS:
       return {
         ...state,
-        events: {
-          ...state.events,
-          list: {...action.events},
-          isLoading:false, 
-          hasError: false,
+        user: {
+          ...action.user,
+          accessToken: action.accessToken,
+          refreshToken: action.refreshToken,
+          hasLoginError: false
         }
       };
     case GET_EVENTS_ERROR:

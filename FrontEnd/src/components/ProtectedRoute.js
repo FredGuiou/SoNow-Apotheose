@@ -1,10 +1,10 @@
 import Authentification from './Authentification';
 
-const withAuth = (Component) => {
+const ProtectedRoute = (Component) => {
   return () => {
-      const isConnected = localStorage.getItem('accessToken');
-      console.log('isConnected ' + isConnected);
-      if (isConnected) {
+      const accessToken = localStorage.getItem('accessToken');
+      // console.log('accessToken ' + accessToken);
+      if (accessToken) {
         return <Component/>;
       } else {
         return <Authentification/>
@@ -12,4 +12,4 @@ const withAuth = (Component) => {
   };
 };
 
-export default withAuth;
+export default ProtectedRoute;

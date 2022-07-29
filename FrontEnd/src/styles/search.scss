@@ -1,0 +1,30 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 92vh;
+    width: 100vw;
+    background-color: black;
+}
+
+
+.search-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-element-container {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    margin: 1rem 0;
+    & :hover {
+        cursor: pointer;
+    }
+
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+}

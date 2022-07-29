@@ -1,10 +1,7 @@
 const client = require("../config/db");
-const { ApiError } = require('../services/errorHandler');
+const { ApiError } = require("../services/errorHandler");
 
 module.exports = {
-
-
-
 
 
   async findAll() {
@@ -27,7 +24,6 @@ module.exports = {
     return result.rows;
 
     } catch (error) {
-      res.json({status: "Not Found", code: 404, message: "Tag findAll throw an error"});
       throw new ApiError('Tags not found', {statusCode: 404 });
     };
   },
@@ -56,7 +52,6 @@ try {
     return result.rows[0];
 
     } catch (error) {
-      res.json({status: "Not Found", code: 404, message: "Event findAll throw an error"});
       throw new ApiError('Tag not found', {statusCode: 404 });
     };
   },

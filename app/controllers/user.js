@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 const SECRET_KEY = process.env.ACCESS_SECRET_KEY;
 const REFRESH_SECRET_KEY = process.env.REFRESH_SECRET_KEY;
 
+const { ApiError } = require("../services/errorHandler");
+
 
 module.exports = {
 
@@ -58,7 +60,6 @@ module.exports = {
         return res.status(204).json('Utilisateur déconnecté');
 
     } catch (error) {
-        res.json({status: "Service Unvailable", code: 503, message: "User logoutUser throw an error"});
         throw new ApiError('Service Unvailable', {statusCode: 503 });
     };
         
@@ -101,7 +102,6 @@ module.exports = {
             return res.json(userDb);
 
         } catch (error) {
-            res.json({status: "Not found", code: 404, message: "User getAllUsers throw an error"});
             throw new ApiError('Users not found', {statusCode: 404 });
         };
     },
@@ -120,7 +120,6 @@ module.exports = {
             return res.json(userDb);
 
         } catch (error) {
-            res.json({status: "Not found", code: 404, message: "User getOneUserById throw an error"});
             throw new ApiError('User not found', {statusCode: 404 });
         };
     },
@@ -138,7 +137,6 @@ module.exports = {
             };
             return res.json(userDb);
         } catch (error) {
-            res.json({status: "Not found", code: 404, message: "User getOneUserByNickname throw an error"});
             throw new ApiError('User not found', {statusCode: 404 });
         };
         
@@ -177,7 +175,6 @@ module.exports = {
                     //On envoie un message d'erreur
 
         } catch (error) {
-            res.json({status: "Service Unvailable", code: 503, message: "User createUser throw an error"});
             throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
@@ -195,7 +192,6 @@ module.exports = {
             const savedUser = await userDataMapper.update(req.params.user_id, req.body);
             return res.json(savedUser);
         } catch (error) {
-            res.json({status: "Service Unvailable", code: 503, message: "User updateUser throw an error"});
             throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
@@ -214,7 +210,6 @@ module.exports = {
             return res.status(204).json({code: 204, message: "Cet utilisateur a bien été supprimer"});
 
         } catch (error) {
-            res.json({status: "Service Unvailable", code: 503, message: "User deleteUser throw an error"});
             throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     }

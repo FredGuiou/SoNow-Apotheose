@@ -4,7 +4,7 @@
 const logger = require('../services/logger');
 const ApiError = require('../errors/apiError');
 
-const errorHandler = (err, res) => {
+const errorHandler = (err, req, res, next) => {
     let { message } = err;
     let statusCode = err.infos?.statusCode;
 
@@ -31,7 +31,7 @@ const errorHandler = (err, res) => {
     }
 };
 
-module.export = {
+module.exports = {
     ApiError,
     errorHandler,
 };

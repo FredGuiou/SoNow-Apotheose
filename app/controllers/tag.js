@@ -2,6 +2,7 @@
 
 
 const tagDataMapper = require('../models/tag');
+const { ApiError } = require("../services/errorHandler");
 
 module.exports = {
 
@@ -12,7 +13,6 @@ module.exports = {
             return res.json(tagDb);
 
         } catch (error) {
-            res.json({status: "Not found", code: 404, message: "Tag getAllTags throw an error"});
             throw new ApiError('Tags not found', {statusCode: 404 });
         };
     },
@@ -27,9 +27,7 @@ module.exports = {
             return res.json(tagDb);
 
         } catch (error) {
-            res.json({status: "Not found", code: 404, message: "Tag getOneTag throw an error"});
             throw new ApiError('Tag not found', {statusCode: 404 });
         };
     },
-
 };

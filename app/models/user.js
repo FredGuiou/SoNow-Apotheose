@@ -1,5 +1,5 @@
 const client = require("../config/db");
-const { ApiError } = require('../services/errorHandler');
+const { ApiError } = require("../services/errorHandler");
 
 module.exports = {
 
@@ -24,7 +24,6 @@ module.exports = {
     return result.rows;
 
     } catch (error) {
-      res.json({status: "Not Found", code: 404, message: "User findAll throw an error"});
       throw new ApiError('Users not found', {statusCode: 404 });
     };
   },
@@ -49,7 +48,6 @@ module.exports = {
 
     return result.rows[0];
     } catch (error) {
-      res.json({status: "Not Found", code: 404, message: "User findByPk throw an error"});
       throw new ApiError('User not found', {statusCode: 404 });
     };
   },
@@ -77,7 +75,6 @@ module.exports = {
     return result.rows[0];
 
     } catch (error) {
-      res.json({status: "Not Found", code: 404, message: "User findByEmail throw an error"});
       throw new ApiError('Users not found', {statusCode: 404 });
     };
   },
@@ -105,7 +102,6 @@ module.exports = {
     return result.rows[0];
 
     } catch (error) {
-      res.json({status: "Not Found", code: 404, message: "User findByNickname throw an error"});
       throw new ApiError('Users not found', {statusCode: 404 });
       
     };
@@ -130,7 +126,6 @@ module.exports = {
     return result.rows[0];
 
     } catch (error) {
-      res.json({status: "Service Unvailable", code: 503, message: "User insert throw an error"});
       throw new ApiError('User non inserted', {statusCode: 503 });
     };
   },
@@ -152,7 +147,6 @@ module.exports = {
       return savedUser.rows[0];
 
     } catch (error) {
-      res.json({status: "Service Unvailable", code: 503, message: "User update throw an error"});
       throw new ApiError('User not updated', {statusCode: 503 });
     };
   },
@@ -174,7 +168,6 @@ module.exports = {
       return !!result.rowCount;
       
     } catch (error) {
-      res.json({status: "Service Unvailable", code: 503, message: "User delete throw an error"});
       throw new ApiError('User not deleted', {statusCode: 503 });
     };
   }

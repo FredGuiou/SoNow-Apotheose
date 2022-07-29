@@ -1,6 +1,7 @@
 //TODO: Implémentation de JOI validation schema (longueur des titre des events par exemple)
 
 const client = require("../config/db");
+const { ApiError } = require("../services/errorHandler");
 
 module.exports = {
   //Rechercher tous les évènements dans la BDD. 
@@ -53,7 +54,6 @@ module.exports = {
     return result.rows[0];
 
     } catch (error) {
-      res.json({status: "Not Found", code: 404, message: "Event findByPk throw an error"});
       throw new ApiError('Event not found', {statusCode: 404 });
     };
   },
@@ -84,6 +84,8 @@ module.exports = {
     return result.rows;
 
     } catch (error) {
+      console.log(error)
+      errorHandler(error, res)
       throw new ApiError('Event not found', {statusCode: 404 });
     };
   },
@@ -97,7 +99,7 @@ module.exports = {
         // On veut d'abord vérifié que la category demandé existe
     const tag = await tagDataMapper.findByPk(tagId);
     if (!tag) {
-        throw new ApiError('Not found', { statusCode: 404 });
+        // throw new ApiError('Not found', { statusCode: 404 });
     }
 
     // const result = await client.query('SELECT * FROM public.event WHERE code_tag = $1', [tagId]);

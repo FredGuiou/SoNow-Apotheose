@@ -2,7 +2,8 @@
 
 require('dotenv').config();
 const eventDataMapper = require('../models/event');
-
+const { ApiError } = require("../services/errorHandler");
+console.log(ApiError);
 module.exports = {
 
     //Méthode qui permet de récupérer tous les évènements en bdd.
@@ -10,11 +11,12 @@ module.exports = {
         
         try {
             const eventDb = await eventDataMapper.findAll();
+            if (!eventDb) {
+                throw new ApiError('No events in database', {statusCode: 404 });
+            }
             return res.json(eventDb);
-
         } catch (error) {
-            res.json({status: "Not found", code: 404, message: "Event getAllUsers throw an error"});
-            throw new ApiError('Events not found', {statusCode: 404 });
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
 
@@ -32,8 +34,7 @@ module.exports = {
             return res.json(eventDb);
 
         } catch (error) {
-            res.json({status: "Not found", code: 404, message: "Event getOneEventById throw an error"});
-            throw new ApiError('Event not found', {statusCode: 404 });
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
 
@@ -50,8 +51,7 @@ module.exports = {
             };
             return res.json(eventDb);
         } catch (error) {
-            res.json({status: "Not found", code: 404, message: "Event getOneEventByTitle throw an error"});
-            throw new ApiError('Event not found', {statusCode: 404 });
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
         
     },
@@ -63,11 +63,13 @@ module.exports = {
     async getByTagId(req, res) {
         try {
             const events = await eventDataMapper.findByTagId(req.params.event_id);
+            if(!events) {
+                throw new ApiError('Event not found', {statusCode: 404 });
+            }
             return res.json(events);
 
         } catch (error) {
-            res.json({status: "Not found", code: 404, message: "Event getByTagId throw an error"});
-            throw new ApiError('Event not found', {statusCode: 404 });
+            throw new ApiError('Service Unvailable', {statusCode: 503 });
         };     
 
     },
@@ -88,7 +90,6 @@ module.exports = {
             };
 
         } catch (error) {
-            res.json({status: "Service Unvailable", code: 503, message: "Event createEvent throw an error"});
             throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
@@ -109,7 +110,6 @@ module.exports = {
             return res.json(savedEvent);
 
         } catch (error) {
-            res.json({status: "Service Unvailable", code: 503, message: "Event updateEvent throw an error"});
             throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     },
@@ -129,7 +129,6 @@ module.exports = {
             return res.status(204).json();
 
         } catch (error) {
-            res.json({status: "Service Unvailable", code: 503, message: "Event deleteEvent throw an error"});
             throw new ApiError('Service Unvailable', {statusCode: 503 });
         };
     }

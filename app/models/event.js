@@ -24,7 +24,6 @@ module.exports = {
     return result.rows;
 
     } catch (error) {
-      res.json({status: "Not Found", code: 404, message: "Event findAll throw an error"});
       throw new ApiError('Events not found', {statusCode: 404 });
     };
   },
@@ -85,7 +84,6 @@ module.exports = {
     return result.rows;
 
     } catch (error) {
-      res.json({status: "Not Found", code: 404, message: "Event findByTitle throw an error"});
       throw new ApiError('Event not found', {statusCode: 404 });
     };
   },
@@ -107,7 +105,6 @@ module.exports = {
     return result.rows;
 
     } catch (error) {
-      res.json({status: "Service Unvailable", code: 503, message: "Event findByTagId throw an error"});
       throw new ApiError('Event not found', {statusCode: 404 });
     };
 },
@@ -133,7 +130,6 @@ module.exports = {
       return savedEvent.rows[0];
 
     } catch (error) {
-      res.json({status: "Service Unvailable", code: 503, message: "Event insert throw an error"});
       throw new ApiError('Event non inserted', {statusCode: 503 });
     };
   },
@@ -166,7 +162,6 @@ module.exports = {
     return result.rows[0];
 
   } catch (error) {
-    res.json({status: "Service Unvailable", code: 503, message: "Event update throw an error"});
     throw new ApiError('Event not updated', {statusCode: 503 });
   };
   },
@@ -192,7 +187,6 @@ module.exports = {
       return !!result.rowCount;
       
     } catch (error) {
-      res.json({status: "Service Unvailable", code: 503, message: "Event delete throw an error"});
       throw new ApiError('Event not deleted', {statusCode: 503 });
     };
   }

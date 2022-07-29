@@ -1,11 +1,11 @@
-// import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute';
 
 import EventSearchCard from './EventSearchCard';
 import EventScrollElement from './EventScrollElement';
 import events from '../data/eventsData';
 
 import '../styles/search.scss';
-import { Input, Menu, Container } from 'semantic-ui-react';
+import { Menu, Container } from 'semantic-ui-react';
 import HorizontalScroll from 'react-scroll-horizontal';
 
 function SearchBar() {
@@ -27,11 +27,6 @@ function SearchBar() {
           width: '100%',
         }}
       >
-          <Input
-            icon= 'sliders horizontal'
-            placeholder=' 🔍 Rechercher'
-            size='large'
-          />
         </Menu.Item>
       </Menu>
       <Container
@@ -162,4 +157,4 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+export default ProtectedRoute(SearchBar);

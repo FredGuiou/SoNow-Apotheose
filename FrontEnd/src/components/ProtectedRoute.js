@@ -1,12 +1,10 @@
-import { useSelector } from 'react-redux';
-
 import Authentification from './Authentification';
 
 const withAuth = (Component) => {
   return () => {
-      const user = useSelector((state)=> state.user.isConnected);
-      console.log('isConnected' + user);
-      if (user) {
+      const isConnected = localStorage.getItem('accessToken');
+      console.log('isConnected ' + isConnected);
+      if (isConnected) {
         return <Component/>;
       } else {
         return <Authentification/>

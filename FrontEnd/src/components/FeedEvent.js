@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Card, Icon, Label } from 'semantic-ui-react';
 
-import "../styles/feedEvent.scss"; 
+import '../styles/feedEvent.scss'; 
 
 function FeedEvent({ event }) {
   return (
@@ -14,7 +14,7 @@ function FeedEvent({ event }) {
           alt={event.title}
         />
         <section className='feed-event__details'>
-          <section className="feed-event__details__social-icons">
+          <section className='feed-event__details__social-icons'>
               <Icon 
                 name='heart' 
                 size='large'
@@ -43,7 +43,7 @@ function FeedEvent({ event }) {
                 }}
                 />
           </section>
-          <section className="feed-event__details__card">
+          <section className='feed-event__details__card'>
             <Card 
               fluid
               style={{
@@ -119,21 +119,21 @@ function FeedEvent({ event }) {
                 </Label>
               </Card.Content>
             </Card>
-            <section className="feed-event__details__card__participants">
+            <section className='feed-event__details__card__participants'>
               <Icon 
                 name='user' 
                 style={{
                   color:'white'
                 }} 
               />
-              <p className="feed-event__details__card__participants__content" >
+              <p className='feed-event__details__card__participants__content' >
                 {/* event.user_attend_event.length*/} 412 participants
               </p>
             </section>
-            <section className="feed-event__details__card__date">
+            <section className='feed-event__details__card__date'>
               {/* En attente envoie date au bon format */}
-              <div className="feed-event__details__card__date__day">{new Date().getDate()}</div>
-              <div className="feed-event__details__card__date__month"><div>{new Date().toLocaleString('fr-fr', { month: 'short' }).toUpperCase().replace('.', '')}</div></div>  
+              <div className='feed-event__details__card__date__day'>{new Date(event.start.replace('T', ' ')).getUTCDay() + 1}</div>
+              <div className='feed-event__details__card__date__month'><div>{new Date(event.start.replace('T', ' ')).toLocaleString('fr-fr', { month: 'short' }).toUpperCase().replace('.', '')}</div></div>  
             </section>
           </section>
         </section>

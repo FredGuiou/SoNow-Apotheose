@@ -17,6 +17,9 @@ import {
   GET_USERS, 
   GET_USERS_ERROR, 
   GET_USERS_SUCCESS,
+  SUBMIT_EVENTS_SEARCH,
+  SUBMIT_EVENTS_SEARCH_SUCCESS,
+  SUBMIT_EVENTS_SEARCH_ERROR,
   SUBMIT_USERS_SEARCH,
   SUBMIT_USERS_SEARCH_SUCCESS,
   SUBMIT_USERS_SEARCH_ERROR,
@@ -307,6 +310,32 @@ const reducer = (state = initialState, action) => {
           ...state.friends,
           isGetSUsersLoading:false, 
           hasGetSUsersError: true,
+        }
+      };
+    case SUBMIT_EVENTS_SEARCH:
+      return {
+        ...state,
+        events : {
+          ...state.events, 
+          isLoading: true,
+        }
+      };
+    case SUBMIT_EVENTS_SEARCH_SUCCESS:
+      return {
+        ...state,
+        events : {
+          ...state.events, 
+          searchResults: action.eventsList,
+          hasError: false,
+        }
+      };
+    case SUBMIT_EVENTS_SEARCH_ERROR:
+      return {
+        ...state,
+        events : {
+          ...state.events, 
+          isLoading: false,
+          hasError: true,
         }
       };
     case SUBMIT_USERS_SEARCH:

@@ -39,7 +39,7 @@ function SearchBar() {
           width: '100%',
           height: '400px',
           margin: '0.5rem auto',
-          padding: '1rem',
+          padding: '0.5rem',
           borderRadius: '30px',
         }}
       >

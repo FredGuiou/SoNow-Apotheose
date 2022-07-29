@@ -4,7 +4,7 @@
 const logger = require('../services/logger');
 const ApiError = require('../errors/apiError');
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, res) => {
     let { message } = err;
     let statusCode = err.infos?.statusCode;
 

@@ -5,7 +5,6 @@ module.exports = {
 
   //Rechercher tous les utilisateurs de la BDD. 
   async findAll() {
-    try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
       const preparedQuery = {
@@ -18,19 +17,14 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       if (result.rowCount === 0) {
-        return undefined;
-    };
+        throw new ApiError('No user in database', { statusCode: 404 });
+      };
 
-    return result.rows;
-
-    } catch (error) {
-      throw new ApiError('Users not found', {statusCode: 404 });
-    };
+      return result.rows;
   },
 
   //Recherche un utilisateur en fonction de sa clé primaire ID.
   async findByPk(userId) {
-    try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
       const preparedQuery = {
@@ -43,18 +37,14 @@ module.exports = {
       };
       const result = await client.query(preparedQuery);
       if (result.rowCount === 0) {
-        return undefined;
-    };
+        throw new ApiError('User not found', { statusCode: 404 });
+      };
 
-    return result.rows[0];
-    } catch (error) {
-      throw new ApiError('User not found', {statusCode: 404 });
-    };
+      return result.rows[0];
   },
 
   //Retrouver un user par son email pour l'authentification
   async findByEmail(reqEmail){
-    try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
       const preparedQuery = {
@@ -69,19 +59,14 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       if (result.rowCount === 0) {
-        return undefined;
-    };
+        throw new ApiError('User not found', { statusCode: 404 });
+      };
 
-    return result.rows[0];
-
-    } catch (error) {
-      throw new ApiError('Users not found', {statusCode: 404 });
-    };
+      return result.rows[0];
   },
 
   //Rechercher un utilisateur par son surnom, son nom ou son prénom.
   async findByNickname(nickname){
-    try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
       const preparedQuery = {
@@ -96,20 +81,14 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       if (result.rowCount === 0) {
-        return undefined;
-    };
+        throw new ApiError('Users not found', { statusCode: 404 });
+      };
 
-    return result.rows[0];
-
-    } catch (error) {
-      throw new ApiError('Users not found', {statusCode: 404 });
-      
-    };
+      return result.rows[0];
   },
 
   //Insérer un nouvel utilisateur dans la BDD.
   async insert(newUser) {
-    try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
       const preparedQuery = {
@@ -123,16 +102,11 @@ module.exports = {
   
       const result = await client.query(preparedQuery);
   
-    return result.rows[0];
-
-    } catch (error) {
-      throw new ApiError('User non inserted', {statusCode: 503 });
-    };
+      return result.rows[0];
   },
 
   //Mettre à jours les infos d'un utilisateur en BDD.
   async update(id, user) {
-    try {
       const fields = Object.keys(user).map((prop, index) => `"${prop}" = $${index + 1}`);
       const values = Object.values(user);
       const savedUser = await client.query(
@@ -146,14 +120,10 @@ module.exports = {
         );
       return savedUser.rows[0];
 
-    } catch (error) {
-      throw new ApiError('User not updated', {statusCode: 503 });
-    };
   },
   
   //Supprimer un utilisateur de la BDD.
   async delete(id) {
-    try {
       const preparedQuery = {
         text: `
           DELETE
@@ -166,9 +136,5 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       return !!result.rowCount;
-      
-    } catch (error) {
-      throw new ApiError('User not deleted', {statusCode: 503 });
-    };
   }
 };

@@ -5,7 +5,6 @@ module.exports = {
 
 
   async findAll() {
-    try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
       const preparedQuery = {
@@ -18,14 +17,10 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       if (result.rowCount === 0) {
-        return undefined;
-    };
+        throw new ApiError('No tag in database', { statusCode: 404 });
+      };
 
-    return result.rows;
-
-    } catch (error) {
-      throw new ApiError('Tags not found', {statusCode: 404 });
-    };
+      return result.rows;
   },
 
 
@@ -33,7 +28,6 @@ module.exports = {
 
 //Rechercher un évènement par son ID.
   async findByPk(tagId) {
-try {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.
       const preparedQuery = {
@@ -46,14 +40,10 @@ try {
       };
       const result = await client.query(preparedQuery);
       if (result.rowCount === 0) {
-        return undefined;
-    };
+        throw new ApiError('Tag not found', { statusCode: 404 });
+      };
 
-    return result.rows[0];
-
-    } catch (error) {
-      throw new ApiError('Tag not found', {statusCode: 404 });
-    };
+      return result.rows[0];
   },
 
 };

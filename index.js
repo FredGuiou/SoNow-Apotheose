@@ -2,8 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const session = require('express-session');
 const router = require("./app/routers");
-const cors = require("cors");
+const cors = require("cors"); 
 const app = express();
+const { errorHandler } = require('./app/services/errorHandler');
 
 
 // Decode body
@@ -23,6 +24,9 @@ app.use(express.static('dist'));
 // Service /api routes
 app.use("/api", cors({ origin: "*" }), router);
 
+router.use((err, _, response, next) => {
+  errorHandler(err, response, next);
+});
 
 
 // Start app

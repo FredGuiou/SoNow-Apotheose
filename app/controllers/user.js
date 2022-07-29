@@ -36,14 +36,13 @@ module.exports = {
                         delete req.session.user.password;
                         return res.status(200).json({accessToken, refreshToken ,user: req.session.user});
                     }
-
-                    return res.status(403).json({ codeStatus: 403, message: 'Mauvais identifiant ou mot de passe' });
+                    throw new ApiError('Wrong email or password', { statusCode: 403 });
                 });
             } else {
-                return res.status(404).json('user_not_found');
+                throw new ApiError('User not found', { statusCode: 404 });
             }
         } catch (error) {
-            return res.status(501).json(error);
+            throw new ApiError('Internal Server Error', { statusCode: 500 });
         }
     },
 
@@ -57,10 +56,10 @@ module.exports = {
         try {
         req.session.destroy();
 
-        return res.status(204).json('Utilisateur déconnecté');
+        return res.status(204).json('Successful disconnected');
 
     } catch (error) {
-        throw new ApiError('Service Unvailable', {statusCode: 503 });
+        throw new ApiError('Internal Server Error', { statusCode: 500 });
     };
         
     },
@@ -102,7 +101,7 @@ module.exports = {
             return res.json(userDb);
 
         } catch (error) {
-            throw new ApiError('Users not found', {statusCode: 404 });
+            throw new ApiError('Internal Server Error', { statusCode: 500 });
         };
     },
 
@@ -114,13 +113,10 @@ module.exports = {
     async getOneUserById(req, res) {
         try {
             const userDb = await userDataMapper.findByPk(req.params.user_id);
-            if(!userDb){
-                throw new ApiError('User not found', {statusCode: 404 });
-            };
             return res.json(userDb);
 
         } catch (error) {
-            throw new ApiError('User not found', {statusCode: 404 });
+            throw new ApiError('Internal Server Error', { statusCode: 500 });
         };
     },
 
@@ -132,12 +128,9 @@ module.exports = {
     async getOneUserByNickname(req, res) {
         try {
             const userDb = await userDataMapper.findByNickname(req.body.nickname);
-            if(!userDb){
-                throw new ApiError('User not found', {statusCode: 404 });
-            };
             return res.json(userDb);
         } catch (error) {
-            throw new ApiError('User not found', {statusCode: 404 });
+            throw new ApiError('Internal Server Error', { statusCode: 500 });
         };
         
     },
@@ -163,7 +156,7 @@ module.exports = {
                 const insertUser = await userDataMapper.insert(newUser);
                 res.json(insertUser);
             } else {
-                throw new ApiError('User not created', {statusCode: 503 });
+                throw new ApiError('User already exists', { statusCode: 403 });
             };
             //On vérifie que le format de l'email soit valide avec Joi validation
                 //Si le format de la regex n'est pas respecté
@@ -175,7 +168,7 @@ module.exports = {
                     //On envoie un message d'erreur
 
         } catch (error) {
-            throw new ApiError('Service Unvailable', {statusCode: 503 });
+            throw new ApiError('Internal Server Error', { statusCode: 500 });
         };
     },
 
@@ -187,12 +180,12 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByPk(req.params.user_id);
             if (!userDb) {
-                throw new ApiError('User not updated', {statusCode: 503 });
+                throw new ApiError('Internal Server Error', { statusCode: 500 });
             };
             const savedUser = await userDataMapper.update(req.params.user_id, req.body);
             return res.json(savedUser);
         } catch (error) {
-            throw new ApiError('Service Unvailable', {statusCode: 503 });
+            throw new ApiError('Internal Server Error', { statusCode: 500 });
         };
     },
 
@@ -204,13 +197,13 @@ module.exports = {
         try {
             const userDb = await userDataMapper.findByPk(req.params.user_id);
             if (!userDb) {
-                throw new ApiError('User not updated', {statusCode: 503 });
+                throw new ApiError('Internal Server Error', { statusCode: 500 });
             };
             await userDataMapper.delete(req.params.user_id);
             return res.status(204).json({code: 204, message: "Cet utilisateur a bien été supprimer"});
 
         } catch (error) {
-            throw new ApiError('Service Unvailable', {statusCode: 503 });
+            throw new ApiError('Internal Server Error', { statusCode: 500 });
         };
     }
 };

@@ -15,7 +15,7 @@ function LoginForm() {
     passwordInput, 
   } = useSelector((state) => state.login);
 
-  const isConnected = useSelector ((state) => state.user.isConnected);
+  const isConnected = useSelector ((state) => state.user.accessToken);
   
   const handleSubmit=()=>{
     dispatch(submitLogin());

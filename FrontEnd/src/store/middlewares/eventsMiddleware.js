@@ -3,7 +3,7 @@ import { GET_EVENTS, getEventsSuccess, getEventsError } from '../actions';
 
 const eventsMiddleware = (store) => (next) => (action) => {
   if (action.type === GET_EVENTS) {
-    console.log('eventsMiddleware');
+    // console.log('eventsMiddleware');
     next(action);
 
     const state = store.getState();
@@ -20,7 +20,7 @@ const eventsMiddleware = (store) => (next) => (action) => {
 
     axios(config)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         store.dispatch(getEventsSuccess(response.data));
       })
       .catch(() => {

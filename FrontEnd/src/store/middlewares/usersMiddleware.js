@@ -2,22 +2,28 @@ import { GET_FOLLOWERS, GET_SUBSCRIPTIONS, GET_USERS, SUBMIT_USERS_SEARCH, } fro
 
 const usersMiddleware = (store) => (next) => (action) => {
   
-  console.log('userMiddleware');
+  // console.log('userMiddleware');
 
   if (action.type === SUBMIT_USERS_SEARCH) {
-    console.log('friend search')
+    // console.log('friend search')
     next(action);
-  } else if (action.type === GET_USERS) {
-    console.log('get users')
-    next(action);
-  }else if (action.type === GET_FOLLOWERS) {
-    console.log('get followers')
+  } 
+  
+  else if (action.type === GET_USERS) {
+    // console.log('get users')
     next(action);
   }
-else if (action.type === GET_SUBSCRIPTIONS) {
-  console.log('get subscriptions')
-  next(action);
-}
+  
+  else if (action.type === GET_FOLLOWERS) {
+    // console.log('get followers')
+    next(action);
+  }
+  
+  else if (action.type === GET_SUBSCRIPTIONS) {
+    console.log('get subscriptions')
+    next(action);
+  } 
+  
   else {
     next(action);
   }

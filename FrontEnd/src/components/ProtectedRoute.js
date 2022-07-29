@@ -1,12 +1,10 @@
-import { useSelector } from 'react-redux';
-
 import Authentification from './Authentification';
 
-const withAuth = (Component) => {
+const ProtectedRoute = (Component) => {
   return () => {
-      const user = useSelector((state)=> state.user.isConnected);
-      console.log('isConnected' + user);
-      if (user) {
+      const accessToken = localStorage.getItem('accessToken');
+      // console.log('accessToken ' + accessToken);
+      if (accessToken) {
         return <Component/>;
       } else {
         return <Authentification/>
@@ -14,4 +12,4 @@ const withAuth = (Component) => {
   };
 };
 
-export default withAuth;
+export default ProtectedRoute;

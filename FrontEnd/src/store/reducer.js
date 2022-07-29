@@ -30,7 +30,26 @@ import {
 } from './actions';
 
 const initialState = {
-  user: {},
+  event: {
+    activeEvent: null,
+  },
+  events: {
+    list:[],
+    searchInput: '',
+    searchResults:[],
+    isLoading: false,
+  }, 
+  favorites: {
+    activeItem: `Tous mes favoris`,
+  },
+  login: {
+    emailInput: '',
+    passwordInput:'',
+    isLoading: false,
+  },
+  profil: {
+    activeItem: 'Mes événements',
+  },
   signup: {
     firstnameInput: '',
     lastnameInput:'',
@@ -40,13 +59,8 @@ const initialState = {
     confirmedPasswordInput:'',
     isLoading: false,
   }, 
-  login: {
-    emailInput: '',
-    passwordInput:'',
-    isLoading: false,
-  },
-  profil: {
-    activeItem: 'Mes événements',
+  user: {
+    accessToken: null,
   },
   users: {
     activeItem: 'Abonnes',
@@ -59,9 +73,6 @@ const initialState = {
     isGetSubscriptionLoading: false,
     isSearchLoading: false,
   }, 
-  favorites: {
-    activeItem: `Tous mes favoris`,
-  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -155,7 +166,6 @@ const reducer = (state = initialState, action) => {
           ...action.user,
           accessToken: action.accessToken,
           refreshToken: action.refreshToken,
-          isConnected:true,
           hasLoginError: false
         }
       };

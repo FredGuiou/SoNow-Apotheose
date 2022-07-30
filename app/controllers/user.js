@@ -194,6 +194,14 @@ module.exports = {
             };
             const savedUser = await userDataMapper.update(req.params.user_id, req.body);
             return res.json(savedUser);
+            //On vérifie que le format de l'email soit valide avec Joi validation
+                //Si le format de la regex n'est pas respecté
+                    //on envoie un message d'erreur
+                
+                
+            //On vérife que le format de mot de passe soit correct
+                //Si le format de mot de passe n'est pas respecté
+                    //On envoie un message d'erreur
         } catch (error) {
             res.json({status: "Service Unvailable", code: 503, message: "User updateUser throw an error"});
             throw new ApiError('Service Unvailable', {statusCode: 503 });

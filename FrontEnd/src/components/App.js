@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 // import DistanceCalculator from 'distance-calculator-js';
+
+import { getEvents } from '../store/actions';
 
 import Authentification from './Authentification';
 import CreateAccount from './CreateAccount';
@@ -51,6 +54,11 @@ function App() {
   //   setIsLocationLoading(true);
   //   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   // }, []);
+
+  // Necessary to get events on page refresh
+  useEffect(() => {
+    dispatch(getEvents());
+  }, [dispatch]);
 
   return (
     <div className='App'>

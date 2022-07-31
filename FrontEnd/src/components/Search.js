@@ -1,12 +1,11 @@
 import ProtectedRoute from './ProtectedRoute';
+import { Form, Container } from 'semantic-ui-react';
 
-import EventSearchCard from './EventSearchCard';
-import EventScrollElement from './EventScrollElement';
+import EventCardSecondary from './EventCardSecondary';
+import SearchCategories from './SearchCategories';
 import events from '../data/eventsData';
 
 import '../styles/search.scss';
-import { Input, Menu, Container } from 'semantic-ui-react';
-import HorizontalScroll from 'react-scroll-horizontal';
 
 function Search() {
 
@@ -14,26 +13,12 @@ function Search() {
 
   return (
     <div className='search-container'>
-      <Menu 
-        inverted
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          backgroundColor: 'black',
-        }}
-      >
-      <Menu.Item
-        style={{
-          width: '100%',
-        }}
-      >
-          <Input
-            icon= 'sliders horizontal'
-            placeholder='Rechercher...'
-            size='large'
-          />
-        </Menu.Item>
-      </Menu>
+      <Form>
+        <Form.Input 
+          icon={{ name:'sliders horizontal', link: true}}
+          placeholder='Rechercher...'
+        />
+      </Form>
       <Container
         style={{
           width: '100%',
@@ -43,8 +28,10 @@ function Search() {
           borderRadius: '30px',
         }}
       >
-        <EventSearchCard event={event} />
-
+        <EventCardSecondary 
+          event={event} 
+          params={'autour-de-moi'}
+        />
       </Container>
       <Container
         style={{
@@ -55,109 +42,10 @@ function Search() {
           backgroundColor: 'black',
         }}
       >
-        <h1 style={{
-            display: 'inline-block',
-            margin: '1rem',
-            paddingBottom: '0.5rem',
-            borderBottom: '2px solid #f30067'
-          }} 
-        > 
-          {event.flag}
-
-        </h1>
-        <HorizontalScroll reverseScroll={true}>
-          <div className='scroll-element-container'>
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-          </div>
-        </HorizontalScroll>
-
-        <h1 style={{
-            display: 'inline-block',
-            margin: '1rem',
-            paddingBottom: '0.5rem',
-            borderBottom: '2px solid #f30067'
-          }} 
-        > 
-          {event.flag}
-
-        </h1>
-        <HorizontalScroll reverseScroll={true}>
-          <div className='scroll-element-container'>
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-          </div>
-        </HorizontalScroll>
-
-        <h1 style={{
-            display: 'inline-block',
-            margin: '1rem',
-            paddingBottom: '0.5rem',
-            borderBottom: '2px solid #f30067'
-          }} 
-        > 
-          {event.flag}
-
-        </h1>
-        <HorizontalScroll reverseScroll={true}>
-          <div className='scroll-element-container'>
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-          </div>
-        </HorizontalScroll>
-
-        <h1 style={{
-            display: 'inline-block',
-            margin: '1rem',
-            paddingBottom: '0.5rem',
-            borderBottom: '2px solid #f30067'
-          }} 
-        > 
-          {event.flag}
-
-        </h1>
-        <HorizontalScroll reverseScroll={true}>
-          <div className='scroll-element-container'>
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-            <EventScrollElement />
-          </div>
-        </HorizontalScroll>
-        
-
+        <SearchCategories event={event} />
+        <SearchCategories event={event} />
+        <SearchCategories event={event} />
       </Container>
-
     </div>
   );
 }

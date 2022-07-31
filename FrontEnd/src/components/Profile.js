@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../store/actions';
 
 import ProtectedRoute from './ProtectedRoute';
-import EventCardProfile from './EventCardProfile';
-import UserCard from './UserCard';
+import EventCardTertiary from './EventCardTertiary';
+import ProfileUserCard from './ProfileUserCard';
 import "../styles/profile.scss";
 
 // Import data en dur pour préparer la connexion API 
@@ -24,13 +24,13 @@ function Profile() {
 
   return (
     <div className="profile-container">
-      <UserCard 
+      <ProfileUserCard 
         user={user}
       />
       <div className='profile-container__event'>
         {
           events.map((e) => (
-            <EventCardProfile
+            <EventCardTertiary
               key={e.id}
               event={e}
             />

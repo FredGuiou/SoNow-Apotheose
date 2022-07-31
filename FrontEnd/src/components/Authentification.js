@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Container, Grid, Header } from 'semantic-ui-react';
  
 import '../styles/authentification.scss';
-import Login from './LoginForm';
+import Login from './AuthentificationLogin';
 import loop from '../images/assets/sonow.MOV';
 import logo from '../images/logo.png';
 

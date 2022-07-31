@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { Card, Icon, Label } from 'semantic-ui-react';
 
-import "../styles/eventCardDescription.scss";
+import "../styles/eventCardMain.scss";
 
 import events from '../data/eventsData';
 
-function EventCardDescription() {
+function EventCardMain() {
 
   const params = useParams();
   const event = events.find((e) => e.slug === params.slug);
@@ -105,4 +105,4 @@ function EventCardDescription() {
   );
 }
 
-export default EventCardDescription;
+export default EventCardMain;

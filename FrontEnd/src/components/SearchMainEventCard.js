@@ -1,18 +1,22 @@
+import { Link } from 'react-router-dom';
 import { Card, Icon, Label } from 'semantic-ui-react';
 
-import "../styles/eventcardprofile.scss"
+import EventDateCard from './EventDateCard';
 
-function EventCardProfile({ event }) {
+import "../styles/searchMainEventCard.scss"
+
+function SearchMainEventCard({ event }) {
   return (
-    <div className="event-card-profile">
+    <Link to={`/event/${event.slug}`}>
+    <div className="event-search-card">
       <img
         style={{borderBottom: "2px solid #ffffff"}}
-        className="event-card-profile__img"
+        className="event-search-card__img"
         src={event.media}
         alt={event.title}
       />
-      <section className='event-card-profile__details'>
-        <section className="event-card-profile__details__social-icons">
+      <section className='event-search-card__details'>
+        <section className="event-search-card__details__social-icons">
             <Icon 
               name='heart' 
               size='large'
@@ -41,11 +45,11 @@ function EventCardProfile({ event }) {
               }}
               />
         </section>
-        <section className="event-card-profile__details__card">
+        <section className="event-search-card__details__card">
           <Card 
             fluid
             style={{
-              height: '5.6rem',
+              height: '2.5rem',
               boxShadow: 'none',
               background: 'transparent',
               display: 'flex',
@@ -101,26 +105,27 @@ function EventCardProfile({ event }) {
               }
             </Card.Content>
           </Card>
-          <section className="event-card-profile__details__card__participants">
+          <section className="event-search-card__details__card__participants">
             <Icon 
               name='user' 
               style={{
                 color:'white'
               }} 
             />
-            <p className="event-card-profile__details__card__participants__content" >
+            <p className="event-search-card__details__card__participants__content" >
               {event.participants} participants
             </p>
           </section>
-          <section className="event-card-profile__details__card__date">
-            <div className="event-card-profile__details__card__date__day"><div>{event.start.getDate()}</div></div>
-            <div className="event-card-profile__details__card__date__month"><div>{event.start.toLocaleString('fr-fr', { month: 'short' }).toUpperCase().replace('.', '')}</div></div>
-          </section>
+          <EventDateCard 
+          className='event-card-tertiary__details__date'
+          start={event.start}
+        />
         </section>
       </section>
     </div>
+    </Link>
   );
 
 }
 
-export default EventCardProfile
+export default SearchMainEventCard

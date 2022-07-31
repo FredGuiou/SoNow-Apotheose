@@ -13,9 +13,9 @@ import Page from './Page';
 import Profile from './Profile';
 import Search from './Search';
 import Error404 from './Error404';
-import EventCardDescription from './EventCardDescription';
+import EventCardMain from './EventCardMain';
 
-import '../styles/App.scss';
+import '../styles/app.scss';
 
 /*
 // Test data
@@ -135,7 +135,7 @@ function App() {
           path="/event/:slug"
           element={(
             <Page title="Événement | SoNow">
-              <EventCardDescription />
+              <EventCardMain />
               <Nav />
             </Page>
           )}

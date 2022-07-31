@@ -4,12 +4,14 @@
   overflow-y: scroll;
   height: 92vh;
   width: 100vw;
-  background-color: pink;
+  background-color: black;
 
   &__event {
     height: 92vh;
     width: 100vw;
-    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 }
 

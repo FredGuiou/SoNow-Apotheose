@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeLoginInputs, submitLogin } from '../store/actions';
 import { Form } from 'semantic-ui-react'
 
-import '../styles/loginForm.scss';
+import '../styles/authentificationLogin.scss';
 
-function LoginForm() {
+function AuthentificationLogin() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -77,5 +77,5 @@ function LoginForm() {
 
 }
 
-export default LoginForm;
+export default AuthentificationLogin;
 

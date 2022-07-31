@@ -7,8 +7,8 @@ import "../styles/feed.scss";
 
 function Feed() {
 
-  const events = useSelector((state) => state.events.list);
-  console.log(events);
+  // || [] to be abble to map before loadgin the events list 
+  const events = useSelector((state) => state.events.list) || [];
 
   return (
     <div className="feed-container">

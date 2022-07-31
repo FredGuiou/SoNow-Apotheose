@@ -188,11 +188,9 @@ const reducer = (state = initialState, action) => {
     case GET_EVENTS_SUCCESS:
       return {
         ...state,
-        user: {
-          ...action.user,
-          accessToken: action.accessToken,
-          refreshToken: action.refreshToken,
-          hasLoginError: false
+        events: {
+          ...state.events,
+          list : action.events
         }
       };
     case GET_EVENTS_ERROR:

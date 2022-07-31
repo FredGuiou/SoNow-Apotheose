@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SUBMIT_LOGIN, submitLoginSuccess, submitLoginError, LOGOUT} from '../actions';
+import { getEvents, SUBMIT_LOGIN, submitLoginSuccess, submitLoginError, LOGOUT} from '../actions';
 
 const loginMiddleware = (store) => (next) => (action) => {
   
@@ -30,6 +30,7 @@ const loginMiddleware = (store) => (next) => (action) => {
         store.dispatch(submitLoginSuccess(response.data.accessToken, response.data.refreshToken, response.data.user));
         localStorage.setItem('accessToken', `${response.data.accessToken}`);
         localStorage.setItem('refreshToken', `${response.data.refreshToken}`);
+        store.dispatch(getEvents());
       })
       .catch(() => {
         store.dispatch(submitLoginError());

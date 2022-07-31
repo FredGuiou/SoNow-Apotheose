@@ -3,9 +3,8 @@ import { GET_EVENT, GET_EVENTS, getEventsSuccess, getEventsError, SUBMIT_EVENTS_
 
 const eventsMiddleware = (store) => (next) => (action) => {
   if (action.type === GET_EVENTS) {
-    // console.log('eventsMiddleware');
-    next(action);
 
+    next(action);
     const state = store.getState();
 
     const config = {   
@@ -18,21 +17,23 @@ const eventsMiddleware = (store) => (next) => (action) => {
       }, 
     };
 
-    axios(config)
-      .then((response) => {
-        console.log(response.data);
-        store.dispatch(getEventsSuccess(response.data));
-      })
-      .catch(() => {
-        store.dispatch(getEventsError());
-      });
-
+    if (!state.events.list || state.events.list.length === 0) {
+      axios(config)
+        .then((response) => {
+          // console.log(response.data);
+          store.dispatch(getEventsSuccess(response.data));
+        })
+        .catch(() => {
+          store.dispatch(getEventsError());
+        });
+    } else {
+      next(action)
+    }
+  
   } else if (action.type === GET_EVENT) {
-    console.log('eventMiddleware');
+    
     next(action);
-
     const state = store.getState();
-
     const id = state.event.activeEvent;
 
     const config = {
@@ -53,13 +54,11 @@ const eventsMiddleware = (store) => (next) => (action) => {
       .catch(() => {
         store.dispatch(getEventsError());
       });
-  }
-  else if (action.type === SUBMIT_EVENTS_SEARCH) {
-    console.log('events search')
+  
+  } else if (action.type === SUBMIT_EVENTS_SEARCH) {
     next(action);
-
     const state = store.getState();
-
+    
     const config = {   
       method: 'post',
       url: 'https://sonow.herokuapp.com/api/event/search', 
@@ -72,7 +71,7 @@ const eventsMiddleware = (store) => (next) => (action) => {
         title : state.events.searchInput
       }
     }
-
+  
     axios(config)
       .then((response) => {
         console.log(`submit events search success ${response.data}`);
@@ -82,8 +81,7 @@ const eventsMiddleware = (store) => (next) => (action) => {
         store.dispatch(submitEventsSearchError());
       });
 
-  }
-  else {
+  } else {
     next(action);
   }
 };

@@ -105,7 +105,7 @@ module.exports = {
         return null;
       };
 
-      return result.rows[0];
+      return result.rows;
   },
 
   //Insérer un nouvel utilisateur dans la BDD.

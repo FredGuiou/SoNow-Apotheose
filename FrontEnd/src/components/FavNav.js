@@ -7,7 +7,7 @@ import "../styles/favnav.scss";
 function FavNav() {
 
   const dispatch = useDispatch();
-  const activeItem = useSelector((state) => state.favorites.activeItem);
+  const activeItem = useSelector((state) => state.user.favorites.activeItem);
   
   return (
     <div className="fav-nav">

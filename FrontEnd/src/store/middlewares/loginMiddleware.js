@@ -19,8 +19,8 @@ const loginMiddleware = (store) => (next) => (action) => {
         'Access-Control-Allow-Origin': '*'
       }, 
       data: {
-        email: state.login.emailInput,
-        password:  state.login.passwordInput
+        email: state.user.login.emailInput,
+        password:  state.user.login.passwordInput
       }
     }
 

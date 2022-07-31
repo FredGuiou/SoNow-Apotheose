@@ -12,7 +12,7 @@ function UserCard({ user }) {
   const dispatch = useDispatch();
   const navigate= useNavigate();
 
-  const activeItem = useSelector((state) => state.profil.activeItem);
+  const activeItem = useSelector((state) => state.user.profil.activeItem);
   
   return (
   <Header attached='top' style={{backgroundColor: 'black', border: 'none'}}>  

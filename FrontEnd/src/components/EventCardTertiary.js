@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styles/eventCardTertiary.scss';
 
-import EventDateCard from './EventDateCard';
+import DateCard from './DateCard';
 
 import events from '../data/eventsData';
 
@@ -20,7 +20,7 @@ function EventCardTertiary() {
       />
 
       <div className='event-card-tertiary__date'>
-        <EventDateCard start={event.start}/>
+        <DateCard start={event.start}/>
       </div>
       <div className='event-card-tertiary__content'>
         <p className='event-card-tertiary__content__title'>{event.title.toUpperCase()}</p>

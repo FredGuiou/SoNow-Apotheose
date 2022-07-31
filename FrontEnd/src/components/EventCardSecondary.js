@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Card, Icon, Label } from 'semantic-ui-react';
 
-import EventDateCard from './EventDateCard';
+import DateCard from './DateCard';
 
 import '../styles/eventCardSecondary.scss'; 
 
@@ -136,7 +136,7 @@ function EventCardSecondary({ event, params }) {
               </p>
             </section>
             <section className='feed-event__details__card__date'>
-              <EventDateCard 
+              <DateCard 
                 start={event.start}
               />
             </section>

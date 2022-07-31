@@ -1,4 +1,4 @@
-import "../styles/eventDateCard.scss";
+import "../styles/dateCard.scss";
 
 // To display only 3 letters regardless of the month
 function display(date) {
@@ -9,11 +9,11 @@ function display(date) {
   return result;
 }
 
-function EventDateCard({ start }) {
+function DateCard({ start }) {
   return(
-    <section className='event-date-card'>
-      <div className='event-date-card__day'>{new Date(start.replace('T', ' ')).getUTCDay() + 1}</div>
-      <div className='event-date-card__month'>
+    <section className='date-card'>
+      <div className='date-card__day'>{new Date(start.replace('T', ' ')).getUTCDay() + 1}</div>
+      <div className='date-card__month'>
         {
           display(start)
         }
@@ -22,4 +22,4 @@ function EventDateCard({ start }) {
   )
 }; 
 
-export default EventDateCard;
+export default DateCard;

@@ -30,6 +30,7 @@ const loginMiddleware = (store) => (next) => (action) => {
         store.dispatch(submitLoginSuccess(response.data.accessToken, response.data.refreshToken, response.data.user));
         localStorage.setItem('accessToken', `${response.data.accessToken}`);
         localStorage.setItem('refreshToken', `${response.data.refreshToken}`);
+        localStorage.setItem('id', `${response.data.user.id}`);
         store.dispatch(getEvents());
       })
       .catch(() => {
@@ -53,6 +54,7 @@ const loginMiddleware = (store) => (next) => (action) => {
       .then(() => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
+        localStorage.removeItem('id');
         // console.log(`submit logout`);
       })
       .catch((error) => {

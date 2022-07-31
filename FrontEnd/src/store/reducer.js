@@ -26,6 +26,12 @@ import {
   GET_SUBSCRIPTIONS,
   GET_SUBSCRIPTIONS_ERROR,
   GET_SUBSCRIPTIONS_SUCCESS,
+  GET_CONSULTED_USER, 
+  GET_CONSULTED_USER_ERROR, 
+  GET_CONSULTED_USER_SUCCESS,
+  GET_USER, 
+  GET_USER_ERROR, 
+  GET_USER_SUCCESS,
   GET_USERS, 
   GET_USERS_ERROR, 
   GET_USERS_SUCCESS,
@@ -282,19 +288,70 @@ const reducer = (state = initialState, action) => {
           hasGetSubscriptionsError: true,
         }
       };
+      case GET_CONSULTED_USER:
+        return {
+          ...state,
+          consultedUser: {
+            ...state.consultedUser, 
+            isGetUserLoading: true,
+          }
+        };
+      case GET_CONSULTED_USER_SUCCESS:
+        return {
+          ...state,
+          consultedUser : {
+            ...state.consultedUser,
+            ...action.consultedUser
+          }
+        };
+      case GET_CONSULTED_USER_ERROR:  
+        return {
+          ...state,
+          consultedUser: {
+            ...state.consultedUser,
+            isGetSUserLoading:false, 
+            hasGetSUserError: true,
+          }
+        };
+    case GET_USER:
+      return {
+        ...state,
+        user: {
+          ...state.user, 
+          isGetUserLoading: true,
+        }
+      };
+    case GET_USER_SUCCESS:
+      return {
+        ...state,
+        user : {
+          ...state.user,
+          ...action.user
+        }
+      };
+    case GET_USER_ERROR:  
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          isGetSUserLoading:false, 
+          hasGetSUserError: true,
+        }
+      };
     case GET_USERS:
       return {
         ...state,
-        friends: {
-          ...state.friends, 
+        users: {
+          ...state.users, 
+          list: action.users,
           isGetUsersLoading: true,
         }
       };
     case GET_USERS_SUCCESS:
       return {
         ...state,
-        friends: {
-          ...state.friends,
+        users: {
+          ...state.users,
           users:[...action.users],
           isGetUsersLoading: false, 
           hasGetUsersError: false,
@@ -303,8 +360,8 @@ const reducer = (state = initialState, action) => {
     case GET_USERS_ERROR:  
       return {
         ...state,
-        friends: {
-          ...state.friends,
+        users: {
+          ...state.users,
           isGetSUsersLoading:false, 
           hasGetSUsersError: true,
         }

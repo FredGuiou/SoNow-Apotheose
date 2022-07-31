@@ -116,7 +116,9 @@ export const submitUsersSearch= () => ({
 
 export const submitUsersSearchSuccess= (users) => ({
   type: SUBMIT_USERS_SEARCH_SUCCESS,
-  users: users
+  // waiting for back deployement including several results
+  // [] to be removed
+  users: [users]
 });
 
 export const submitUsersSearchError= () => ({

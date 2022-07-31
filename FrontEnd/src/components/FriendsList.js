@@ -22,6 +22,7 @@ function FriendsList() {
     activeItem, 
     isSearchLoading, 
     searchInput, 
+    searchResults
   } = useSelector((state) => state.users);  
 
   const list = useSelector((state) => state.users.list) || [];
@@ -60,13 +61,21 @@ function FriendsList() {
           </Menu.Menu>
         </Menu>
         <div className='friends__list'>
-          {
+          { 
+          searchResults.length === 0 ? 
             list.map((u) => (
               <UserAvatar 
                 key={u.id}
                 user={u} 
               />
-            ))
+            ))   
+            :
+            searchResults.map((u) => (
+              <UserAvatar 
+                key={u.id}
+                user={u} 
+              />
+            )) 
           }
         </div>
     </div>

@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom';
 import { Card, Icon, Label } from 'semantic-ui-react';
 
-import "../styles/feedEvent.scss"; 
+import '../styles/feedEvent.scss'; 
 
 function FeedEvent({ event }) {
   return (
     <Link to={`/event/${event.slug}`}>
-      <div className="feed-event">
+      <div className='feed-event'>
+        {/* En attente envoie du lien des images*/}
         <img
-          className="feed-event__img"
-          src={event.media}
+          className='feed-event__img'
+          src={'https://picsum.photos/1080'}
           alt={event.title}
         />
         <section className='feed-event__details'>
-          <section className="feed-event__details__social-icons">
+          <section className='feed-event__details__social-icons'>
               <Icon 
                 name='heart' 
                 size='large'
@@ -42,7 +43,7 @@ function FeedEvent({ event }) {
                 }}
                 />
           </section>
-          <section className="feed-event__details__card">
+          <section className='feed-event__details__card'>
             <Card 
               fluid
               style={{
@@ -87,7 +88,8 @@ function FeedEvent({ event }) {
                   padding: '0px',
                 }}
               >
-                {
+                {/* En attente ajout des tags à l'envoie des évènements */}
+                {/*
                   event.tag.map((t) => {
                     return (
                       <Label 
@@ -99,23 +101,39 @@ function FeedEvent({ event }) {
                       </Label>
                     )
                   })
-                }
+                */}
+                <Label 
+                  key={1}
+                  >
+                    👯  Entre amis
+                </Label>
+                <Label 
+                  key={2}
+                  >
+                    🕺  Danse
+                </Label>
+                <Label 
+                  key={3}
+                  >
+                    🎶  Musique
+                </Label>
               </Card.Content>
             </Card>
-            <section className="feed-event__details__card__participants">
+            <section className='feed-event__details__card__participants'>
               <Icon 
                 name='user' 
                 style={{
                   color:'white'
                 }} 
               />
-              <p className="feed-event__details__card__participants__content" >
-                {event.user_attend_event.length} participants
+              <p className='feed-event__details__card__participants__content' >
+                {/* event.user_attend_event.length*/} 412 participants
               </p>
             </section>
-            <section className="feed-event__details__card__date">
-              <div className="feed-event__details__card__date__day"><div>{event.start.getDate()}</div></div>
-              <div className="feed-event__details__card__date__month"><div>{event.start.toLocaleString('fr-fr', { month: 'short' }).toUpperCase().replace('.', '')}</div></div>
+            <section className='feed-event__details__card__date'>
+              {/* En attente envoie date au bon format */}
+              <div className='feed-event__details__card__date__day'>{new Date(event.start.replace('T', ' ')).getUTCDay() + 1}</div>
+              <div className='feed-event__details__card__date__month'><div>{new Date(event.start.replace('T', ' ')).toLocaleString('fr-fr', { month: 'short' }).toUpperCase().replace('.', '')}</div></div>  
             </section>
           </section>
         </section>

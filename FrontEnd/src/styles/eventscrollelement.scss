@@ -1,0 +1,25 @@
+.event-scroll-element {
+  position: relative;
+  width: 215px;
+  height: 150px;
+  margin: 1rem;
+  border-radius: 30px;
+  background-color: pink;
+
+  &__details__card {
+    position: absolute;
+    top: 40%;
+    bottom: 60%;
+    width: 215px;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color:white;
+    text-align: center;
+
+    &__content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

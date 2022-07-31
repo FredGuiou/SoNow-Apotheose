@@ -9,7 +9,7 @@ import {
 } from '../actions';
 
 const initialState = {
-  isGetSUsersLoading:false, 
+  isGetUsersLoading:false, 
   isSearchLoading: false,
   list:[],
   searchInput: '',

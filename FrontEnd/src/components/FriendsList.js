@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { Form, Menu } from 'semantic-ui-react';
 
-import users from '../data/usersData';
+import { getUsers } from '../store/actions';
+// import users from '../data/usersData';
 
 import {
   changeUsersSearchInput,
@@ -15,11 +17,19 @@ import UserAvatar from './UserAvatar';
 function FriendsList() {
 
   const dispatch = useDispatch();
+  
   const {
     activeItem, 
     isSearchLoading, 
-    searchInput
+    searchInput, 
   } = useSelector((state) => state.users);  
+
+  const list = useSelector((state) => state.users.list) || [];
+
+  // to get events on page refresh
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
   return (
     <div className="friends">
@@ -54,12 +64,11 @@ function FriendsList() {
           </Menu.Menu>
         </Menu>
         <div className='friends__list'>
-          <UserAvatar user={users[0]} />
-          <UserAvatar user={users[1]} />
-          <UserAvatar user={users[2]} />
-          <UserAvatar user={users[3]} />
-          <UserAvatar user={users[4]} />
-          <UserAvatar user={users[5]} />
+          {
+            list.map((u) => (
+              <UserAvatar user={u} />
+            ))
+          }
         </div>
     </div>
   );

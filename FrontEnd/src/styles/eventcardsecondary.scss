@@ -1,4 +1,4 @@
-.feed-event {
+.event-card-secondary {
   position: relative;
   height: 100%;
   width: 100%;
@@ -40,6 +40,14 @@
         bottom: 9.2rem;
         left: 2rem;
       }
+
+      &__label {
+        border: none;
+        display: flex;
+        align-items: center;
+        padding: 0px !important;
+        margin: 0px !important;
+      }
     }
 
     &__social-icons {
@@ -51,9 +59,12 @@
     }
 
   }
-
 }
 
 .hidden {
   display: none;
+}
+
+.search {
+  border-radius: 30px;
 }

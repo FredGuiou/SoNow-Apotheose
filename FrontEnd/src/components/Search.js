@@ -23,7 +23,7 @@ function Search() {
         style={{
           width: '100%',
           height: '400px',
-          margin: '0.5rem auto',
+          margin: '2rem auto',
           padding: '0.5rem',
           borderRadius: '30px',
         }}

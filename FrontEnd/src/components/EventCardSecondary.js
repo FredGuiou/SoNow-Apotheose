@@ -7,19 +7,17 @@ import '../styles/eventCardSecondary.scss';
 
 function EventCardSecondary({ event, params }) {
 
-   console.log(params);
-
   return (
     <Link to={`/event/${event.slug}`}>
-      <div className='feed-event'>
+      <div className={params === 'autour-de-moi'? 'event-card-secondary' : 'event-card-secondary search' }>
         {/* En attente envoie du lien des images*/}
         <img
-          className='feed-event__img'
+          className={params === 'autour-de-moi'? 'event-card-secondary__img search' : 'event-card-secondary__img'}
           src={'https://picsum.photos/1080'}
           alt={event.title}
         />
-        <section className='feed-event__details'>
-          <section className={params === 'autour-de-moi'? 'feed-event__details__social-icons hidden' : 'feed-event__details__social-icons'}>
+        <section className='event-card-secondary__details'>
+          <section className={params === 'autour-de-moi'? 'event-card-secondary__details__social-icons hidden' : 'event-card-secondary__details__social-icons'}>
               <Icon 
                 name='heart' 
                 size='large'
@@ -48,7 +46,7 @@ function EventCardSecondary({ event, params }) {
                 }}
                 />
           </section>
-          <section className='feed-event__details__card'>
+          <section className='event-card-secondary__details__card'>
             <Card 
               fluid
               style={{
@@ -85,14 +83,7 @@ function EventCardSecondary({ event, params }) {
               >
                 {event.metadescription}
               </Card.Description>
-              <Card.Content
-                style={{
-                  border: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '0px',
-                }}
-              >
+              <Card.Content className={params === 'autour-de-moi'? 'event-card-secondary__details__card__labels hidden' : 'event-card-secondary__details__card__labels'}>
                 {/* En attente ajout des tags à l'envoie des évènements */}
                 {/*
                   event.tag.map((t) => {
@@ -124,18 +115,18 @@ function EventCardSecondary({ event, params }) {
                 </Label>
               </Card.Content>
             </Card>
-            <section className='feed-event__details__card__participants'>
+            <section className='event-card-secondary__details__card__participants'>
               <Icon 
                 name='user' 
                 style={{
                   color:'white'
                 }} 
               />
-              <p className='feed-event__details__card__participants__content' >
+              <p className='event-card-secondary__details__card__participants__content' >
                 {/* event.user_attend_event.length*/} 412 participants
               </p>
             </section>
-            <section className='feed-event__details__card__date'>
+            <section className='event-card-secondary__details__card__date'>
               <DateCard 
                 start={event.start}
               />

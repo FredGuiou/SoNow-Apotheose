@@ -1,9 +1,5 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 // import DistanceCalculator from 'distance-calculator-js';
-
-import { getEvents } from '../store/actions';
 
 import Authentification from './Authentification';
 import CreateAccount from './CreateAccount';
@@ -32,8 +28,6 @@ console.log(m);
 */
 
 function App() {
-  
-  const dispatch = useDispatch();
 
   // const [isLocationLoading, setIsLocationLoading] = useState(false);
   // const [latitude, setLatitude] = useState([]);
@@ -54,11 +48,6 @@ function App() {
   //   setIsLocationLoading(true);
   //   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   // }, []);
-
-  useEffect(() => {
-    console.log('premier rendu');
-    dispatch(getEvents());
-  }, []);
 
   return (
     <div className='App'>

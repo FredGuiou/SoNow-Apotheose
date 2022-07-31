@@ -13,7 +13,7 @@ function LoginForm() {
   const { 
     emailInput,
     passwordInput, 
-  } = useSelector((state) => state.login);
+  } = useSelector((state) => state.user.login);
 
   const isConnected = useSelector ((state) => state.user.accessToken);
   

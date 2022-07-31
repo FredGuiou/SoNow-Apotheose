@@ -7,13 +7,12 @@ import { changeProfilActiveItem, logout } from '../store/actions';
 import profile from '../images/profile.jpg'
 import "../styles/userCard.scss"
 
-function UserCard() {
+function UserCard({ user }) {
 
   const dispatch = useDispatch();
   const navigate= useNavigate();
 
-  const activeItem = useSelector((state) => state.profil.activeItem);
-  const user = useSelector((state) => state.user);
+  const activeItem = useSelector((state) => state.user.profil.activeItem);
   
   return (
   <Header attached='top' style={{backgroundColor: 'black', border: 'none'}}>  

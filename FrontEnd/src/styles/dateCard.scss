@@ -1,0 +1,35 @@
+.date-card {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  height: 2.6rem;
+  width: 2rem;
+
+  &__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56%;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: white;
+    color: black;
+    font-size: 0.9rem;
+  }
+
+  &__month {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    background-color: #f30067;
+    color:white;
+    font-size: 0.6rem;
+  }  
+}

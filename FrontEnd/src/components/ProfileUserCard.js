@@ -5,9 +5,9 @@ import { Container, Grid, Header, Icon, Image, Menu } from 'semantic-ui-react';
 
 import { changeProfilActiveItem, logout } from '../store/actions';
 import profile from '../images/profile.jpg'
-import "../styles/userCard.scss"
+import "../styles/profileUserCard.scss"
 
-function UserCard({ user }) {
+function ProfileUserCard({ user }) {
 
   const dispatch = useDispatch();
   const navigate= useNavigate();
@@ -127,4 +127,4 @@ function UserCard({ user }) {
   )
 };
 
-export default UserCard;
+export default ProfileUserCard;

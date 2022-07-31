@@ -1,8 +1,8 @@
 import ProtectedRoute from './ProtectedRoute';
 import FavNav from './FavNav';
-import FavEvent from './FavEvent';
+import EventCardTertiary from './EventCardTertiary';
 // TODO: Add FavNav
-// import EventCardProfile from './EventCardProfile';
+// import ProfileEventCard from './ProfileEventCard';
 
 import "../styles/fav.scss";
 
@@ -13,22 +13,10 @@ function Fav() {
   return (
     <div className="fav">
       <FavNav/>
-      {/* 
-      <div className='fav-container__event'>
-        {
-          events.map((e) => (
-            <EventCardProfile
-              key={e.id}
-              event={e}
-            />
-          ))
-        }
-      </div>
-      */}
       <div className="fav__events">
         {
           events.map((e) => (
-            <FavEvent 
+            <EventCardTertiary
               key={e.id}
               event={e}
             />

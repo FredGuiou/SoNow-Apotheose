@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getEvents } from '../store/actions';
 
 import ProtectedRoute from './ProtectedRoute';
-import FeedEvent from './FeedEvent';
+import EventCardSecondary from './EventCardSecondary';
 import "../styles/feed.scss";
 // import events from '../data/eventsData';
 
@@ -25,9 +25,10 @@ function Feed() {
       <div className='feed-container__event'>
         {
           events.map((e) => (
-            <FeedEvent
+            <EventCardSecondary
               key={e.id}
               event={e}
+              params={'feed'}
             />
           ))
         }

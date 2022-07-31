@@ -56,7 +56,7 @@ const reducer = (state = initialState, action) => {
     case SUBMIT_USERS_SEARCH_SUCCESS:
       return {
         ...state,
-        searchResults: [action.users],
+        searchResults: action.users,
         isSearchLoading: false, 
         hasSearchError: false
       };

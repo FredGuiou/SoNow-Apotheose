@@ -69,7 +69,6 @@ else if (action.type === GET_SUBSCRIPTIONS) {
 
     axios(config)
     .then((response) => {
-      console.log(response.data);
       store.dispatch(getUsersSuccess(response.data));
     })
     .catch((error) => {

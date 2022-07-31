@@ -114,9 +114,9 @@ export const submitUsersSearch= () => ({
   type: SUBMIT_USERS_SEARCH
 });
 
-export const submitUsersSearchSuccess= (friendsList) => ({
+export const submitUsersSearchSuccess= (users) => ({
   type: SUBMIT_USERS_SEARCH_SUCCESS,
-  friendsList
+  users: users
 });
 
 export const submitUsersSearchError= () => ({

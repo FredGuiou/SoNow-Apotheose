@@ -47,15 +47,11 @@ function FriendsList() {
           <Menu.Menu position='right'>
             <Menu.Item>
               <Form onSubmit={(e)=> dispatch(submitUsersSearch())}>
-                <Form.Input
-                  inverted
-                  transparent
+                <Form.Input 
+                  className='friends__menu__form'
                   loading={isSearchLoading}
-                  style={{ 
-                    color: '#E0E0E0',
-                  }}
                   icon={{ name: 'users', link: true}}
-                  placeholder='Rechercher'
+                  placeholder='Rechercher...'
                   value={searchInput}
                   onChange={(e)=> dispatch(changeUsersSearchInput(e.target.value))}
                 />
@@ -66,7 +62,10 @@ function FriendsList() {
         <div className='friends__list'>
           {
             list.map((u) => (
-              <UserAvatar user={u} />
+              <UserAvatar 
+                key={u.id}
+                user={u} 
+              />
             ))
           }
         </div>

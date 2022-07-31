@@ -23,7 +23,7 @@ function UserAvatar({user}) {
         class='ui button'
         size='large'
         style={{
-          backgroundColor: '#F30067',
+          backgroundColor: '#818181',
           color: 'white',
         }}
       />

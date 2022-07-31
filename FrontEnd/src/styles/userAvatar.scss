@@ -1,12 +1,9 @@
 .user-avatar {
   width: 35vw; 
-  height: 20vh;
+  height: 25vh;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
-  &__btn {
-
-  }
 }

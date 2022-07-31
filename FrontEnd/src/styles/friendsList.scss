@@ -8,10 +8,10 @@
   }
 
   &__list{
-    height: 84vh; 
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: space-between;
+    background-color: black;
   }
 }

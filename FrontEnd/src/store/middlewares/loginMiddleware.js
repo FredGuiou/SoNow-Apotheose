@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SUBMIT_LOGIN, submitLoginSuccess, submitLoginError, LOGOUT} from '../actions';
+import { getEvents, SUBMIT_LOGIN, submitLoginSuccess, submitLoginError, LOGOUT} from '../actions';
 
 const loginMiddleware = (store) => (next) => (action) => {
   
@@ -19,8 +19,8 @@ const loginMiddleware = (store) => (next) => (action) => {
         'Access-Control-Allow-Origin': '*'
       }, 
       data: {
-        email: state.login.emailInput,
-        password:  state.login.passwordInput
+        email: state.user.login.emailInput,
+        password:  state.user.login.passwordInput
       }
     }
 
@@ -30,6 +30,8 @@ const loginMiddleware = (store) => (next) => (action) => {
         store.dispatch(submitLoginSuccess(response.data.accessToken, response.data.refreshToken, response.data.user));
         localStorage.setItem('accessToken', `${response.data.accessToken}`);
         localStorage.setItem('refreshToken', `${response.data.refreshToken}`);
+        localStorage.setItem('id', `${response.data.user.id}`);
+        store.dispatch(getEvents());
       })
       .catch(() => {
         store.dispatch(submitLoginError());
@@ -52,6 +54,7 @@ const loginMiddleware = (store) => (next) => (action) => {
       .then(() => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
+        localStorage.removeItem('id');
         // console.log(`submit logout`);
       })
       .catch((error) => {

@@ -21,6 +21,12 @@ export const GET_FOLLOWERS_SUCCESS = 'GET_FOLLOWERS_SUCCESS';
 export const GET_SUBSCRIPTIONS = 'GET_SUBSCRIPTION';
 export const GET_SUBSCRIPTIONS_ERROR = 'GET_SUBSCRIPTION_ERROR';
 export const GET_SUBSCRIPTIONS_SUCCESS = 'GET_SUBSCRIPTION_SUCESS';
+export const GET_CONSULTED_USER = 'GET_CONSULTED_USER';
+export const GET_CONSULTED_USER_ERROR = 'GET_CONSULTED_USER_ERROR'; 
+export const GET_CONSULTED_USER_SUCCESS = 'GET_CONSULTED_USER_SUCCESS';
+export const GET_USER = 'GET_USER';
+export const GET_USER_ERROR = 'GET_USER_ERROR'; 
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USERS = 'GET_USERS';
 export const GET_USERS_ERROR = 'GET_USERS_ERROR'; 
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
@@ -195,7 +201,31 @@ export const getUsersError= () => ({
   type: GET_USERS_ERROR,
 });
 
+export const getUser= () => ({
+  type: GET_USER,
+});
 
+export const getUserSuccess= (user) => ({
+  type: GET_USER_SUCCESS,
+  user
+});
+
+export const getUserError= () => ({
+  type: GET_USER_ERROR,
+});
+
+export const getConsultedUser= () => ({
+  type: GET_CONSULTED_USER,
+});
+
+export const getConsultedUserSuccess= (consultedUser) => ({
+  type: GET_CONSULTED_USER_SUCCESS,
+  consultedUser
+});
+
+export const getConsultedUserError= () => ({
+  type: GET_CONSULTED_USER_ERROR,
+});
 
 export const changeEventsSearch= (searchInput) => ({
   type: CHANGE_EVENTS_SEARCH,

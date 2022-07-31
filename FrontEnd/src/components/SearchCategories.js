@@ -8,26 +8,25 @@ function SearchCategories({ event}) {
         display: 'inline-block',
         margin: '1rem',
         paddingBottom: '0.5rem',
-        borderBottom: '2px solid #f30067'
       }} 
       > 
-      {event.flag}
-    </h1>
-    <HorizontalScroll reverseScroll={true}>
-      <div className='scroll-element-container'>
-        <EventCardSecondary />
-        <EventCardSecondary />
-        <EventCardSecondary />
-        <EventCardSecondary />
-        <EventCardSecondary />
-        <EventCardSecondary />
-        <EventCardSecondary />
-        <EventCardSecondary />
-        <EventCardSecondary />
-        <EventCardSecondary />
-      </div>
-    </HorizontalScroll>
-  </>
+        {`${event.flag} >`} 
+      </h1>
+      <HorizontalScroll reverseScroll={true}>
+        <div className='scroll-element-container'>
+          <EventCardSecondary />
+          <EventCardSecondary />
+          <EventCardSecondary />
+          <EventCardSecondary />
+          <EventCardSecondary />
+          <EventCardSecondary />
+          <EventCardSecondary />
+          <EventCardSecondary />
+          <EventCardSecondary />
+          <EventCardSecondary />
+        </div>
+      </HorizontalScroll>
+    </>
   )
 }; 
 

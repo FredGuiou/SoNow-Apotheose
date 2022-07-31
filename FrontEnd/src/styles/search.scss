@@ -6,8 +6,15 @@
     width: 92vw;
     margin: 1rem auto;
     background-color: black;
-}
 
+    &__container {
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0.5rem;
+    border-radius: 30px;
+    height: 30vh;
+    }
+}
 
 .search-container::-webkit-scrollbar {
     display: none;

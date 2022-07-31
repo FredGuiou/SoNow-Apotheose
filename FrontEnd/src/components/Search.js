@@ -20,13 +20,7 @@ function Search() {
         />
       </Form>
       <Container
-        style={{
-          width: '100%',
-          height: '400px',
-          margin: '2rem auto',
-          padding: '0.5rem',
-          borderRadius: '30px',
-        }}
+        className='search-container__container'
       >
         <EventCardSecondary 
           event={event} 

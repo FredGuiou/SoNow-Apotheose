@@ -5,6 +5,8 @@ en utilisatn des schemas passés en paramètres
 Si il y a une erreur cela renvoit un statut 400.
 */
 
+const { ApiError } = require("../services/errorHandler");
+
 module.exports = (prop, schema) => async (request, _, next) => {
     try {
         await schema.validateAsync(request[prop]);

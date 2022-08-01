@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom';
 import { Card, Icon, Label } from 'semantic-ui-react';
+
+import DateCard from './DateCard';
 
 import "../styles/eventCardMain.scss";
 
@@ -7,8 +8,7 @@ import events from '../data/eventsData';
 
 function EventCardMain() {
 
-  const params = useParams();
-  const event = events.find((e) => e.slug === params.slug);
+  const event = events.find((e) => e.slug === 'pool-party');
   
   return (
     <div className="event-card">
@@ -91,10 +91,9 @@ function EventCardMain() {
                     {event.user_attend_event.length} participants
                   </p>
                 </section>
-                <section className="event-description__details__card__date">
-                  <div className="event-description__details__card__date__day"><div>{event.start.getDate()}</div></div>
-                  <div className="event-description__details__card__date__month"><div>{event.start.toLocaleString('fr-fr', { month: 'short' }).toUpperCase().replace('.', '')}</div></div>
-                </section>
+                <DateCard 
+                  start={event.start}
+                />
               </section>
             </section>
             <section className="event-description__details__card__description">

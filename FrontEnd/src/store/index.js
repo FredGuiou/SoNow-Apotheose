@@ -4,10 +4,10 @@ import authMiddleware from './middlewares/authMiddleware';
 import eventsMiddleware from './middlewares/eventsMiddleware';
 import loginMiddleware from './middlewares/loginMiddleware';
 import usersMiddleware from './middlewares/usersMiddleware';
-import reducer from './reducers';
+import reducers from './reducers';
 
 const store = createStore(
-	reducer,
+	reducers,
 	composeWithDevTools(
     applyMiddleware(
       authMiddleware,

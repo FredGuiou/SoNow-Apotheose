@@ -19,7 +19,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <h1 className="errorBoundary__message">Oups... Veuillez rafraichir la page !</h1>;
+      return <h1 className="errorBoundary__message">Oups... quelque chose d'inattendu s'est produit...</h1>;
     }
 
     return this.props.children;

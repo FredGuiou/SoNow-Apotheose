@@ -13,7 +13,12 @@ function FavNav() {
     <div className="fav-nav">
       <Menu className='fav-nav__menu' inverted pointing secondary
         style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexGrow: 1,
           backgroundColor: 'black',
+          widht: '100%',
           height: '6vh',
         }}
       >

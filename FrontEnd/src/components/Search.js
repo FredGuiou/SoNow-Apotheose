@@ -5,18 +5,28 @@ import EventCardSecondary from './EventCardSecondary';
 import SearchCategories from './SearchCategories';
 import events from '../data/eventsData';
 
+import { changeEventsSearch, submitEventsSearch } from '../store/actions';
+import { useSelector, useDispatch} from 'react-redux';
+
 import '../styles/search.scss';
 
 function Search() {
 
   const event = events.find((e) => e.id === 12);
 
+  const dispatch = useDispatch();
+  const { 
+    searchInput
+  } = useSelector((state) => state.events);
+
   return (
     <div className='search-container'>
-      <Form>
+      <Form onSubmit={()=> dispatch(submitEventsSearch())}>
         <Form.Input 
           icon={{ name:'sliders horizontal', link: true}}
           placeholder='Rechercher...'
+          value={searchInput}
+          onChange={(e)=> dispatch(changeEventsSearch(e.target.value))}
         />
       </Form>
       <Container

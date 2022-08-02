@@ -8,13 +8,13 @@ import "../styles/createAccount.scss";
 function CreateAccount() {
 
   const { 
-    firtsnameInput,
+    firstnameInput,
     lastnameInput,
-    nicknameInput,
+    nicknameInput, 
     emailInput,
     passwordInput, 
     confirmedPasswordInput, 
-  } = useSelector((state) => state.signup);
+  } = useSelector((state) => state.signup) || {};
 
   const dispatch = useDispatch();
 
@@ -80,7 +80,7 @@ function CreateAccount() {
             name='firstname'
             label='Prénom'
             placeholder='Prénom' 
-            value={firtsnameInput} 
+            value={firstnameInput} 
             onChange={(e) => {handleFirstnameChange(e)}}
           />
           <Form.Input

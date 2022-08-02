@@ -13,7 +13,7 @@ function AuthentificationLogin() {
   const { 
     emailInput,
     passwordInput, 
-  } = useSelector((state) => state.user.login);
+  } = useSelector((state) => state.user.login) || {};
 
   const isConnected = useSelector ((state) => state.user.accessToken);
   

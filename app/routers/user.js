@@ -1,4 +1,9 @@
 const express = require('express');
+
+const validate = require('../validation/validator');
+const createSchema = require('../validation/schemas/userCreateSchema');
+const updateSchema = require('../validation/schemas/userUpdateSchema');
+
 const router = express.Router();
 
 //Importation du controller des utilisateurs.
@@ -20,7 +25,7 @@ router
 
 router
     .route('/signup')
-    .post(controllerHandler(controller.createUser));
+    .post(validate('body', createSchema),controllerHandler(controller.createUser));
 
 router
     .route('/logout')
@@ -30,7 +35,7 @@ router
 router
     .route('/:user_id')
     .get(controllerHandler(controller.getOneUserById))
-    .patch(controllerHandler(controller.updateUser))
+    .patch(validate('body', updateSchema), controllerHandler(controller.updateUser))
     .delete(controllerHandler(controller.deleteUser));
 
 router

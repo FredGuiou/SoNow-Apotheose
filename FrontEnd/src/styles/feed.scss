@@ -4,6 +4,7 @@
   overflow-y: scroll;
   height: 92vh;
   width: 100vw;
+  scroll-snap-type: y mandatory;
 
   &__event {
     height: 92vh;

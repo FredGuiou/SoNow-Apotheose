@@ -21,7 +21,7 @@ function AuthentificationLogin() {
 
   useEffect(() => {
     if (isConnected) {
-      navigate('/');
+      navigate('/feed');
     }
   } , []);
   

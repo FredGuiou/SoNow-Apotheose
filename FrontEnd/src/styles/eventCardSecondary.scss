@@ -68,20 +68,3 @@
 .search {
   border-radius: 30px;
 }
-
-@media only screen and (max-width: 370px) { 
-    .event-card-secondary {
-      &__details {
-
-        &__card {
-
-          &__labels {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-          }
-        }
-      }
-    }
-}

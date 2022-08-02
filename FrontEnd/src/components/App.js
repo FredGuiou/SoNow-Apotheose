@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom';
 import Authentification from './Authentification';
 import CreateAccount from './CreateAccount';
 import CreateEvent from './CreateEvent';
-import ErrorBoundary from './ErrorBoundary';
 import Fav from './Fav';
 import Feed from './Feed';
 import Filters from './Filters';
@@ -57,9 +56,7 @@ function App() {
           path='/'
           element={(
             <Page title="SoNow">
-            <ErrorBoundary>
               <Authentification />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -67,9 +64,7 @@ function App() {
           path='/creer-un-compte'
           element={(
             <Page title="Creer un compte | SoNow">
-            <ErrorBoundary>
               <CreateAccount />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -77,10 +72,8 @@ function App() {
           path='/feed'
           element={(
             <Page title="Feed | SoNow">
-            <ErrorBoundary>
               <Feed />
               <Nav />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -88,10 +81,8 @@ function App() {
           path='/favoris'
           element={(
             <Page title="Favoris | SoNow">
-            <ErrorBoundary>
               <Fav />
               <Nav />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -99,10 +90,8 @@ function App() {
           path='/autour-de-moi'
           element={(
             <Page title="Rechercher les événements autour de moi | SoNow">
-            <ErrorBoundary>
               <Search />
               <Nav />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -110,10 +99,8 @@ function App() {
           path='/autour-de-moi/filtres'
           element={(
             <Page title="Rechercher les événements autour de moi | SoNow">
-            <ErrorBoundary>
               <Filters />
               <Nav />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -121,10 +108,8 @@ function App() {
           path='/creer-un-evenement'
           element={(
             <Page title="Créer un événement | SoNow">
-            <ErrorBoundary>
               <CreateEvent />
               <Nav />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -132,10 +117,8 @@ function App() {
           path='/mon-compte'
           element={(
             <Page title="Mon compte | SoNow">
-            <ErrorBoundary>
               <Profile  />
               <Nav />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -143,10 +126,8 @@ function App() {
           path='/mon-compte/amis'
           element={(
             <Page title="Mes amis | SoNow">
-            <ErrorBoundary>
               <FriendsList />
               <Nav />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -154,10 +135,8 @@ function App() {
           path="/event/:slug"
           element={(
             <Page title="Événement | SoNow">
-            <ErrorBoundary>
               <EventCardMain />
               <Nav />
-            </ErrorBoundary>
             </Page>
           )}
         />
@@ -165,10 +144,8 @@ function App() {
           path='*'
           element={(
             <Page title="404 Page introuvable | SoNow">
-            <ErrorBoundary>
               <Error404 />
               <Nav />
-            </ErrorBoundary>
             </Page>
           )}
         />

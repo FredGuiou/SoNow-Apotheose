@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeLoginInputs, submitLogin } from '../store/actions';
@@ -11,23 +9,17 @@ function AuthentificationLogin() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const { 
     emailInput,
     passwordInput, 
-  } = useSelector((state) => state.user.login) || {};
+  } = useSelector((state) => state.user.login);
 
-  const isConnected = useSelector ((state) => state.user.accessToken) || false;
-
-  useEffect(() => {
-    if (isConnected) {
-      navigate('/feed');
-    }
-  } , []);
+  const isConnected = useSelector ((state) => state.user.accessToken);
   
-  function handleSubmit() {
+  const handleSubmit=()=>{
     dispatch(submitLogin());
-  }
+  };
 
   const handleEmailChange =(e)=>{
     dispatch(changeLoginInputs('emailInput', e.target.value));

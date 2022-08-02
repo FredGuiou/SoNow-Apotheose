@@ -47,17 +47,14 @@ function FriendsList() {
           />
           <Menu.Menu position='right'>
             <Menu.Item>
-              <Form>
+              <Form onSubmit={(e)=> dispatch(submitUsersSearch())}>
                 <Form.Input 
                   className='friends__menu__form'
                   loading={isSearchLoading}
                   icon={{ name: 'users', link: true}}
                   placeholder='Rechercher...'
                   value={searchInput}
-                  onChange={(e)=> {
-                    dispatch(changeUsersSearchInput(e.target.value));
-                    dispatch(submitUsersSearch(e.target.value));
-                  }}
+                  onChange={(e)=> dispatch(changeUsersSearchInput(e.target.value))}
                 />
               </Form>
             </Menu.Item>

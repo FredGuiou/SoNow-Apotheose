@@ -1,5 +1,3 @@
-//TODO: Implémentation de JOI validation schema.
-
 require('dotenv').config();
 const eventDataMapper = require('../models/event');
 const { ApiError } = require("../services/errorHandler");
@@ -50,10 +48,10 @@ module.exports = {
 
 
 
-// TODO: A TESTER QUAND LES DONNEES DE LA TABLE DE LIAISON SERONT INSCRITES EN BDD
+
     //Méthode qui permet de rechercher un évènement en fonction de leur catégorie.
     async getByTagId(req, res) {
-            const events = await eventDataMapper.findByTagId(req.params.event_id);
+            const events = await eventDataMapper.findByTagId(req.params.tag_id);
 
             if(!events) {
                 throw new ApiError('Event not found', {statusCode: 404 });

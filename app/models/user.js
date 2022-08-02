@@ -158,5 +158,45 @@ module.exports = {
       const result = await client.query(preparedQuery);
 
       return !!result.rowCount;
+  },
+
+  async findFollowersByUserId(id) {
+    const preparedQuery = {
+      text: `
+      SELECT u1.id as id_followed, u1.nickname as user_followed, u2.id as id_follower, u2.nickname as user_follower FROM user_follow_user
+      JOIN public.user u1 ON user_follow_user.code_user = u1.id
+      JOIN public.user u2 ON user_follow_user.code_user2 = u2.id
+      WHERE code_user2 = $1
+      `,
+      values: [id],
+    };
+
+    const result = await client.query(preparedQuery);
+
+    if (result.rowCount === 0) {
+      return null;
+    };
+
+    return result.rows;
+  },
+
+  async findFollowedByUserid(id) {
+    const preparedQuery = {
+      text: `
+      SELECT u1.id as id_follower, u1.nickname as user_follower, u2.id as id_followed, u2.nickname as user_followed FROM user_follow_user
+      JOIN public.user u1 ON user_follow_user.code_user = u1.id
+      JOIN public.user u2 ON user_follow_user.code_user2 = u2.id
+      WHERE code_user = $1
+      `,
+      values: [id],
+    };
+
+    const result = await client.query(preparedQuery);
+
+    if (result.rowCount === 0) {
+      return null;
+    };
+
+    return result.rows;
   }
 };

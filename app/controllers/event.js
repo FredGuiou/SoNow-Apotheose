@@ -36,7 +36,7 @@ module.exports = {
 
 
     //Méthode qui permet de rechercher un évènement par son titre.
-    async getOneEventByTitle(req, res) {
+    async getEventsByTitle(req, res) {
             const eventDb = await eventDataMapper.findByTitle(req.body.title);
 
             if(!eventDb){
@@ -106,6 +106,6 @@ module.exports = {
             };
             
             await eventDataMapper.delete(req.params.event_id);
-            return res.status(204).json();
+            return res.status(200).json({code: 200, message: "Event has been deleted"});
     }
 };

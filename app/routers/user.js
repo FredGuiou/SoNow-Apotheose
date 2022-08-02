@@ -34,7 +34,7 @@ router
 //Routes pour qu'un utilisateur recherche un autre utilisateur par son surnom.
 router
     .route('/search')
-    .get(controllerHandler(controller.getOneUserByNickname));
+    .post(controllerHandler(controller.getOneUserByNickname));
 
 //Routes pour récupérer, modifier, supprimer un utilisateur.
 router

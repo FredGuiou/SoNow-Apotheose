@@ -24,6 +24,7 @@ app.use("/api", cors({ origin: "*" }), router);
 
 app.use("/", cors({ origin: "*" }), function(req, res, next) {
   res.send("Route pour swagger")
+  next();
 });
 
 router.use((err, _, response, next) => {

@@ -6,7 +6,6 @@ import CreateAccount from './CreateAccount';
 import CreateEvent from './CreateEvent';
 import Fav from './Fav';
 import Feed from './Feed';
-import Filters from './Filters';
 import FriendsList from './FriendsList';
 import Nav from './Nav';
 import Page from './Page';
@@ -91,15 +90,6 @@ function App() {
           element={(
             <Page title="Rechercher les événements autour de moi | SoNow">
               <Search />
-              <Nav />
-            </Page>
-          )}
-        />
-        <Route
-          path='/autour-de-moi/filtres'
-          element={(
-            <Page title="Rechercher les événements autour de moi | SoNow">
-              <Filters />
               <Nav />
             </Page>
           )}

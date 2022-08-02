@@ -2,6 +2,11 @@ require('dotenv').config();
 const eventDataMapper = require('../models/event');
 const { ApiError } = require("../services/errorHandler");
 
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const multer = require('multer'); 
+
+
 module.exports = {
 
     //Méthode qui permet de récupérer tous les évènements en bdd.

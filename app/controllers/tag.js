@@ -8,7 +8,7 @@ module.exports = {
             const tagDb = await tagDataMapper.findAll();
 
             if(!tagDb) {
-                throw new ApiError('Not any tag in database', {statusCode: 404 });
+                throw new ApiError('Not any tag in database', { statusCode: 404 });
             }
 
             return res.json(tagDb);
@@ -16,11 +16,10 @@ module.exports = {
 
     //Méthode qui permet de récupérer un tag par son ID.
     async getOneTag(req, res) {
-        console.log(tag_id);
             const tagDb = await tagDataMapper.findByPk(req.params.tag_id);
 
             if(!tagDb){
-                throw new ApiError('Tag not found', {statusCode: 404 });
+                throw new ApiError('Tag not found', { statusCode: 404 });
             };
             
             return res.json(tagDb);

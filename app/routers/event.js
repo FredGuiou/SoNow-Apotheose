@@ -13,6 +13,10 @@ router
     .post(controllerHandler(controller.createEvent));
 
 router
+    .route('/search')
+    .get(controllerHandler(controller.getEventsByTitle));    
+
+router
     .route('/:event_id(\\d+)')
     .get(controllerHandler(controller.getOneEventById))
     .patch(controllerHandler(controller.updateEvent))
@@ -21,10 +25,6 @@ router
 router
     .route('/tag/:tag_id(\\d+)')
     .get(controllerHandler(controller.getByTagId));
-
-router
-    .route('/search')
-    .post(controllerHandler(controller.getOneEventByTitle));
 
 
 module.exports = router;

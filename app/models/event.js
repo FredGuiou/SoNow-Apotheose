@@ -128,11 +128,11 @@ module.exports = {
       const preparedQuery = {
         text: `
         UPDATE public.event SET
-        ${fields}
+        ${fields}, update_at = CURRENT_TIMESTAMP
         WHERE id = $${fields.length + 1}
         RETURNING *        
         `,
-        values: [...values, id],
+        values: [...values , id],
       };
 
       const result = await client.query(preparedQuery);

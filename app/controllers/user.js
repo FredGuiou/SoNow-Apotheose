@@ -45,7 +45,7 @@ module.exports = {
         //On détruit la session utilisateur.
         req.session.destroy();
 
-        return res.status(204).json('Successful disconnected');
+        return res.status(200).json('Successful disconnected');
     },
 
 
@@ -112,7 +112,6 @@ module.exports = {
     //Méthode qui permet de rechercher les utilisateurs par leur surnom, leur nom ou prénom.
     async getOneUserByNickname(req, res) {
             const userDb = await userDataMapper.findByNickname(req.body.nickname);
-
             if(!userDb) {
                 throw new ApiError('User not found', { statusCode: 404 });
             };

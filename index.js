@@ -21,6 +21,10 @@ app.use(session({
 
 app.use(express.static('dist'));
 
+app.use("/", cors({ origin: "*" }), function(req, res, next) {
+  res.send("Route pour swagger")
+});
+
 // Service /api routes
 app.use("/api", cors({ origin: "*" }), router);
 

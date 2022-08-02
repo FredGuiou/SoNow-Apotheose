@@ -2,6 +2,7 @@ require('dotenv').config();
 const eventDataMapper = require('../models/event');
 const { ApiError } = require("../services/errorHandler");
 
+
 module.exports = {
 
     //Méthode qui permet de récupérer tous les évènements en bdd.

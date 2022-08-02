@@ -31,6 +31,11 @@ router
     .route('/logout')
     .get(controllerHandler(controller.logoutUser));
 
+//Routes pour qu'un utilisateur recherche un autre utilisateur par son surnom.
+router
+    .route('/search')
+    .get(controllerHandler(controller.getOneUserByNickname));
+
 //Routes pour récupérer, modifier, supprimer un utilisateur.
 router
     .route('/:user_id')
@@ -46,10 +51,6 @@ router
     .route('/:user_id/followed')
     .get(controllerHandler(controller.getFollowed));
 
-//Routes pour qu'un utilisateur recherche un autre utilisateur par son surnom.
-router
-    .route('/search')
-    .post(controllerHandler(controller.getOneUserByNickname));
 
 
 module.exports = router;

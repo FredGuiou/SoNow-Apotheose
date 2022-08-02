@@ -65,16 +65,23 @@ module.exports = {
 
 
 
-    async followEvent () {
+    async pinEvent () {
 
     },
 
 
-    async unfollowEvent () {
+    async unPinEvent () {
+
+    },
+
+    async attendEvent () {
 
     },
 
 
+    async unAttendEvent () {
+
+    },
 
 
 

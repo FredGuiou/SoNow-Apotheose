@@ -1,7 +1,6 @@
-//TODO: Implémentation de JOI validation schema (longueur des titre des events par exemple)
-
 const client = require("../config/db");
 const { ApiError } = require("../services/errorHandler");
+const tagDataMapper = require("../models/tag.js");
 
 module.exports = {
   //Rechercher tous les évènements dans la BDD. 
@@ -78,7 +77,7 @@ module.exports = {
 
 
 
-// TODO: A TESTER QUAND LES DONNEES DE LA TABLE DE LIAISON SERONT INSCRITES EN BDD
+
   //Rechercher un évènement en fonction de son tag.
   async findByTagId(tagId) {
         // On veut d'abord vérifié que la category demandé existe
@@ -86,8 +85,8 @@ module.exports = {
     if (!tag) {
       throw new ApiError('Tag not found', { statusCode: 404 });
     }
-    //TODO: requête sql à finlaiser.
-    const result = await client.query('SELECT * FROM public.event JOIN public.tag ON event.tag_id = tag.id WHERE code_tag = $1', [tagId]);
+
+    const result = await client.query(`SELECT get_event_by_tag($1)`, [tagId]);
     if (result.rowCount === 0) {
       return null;
     }

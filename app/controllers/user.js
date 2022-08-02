@@ -1,5 +1,3 @@
-//TODO: Implémentation de JOI validation schema.
-
 require('dotenv').config();
 const userDataMapper = require('../models/user');
 const bcrypt = require('bcrypt');
@@ -188,6 +186,26 @@ module.exports = {
 
             return res.status(200).json({code: 200, message: "User has been deleted"});
 
-        }
+    },
+
+    async getFollowers(req, res) {
+            const result = await userDataMapper.findFollowersByUserId(req.params.user_id);
+
+            if(!result) {
+                throw new ApiError('User not found', { statusCode: 404 });
+            };
+
+            return res.json(result);        
+    },
+
+    async getFollowed(req, res) {
+        const result = await userDataMapper.findFollowedByUserid(req.params.user_id);
+
+        if(!result) {
+            throw new ApiError('User not found', { statusCode: 404 });
+        };
+
+        return res.json(result);        
+    },
 };
 

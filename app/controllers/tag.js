@@ -1,6 +1,3 @@
-//TODO: Gestion des erreurs via un controller error.
-
-
 const tagDataMapper = require('../models/tag');
 const { ApiError } = require("../services/errorHandler");
 
@@ -19,6 +16,7 @@ module.exports = {
 
     //Méthode qui permet de récupérer un tag par son ID.
     async getOneTag(req, res) {
+        console.log(tag_id);
             const tagDb = await tagDataMapper.findByPk(req.params.tag_id);
 
             if(!tagDb){

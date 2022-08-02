@@ -33,6 +33,14 @@ router
     .patch(controllerHandler(controller.updateUser))
     .delete(controllerHandler(controller.deleteUser));
 
+router
+    .route('/:user_id/followers')
+    .get(controllerHandler(controller.getFollowers));
+
+router
+    .route('/:user_id/followed')
+    .get(controllerHandler(controller.getFollowed));
+
 //Routes pour qu'un utilisateur recherche un autre utilisateur par son surnom.
 router
     .route('/search')

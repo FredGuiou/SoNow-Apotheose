@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { Form, Menu } from 'semantic-ui-react';
 
-import { getUsers } from '../store/actions';
+import { getFollowed, getFollowers, getUsers } from '../store/actions';
 // import users from '../data/usersData';
 
 import {
@@ -10,6 +10,7 @@ import {
   changeFriendsActiveItem,
   submitUsersSearch
 } from '../store/actions';
+import { findUser, isFollower } from '../selectors/users';
 
 import "../styles/friendsList.scss";
 import UserAvatar from './UserAvatar';
@@ -19,22 +20,32 @@ function FriendsList() {
   const dispatch = useDispatch();
   
   const {
-    activeItem, 
     isSearchLoading, 
     searchInput, 
-    searchResults
+    searchResults,
+    hasSearchError
   } = useSelector((state) => state.users);  
 
-  const list = useSelector((state) => state.users.list) || [];
+  const users = useSelector((state) => state.users.list) || [];
+  const followed = useSelector((state) => state.user.followed.list) || [];
+  const followers = useSelector((state) => state.user.followers.list) || [];
+  const activeItem = useSelector((state) => state.user.friends.activeItem);
 
-  // to get events on page refresh
   useEffect(() => {
     dispatch(getUsers());
+    dispatch(getFollowed());
+    dispatch(getFollowers());
   }, [dispatch]);
 
   return (
     <div className="friends">
-        <Menu className='friends__menu' inverted pointing secondary>
+      <Menu className='friends__menu' inverted pointing secondary>
+          <div className='friends__menu__main'>
+          <Menu.Item
+            name='Trouver des contacts'
+            active={activeItem === 'Trouver des contacts'}
+            onClick={()=> dispatch(changeFriendsActiveItem('Trouver des contacts'))}
+          />
           <Menu.Item
             name='Abonnes'
             active={activeItem === 'Abonnes'}
@@ -45,40 +56,80 @@ function FriendsList() {
             active={activeItem === 'Abonnements'}
             onClick={()=> dispatch(changeFriendsActiveItem('Abonnements'))}
           />
-          <Menu.Menu position='right'>
-            <Menu.Item>
-              <Form onSubmit={(e)=> dispatch(submitUsersSearch())}>
-                <Form.Input 
-                  className='friends__menu__form'
-                  loading={isSearchLoading}
-                  icon={{ name: 'users', link: true}}
-                  placeholder='Rechercher...'
-                  value={searchInput}
-                  onChange={(e)=> dispatch(changeUsersSearchInput(e.target.value))}
-                />
-              </Form>
-            </Menu.Item>
-          </Menu.Menu>
+          </div>
         </Menu>
+        <Form className='friends__form'>
+          <Form.Input 
+            loading={isSearchLoading}
+            icon={{ name: 'users', link: true}}
+            placeholder='Rechercher...'
+            value={searchInput}
+            onChange={(e)=> {
+              dispatch(changeUsersSearchInput(e.target.value)); 
+              dispatch(submitUsersSearch());
+              dispatch(changeFriendsActiveItem('Trouver des contacts'))
+            }}
+          />
+        </Form>
         <div className='friends__list'>
-          { 
-          searchResults.length === 0 ? 
-            list.map((u) => (
-              <UserAvatar 
-                key={u.id}
-                user={u} 
-              />
-            ))   
-            :
+        {
+            searchResults.length > 0
+            &&
             searchResults.map((u) => (
               <UserAvatar 
                 key={u.id}
                 user={u} 
+                isFollower={isFollower(followed, u.id)}
               />
-            )) 
+            ))   
+          }
+          { 
+            hasSearchError && 
+            <p>
+              Aucun utilisateur pour "{searchInput}"
+            </p>
+          }
+          {
+            activeItem === 'Trouver des contacts' 
+            && 
+            !hasSearchError
+            &&
+            users.map((u) => (
+              <UserAvatar 
+                key={u.id}
+                user={u} 
+                isFollower={isFollower(followed, u.id)}
+              />
+            ))   
+          }
+          {
+            activeItem === 'Abonnes' 
+            && 
+            !hasSearchError
+            &&
+            followers.map((u) => (
+              <UserAvatar 
+                key={u.id}
+                user={findUser(users, u.id_followed)}
+                isFollower={isFollower(followed, u.id)}
+              />
+            ))  
+          }
+          {
+            activeItem === 'Abonnements' 
+            &&
+            !hasSearchError
+            &&
+            followed.map((u) => (
+              <UserAvatar 
+                key={u.id}
+                user={findUser(users, u.id_followed)}
+                isFollower={isFollower(followed, u.id)}
+              />
+            ))  
           }
         </div>
-    </div>
+      </div>
   );
 }
 

@@ -3,15 +3,29 @@
   color: white;
   height: 92vh;
 
-  &__menu{
-    height: 8vh;
-  }
+    &__menu{
+      height: 8vh;
+      margin: 0 auto;
 
-  &__list{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: space-between;
-    background-color: black;
-  }
+      &__main {
+        display: flex;
+      }
+
+    }
+
+    &__form {
+      width: 92vw;
+      margin: 0 auto;
+    }
+  
+    &__list{
+      height: 75vh;
+      overflow-y: scroll;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+    }
+
 }

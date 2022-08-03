@@ -11,6 +11,8 @@ const authMiddleware = (store) => (next) => (action) => {
 
     const state = store.getState();
 
+    console.log(state.user.signup.firstnameInput);
+
     const config = {   
       method: 'post',
       url: 'https://sonow.herokuapp.com/api/user/signup', 
@@ -19,11 +21,11 @@ const authMiddleware = (store) => (next) => (action) => {
         'Access-Control-Allow-Origin': '*'
       }, 
       data: {
-        firstname: state.signup.firstnameInput,
-        lastname:  state.signup.lastnameInput,
-        nickname:  state.signup.nicknameInput,
-        email:  state.signup.emailInput,
-        password:  state.signup.passwordInput
+        firstname: state.user.signup.firstnameInput,
+        lastname:  state.user.signup.lastnameInput,
+        nickname:  state.user.signup.nicknameInput,
+        email:  state.user.signup.emailInput,
+        password:  state.user.signup.passwordInput
       }
     };
 

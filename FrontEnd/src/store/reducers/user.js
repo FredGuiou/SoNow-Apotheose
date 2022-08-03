@@ -1,6 +1,5 @@
 import {
   CHANGE_FAVORITES_ACTIVE_ITEM, 
-  CHANGE_FRIENDS_ACTIVE_ITEM, 
   CHANGE_LOGIN_INPUTS, 
   CHANGE_PROFIL_ACTIVE_ITEM,
   CHANGE_SIGNUP_INPUTS,
@@ -59,6 +58,7 @@ const initialState = {
     passwordInput:'',
     confirmedPasswordInput:'',
     isLoading: false,
+    isRegistered: false
   }, 
   subscriptions: {
     list: [], 
@@ -73,14 +73,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         favorites : {
           ...state.favorites, 
-          activeItem: action.activeItem,
-        }
-      };
-    case CHANGE_FRIENDS_ACTIVE_ITEM:
-      return {
-        ...state,
-        friends : {
-          ...state.friends, 
           activeItem: action.activeItem,
         }
       };
@@ -189,6 +181,33 @@ const reducer = (state = initialState, action) => {
           hasError: true,
         }
       };
+      case GET_FOLLOWED:
+        return {
+          ...state,
+          followed: {
+            ...state.followed, 
+            isLoading: true,
+          }
+        };
+      case GET_FOLLOWED_SUCCESS:
+        return {
+          ...state,
+          followed: {
+            ...state.followed,
+            list:[...action.followed],
+            isLoading: false, 
+            hasError: false,
+          }
+        };
+      case GET_FOLLOWED_ERROR:
+        return {
+          ...state,
+          followed: {
+            ...state.followed,
+            isLoading:false, 
+            hasError: true,
+          }
+        };
     case GET_USER:
       return {
         ...state,
@@ -255,6 +274,7 @@ const reducer = (state = initialState, action) => {
           ...state.signup, 
           isLoading: false,
           hasSignupError: false,
+          isRegistered: true,
         }
       };
     case SUBMIT_SIGNUP_ERROR:

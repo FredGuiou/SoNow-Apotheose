@@ -13,11 +13,20 @@ function EventCardSecondary({ event, params }) {
         {/* En attente envoie du lien des images*/}
         <img
           className={params === 'autour-de-moi'? 'event-card-secondary__img search' : 'event-card-secondary__img'}
-          src={'https://picsum.photos/1080'}
+          src={event.media}
           alt={event.title}
         />
         <section className='event-card-secondary__details'>
           <section className={params === 'autour-de-moi'? 'event-card-secondary__details__social-icons hidden' : 'event-card-secondary__details__social-icons'}>
+              <Icon 
+                name='check square' 
+                size='large'
+                style={{ 
+                  color: '#E0E0E0',
+                  marginTop: '0.6em',
+                  cursor: 'pointer',
+                }}
+              />            
               <Icon 
                 name='heart' 
                 size='large'
@@ -50,7 +59,7 @@ function EventCardSecondary({ event, params }) {
             <Card 
               fluid
               style={{
-                height: '5.6rem',
+                height: '8.5rem',
                 boxShadow: 'none',
                 background: 'transparent',
                 display: 'flex',
@@ -67,6 +76,17 @@ function EventCardSecondary({ event, params }) {
                 }}
               >
                 {event.title}
+              </Card.Header>
+              <Card.Header
+                style={{
+                  fontSize: '0.8rem',
+                  fontWeight: '500',
+                  color: 'white',
+                  paddingBottom: '0.6rem'
+                }}
+              >
+              Jean-Michel
+              {/* {event.code_user_manager} */}
               </Card.Header>
               <Card.Meta
                 style={{

@@ -24,9 +24,17 @@
       background-color: rgba(0, 0, 0, 0.4);
       color:white;
 
+      .header {
+        margin-bottom: 0.5rem;
+      }
+
+      .description {
+        margin-bottom: 0.5rem;
+      }
+
       &__participants {
         position: absolute;
-        bottom:8.8rem;
+        bottom:12.1rem;
         left: 6rem;
         display: flex;
         font-size: 0.8rem;
@@ -38,7 +46,7 @@
 
       &__date {
         position: absolute;
-        bottom: 9.2rem;
+        bottom: 12.4rem;
         left: 2rem;
       }
 
@@ -53,7 +61,7 @@
 
     &__social-icons {
       position: absolute;
-      bottom: 13rem;
+      bottom: 15rem;
       right: 1rem;
       display: flex;
       flex-direction: column;
@@ -68,4 +76,30 @@
 
 .search {
   border-radius: 30px;
+}
+
+@media screen and (max-width: 370px) {
+  .event-card-secondary {
+    &__details {
+
+      .header{
+        margin-bottom: 0.2rem !important;
+      }
+      .description {
+        margin-bottom: 0.2rem !important;
+      }
+
+      &__card {
+        &__labels {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .ui.label {
+    margin: 0 0.2em 0.1em 0;
+  }
 }

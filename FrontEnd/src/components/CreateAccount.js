@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSignupInputs, submitSignup } from '../store/actions';
 import { Container, Form, Grid, Header } from 'semantic-ui-react';
@@ -14,11 +15,13 @@ function CreateAccount() {
     emailInput,
     passwordInput, 
     confirmedPasswordInput, 
-  } = useSelector((state) => state.signup) || {};
+    isRegistered
+  } = useSelector((state) => state.user.signup) || {};
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit=(e)=>{
+  const handleSubmit=()=>{
     dispatch(submitSignup());
   };
 
@@ -67,6 +70,7 @@ function CreateAccount() {
             Créer un compte
           </Header>
           <Form 
+            style ={{margin: '1rem', padding: '1rem'}}
             id='login'
             name='login'
             inverted 
@@ -140,6 +144,9 @@ function CreateAccount() {
         >
           C'est parti !
         </Form.Button>
+        {
+          isRegistered && navigate('/')
+        }
         </Form>
           <p>Vous avez déjà un compte ?</p>
           <a href='/'>Connectez-vous</a>

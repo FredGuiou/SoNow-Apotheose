@@ -35,8 +35,8 @@ function AuthentificationLogin() {
       inverted 
       size='large' 
       style={{
-        margin: '0.1em 0',
-        padding: '1em 0'
+        margin: '1rem',
+        padding: '1rem'
       }}
       onSubmit={(e) => {handleSubmit(e)}}
     >

@@ -17,6 +17,8 @@ import UserAvatar from './UserAvatar';
 
 function FriendsList() {
 
+  console.log('friendlist');
+
   const dispatch = useDispatch();
   
   const {
@@ -47,14 +49,25 @@ function FriendsList() {
             onClick={()=> dispatch(changeFriendsActiveItem('Trouver des contacts'))}
           />
           <Menu.Item
+            name='Trouver des contacts'
+            active={friendsactiveItem === 'Trouver des contacts'}
+            onClick={()=> dispatch(changeFriendsActiveItem('Trouver des contacts'))}
+          />
+          <Menu.Item
             name='Abonnes'
-            active={activeItem === 'Abonnes'}
-            onClick={()=> dispatch(changeFriendsActiveItem('Abonnes'))}
+            active={friendsactiveItem === 'Abonnes'}
+            onClick={()=> {
+              
+              dispatch(changeFriendsActiveItem('Abonnes'));
+            }}
           />
           <Menu.Item
             name='Abonnements'
-            active={activeItem === 'Abonnements'}
-            onClick={()=> dispatch(changeFriendsActiveItem('Abonnements'))}
+            active={friendsactiveItem === 'Abonnements'}
+            onClick={()=> {
+              
+              dispatch(changeFriendsActiveItem('Abonnements')); 
+            }}
           />
           </div>
         </Menu>

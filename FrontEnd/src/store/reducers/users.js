@@ -1,4 +1,5 @@
 import {
+  CHANGE_FRIENDS_ACTIVE_ITEM, 
   CHANGE_USERS_SEARCH_INPUT, 
   GET_USERS, 
   GET_USERS_ERROR, 
@@ -19,6 +20,14 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_FRIENDS_ACTIVE_ITEM:
+      return {
+        ...state,
+        searchResults: [],
+        hasSearchError: false,
+        isSearchLoading: false,
+        friendsactiveItem: action.activeItem,
+      };
     case CHANGE_USERS_SEARCH_INPUT:
       return {
         ...state,

@@ -85,7 +85,8 @@ function EventCardSecondary({ event, params }) {
                   paddingBottom: '0.6rem'
                 }}
               >
-              {event.code_user_manager}
+              Jean-Michel
+              {/* {event.code_user_manager} */}
               </Card.Header>
               <Card.Meta
                 style={{

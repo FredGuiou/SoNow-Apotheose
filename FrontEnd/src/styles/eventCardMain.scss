@@ -41,11 +41,11 @@
       color:white;
 
       .header {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
 
       .description {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
 
       &__participants {
@@ -129,10 +129,11 @@
     &__details {
 
       .header{
-        margin-bottom: 0.2rem !important;
+        margin-bottom: 0!important;
       }
       .description {
-        margin-bottom: 0.2rem !important;
+        margin-bottom: 0 !important;
+        font-size: 0.7rem !important;
       }
 
         .content {

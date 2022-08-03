@@ -181,33 +181,6 @@ const reducer = (state = initialState, action) => {
           hasError: true,
         }
       };
-      case GET_FOLLOWED:
-        return {
-          ...state,
-          followed: {
-            ...state.followed, 
-            isLoading: true,
-          }
-        };
-      case GET_FOLLOWED_SUCCESS:
-        return {
-          ...state,
-          followed: {
-            ...state.followed,
-            list:[...action.followed],
-            isLoading: false, 
-            hasError: false,
-          }
-        };
-      case GET_FOLLOWED_ERROR:
-        return {
-          ...state,
-          followed: {
-            ...state.followed,
-            isLoading:false, 
-            hasError: true,
-          }
-        };
     case GET_USER:
       return {
         ...state,

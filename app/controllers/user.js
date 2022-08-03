@@ -50,7 +50,6 @@ module.exports = {
 
 
 
-
     async followUser () {
 
     },
@@ -61,20 +60,6 @@ module.exports = {
     async unfollowUser () {
 
     },
-
-
-
-
-    async followEvent () {
-
-    },
-
-
-    async unfollowEvent () {
-
-    },
-
-
 
 
 

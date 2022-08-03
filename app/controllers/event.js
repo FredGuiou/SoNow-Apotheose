@@ -2,11 +2,6 @@ require('dotenv').config();
 const eventDataMapper = require('../models/event');
 const { ApiError } = require("../services/errorHandler");
 
-const cloudinary = require('cloudinary').v2;
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const multer = require('multer'); 
-
-
 module.exports = {
 
     //Méthode qui permet de récupérer tous les évènements en bdd.
@@ -52,7 +47,25 @@ module.exports = {
     },
 
 
+    async getEventsByPinUser(req, res) {
+            const result = await eventDataMapper.findByPin(req.body.user_id);
 
+            if(!result) {
+                throw new ApiError('No events in favorites', {statusCode: 404 });
+            };
+
+            return res.json(result);
+    },
+
+    async getEventsByAttendUser(req, res) {
+        const result = await eventDataMapper.findByAttend(req.body.user_id);
+
+        if(!result) {
+            throw new ApiError('No events in favorites', {statusCode: 404 });
+        };
+
+        return res.json(result);
+},
 
     //Méthode qui permet de rechercher un évènement en fonction de leur catégorie.
     async getByTagId(req, res) {
@@ -66,6 +79,16 @@ module.exports = {
     },
 
 
+
+
+    async followEvent () {
+
+    },
+
+
+    async unfollowEvent () {
+
+    },
 
 
 

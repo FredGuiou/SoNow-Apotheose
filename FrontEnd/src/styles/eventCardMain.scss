@@ -112,6 +112,14 @@
       }
     }
 
+    &__social-icons {
+      position: absolute;
+      bottom: 15rem;
+      right: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
   }
 
 }

@@ -20,6 +20,26 @@ function EventCardMain() {
                 alt={event.title}
               />
             <section className='event-description__details'>
+            <section className='event-description__details__social-icons'>
+              <Icon 
+                name='check square' 
+                size='large'
+                style={{ 
+                  color: '#E0E0E0',
+                  marginTop: '0.6em',
+                  cursor: 'pointer',
+                }}
+              />            
+              <Icon 
+                name='heart' 
+                size='large'
+                style={{ 
+                  color: '#E0E0E0',
+                  marginTop: '0.6em',
+                  cursor: 'pointer',
+                }}
+              />
+          </section>
               <section className="event-description__details__card">
                 <Card 
                   fluid

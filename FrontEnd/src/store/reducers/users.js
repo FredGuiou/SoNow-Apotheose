@@ -1,4 +1,5 @@
 import {
+  CHANGE_FRIENDS_ACTIVE_ITEM, 
   CHANGE_USERS_SEARCH_INPUT, 
   GET_USERS, 
   GET_USERS_ERROR, 
@@ -14,10 +15,19 @@ const initialState = {
   list:[],
   searchInput: '',
   searchResults: [],
+  friendsactiveItem: 'Trouver des contacts',
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_FRIENDS_ACTIVE_ITEM:
+      return {
+        ...state,
+        searchResults: [],
+        hasSearchError: false,
+        isSearchLoading: false,
+        friendsactiveItem: action.activeItem,
+      };
     case CHANGE_USERS_SEARCH_INPUT:
       return {
         ...state,
@@ -45,13 +55,14 @@ const reducer = (state = initialState, action) => {
     case SUBMIT_USERS_SEARCH:
       return {
         ...state,
+        searchResults: [],
         isSearchLoading: true,
       };
     case SUBMIT_USERS_SEARCH_ERROR:
       return {
         ...state,
         isSearchLoading: false, 
-        hasSearchError: true 
+        hasSearchError: true, 
       };
     case SUBMIT_USERS_SEARCH_SUCCESS:
       return {

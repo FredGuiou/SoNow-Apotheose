@@ -3,7 +3,7 @@ import { Button, Image } from 'semantic-ui-react';
 import profile from '../images/profile.jpg'
 import "../styles/userAvatar.scss"; 
 
-function UserAvatar({user}) {
+function UserAvatar({user, friendStatus}) {
   return (
     <div className="user-avatar">
       {/* src de l'image à dynamiser */}
@@ -14,11 +14,8 @@ function UserAvatar({user}) {
         }}
       />
       <p>{user.nickname}</p>
-      {/* Nombre d'amis à dynamiser */}
-      <p>12 amis en communs</p>
-      {/* Texte à dynamiser */}
       <Button
-        content='Voir le profil'
+        content={friendStatus ? 'Voir le profil' : "S'abonner"}
         className='user-avatar__btn' 
         class='ui button'
         size='large'

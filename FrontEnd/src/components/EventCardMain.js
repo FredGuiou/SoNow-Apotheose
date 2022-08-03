@@ -1,18 +1,38 @@
-import { Card, Icon, Label } from 'semantic-ui-react';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { Card, Icon } from 'semantic-ui-react';
 
 import DateCard from './DateCard';
 
 import "../styles/eventCardMain.scss";
+import { getEvents } from '../store/actions';
+import { findEventBySlug } from '../selectors/events';
 
-import events from '../data/eventsData';
 
 function EventCardMain() {
 
-  const event = events.find((e) => e.slug === 'pool-party');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getEvents());
+  }, [dispatch]);
+
+  const { slug } = useParams();
+
+  const event = useSelector((state) => findEventBySlug(state.events.list, slug));
+
+  // const event = useSelector((state) => findEventBySlug(state.events.list, slug));
+
+  // const event = events.find((e) => e.slug === 'pool-party');
   
   return (
+    
+      
     <div className="event-card">
-        <div className='description-container' key={event.id}>
+        <div className='description-container'>
+          { event &&
           <div className="event-description">
               <img
                 className="event-description__img"
@@ -89,7 +109,7 @@ function EventCardMain() {
                     {event.description}
                   </Card.Description>
                   <Card.Content>
-                    {
+                    {/*
                       event.tag.map((t) => {
                         return (
                           <Label 
@@ -101,7 +121,7 @@ function EventCardMain() {
                           </Label>
                         )
                       })
-                    }
+                    */}
                   </Card.Content>
                 </Card>
                 <section className="event-description__details__card__participants">
@@ -111,9 +131,11 @@ function EventCardMain() {
                       color:'white'
                     }} 
                   />
+                  {/*
                   <p className="event-description__details__card__participants__content" >
                     {event.user_attend_event.length} participants
                   </p>
+                  */}
                 </section>
                 <section className="event-description__details__card__date">
                 <DateCard 
@@ -123,6 +145,7 @@ function EventCardMain() {
               </section>
             </section>
         </div>
+        }
       </div>
     </div>
   );

@@ -14,10 +14,3 @@ export function isFollower(followed, searchedId) {
   console.log(isFollower);
   return isFollower;
 };
-
-export function findUserBySlug(users, searchedSlug) {
-  const user = users.find((testedUser) => {
-    return testedUser.slug === searchedSlug;
-  });
-  return user;
-};

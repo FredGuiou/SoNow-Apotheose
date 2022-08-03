@@ -113,7 +113,7 @@ module.exports = {
         return null;
       };
 
-     return result.rows;
+      return result.rows;
 
   },
 
@@ -156,6 +156,76 @@ module.exports = {
       );
       return savedEvent.rows[0];
   },
+
+
+//Mettre un évènement en favoris.
+  async pinEvent(userId, eventId) {
+
+    const pinEvent = await client.query(
+      `
+      INSERT INTO public.user_pin_event (code_user, code_event) VALUES ($1, $2)
+      RETURNING *
+      `,
+      [userId, eventId],
+    );
+    return pinEvent.rows;
+  },
+
+//Supprimer un évènement des favoris.
+async unpinEvent(userId, eventId) {
+
+  const unpinEvent = await client.query(
+    `
+    DELETE FROM public.user_pin_event 
+    WHERE code_user= $1 AND code_event=$2
+    `,
+    [userId, eventId],
+  );
+
+  return !!unpinEvent.rowCount;
+},
+
+
+
+//Ajouter sa participation à un évènement.
+async pinAttendEvent(userId, eventId) {
+
+  const pinAttendEvent = await client.query(
+    `
+    INSERT INTO public.user_attend_event (code_user, code_event) VALUES ($1, $2)
+    RETURNING *
+    `,
+    [userId, eventId],
+  );
+  return pinAttendEvent.rows;
+},
+
+//Supprimer sa participation à un évènement.
+async unpinAttendEvent(userId, eventId) {
+
+const unpinAttendEvent = await client.query(
+  `
+  DELETE FROM public.user_attend_event 
+  WHERE code_user= $1 AND code_event=$2
+  `,
+  [userId, eventId],
+);
+
+return !!unpinAttendEvent.rowCount;
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

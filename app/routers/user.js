@@ -38,6 +38,12 @@ router
 
 //Routes pour récupérer, modifier, supprimer un utilisateur.
 router
+    .route('/follow')
+    .post(controllerHandler(controller.followUser))
+    .delete(controllerHandler(controller.unfollowUser));
+
+
+router
     .route('/:user_id')
     .get(controllerHandler(controller.getOneUserById))
     .patch(validate('body', updateSchema), controllerHandler(controller.updateUser))
@@ -45,7 +51,8 @@ router
 
 router
     .route('/:user_id/followers')
-    .get(controllerHandler(controller.getFollowers));
+    .get(controllerHandler(controller.getFollowers))
+    
 
 router
     .route('/:user_id/followed')

@@ -50,12 +50,12 @@ function FriendsList() {
           />
           <Menu.Item
             name='Trouver des contacts'
-            active={friendsactiveItem === 'Trouver des contacts'}
+            active={activeItem === 'Trouver des contacts'}
             onClick={()=> dispatch(changeFriendsActiveItem('Trouver des contacts'))}
           />
           <Menu.Item
             name='Abonnes'
-            active={friendsactiveItem === 'Abonnes'}
+            active={activeItem === 'Abonnes'}
             onClick={()=> {
               
               dispatch(changeFriendsActiveItem('Abonnes'));
@@ -63,7 +63,7 @@ function FriendsList() {
           />
           <Menu.Item
             name='Abonnements'
-            active={friendsactiveItem === 'Abonnements'}
+            active={activeItem === 'Abonnements'}
             onClick={()=> {
               
               dispatch(changeFriendsActiveItem('Abonnements')); 

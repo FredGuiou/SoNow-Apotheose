@@ -5,19 +5,11 @@ import {
   getFavoritesError,
   getFavoritesSuccess,
   GET_FOLLOWERS,
-<<<<<<< HEAD
-  getFollowersSuccess,
-  getFollowersError,
-  GET_FOLLOWED,
-  getFollowedSuccess,
-  getFollowedError,
-=======
   getFollowersError,
   getFollowersSuccess,
   GET_FOLLOWED,
   getFollowedError,
   getFollowedSuccess,
->>>>>>> ea8f3efa2cc657405d2b44248badb3c5fba33ed7
   GET_USER, 
   getUserError, 
   getUserSuccess, 
@@ -31,9 +23,6 @@ import {
 
 const usersMiddleware = (store) => (next) => (action) => {
 
-<<<<<<< HEAD
-if (action.type === GET_FOLLOWERS) {
-=======
 if (action.type === GET_FAVORITES) {
   next(action); 
 
@@ -64,7 +53,6 @@ if (action.type === GET_FAVORITES) {
 
 } else if (action.type === GET_FOLLOWERS) {
 
->>>>>>> ea8f3efa2cc657405d2b44248badb3c5fba33ed7
   next(action);
 
   const state = store.getState();
@@ -82,10 +70,6 @@ if (action.type === GET_FAVORITES) {
 
   axios(config)
     .then((response) => {
-<<<<<<< HEAD
-      console.log(response.data);
-=======
->>>>>>> ea8f3efa2cc657405d2b44248badb3c5fba33ed7
       store.dispatch(getFollowersSuccess(response.data));
     })
     .catch((error) => {

@@ -10,6 +10,7 @@ import {
   changeFriendsActiveItem,
   submitUsersSearch
 } from '../store/actions';
+import { findUser, isFollower } from '../selectors/users';
 
 import "../styles/friendsList.scss";
 import UserAvatar from './UserAvatar';
@@ -75,7 +76,8 @@ function FriendsList() {
             users.map((u) => (
               <UserAvatar 
                 key={u.id}
-                user={u} 
+                user={u}
+                isFollower={isFollower(followed, u.id)} 
               />
             ))   
           }
@@ -85,7 +87,8 @@ function FriendsList() {
             followers.map((u) => (
               <UserAvatar 
                 key={u.id}
-                user={u} 
+                user={u}
+                isFollower={isFollower(followed, u.id)} 
               />
             ))   
           }
@@ -95,7 +98,8 @@ function FriendsList() {
             followed.map((u) => (
               <UserAvatar 
                 key={u.id}
-                user={u} 
+                user={u}
+                isFollower={isFollower(followed, u.id)} 
               />
             ))   
           }

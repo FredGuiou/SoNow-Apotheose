@@ -19,13 +19,15 @@ function FriendsList() {
   const dispatch = useDispatch();
   
   const {
-    activeItem, 
     isSearchLoading, 
     searchInput, 
     searchResults
   } = useSelector((state) => state.users);  
 
-  const list = useSelector((state) => state.users.list) || [];
+  const users = useSelector((state) => state.users.list) || [];
+  const followed = useSelector((state) => state.user.followed.list) || [];
+  const followers = useSelector((state) => state.user.followers.list) || [];
+  const activeItem = useSelector((state) => state.user.friends.activeItem);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -36,6 +38,11 @@ function FriendsList() {
   return (
     <div className="friends">
         <Menu className='friends__menu' inverted pointing secondary>
+          <Menu.Item
+            name='Trouver un contact'
+            active={activeItem === 'Trouver un contact'}
+            onClick={()=> dispatch(changeFriendsActiveItem('Trouver un contact'))}
+          />
           <Menu.Item
             name='Abonnes'
             active={activeItem === 'Abonnes'}
@@ -63,21 +70,36 @@ function FriendsList() {
         </Menu>
         <div className='friends__list'>
           { 
-          searchResults.length === 0 ? 
-            list.map((u) => (
+            activeItem === 'Trouver un contact' 
+            &&
+            users.map((u) => (
               <UserAvatar 
                 key={u.id}
                 user={u} 
               />
             ))   
-            :
-            searchResults.map((u) => (
+          }
+          { 
+            activeItem === 'Abonnes' 
+            &&
+            followers.map((u) => (
               <UserAvatar 
                 key={u.id}
                 user={u} 
               />
-            )) 
+            ))   
           }
+          { 
+            activeItem === 'Abonnements' 
+            &&
+            followed.map((u) => (
+              <UserAvatar 
+                key={u.id}
+                user={u} 
+              />
+            ))   
+          }
+            
         </div>
     </div>
   );

@@ -62,7 +62,7 @@ module.exports = {
     },
 
 
-    //Méthode qui permet d'ajouter un évèenement aux favoris de l'utilisateur.
+    //Méthode qui permet d'ajouter un évènement aux favoris de l'utilisateur.
     async addToBookmarks(req, res) {
 
         const result = await eventDataMapper.pinEvent(req.body.user_id, req.body.event_id);
@@ -75,7 +75,7 @@ module.exports = {
         }
     },
 
-
+    //Méthode qui permet de supprimer un évènement aux favoris de l'utilisateur.
     async delToBookmarks(req, res) {
 
         const result = await eventDataMapper.unpinEvent(req.body.user_id, req.body.event_id);
@@ -89,6 +89,31 @@ module.exports = {
     },
 
 
+//Méthode qui permet de s'identifier comme participant à un évènement.
+async addAttendEvent(req, res) {
+
+    const result = await eventDataMapper.pinAttendEvent(req.body.user_id, req.body.event_id);
+
+    if(!result) {
+        throw new ApiError('Event already added', {statusCode: 400 });
+    } else {
+
+        return res.status(200).json({result, "message": "User is attendind"});
+    }
+},
+
+//Méthode qui permet de supprimer sa participation à un évènement.
+async delAttendEvent(req, res) {
+
+    const result = await eventDataMapper.unpinAttendEvent(req.body.user_id, req.body.event_id);
+
+    if(!result) {
+        throw new ApiError('Event not found', {statusCode: 404 });
+    } else{
+
+        return res.status(200).json({result, "message": "User is not attending"});
+    }
+},
 
 
     //Méthode qui permet de créer un nouvel évènement.

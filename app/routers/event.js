@@ -32,4 +32,9 @@ router
     .delete(controllerHandler(controller.delToBookmarks));
     
 
+router
+    .route('/attend')
+    .post(controllerHandler(controller.addAttendEvent))
+    .delete(controllerHandler(controller.delAttendEvent));
+
 module.exports = router;

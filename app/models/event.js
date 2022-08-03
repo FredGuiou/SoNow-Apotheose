@@ -144,6 +144,53 @@ async unpinEvent(userId, eventId) {
 },
 
 
+
+//Ajouter sa participation à un évènement.
+async pinAttendEvent(userId, eventId) {
+
+  const pinAttendEvent = await client.query(
+    `
+    INSERT INTO public.user_attend_event (code_user, code_event) VALUES ($1, $2)
+    RETURNING *
+    `,
+    [userId, eventId],
+  );
+  return pinAttendEvent.rows;
+},
+
+//Supprimer sa participation à un évènement.
+async unpinAttendEvent(userId, eventId) {
+
+const unpinAttendEvent = await client.query(
+  `
+  DELETE FROM public.user_attend_event 
+  WHERE code_user= $1 AND code_event=$2
+  `,
+  [userId, eventId],
+);
+
+return !!unpinAttendEvent.rowCount;
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //mettre à jour un évènement.
   async update(id, event) {
       const fields = Object.keys(event).map((prop, index) => `"${prop}" = $${index + 1}`);

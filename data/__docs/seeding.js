@@ -36,7 +36,7 @@ const client = new Pool({
 
     console.log("J'entre dans events");
     for (const event of events) {
-        await client.query("INSERT INTO public.event(title, slug, description, metadescription, start, stop, location, address, zipcode, city, media, latitude, longitude) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING title", [event.title, event.slug, event.description, event.metadescription, event.start, event.stop, event.location, event.address, event.zipcode, event.city, event.media, event.latitude, event.longitude]);
+        await client.query("INSERT INTO public.event(title, slug, description, metadescription, start, stop, location, address, zipcode, city, media, latitude, longitude, code_user_manager) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING title", [event.title, event.slug, event.description, event.metadescription, event.start, event.stop, event.location, event.address, event.zipcode, event.city, event.media, event.latitude, event.longitude, event.code_user_manager]);
     }
     console.log("Ok pour events");
 

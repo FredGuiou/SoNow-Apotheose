@@ -6,7 +6,6 @@ const cors = require("cors");
 const app = express();
 const { errorHandler } = require('./app/services/errorHandler');
 
-
 // Decode body
 app.use(express.urlencoded({ extended: true })); // On parse les body de type `x-www-form-url-encoded` et on les ajoute au req.body
 app.use(express.json()); // Pour parser les body de type JSON (optionnel car pas demandé par la spécification)
@@ -26,6 +25,10 @@ router.use((err, _, response, next) => {
   errorHandler(err, response, next);
 });
 
+app.use(function(req, res, next) {
+  // Met le code HTTP à 404 et affiche un message au client
+  res.status(404).send("API Route not found");
+});
 
 
 // Start app

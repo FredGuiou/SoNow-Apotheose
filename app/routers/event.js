@@ -14,7 +14,15 @@ router
 
 router
     .route('/search')
-    .post(controllerHandler(controller.getEventsByTitle));    
+    .post(controllerHandler(controller.getEventsByTitle));
+
+router
+    .route('/favorites')
+    .post(controllerHandler(controller.getEventsByPinUser));
+
+router
+    .route('/attend')
+    .post(controllerHandler(controller.getEventsByAttendUser));
 
 router
     .route('/:event_id(\\d+)')

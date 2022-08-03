@@ -26,8 +26,50 @@ module.exports = {
   },
 
 
+  async findByPin(userId) {
+      const preparedQuery = {
+        text: `SELECT 
+        events.id,
+        events.title,
+        events.start,
+        events.media,
+        events.start
+      FROM user_pin_event
+          JOIN event as events ON user_pin_event.code_event = events.id
+      WHERE code_user = $1`,
+        values: [userId],
+      };
+
+      const result = await client.query(preparedQuery);
+      if (result.rowCount === 0) {
+        return null;
+      };
+
+      return result.rows;
+  },
 
 
+  async findByAttend(userId) {
+    const preparedQuery = {
+      text: `SELECT 
+      events.id,
+      events.title,
+      events.start,
+      events.media,
+      events.start
+    FROM user_attend_event
+        JOIN event as events ON user_attend_event.code_event = events.id
+    WHERE code_user = $1`,
+      values: [userId],
+    };
+
+    const result = await client.query(preparedQuery);
+    if (result.rowCount === 0) {
+      return null;
+    };
+
+    return result.rows;
+},
 
 //Rechercher un évènement par son ID.
   async findByPk(eventId) {

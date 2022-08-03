@@ -50,7 +50,6 @@ module.exports = {
 
 
 
-
     async followUser () {
 
     },
@@ -61,28 +60,6 @@ module.exports = {
     async unfollowUser () {
 
     },
-
-
-
-
-    async pinEvent () {
-
-    },
-
-
-    async unPinEvent () {
-
-    },
-
-    async attendEvent () {
-
-    },
-
-
-    async unAttendEvent () {
-
-    },
-
 
 
     //Méthode qui permet de récupérer tous les utilisateurs.

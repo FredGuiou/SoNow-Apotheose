@@ -33,16 +33,24 @@
 
     &__card {
       position: absolute;
-      bottom: 2.5rem;
+      bottom: 0rem;
       left: 0rem;
       width: 100vw;
       padding: 2rem;
       background-color: rgba(0, 0, 0, 0.4);
       color:white;
 
+      .header {
+        margin-bottom: 1rem;
+      }
+
+      .description {
+        margin-bottom: 1rem;
+      }
+
       &__participants {
         position: absolute;
-        bottom:8.8rem;
+        bottom:12.1rem;
         left: 6rem;
         display: flex;
         font-size: 0.8rem;
@@ -68,7 +76,7 @@
 
       &__date {
         position: absolute;
-        bottom: 9.2rem;
+        bottom: 12.4rem;
         left: 2rem;
         display: flex;
         flex-direction: column;
@@ -102,4 +110,30 @@
 
   }
 
+}
+
+@media screen and (max-width: 370px) {
+  .event-description {
+    &__details {
+
+      .header{
+        margin-bottom: 0.2rem;
+      }
+      .description {
+        margin-bottom: 0.2rem;
+      }
+
+      &__card {
+        &__labels {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .ui.label {
+    margin: 0 0.2em 0.1em 0;
+  }
 }

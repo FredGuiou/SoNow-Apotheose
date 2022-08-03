@@ -26,7 +26,7 @@
 
       &__participants {
         position: absolute;
-        bottom:9rem;
+        bottom:10.9rem;
         left: 6rem;
         display: flex;
         font-size: 0.8rem;
@@ -38,7 +38,7 @@
 
       &__date {
         position: absolute;
-        bottom: 9.4rem;
+        bottom: 11.3rem;
         left: 2rem;
       }
 
@@ -53,7 +53,7 @@
 
     &__social-icons {
       position: absolute;
-      bottom: 13rem;
+      bottom: 15rem;
       right: 1rem;
       display: flex;
       flex-direction: column;
@@ -77,12 +77,12 @@
         &__labels {
           display: flex;
           flex-wrap: wrap;
-          justify-content: space-arround;
+          justify-content: center;
         }
       }
     }
   }
-  
+
   .ui.label {
     margin: 0 0.2em 0.1em 0;
   }

@@ -13,18 +13,18 @@ function EventCardMain() {
   return (
     <div className="event-card">
         <div className='description-container' key={event.id}>
-            <div className="event-description">
-            <img
-              className="event-description__img"
-              src={event.media}
-              alt={event.title}
-            />
+          <div className="event-description">
+              <img
+                className="event-description__img"
+                src={event.media}
+                alt={event.title}
+              />
             <section className='event-description__details'>
               <section className="event-description__details__card">
                 <Card 
                   fluid
                   style={{
-                    height: '5.6rem',
+                    height: '8.5rem',
                     boxShadow: 'none',
                     background: 'transparent',
                     display: 'flex',
@@ -57,14 +57,7 @@ function EventCardMain() {
                   >
                     {event.description}
                   </Card.Description>
-                  <Card.Content
-                    style={{
-                      border: 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      padding: '0px',
-                    }}
-                  >
+                  <Card.Content>
                     {
                       event.tag.map((t) => {
                         return (
@@ -91,14 +84,14 @@ function EventCardMain() {
                     {event.user_attend_event.length} participants
                   </p>
                 </section>
+                <section className="event-description__details__card__date">
                 <DateCard 
                   start={event.start}
                 />
+                </section>
               </section>
             </section>
-            <section className="event-description__details__card__description">
-            </section>
-          </div>
+        </div>
       </div>
     </div>
   );

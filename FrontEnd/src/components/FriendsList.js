@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { Form, Menu } from 'semantic-ui-react';
 
-import { getUsers } from '../store/actions';
+import { getFollowed, getFollowers, getUsers } from '../store/actions';
 // import users from '../data/usersData';
 
 import {
@@ -27,9 +27,10 @@ function FriendsList() {
 
   const list = useSelector((state) => state.users.list) || [];
 
-  // to get events on page refresh
   useEffect(() => {
     dispatch(getUsers());
+    dispatch(getFollowed());
+    dispatch(getFollowers());
   }, [dispatch]);
 
   return (

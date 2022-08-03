@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { 
   GET_FOLLOWERS,
-  GET_SUBSCRIPTIONS,
+  GET_FOLLOWED,
   GET_USER, 
   getUserError, 
   getUserSuccess, 
@@ -17,11 +17,11 @@ import {
 const usersMiddleware = (store) => (next) => (action) => {
 
 if (action.type === GET_FOLLOWERS) {
-  // console.log('get followers')
+
   next(action);
 }
 
-else if (action.type === GET_SUBSCRIPTIONS) {
+else if (action.type === GET_FOLLOWED) {
 
   next(action);
 

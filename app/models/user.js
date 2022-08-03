@@ -198,5 +198,54 @@ module.exports = {
     };
 
     return result.rows;
-  }
+  },
+
+
+//Suivre un autre utilisateur.
+async pinFollowUser(userId1, userId2) {
+
+  const pinFollowUser = await client.query(
+    `
+    INSERT INTO public.user_follow_user (code_user, code_user2) VALUES ($1, $2)
+    RETURNING *
+    `,
+    [userId1, userId2],
+  );
+  return pinFollowUser.rows;
+},
+
+//Ne plus Suivre un autre utilisateur.
+async unpinFollowUser(userId1, userId2) {
+
+const unpinFollowUser = await client.query(
+  `
+  DELETE FROM public.user_follow_user 
+  WHERE code_user= $1 AND code_user2=$2
+  `,
+  [userId1, userId2],
+);
+
+return !!unpinFollowUser.rowCount;
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };

@@ -17,7 +17,7 @@ function Feed() {
     dispatch(getEvents());
   }, [dispatch]);
 
-  // || [] to be abble to map before loadgin the events list 
+  // || [] to be abble to map before loading the events list 
   const events = useSelector((state) => state.events.list) || [];
 
   return (

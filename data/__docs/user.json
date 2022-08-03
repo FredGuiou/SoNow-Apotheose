@@ -4,83 +4,95 @@
         "firstname":"Frédéric",
         "nickname":"Zekiel",
         "email":"zekiel@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659538638/fred_sbrhou.jpg"
 	},
 	{
         "lastname":"PORTANGUEN",
         "firstname":"Romain",
         "nickname":"Duke_Artik",
         "email":"duke_artik@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659538638/romain_nlv6sx.jpg"
 	},
 	{
         "lastname":"COMPAGNON",
         "firstname":"Elinor",
         "nickname":"Elinorcmp",
         "email":"elinorcmp@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659538632/elinor_zizsu2.jpg"
 	},
 	{
         "lastname":"BRILLANT",
         "firstname":"Raphael",
         "nickname":"KamaKTO",
         "email":"kamakto@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659539845/defaut_profile_user_ldkwmd.png"
 	},
 	{
         "lastname":"LE QUELLEC",
         "firstname":"Sébastien",
         "nickname":"Kronik",
         "email":"kronik@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659538762/seb_x959gw.jpg"
 	},
 	{
         "lastname":"MUCHE",
         "firstname":"Truc",
         "nickname":"Trucmuche",
         "email":"trucmuche@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659539148/truc_qitzxd.jpg"
 	},
 	{
         "lastname":"CHOSE",
         "firstname":"Machin",
         "nickname":"Machinchose",
         "email":"machinchose@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659539147/muche_wnjxdy.jpg"
 	},
 	{
         "lastname":"BIDULE",
         "firstname":"Truc",
         "nickname":"Trucbidule",
         "email":"trucbidule@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659539147/bidule_bz5xwi.jpg"
 	},
 	{
         "lastname":"LIPOPETTE",
         "firstname":"Sapère",
         "nickname":"Sapèrelipopette",
         "email":"sapèrelipopette@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659539268/saperelipopette_bovbjn.jpg"
 	},
     {
         "lastname":"NURRIS",
         "firstname":"Chuck",
         "nickname":"NeverDie",
         "email":"neverdie@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659539147/chuck_vs43ol.jpg"
     },
     {
         "lastname":"OUDDA",
         "firstname":"Benji",
         "nickname":"La_Conscience",
         "email":"laconscience@fakemail.com",
-        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy"
+        "password":"$2b$10$Ma94IO/iPmEiAL07s0gUFOG1ZNNjsGUIfq2.la6F4H9JZs6.XQ1Oy",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659539528/ben_ujs2fi.png"
     },
     {
         "lastname":"NomTest",
         "firstname":"PrenomTest",
         "nickname":"test",
         "email":"test@test.fr",
-        "password":"$2b$10$JTjJg6L9JMNb/GYEbjGhhu5RN1tlCd6vmNLeUsQ8B9FxHEJuJWBRG"
+        "password":"$2b$10$JTjJg6L9JMNb/GYEbjGhhu5RN1tlCd6vmNLeUsQ8B9FxHEJuJWBRG",
+        "profile_picture":"https://res.cloudinary.com/sonow/image/upload/v1659539147/test_j5hlia.jpg"
     }
 ]

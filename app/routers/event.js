@@ -17,11 +17,11 @@ router
     .post(controllerHandler(controller.getEventsByTitle));
 
 router
-    .route('/favorites')
+    .route('/getfavorites')
     .post(controllerHandler(controller.getEventsByPinUser));
 
 router
-    .route('/attend')
+    .route('/getattend')
     .post(controllerHandler(controller.getEventsByAttendUser));
 
 router

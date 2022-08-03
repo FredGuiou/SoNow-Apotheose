@@ -6,15 +6,9 @@ module.exports = {
   //Rechercher tous les évènements dans la BDD. 
   async findAll() {
       //Je prépare une requête sql séparément pour éviter les injections.
-      //J'utilise les jetons sql également par souci de sécurité.
-      const preparedQuery = {
-        text: `
-          SELECT *
-          FROM public.event
-        `
-      };
+      //J'utilise les jetons sql également par souci de sécurité
 
-      const result = await client.query(preparedQuery);
+      const result = await client.query("SELECT * FROM get_events_with_manager()");
       if(!result)
       
       if (result.rowCount === 0) {

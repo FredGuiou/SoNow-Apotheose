@@ -12,7 +12,13 @@ router
     .get(controllerHandler(controller.getAllTags));
 
 router
-    .route('/:tag_id')
+    .route('/withevents')
+    .get(controllerHandler(controller.getAllTagWithEvents));
+    
+router
+    .route('/:tag_id(\\d+)')
     .get(controllerHandler(controller.getOneTag));
+    
+
 
 module.exports = router;

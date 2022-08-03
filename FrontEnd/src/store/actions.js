@@ -179,7 +179,7 @@ export const getFollowers= () => ({
   type: GET_FOLLOWERS,
 });
 
-export const getFollowersSucess= (followers) => ({
+export const getFollowersSuccess= (followers) => ({
   type: GET_FOLLOWERS_SUCCESS,
   followers
 });

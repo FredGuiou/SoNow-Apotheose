@@ -14,7 +14,7 @@ router
 
 router
     .route('/search')
-    .get(controllerHandler(controller.getEventsByTitle));
+    .post(controllerHandler(controller.getEventsByTitle));
 
 router
     .route('/favorites')

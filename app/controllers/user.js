@@ -62,7 +62,6 @@ module.exports = {
     },
 
 
-
     //Méthode qui permet de récupérer tous les utilisateurs.
     async getAllUsers(_, res) {
             const userDb = await userDataMapper.findAll();

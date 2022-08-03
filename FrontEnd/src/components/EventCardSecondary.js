@@ -59,7 +59,7 @@ function EventCardSecondary({ event, params }) {
             <Card 
               fluid
               style={{
-                height: '7.5rem',
+                height: '8.5rem',
                 boxShadow: 'none',
                 background: 'transparent',
                 display: 'flex',

@@ -70,7 +70,11 @@
         color:white;
 
         &__content {
-          color: white;
+          border: none;
+          display: flex;
+          align-items: center;
+          padding: 0px !important;
+          margin: 0px !important;
         }
       }
 
@@ -117,19 +121,17 @@
     &__details {
 
       .header{
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.2rem !important;
       }
       .description {
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.2rem !important;
       }
 
-      &__card {
-        &__labels {
+        .content {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
         }
-      }
     }
   }
 

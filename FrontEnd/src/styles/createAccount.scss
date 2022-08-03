@@ -44,13 +44,26 @@
   }
 
   &__form-container {
-    max-width: 450px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: .28571429rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    color: white;
   }
 
   p {
     color: white;
+    margin-top: 0.5em;
+  }
+
+  a {
+    font-weight: 500;
+    color: #f30067;
+    text-decoration: none;
     margin-top: 0.5em;
   }
 }

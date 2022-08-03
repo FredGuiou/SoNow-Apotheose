@@ -17,7 +17,7 @@ router
     .post(controllerHandler(controller.getEventsByTitle));
 
 router
-    .route('/getfavorites')
+    .route('/getbookmarks')
     .post(controllerHandler(controller.getEventsByPinUser));
 
 router

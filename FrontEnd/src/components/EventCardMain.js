@@ -42,6 +42,17 @@ function EventCardMain() {
                   >
                     {event.title}
                   </Card.Header>
+                  <Card.Header
+                style={{
+                  fontSize: '0.8rem',
+                  fontWeight: '500',
+                  color: 'white',
+                  paddingBottom: '0.6rem'
+                }}
+              >
+              Toto l'organisateur de tes meilleures soirées
+              {/* {event.code_user_manager} //TODO: add user manager */}
+              </Card.Header>
                   <Card.Meta
                     style={{
                       color: 'white',

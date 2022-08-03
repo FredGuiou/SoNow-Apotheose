@@ -1,5 +1,5 @@
 import HorizontalScroll from 'react-scroll-horizontal';
-import EventCardSecondary from './EventCardTertiary';
+import EventCardTertiary from './EventCardTertiary';
 
 function SearchCategories({ event}) {
   return (
@@ -14,16 +14,16 @@ function SearchCategories({ event}) {
       </h1>
       <HorizontalScroll reverseScroll={true}>
         <div className='scroll-element-container'>
-          <EventCardSecondary />
-          <EventCardSecondary />
-          <EventCardSecondary />
-          <EventCardSecondary />
-          <EventCardSecondary />
-          <EventCardSecondary />
-          <EventCardSecondary />
-          <EventCardSecondary />
-          <EventCardSecondary />
-          <EventCardSecondary />
+          <EventCardTertiary event={event} />
+          <EventCardTertiary event={event} />
+          <EventCardTertiary event={event} />
+          <EventCardTertiary event={event} />
+          <EventCardTertiary event={event} />
+          <EventCardTertiary event={event} />
+          <EventCardTertiary event={event} />
+          <EventCardTertiary event={event} />
+          <EventCardTertiary event={event} />
+          <EventCardTertiary event={event} />
         </div>
       </HorizontalScroll>
     </>

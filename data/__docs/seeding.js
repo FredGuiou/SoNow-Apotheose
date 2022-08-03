@@ -25,11 +25,10 @@ const client = new Pool({
     await client.connect();
 
     await client.query("TRUNCATE TABLE public.event,public.tag,public.user,public.event_has_tag RESTART IDENTITY CASCADE");
-    
 
     console.log("J'entre dans users");
     for (const user of users) {
-        await client.query("INSERT INTO public.user(firstname, lastname, nickname, email, password) VALUES ($1, $2, $3, $4, $5) RETURNING firstname", [user.firstname, user.lastname, user.nickname, user.email, user.password]);
+        await client.query("INSERT INTO public.user(firstname, lastname, nickname, email, password, profile_picture) VALUES ($1, $2, $3, $4, $5, $6) RETURNING firstname", [user.firstname, user.lastname, user.nickname, user.email, user.password, user.profile_picture]);
     }
     console.log("Ok pour users");
 

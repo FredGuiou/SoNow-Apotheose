@@ -2,7 +2,11 @@ import axios from 'axios';
 
 import { 
   GET_FOLLOWERS,
-  GET_SUBSCRIPTIONS,
+  getFollowersSuccess,
+  getFollowersError,
+  GET_FOLLOWED,
+  getFollowedSuccess,
+  getFollowedError,
   GET_USER, 
   getUserError, 
   getUserSuccess, 
@@ -17,13 +21,59 @@ import {
 const usersMiddleware = (store) => (next) => (action) => {
 
 if (action.type === GET_FOLLOWERS) {
-  // console.log('get followers')
   next(action);
+
+  const state = store.getState();
+  const id = localStorage.getItem('id');
+
+  const config = {   
+    method: 'get',
+    url: `http://sonow.herokuapp.com/api/user/${id}/followers`, 
+    headers: { 
+      'content-type': 'application/json; charset=utf-8', 
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${state.user.accessToken}`
+    }, 
+  };
+
+  axios(config)
+    .then((response) => {
+      console.log(response.data);
+      store.dispatch(getFollowersSuccess(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+      store.dispatch(getFollowersError());
+    });
+
 }
 
-else if (action.type === GET_SUBSCRIPTIONS) {
+else if (action.type === GET_FOLLOWED) {
 
   next(action);
+
+  const state = store.getState();
+  const id = localStorage.getItem('id');
+
+  const config = {   
+    method: 'get',
+    url: `http://sonow.herokuapp.com/api/user/${id}/followed`, 
+    headers: { 
+      'content-type': 'application/json; charset=utf-8', 
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${state.user.accessToken}`
+    }, 
+  };
+
+  axios(config)
+    .then((response) => {
+      console.log(response.data);
+      store.dispatch(getFollowedSuccess(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+      store.dispatch(getFollowedError());
+    });
 
 } else if (action.type === GET_USER) {
 
@@ -97,11 +147,11 @@ else if (action.type === GET_SUBSCRIPTIONS) {
 
     axios(config)
       .then((response) => {
-        console.log(response.data);
         store.dispatch(submitUsersSearchSuccess(response.data));
       })
-      .catch(() => {
-        store.dispatch(submitUsersSearchError());
+      .catch((error) => {
+        console.log(error.message)
+        store.dispatch(submitUsersSearchError(error.message));
       });
   
   } else {

@@ -74,7 +74,7 @@ const eventsMiddleware = (store) => (next) => (action) => {
   
     axios(config)
       .then((response) => {
-        console.log(`submit events search success ${response.data}`);
+        console.log(response.data);
         store.dispatch(submitEventsSearchSuccess(response.data));
       })
       .catch(() => {

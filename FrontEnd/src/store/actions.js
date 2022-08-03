@@ -15,6 +15,9 @@ export const GET_EVENTS_SUCCESS = 'GET_EVENTS_SUCCESS';
 export const GET_FAVORITES = 'GET_FAVORITES';
 export const GET_FAVORITES_ERROR = 'GET_FAVORITES_ERROR';
 export const GET_FAVORITES_SUCCESS = 'GET_FAVORITES_SUCCESS';
+export const GET_FOLLOWED = 'GET_FOLLOWED';
+export const GET_FOLLOWED_ERROR = 'GET_FOLLOWED_ERROR';
+export const GET_FOLLOWED_SUCCESS = 'GET_FOLLOWED_SUCCESS';
 export const GET_FOLLOWERS = 'GET_FOLLOWERS';
 export const GET_FOLLOWERS_ERROR = 'GET_FOLLOWERS_ERROR';
 export const GET_FOLLOWERS_SUCCESS = 'GET_FOLLOWERS_SUCCESS';
@@ -116,9 +119,7 @@ export const submitUsersSearch= () => ({
 
 export const submitUsersSearchSuccess= (users) => ({
   type: SUBMIT_USERS_SEARCH_SUCCESS,
-  // waiting for back deployement including several results
-  // [] to be removed
-  users: [users]
+  users
 });
 
 export const submitUsersSearchError= () => ({
@@ -164,11 +165,24 @@ export const getFavoritesError= () => ({
   type: GET_FAVORITES_ERROR,
 });
 
+export const getFollowed= () => ({
+  type: GET_FOLLOWED
+});
+
+export const getFollowedSuccess= (followed) => ({
+  type: GET_FOLLOWED_SUCCESS,
+  followed
+});
+
+export const getFollowedError= () => ({
+  type: GET_FOLLOWED_ERROR,
+});
+
 export const getFollowers= () => ({
   type: GET_FOLLOWERS,
 });
 
-export const getFollowersSucess= (followers) => ({
+export const getFollowersSuccess= (followers) => ({
   type: GET_FOLLOWERS_SUCCESS,
   followers
 });

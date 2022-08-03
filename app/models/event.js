@@ -33,7 +33,8 @@ module.exports = {
         events.title,
         events.start,
         events.media,
-        events.start
+        events.start,
+        events.slug
       FROM user_pin_event
           JOIN event as events ON user_pin_event.code_event = events.id
       WHERE code_user = $1`,
@@ -56,7 +57,8 @@ module.exports = {
       events.title,
       events.start,
       events.media,
-      events.start
+      events.start,
+      events.slug
     FROM user_attend_event
         JOIN event as events ON user_attend_event.code_event = events.id
     WHERE code_user = $1`,

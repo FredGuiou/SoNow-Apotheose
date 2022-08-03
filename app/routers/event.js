@@ -26,5 +26,10 @@ router
     .route('/tag/:tag_id(\\d+)')
     .get(controllerHandler(controller.getByTagId));
 
+router
+    .route('/bookmarks')
+    .post(controllerHandler(controller.addToBookmarks))
+    .delete(controllerHandler(controller.delToBookmarks));
+    
 
 module.exports = router;

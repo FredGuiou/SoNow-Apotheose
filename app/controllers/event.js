@@ -62,6 +62,32 @@ module.exports = {
     },
 
 
+    //Méthode qui permet d'ajouter un évèenement aux favoris de l'utilisateur.
+    async addToBookmarks(req, res) {
+
+        const result = await eventDataMapper.pinEvent(req.body.user_id, req.body.event_id);
+
+        if(!result) {
+            throw new ApiError('Event already added', {statusCode: 400 });
+        } else {
+
+            return res.status(200).json({result, "message": "Event added to bookmarks succesfully"});
+        }
+    },
+
+
+    async delToBookmarks(req, res) {
+
+        const result = await eventDataMapper.unpinEvent(req.body.user_id, req.body.event_id);
+
+        if(!result) {
+            throw new ApiError('Event not found', {statusCode: 404 });
+        } else{
+
+            return res.status(200).json({result, "message": "Event deleted from bookmarks succesfully"});
+        }
+    },
+
 
 
 

@@ -71,7 +71,7 @@ module.exports = {
         return null;
       };
 
-     return result.rows;
+      return result.rows;
 
   },
 
@@ -116,9 +116,32 @@ module.exports = {
   },
 
 
+//Mettre un évènement en favoris.
+  async pinEvent(userId, eventId) {
 
+    const pinEvent = await client.query(
+      `
+      INSERT INTO public.user_pin_event (code_user, code_event) VALUES ($1, $2)
+      RETURNING *
+      `,
+      [userId, eventId],
+    );
+    return pinEvent.rows;
+  },
 
+//Supprimer un évènement des favoris.
+async unpinEvent(userId, eventId) {
 
+  const unpinEvent = await client.query(
+    `
+    DELETE FROM public.user_pin_event 
+    WHERE code_user= $1 AND code_event=$2
+    `,
+    [userId, eventId],
+  );
+
+  return !!unpinEvent.rowCount;
+},
 
 
 //mettre à jour un évènement.

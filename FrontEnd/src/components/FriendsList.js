@@ -39,7 +39,8 @@ function FriendsList() {
 
   return (
     <div className="friends">
-        <Menu className='friends__menu' inverted pointing secondary>
+      <Menu className='friends__menu' inverted pointing secondary>
+          <div className='friends__menu__main'>
           <Menu.Item
             name='Trouver des contacts'
             active={activeItem === 'Trouver des contacts'}
@@ -55,25 +56,21 @@ function FriendsList() {
             active={activeItem === 'Abonnements'}
             onClick={()=> dispatch(changeFriendsActiveItem('Abonnements'))}
           />
-          <Menu.Menu position='right'>
-            <Menu.Item>
-              <Form>
-                <Form.Input 
-                  className='friends__menu__form'
-                  loading={isSearchLoading}
-                  icon={{ name: 'users', link: true}}
-                  placeholder='Rechercher...'
-                  value={searchInput}
-                  onChange={(e)=> {
-                    dispatch(changeUsersSearchInput(e.target.value)); 
-                    dispatch(submitUsersSearch());
-                    dispatch(changeFriendsActiveItem('Trouver des contacts'))
-                  }}
-                />
-              </Form>
-            </Menu.Item>
-          </Menu.Menu>
+          </div>
         </Menu>
+        <Form className='friends__form'>
+          <Form.Input 
+            loading={isSearchLoading}
+            icon={{ name: 'users', link: true}}
+            placeholder='Rechercher...'
+            value={searchInput}
+            onChange={(e)=> {
+              dispatch(changeUsersSearchInput(e.target.value)); 
+              dispatch(submitUsersSearch());
+              dispatch(changeFriendsActiveItem('Trouver des contacts'))
+            }}
+          />
+        </Form>
         <div className='friends__list'>
         {
             searchResults.length > 0
@@ -132,7 +129,7 @@ function FriendsList() {
             ))  
           }
         </div>
-    </div>
+      </div>
   );
 }
 

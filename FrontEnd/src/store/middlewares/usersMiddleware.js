@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 import { 
+  GET_FAVORITES,
+  getFavoritesError,
+  getFavoritesSuccess,
   GET_FOLLOWERS,
   getFollowersError,
   getFollowersSuccess,
@@ -20,7 +23,35 @@ import {
 
 const usersMiddleware = (store) => (next) => (action) => {
 
-if (action.type === GET_FOLLOWERS) {
+if (action.type === GET_FAVORITES) {
+  next(action); 
+
+  const state = store.getState();
+  const id = localStorage.getItem('id');
+
+  const config = {   
+    method: 'post',
+    url: `http://sonow.herokuapp.com/api/event/getbookmarks`, 
+    headers: { 
+      'content-type': 'application/json; charset=utf-8', 
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${state.user.accessToken}`
+    }, 
+    data: {
+      user_id : id,
+    }
+  };
+
+  axios(config)
+  .then((response) => {
+    store.dispatch(getFavoritesSuccess(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+    store.dispatch(getFavoritesError());
+  });
+
+} else if (action.type === GET_FOLLOWERS) {
 
   next(action);
 
@@ -39,7 +70,6 @@ if (action.type === GET_FOLLOWERS) {
 
   axios(config)
     .then((response) => {
-      console.log(response.data);
       store.dispatch(getFollowersSuccess(response.data));
     })
     .catch((error) => {

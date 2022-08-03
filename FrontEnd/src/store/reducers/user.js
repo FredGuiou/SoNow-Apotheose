@@ -30,6 +30,7 @@ const initialState = {
   favorites: {
     activeItem: 'Tous mes favoris',
     isLoading: false,
+    list: []
   },
   friends: {
     activeItem: 'Trouver des contacts',
@@ -119,8 +120,9 @@ const reducer = (state = initialState, action) => {
           ...state,
           favorites: {
             ...state.favorites,
+            activeItem: 'Tous mes favoris',
             list: action.events,
-            isLoading:false, 
+            isLoading: false, 
             hasError: false,
           }
         };

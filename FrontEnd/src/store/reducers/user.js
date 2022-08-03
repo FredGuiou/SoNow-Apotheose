@@ -32,7 +32,7 @@ const initialState = {
     isLoading: false,
   },
   friends: {
-    activeItem: 'Trouver un contact',
+    activeItem: 'Trouver des contacts',
   },
   followed: {
     list: [],

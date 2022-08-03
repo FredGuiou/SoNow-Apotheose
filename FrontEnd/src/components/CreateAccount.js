@@ -15,15 +15,13 @@ function CreateAccount() {
     emailInput,
     passwordInput, 
     confirmedPasswordInput, 
-  } = useSelector((state) => state.signup) || {};
-
-  const userRegistered = useSelector((state) => state.signup);
-  // TODO: Gérer la définition de userRegistered dans le store
+    isRegistered
+  } = useSelector((state) => state.user.signup) || {};
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit=(e)=>{
+  const handleSubmit=()=>{
     dispatch(submitSignup());
   };
 
@@ -147,7 +145,7 @@ function CreateAccount() {
           C'est parti !
         </Form.Button>
         {
-          userRegistered && navigate('/')
+          isRegistered && navigate('/')
         }
         </Form>
           <p>Vous avez déjà un compte ?</p>

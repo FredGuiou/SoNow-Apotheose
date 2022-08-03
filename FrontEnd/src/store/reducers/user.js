@@ -54,6 +54,7 @@ const initialState = {
     passwordInput:'',
     confirmedPasswordInput:'',
     isLoading: false,
+    isRegistered: false
   }, 
   subscriptions: {
     list: [], 
@@ -243,6 +244,7 @@ const reducer = (state = initialState, action) => {
           ...state.signup, 
           isLoading: false,
           hasSignupError: false,
+          isRegistered: true,
         }
       };
     case SUBMIT_SIGNUP_ERROR:

@@ -32,7 +32,7 @@ function Nav() {
             onClick={()=> navigate('/favoris')}
           >
           <div to='/favoris' className='footer__nav__link'>
-            <Icon name='favorite' />
+            <Icon name='heart' />
             <p className='footer__nav__title'>Favoris</p>
           </div>
           </Menu.Item>

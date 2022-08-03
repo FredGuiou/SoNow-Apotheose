@@ -21,9 +21,6 @@ export const GET_FOLLOWED_SUCCESS = 'GET_FOLLOWED_SUCCESS';
 export const GET_FOLLOWERS = 'GET_FOLLOWERS';
 export const GET_FOLLOWERS_ERROR = 'GET_FOLLOWERS_ERROR';
 export const GET_FOLLOWERS_SUCCESS = 'GET_FOLLOWERS_SUCCESS';
-export const GET_SUBSCRIPTIONS = 'GET_SUBSCRIPTION';
-export const GET_SUBSCRIPTIONS_ERROR = 'GET_SUBSCRIPTION_ERROR';
-export const GET_SUBSCRIPTIONS_SUCCESS = 'GET_SUBSCRIPTION_SUCESS';
 export const GET_CONSULTED_USER = 'GET_CONSULTED_USER';
 export const GET_CONSULTED_USER_ERROR = 'GET_CONSULTED_USER_ERROR'; 
 export const GET_CONSULTED_USER_SUCCESS = 'GET_CONSULTED_USER_SUCCESS';
@@ -189,19 +186,6 @@ export const getFollowersSuccess= (followers) => ({
 
 export const getFollowersError= () => ({
   type: GET_FOLLOWERS_ERROR,
-});
-
-export const getSubscriptions= () => ({
-  type: GET_SUBSCRIPTIONS,
-});
-
-export const getSubscriptionsSuccess= (subscriptions) => ({
-  type: GET_SUBSCRIPTIONS_SUCCESS,
-  subscriptions
-});
-
-export const getSubscriptionsError= () => ({
-  type: GET_SUBSCRIPTIONS_ERROR,
 });
 
 export const getUsers= () => ({

@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeLoginInputs, submitLogin } from '../store/actions';
-import { Form } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react';
 
+import { changeLoginInputs, submitLogin } from '../store/actions';
 import '../styles/authentificationLogin.scss';
 
 function AuthentificationLogin() {

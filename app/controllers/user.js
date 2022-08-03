@@ -49,33 +49,31 @@ module.exports = {
     },
 
 
+    //Méthode qui permet de s'abonner à l'activité d'un ami.
+    async followUser (req, res) {
+        const follow = await userDataMapper.pinFollowUser(req.body.user_follower, req.body.user_followed);
 
+        if(!follow) {
+            throw new ApiError('User already followed', {statusCode: 400 });
+        } else {
 
-    async followUser () {
-
+            return res.status(200).json({follow, "message": "User followed succesfully"});
+        }
     },
 
 
 
+    //Méthode qui permet de se désabonner de l'activité d'un ami.
+    async unfollowUser (req, res) {
+        const unfollow = await userDataMapper.unpinFollowUser(req.body.user_follower, req.body.user_followed);
 
-    async unfollowUser () {
+        if(!unfollow) {
+            throw new ApiError('Users not found', {statusCode: 404 });
+        } else{
 
+            return res.status(200).json({unfollow, "message": "User unfollowed succesfully"});
+        }
     },
-
-
-
-
-    async followEvent () {
-
-    },
-
-
-    async unfollowEvent () {
-
-    },
-
-
-
 
 
     //Méthode qui permet de récupérer tous les utilisateurs.
@@ -143,14 +141,6 @@ module.exports = {
 
                 res.json(insertUser);
             };
-            //On vérifie que le format de l'email soit valide avec Joi validation
-                //Si le format de la regex n'est pas respecté
-                    //on envoie un message d'erreur
-                
-                
-            //On vérife que le format de mot de passe soit correct
-                //Si le format de mot de passe n'est pas respecté
-                    //On envoie un message d'erreur
     },
 
 

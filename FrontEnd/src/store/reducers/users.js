@@ -15,7 +15,7 @@ const initialState = {
   list:[],
   searchInput: '',
   searchResults: [],
-  friendsactiveItem: 'Trouver des contacts',
+  hasSearchError: false,
 };
 
 const reducer = (state = initialState, action) => {

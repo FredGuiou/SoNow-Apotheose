@@ -6,15 +6,9 @@ module.exports = {
   //Rechercher tous les évènements dans la BDD. 
   async findAll() {
       //Je prépare une requête sql séparément pour éviter les injections.
-      //J'utilise les jetons sql également par souci de sécurité.
-      const preparedQuery = {
-        text: `
-          SELECT *
-          FROM public.event
-        `
-      };
+      //J'utilise les jetons sql également par souci de sécurité
 
-      const result = await client.query(preparedQuery);
+      const result = await client.query("SELECT * FROM get_events_with_manager()");
       if(!result)
       
       if (result.rowCount === 0) {
@@ -26,8 +20,52 @@ module.exports = {
   },
 
 
+  async findByPin(userId) {
+      const preparedQuery = {
+        text: `SELECT 
+        events.id,
+        events.title,
+        events.start,
+        events.media,
+        events.start,
+        events.slug
+      FROM user_pin_event
+          JOIN event as events ON user_pin_event.code_event = events.id
+      WHERE code_user = $1`,
+        values: [userId],
+      };
+
+      const result = await client.query(preparedQuery);
+      if (result.rowCount === 0) {
+        return null;
+      };
+
+      return result.rows;
+  },
 
 
+  async findByAttend(userId) {
+    const preparedQuery = {
+      text: `SELECT 
+      events.id,
+      events.title,
+      events.start,
+      events.media,
+      events.start,
+      events.slug
+    FROM user_attend_event
+        JOIN event as events ON user_attend_event.code_event = events.id
+    WHERE code_user = $1`,
+      values: [userId],
+    };
+
+    const result = await client.query(preparedQuery);
+    if (result.rowCount === 0) {
+      return null;
+    };
+
+    return result.rows;
+},
 
 //Rechercher un évènement par son ID.
   async findByPk(eventId) {
@@ -71,7 +109,7 @@ module.exports = {
         return null;
       };
 
-     return result.rows;
+      return result.rows;
 
   },
 
@@ -114,6 +152,76 @@ module.exports = {
       );
       return savedEvent.rows[0];
   },
+
+
+//Mettre un évènement en favoris.
+  async pinEvent(userId, eventId) {
+
+    const pinEvent = await client.query(
+      `
+      INSERT INTO public.user_pin_event (code_user, code_event) VALUES ($1, $2)
+      RETURNING *
+      `,
+      [userId, eventId],
+    );
+    return pinEvent.rows;
+  },
+
+//Supprimer un évènement des favoris.
+async unpinEvent(userId, eventId) {
+
+  const unpinEvent = await client.query(
+    `
+    DELETE FROM public.user_pin_event 
+    WHERE code_user= $1 AND code_event=$2
+    `,
+    [userId, eventId],
+  );
+
+  return !!unpinEvent.rowCount;
+},
+
+
+
+//Ajouter sa participation à un évènement.
+async pinAttendEvent(userId, eventId) {
+
+  const pinAttendEvent = await client.query(
+    `
+    INSERT INTO public.user_attend_event (code_user, code_event) VALUES ($1, $2)
+    RETURNING *
+    `,
+    [userId, eventId],
+  );
+  return pinAttendEvent.rows;
+},
+
+//Supprimer sa participation à un évènement.
+async unpinAttendEvent(userId, eventId) {
+
+const unpinAttendEvent = await client.query(
+  `
+  DELETE FROM public.user_attend_event 
+  WHERE code_user= $1 AND code_event=$2
+  `,
+  [userId, eventId],
+);
+
+return !!unpinAttendEvent.rowCount;
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

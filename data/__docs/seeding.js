@@ -25,18 +25,17 @@ const client = new Pool({
     await client.connect();
 
     await client.query("TRUNCATE TABLE public.event,public.tag,public.user,public.event_has_tag RESTART IDENTITY CASCADE");
-    
 
     console.log("J'entre dans users");
     for (const user of users) {
-        await client.query("INSERT INTO public.user(firstname, lastname, nickname, email, password) VALUES ($1, $2, $3, $4, $5) RETURNING firstname", [user.firstname, user.lastname, user.nickname, user.email, user.password]);
+        await client.query("INSERT INTO public.user(firstname, lastname, nickname, email, password, profile_picture) VALUES ($1, $2, $3, $4, $5, $6) RETURNING firstname", [user.firstname, user.lastname, user.nickname, user.email, user.password, user.profile_picture]);
     }
     console.log("Ok pour users");
 
 
     console.log("J'entre dans events");
     for (const event of events) {
-        await client.query("INSERT INTO public.event(title, slug, description, metadescription, start, stop, location, address, zipcode, city, media, latitude, longitude) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING title", [event.title, event.slug, event.description, event.metadescription, event.start, event.stop, event.location, event.address, event.zipcode, event.city, event.media, event.latitude, event.longitude]);
+        await client.query("INSERT INTO public.event(title, slug, description, metadescription, start, stop, location, address, zipcode, city, media, latitude, longitude, code_user_manager) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING title", [event.title, event.slug, event.description, event.metadescription, event.start, event.stop, event.location, event.address, event.zipcode, event.city, event.media, event.latitude, event.longitude, event.code_user_manager]);
     }
     console.log("Ok pour events");
 

@@ -139,7 +139,7 @@ module.exports = {
           `,
           [...values, id],
         );
-       
+      
         return savedUser.rows[0];
 
   },
@@ -163,7 +163,7 @@ module.exports = {
   async findFollowersByUserId(id) {
     const preparedQuery = {
       text: `
-      SELECT u1.id as id_followed, u1.nickname as user_followed, u2.id as id_follower, u2.nickname as user_follower FROM user_follow_user
+      SELECT u1.id as id_followed, u1.nickname as user_followed, u1.profile_picture as profile_picture_followed, u2.id as id_follower, u2.nickname as user_follower, u2.profile_picture as profile_picture_follower FROM user_follow_user
       JOIN public.user u1 ON user_follow_user.code_user = u1.id
       JOIN public.user u2 ON user_follow_user.code_user2 = u2.id
       WHERE code_user2 = $1
@@ -183,7 +183,7 @@ module.exports = {
   async findFollowedByUserid(id) {
     const preparedQuery = {
       text: `
-      SELECT u1.id as id_follower, u1.nickname as user_follower, u2.id as id_followed, u2.nickname as user_followed FROM user_follow_user
+      SELECT u1.id as id_follower, u1.nickname as user_follower, u1.profile_picture as profile_picture_follower, u2.id as id_followed, u2.nickname as user_followed, u2.profile_picture as profile_picture_followed FROM user_follow_user
       JOIN public.user u1 ON user_follow_user.code_user = u1.id
       JOIN public.user u2 ON user_follow_user.code_user2 = u2.id
       WHERE code_user = $1
@@ -198,5 +198,54 @@ module.exports = {
     };
 
     return result.rows;
-  }
+  },
+
+
+//Suivre un autre utilisateur.
+async pinFollowUser(userId1, userId2) {
+
+  const pinFollowUser = await client.query(
+    `
+    INSERT INTO public.user_follow_user (code_user, code_user2) VALUES ($1, $2)
+    RETURNING *
+    `,
+    [userId1, userId2],
+  );
+  return pinFollowUser.rows;
+},
+
+//Ne plus Suivre un autre utilisateur.
+async unpinFollowUser(userId1, userId2) {
+
+const unpinFollowUser = await client.query(
+  `
+  DELETE FROM public.user_follow_user 
+  WHERE code_user= $1 AND code_user2=$2
+  `,
+  [userId1, userId2],
+);
+
+return !!unpinFollowUser.rowCount;
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };

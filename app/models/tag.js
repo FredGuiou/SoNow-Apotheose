@@ -3,6 +3,16 @@ const client = require("../config/db");
 module.exports = {
 
 
+  async findAllWithEvents() {
+    const result = await client.query("SELECT get_all_tag_with_event()");
+
+    if (result.rowCount === 0) {
+      return null;
+    };
+
+    return result.rows;
+  },
+
   async findAll() {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité.

@@ -1,12 +1,23 @@
 import axios from 'axios';
 
 import { 
+  GET_FAVORITES,
+  getFavoritesError,
+  getFavoritesSuccess,
   GET_FOLLOWERS,
+<<<<<<< HEAD
   getFollowersSuccess,
   getFollowersError,
   GET_FOLLOWED,
   getFollowedSuccess,
   getFollowedError,
+=======
+  getFollowersError,
+  getFollowersSuccess,
+  GET_FOLLOWED,
+  getFollowedError,
+  getFollowedSuccess,
+>>>>>>> ea8f3efa2cc657405d2b44248badb3c5fba33ed7
   GET_USER, 
   getUserError, 
   getUserSuccess, 
@@ -20,7 +31,40 @@ import {
 
 const usersMiddleware = (store) => (next) => (action) => {
 
+<<<<<<< HEAD
 if (action.type === GET_FOLLOWERS) {
+=======
+if (action.type === GET_FAVORITES) {
+  next(action); 
+
+  const state = store.getState();
+  const id = localStorage.getItem('id');
+
+  const config = {   
+    method: 'post',
+    url: `http://sonow.herokuapp.com/api/event/getbookmarks`, 
+    headers: { 
+      'content-type': 'application/json; charset=utf-8', 
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${state.user.accessToken}`
+    }, 
+    data: {
+      user_id : id,
+    }
+  };
+
+  axios(config)
+  .then((response) => {
+    store.dispatch(getFavoritesSuccess(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+    store.dispatch(getFavoritesError());
+  });
+
+} else if (action.type === GET_FOLLOWERS) {
+
+>>>>>>> ea8f3efa2cc657405d2b44248badb3c5fba33ed7
   next(action);
 
   const state = store.getState();
@@ -38,7 +82,10 @@ if (action.type === GET_FOLLOWERS) {
 
   axios(config)
     .then((response) => {
+<<<<<<< HEAD
       console.log(response.data);
+=======
+>>>>>>> ea8f3efa2cc657405d2b44248badb3c5fba33ed7
       store.dispatch(getFollowersSuccess(response.data));
     })
     .catch((error) => {

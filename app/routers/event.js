@@ -14,7 +14,15 @@ router
 
 router
     .route('/search')
-    .get(controllerHandler(controller.getEventsByTitle));    
+    .post(controllerHandler(controller.getEventsByTitle));
+
+router
+    .route('/getbookmarks')
+    .post(controllerHandler(controller.getEventsByPinUser));
+
+router
+    .route('/getattend')
+    .post(controllerHandler(controller.getEventsByAttendUser));
 
 router
     .route('/:event_id(\\d+)')
@@ -26,5 +34,15 @@ router
     .route('/tag/:tag_id(\\d+)')
     .get(controllerHandler(controller.getByTagId));
 
+router
+    .route('/bookmarks')
+    .post(controllerHandler(controller.addToBookmarks))
+    .delete(controllerHandler(controller.delToBookmarks));
+    
+
+router
+    .route('/attend')
+    .post(controllerHandler(controller.addAttendEvent))
+    .delete(controllerHandler(controller.delAttendEvent));
 
 module.exports = router;

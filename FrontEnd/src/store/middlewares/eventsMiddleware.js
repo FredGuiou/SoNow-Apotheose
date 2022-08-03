@@ -1,5 +1,14 @@
 import axios from 'axios';
-import { GET_EVENT, GET_EVENTS, getEventsSuccess, getEventsError, SUBMIT_EVENTS_SEARCH, submitEventsSearchSuccess, submitEventsSearchError } from '../actions';
+
+import { 
+  GET_EVENT,
+  GET_EVENTS,
+  getEventsSuccess,
+  getEventsError,
+  SUBMIT_EVENTS_SEARCH,
+  submitEventsSearchSuccess,
+  submitEventsSearchError 
+} from '../actions';
 
 const eventsMiddleware = (store) => (next) => (action) => {
   if (action.type === GET_EVENTS) {
@@ -54,7 +63,7 @@ const eventsMiddleware = (store) => (next) => (action) => {
       .catch(() => {
         store.dispatch(getEventsError());
       });
-  
+
   } else if (action.type === SUBMIT_EVENTS_SEARCH) {
     next(action);
     const state = store.getState();

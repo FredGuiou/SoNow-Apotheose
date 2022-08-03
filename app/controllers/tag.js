@@ -3,6 +3,16 @@ const { ApiError } = require("../services/errorHandler");
 
 module.exports = {
 
+    async getAllTagWithEvents(req, res) {
+        const result = await tagDataMapper.findAllWithEvents();
+
+        if (!result) {
+            throw new ApiError('Not any tag in database', { statusCode: 404 });
+        }
+
+        return res.json(result);
+    },
+
     //Méthode qui permet de récupérer tous les tags.
     async getAllTags(_, res) {
             const tagDb = await tagDataMapper.findAll();

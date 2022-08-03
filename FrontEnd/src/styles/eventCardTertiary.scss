@@ -20,10 +20,11 @@
     position: absolute;
     bottom : 1.5rem;
     left: 0px;
-    height: 3rem;
+    height: 2.1rem;
     width: inherit;
-    padding: 0.5rem;
-    padding-left: 4rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 3.1rem;
     background-color: rgba(0, 0, 0, 0.4);
     color:white;
 
@@ -35,9 +36,46 @@
 
   &__date {
     position: absolute;
-    margin-left: 0.2rem;
-    top: 3.5rem;
+    margin-left: -0.4rem;
+    bottom : 0.95rem;
     left: 1rem;
     z-index: 1;
   }
+}
+
+
+@media screen and (max-width: 520px) {
+
+  .event-card-tertiary__content__title {
+    font-size: 0.8rem;
+  }
+
+}
+
+@media screen and (max-width: 470px) {
+
+  .event-card-tertiary__content__title {
+    font-size: 0.7rem;
+  }
+
+}
+
+@media screen and (max-width: 440px) {
+
+  .event-card-tertiary__content__title {
+    position: absolute;
+    top: 0.5rem;
+    left: 3rem;
+  }
+
+}
+
+@media screen and (max-width: 430px) {
+
+  .event-card-tertiary__content__title {
+    position: absolute;
+    top: 0rem;
+    left: 3rem;
+  }
+
 }

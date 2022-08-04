@@ -1,3 +1,4 @@
+import { useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import ProtectedRoute from './ProtectedRoute';
 import { Form, Container } from 'semantic-ui-react';
@@ -5,8 +6,8 @@ import { Form, Container } from 'semantic-ui-react';
 import SearchEventCard from './SearchEventCard';
 import SearchCategories from './SearchCategories';
 
+import { shuffle } from '../selectors/tags';
 import { getEvent, getTags, changeEventsSearch, submitEventsSearch } from '../store/actions';
-import { useSelector, useDispatch} from 'react-redux';
 
 import '../styles/search.scss';
 
@@ -50,7 +51,7 @@ function Search() {
         }}
       >
         {
-          tags.map((t) => (
+          shuffle(tags).map((t) => (
             <SearchCategories tag={t} />
           ))
         }

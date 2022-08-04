@@ -25,11 +25,6 @@ function FavNav() {
           }}
         />
         <Menu.Item
-          name='Ce jour'
-          active={activeItem === 'Ce jour'}
-          onClick={()=> dispatch(changeFavoritesActiveItem('Ce jour'))}
-        />
-        <Menu.Item
           name='Cette semaine'
           active={activeItem === 'Cette semaine'}
           onClick={()=> dispatch(changeFavoritesActiveItem('Cette semaine'))}

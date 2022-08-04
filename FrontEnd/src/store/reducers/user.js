@@ -1,4 +1,5 @@
 import {
+  CHANGE_FRIENDS_ACTIVE_ITEM, 
   CHANGE_FAVORITES_ACTIVE_ITEM, 
   CHANGE_LOGIN_INPUTS, 
   CHANGE_PROFIL_ACTIVE_ITEM,
@@ -81,6 +82,14 @@ const reducer = (state = initialState, action) => {
         favorites : {
           ...state.favorites, 
           activeItem: action.activeItem,
+        }
+      };
+    case CHANGE_FRIENDS_ACTIVE_ITEM:
+      return {
+        ...state,
+        friends: {
+          ...state.friends,
+          activeItem: action.activeItem
         }
       };
     case CHANGE_LOGIN_INPUTS:

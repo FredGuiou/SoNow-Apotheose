@@ -111,7 +111,8 @@ const eventsMiddleware = (store) => (next) => (action) => {
       .then((response) => {
         store.dispatch(submitEventsSearchSuccess(response.data));
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error.message);
         store.dispatch(submitEventsSearchError());
       });
 

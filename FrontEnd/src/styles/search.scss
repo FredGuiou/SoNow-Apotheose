@@ -13,8 +13,16 @@
     padding: 0.5rem;
     border-radius: 30px;
     height: 30vh;
+
+        &__error {
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-align: center;
+        }
     }
 }
+
 
 .search-container::-webkit-scrollbar {
     display: none;

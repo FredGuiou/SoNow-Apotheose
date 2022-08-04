@@ -1,7 +1,7 @@
 import ProtectedRoute from './ProtectedRoute';
 import { Form, Container } from 'semantic-ui-react';
 
-import EventCardSecondary from './EventCardSecondary';
+import SearchEventCard from './SearchEventCard';
 import SearchCategories from './SearchCategories';
 import events from '../data/eventsData';
 
@@ -32,9 +32,8 @@ function Search() {
       <Container
         className='search-container__container'
       >
-        <EventCardSecondary 
+        <SearchEventCard
           event={event} 
-          params={'autour-de-moi'}
         />
       </Container>
       <Container

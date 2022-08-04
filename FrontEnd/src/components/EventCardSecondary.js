@@ -10,7 +10,6 @@ function EventCardSecondary({ event, params }) {
   return (
     <Link to={`/event/${event.slug}`}>
       <div className={params === 'autour-de-moi'? 'event-card-secondary' : 'event-card-secondary search' }>
-        {/* En attente envoie du lien des images*/}
         <img
           className={params === 'autour-de-moi'? 'event-card-secondary__img search' : 'event-card-secondary__img'}
           src={event.media}

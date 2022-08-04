@@ -16,7 +16,7 @@ function ProfileUserCard({ user, nbFollowed, nbFollowers }) {
   }, [dispatch]);
 
   const activeItem = useSelector((state) => state.user.profil.activeItem);
-  const nbOfAttendingEvents = (useSelector((state) => state.user.attending.list) || []).length;
+  // const nbOfAttendingEvents = (useSelector((state) => state.user.attending.list) || []).length;
 
   return (
     <header

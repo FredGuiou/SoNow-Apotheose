@@ -70,14 +70,6 @@
   }
 }
 
-.hidden {
-  display: none;
-}
-
-.search {
-  border-radius: 30px;
-}
-
 @media screen and (max-width: 370px) {
   .event-card-secondary {
     &__details {

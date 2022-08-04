@@ -34,7 +34,6 @@ const eventsMiddleware = (store) => (next) => (action) => {
     if (!state.events.list || state.events.list.length === 0) {
       axios(config)
         .then((response) => {
-          // console.log(response.data);
           store.dispatch(getEventsSuccess(response.data));
         })
         .catch(() => {
@@ -62,7 +61,6 @@ const eventsMiddleware = (store) => (next) => (action) => {
 
     axios(config)
       .then((response) => {
-        console.log(response.data);
         store.dispatch(getEventSuccess(response.data));
       })
       .catch(() => {
@@ -85,7 +83,6 @@ const eventsMiddleware = (store) => (next) => (action) => {
     
       axios(config)
         .then((response) => {
-          console.log(response.data);
           store.dispatch(getTagsSuccess(response.data));
         })
         .catch(() => {
@@ -112,10 +109,10 @@ const eventsMiddleware = (store) => (next) => (action) => {
   
     axios(config)
       .then((response) => {
-        console.log(response.data);
         store.dispatch(submitEventsSearchSuccess(response.data));
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error.message);
         store.dispatch(submitEventsSearchError());
       });
 

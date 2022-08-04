@@ -6,7 +6,6 @@ import { Form, Container } from 'semantic-ui-react';
 import SearchEventCard from './SearchEventCard';
 import SearchCategories from './SearchCategories';
 
-import { shuffle } from '../selectors/tags';
 import { getEvent, getTags, changeEventsSearch, submitEventsSearch } from '../store/actions';
 
 import '../styles/search.scss';
@@ -15,19 +14,25 @@ function Search() {
 
   const dispatch = useDispatch();
 
+  const {
+    isSearchLoading,
+    searchInput,
+    searchResults,
+    hasSearchError,
+  } = useSelector((state) => state.events);
+
+  const tags = useSelector((state) => state.tags.list) || [];
+
   useEffect(() => {
     dispatch(getTags());
     dispatch(getEvent());
   }, [dispatch]);
 
-  const { searchInput } = useSelector((state) => state.events);
-  const tags = useSelector((state) => state.tags.list) || [];
-  const event = useSelector((state) => state.event);
-
   return (
     <div className='search-container'>
       <Form onSubmit={()=> dispatch(submitEventsSearch())}>
-        <Form.Input 
+        <Form.Input
+        loading={isSearchLoading}
           icon={{ name:'sliders horizontal', link: true}}
           placeholder='Rechercher...'
           value={searchInput}
@@ -37,9 +42,24 @@ function Search() {
       <Container
         className='search-container__container'
       >
-        <SearchEventCard
-          event={event} 
-        />
+        {
+          searchResults.map((event) => {
+            return (
+              <SearchEventCard
+                key={event.id}
+                event={event}
+              />
+            );
+          }
+        )}
+        <div className='search-container__container__error'>
+        {
+          hasSearchError &&
+          <p>
+            Aucun événement pour "{searchInput}"
+          </p>
+        }
+        </div>
       </Container>
       <Container
         style={{
@@ -51,7 +71,7 @@ function Search() {
         }}
       >
         {
-          shuffle(tags).map((t) => (
+          tags.map((t) => (
             <SearchCategories tag={t} />
           ))
         }

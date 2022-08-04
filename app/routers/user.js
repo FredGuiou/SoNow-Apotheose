@@ -36,7 +36,7 @@ router
     .route('/search')
     .post(controllerHandler(controller.getOneUserByNickname));
 
-//Routes pour récupérer, modifier, supprimer un utilisateur.
+//Routes pour récupérer, modifier, supprimer, s'abonner et se désabonner d'un utilisateur.
 router
     .route('/follow')
     .post(controllerHandler(controller.followUser))

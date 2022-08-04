@@ -33,7 +33,16 @@ module.exports = {
     },
 
 
+    //Méthode qui permet de récupérer un évènement par son slug.
+    async getOneEventBySlug(req, res) {
+        const eventDb = await eventDataMapper.findBySlug(req.params.event_slug);
 
+        if(!eventDb){
+            throw new ApiError('Event not found', {statusCode: 404 });
+        };
+
+        return res.json(eventDb);
+},
 
 
     //Méthode qui permet de rechercher un évènement par son titre.

@@ -3,6 +3,9 @@ import {
   CHANGE_LOGIN_INPUTS, 
   CHANGE_PROFIL_ACTIVE_ITEM,
   CHANGE_SIGNUP_INPUTS,
+  GET_EVENTS_ATTENDING,
+  GET_EVENTS_ATTENDING_ERROR, 
+  GET_EVENTS_ATTENDING_SUCCESS,
   GET_FAVORITES,
   GET_FAVORITES_ERROR, 
   GET_FAVORITES_SUCCESS,
@@ -26,6 +29,10 @@ import {
 
 const initialState = {
   accessToken: null,
+  attending: {
+    isLoading: false,
+    list: []
+  },
   favorites: {
     activeItem: 'Tous mes favoris',
     isLoading: false,
@@ -98,6 +105,32 @@ const reducer = (state = initialState, action) => {
         signup : {
           ...state.signup, 
           [action.inputName]: action.newValue,
+        }
+      };
+      case GET_EVENTS_ATTENDING:
+        return {
+          ...state,
+          attending: {
+            isLoading:true,
+          }
+        };
+      case GET_EVENTS_ATTENDING_SUCCESS:
+        return {
+          ...state,
+          attending: {
+            ...state.attending,
+            list: action.events,
+            isLoading: false, 
+            hasError: false,
+          }
+        };
+    case GET_EVENTS_ATTENDING_ERROR:
+      return {
+        ...state,
+        attending: {
+          ...state.attending,
+          isLoading:false,
+          hasError: true
         }
       };
       case GET_FAVORITES:

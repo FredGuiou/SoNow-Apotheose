@@ -99,7 +99,11 @@ function ProfileUserCard({ user }) {
         marginBottom: '0.5em',
       }}
     >
-      <Menu className='friends__menu' inverted pointing secondary>
+      <Menu className='friends__menu' inverted pointing secondary
+        style={{
+          border: 'none',
+        }}
+      >
         <Menu.Item
           name='Mes événements'
           active={activeItem === 'Mes événements'}

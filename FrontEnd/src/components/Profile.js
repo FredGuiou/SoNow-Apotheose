@@ -1,25 +1,24 @@
 import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getUser } from '../store/actions';
+import { getEventsAttending, getUser } from '../store/actions';
 
 import ProtectedRoute from './ProtectedRoute';
 import EventCardTertiary from './EventCardTertiary';
 import ProfileUserCard from './ProfileUserCard';
 import "../styles/profile.scss";
 
-import events from '../data/eventsData';
-
 function Profile() {
 
   const dispatch = useDispatch();
   
-  // to get user on page refresh
   useEffect(() => {
     dispatch(getUser());
+    dispatch(getEventsAttending())
   }, [dispatch]);
 
   const user = useSelector((state) => state.user);
+  const events = useSelector((state) => state.user.attending.list) || []; 
 
   return (
     <div className="profile-container">

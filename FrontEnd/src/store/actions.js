@@ -4,6 +4,7 @@ export const CHANGE_FAVORITES_ACTIVE_ITEM = 'CHANGE_FAVORITES_ACTIVE_ITEM';
 export const CHANGE_FRIENDS_ACTIVE_ITEM = 'CHANGE_FRIENDS_ACTIVE_ITEM';
 export const CHANGE_PROFIL_ACTIVE_ITEM = 'CHANGE_PROFIL_ACTIVE_ITEM';
 export const CHANGE_USERS_SEARCH_INPUT= 'CHANGE_USERS_SEARCH_INPUT';
+export const CHANGE_ICONS_STATUS = 'CHANGE_ICONS_STATUS';
 export const CHANGE_LOGIN_INPUTS = 'CHANGE_LOGIN_INPUTS';
 export const CHANGE_SIGNUP_INPUTS = 'CHANGE_SIGNUP_INPUTS';
 export const GET_EVENT = 'GET_EVENT';
@@ -279,4 +280,9 @@ export const submitEventsSearchError= () => ({
 
 export const logout = () => ({
   type: LOGOUT,
+});
+
+export const changeIconsStatus = (iconsName) => ({
+  type: CHANGE_ICONS_STATUS,
+  iconsName,
 });

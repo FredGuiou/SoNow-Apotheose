@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSignupInputs, submitSignup } from '../store/actions';
-import { Container, Form, Grid, Header } from 'semantic-ui-react';
+import { Form, Header } from 'semantic-ui-react';
 import loop from '../images/assets/sonow-bis.mp4';
 
 import "../styles/createAccount.scss";
@@ -50,110 +51,104 @@ function CreateAccount() {
   };
 
   return (
-    <Container className="create-account"
-      style={{ 
-        width: '100%',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-      >
+    <div className="create-account">
       <div className='create-account__video'>
         <div className='create-account__video__overlay'></div>
         <video className='create-account__video__content' src={loop} autoPlay loop muted />
       </div>
-      <Container className="create-account__grid-container">
-      <Grid className="create-account__grid-content" textAlign='center' verticalAlign='middle'>
-        <Grid.Column className="create-account__form-container">
-          <Header inverted as='h1' textAlign='center'>
-            Créer un compte
-          </Header>
-          <Form 
-            style ={{margin: '1rem', padding: '1rem'}}
-            id='login'
-            name='login'
-            inverted 
-            size='large' 
-            onSubmit={(e) => {handleSubmit(e)}}
-          >
-        <Form.Group widths='equal'>
-          <Form.Input 
-            fluid
-            required 
-            name='firstname'
-            label='Prénom'
-            placeholder='Prénom' 
-            value={firstnameInput} 
-            onChange={(e) => {handleFirstnameChange(e)}}
-          />
-          <Form.Input
-            fluid
-            required
-            name='lastname'
-            label='Nom' 
-            placeholder='Nom' 
-            value={lastnameInput}  onChange={(e) => {handleLastnameChange(e)}}
-          />
-        </Form.Group>
-        <Form.Input 
-          fluid
-          name='email'
-          label='Email' 
-          placeholder='Email' 
-          value={emailInput} required onChange={(e) => {handleEmailChange(e)}}
-        />
-        <Form.Input 
-          fluid
-          required
-          name='nickname' 
-          label='Pseudo' 
-          placeholder="Nom d'utilisateur"
-          value={nicknameInput}
-          onChange={(e) => {handleNicknameChange(e)}}
-        />
-        <Form.Input 
-          fluid
-          required 
-          type='password' 
-          name='password'
-          label='Mot de passe'
-          placeholder='Mot de passe' 
-          value={passwordInput}
-          onChange={(e) => {handlePasswordChange(e)}}
-        />
-        <Form.Input 
-          fluid
-          required
-          type='password'
-          name='confirmedPassword'
-          label='Confirmation du mot de passe'
-          placeholder='Confirmation du mot de passe' 
-          value={confirmedPasswordInput}
-          onChange={(e) => {handleConfirmedPasswordChange(e)}}
-        />
-        <Form.Checkbox
-          defaultChecked
-          label="En vous inscrivant sur SoNow vous acceptez nos conditions d'utilisation et notre politique de confidentialité" 
-        />
-        <Form.Button 
-          style={{
-            backgroundColor: '#F30067',
-            color: 'white'
-          }}
-        >
-          C'est parti !
-        </Form.Button>
-        {
-          isRegistered && navigate('/')
-        }
-        </Form>
-          <p>Vous avez déjà un compte ?</p>
-          <a href='/'>Connectez-vous</a>
-        </Grid.Column>
-      </Grid>
-      </Container>
-    </Container>
+        <div className="create-account__main">
+            <div className="account-container">
+              <div className="account-container__form">
+                <Header inverted as='h1' textAlign='center' style={{marginTop: '15px'}}>
+                    Créer un compte
+                </Header>
+                  <Form 
+                    inverted 
+                    size='large'
+                    // style={{
+                    //   margin: '1rem',
+                    //   padding: '1rem'
+                    // }}
+                    onSubmit={(e) => {handleSubmit(e)}}
+                  >
+                      <Form.Input className='create-account__form-input'                     
+                        fluid
+                        required 
+                        name='firstname'
+                        label='Prénom'
+                        placeholder='Prénom' 
+                        value={firstnameInput} 
+                        onChange={(e) => {handleFirstnameChange(e)}}
+                      />
+                      <Form.Input className='create-account__form-input'
+                        fluid
+                        required
+                        name='lastname'
+                        label='Nom' 
+                        placeholder='Nom' 
+                        value={lastnameInput}  onChange={(e) => {handleLastnameChange(e)}}
+                      />
+                      <Form.Input
+                        fluid
+                        name='email'
+                        label='Email' 
+                        placeholder='Email' 
+                        value={emailInput} required onChange={(e) => {handleEmailChange(e)}}
+                      />
+                      <Form.Input className='create-account__form-input'
+                        fluid
+                        required
+                        name='nickname' 
+                        label='Pseudo' 
+                        placeholder="Nom d'utilisateur"
+                        value={nicknameInput}
+                        onChange={(e) => {handleNicknameChange(e)}}
+                      />
+                      <Form.Input className='create-account__form-input'
+                        fluid
+                        required 
+                        type='password' 
+                        name='password'
+                        label='Mot de passe'
+                        placeholder='Mot de passe' 
+                        value={passwordInput}
+                        onChange={(e) => {handlePasswordChange(e)}}
+                      />
+                      <Form.Input className='create-account__form-input'
+                        fluid
+                        required
+                        type='password'
+                        name='confirmedPassword'
+                        label='Confirmation du mot de passe'
+                        placeholder='Confirmation du mot de passe' 
+                        value={confirmedPasswordInput}
+                        onChange={(e) => {handleConfirmedPasswordChange(e)}}
+                      />
+                      <Form.Checkbox className="create-account__form-checkbox"
+                        defaultChecked
+                        label="En vous inscrivant sur SoNow vous acceptez nos conditions d'utilisation
+                               et notre politique de confidentialité" 
+                      />
+                      <Form.Button className="create-account__form-button"
+                        style={{
+                          backgroundColor: '#F30067',
+                          color: 'white'
+                        }}
+                      >
+                        C'est parti !
+                      </Form.Button>
+                      {
+                        isRegistered && navigate('/')
+                      }
+                  </Form>
+                  <div className="create-account__form-footer">
+                    <p>Vous avez déjà un compte ?</p>
+                      <Link className='create-account__form__footer__link' to='/'>Connectez-vous</Link>
+                  </div> 
+              </div>
+            </div>
+          </div>
+        </div>
   );
 }
 

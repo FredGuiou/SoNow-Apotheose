@@ -1,11 +1,18 @@
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Card, Icon, Label } from 'semantic-ui-react';
 
 import DateCard from './DateCard';
 
-import '../styles/eventCardSecondary.scss'; 
+import '../styles/eventCardSecondary.scss';
+import { changeIconsStatus } from '../store/actions';
 
 function EventCardSecondary({ event, params }) {
+
+  const dispatch = useDispatch();
+
+  const { participate, favorite }  = useSelector((state) => state.user.iconsStatus) || { participate: false, favorite: false };
+  console.log(participate);
 
   return (
     <Link to={`/event/${event.slug}`}>
@@ -17,7 +24,25 @@ function EventCardSecondary({ event, params }) {
         />
         <section className='event-card-secondary__details'>
           <section className={params === 'autour-de-moi'? 'event-card-secondary__details__social-icons hidden' : 'event-card-secondary__details__social-icons'}>
-              <Icon 
+          {
+            participate &&
+              <Link to={'#'}>
+                <Icon
+                  name='check square' 
+                  size='large'
+                  style={{ 
+                    color: '#F30067',
+                    marginTop: '0.6em',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => dispatch(changeIconsStatus('participate'))}
+                />
+              </Link>
+          }
+          {
+            !participate && 
+              <Link to={'#'}>
+              <Icon
                 name='check square' 
                 size='large'
                 style={{ 
@@ -25,8 +50,13 @@ function EventCardSecondary({ event, params }) {
                   marginTop: '0.6em',
                   cursor: 'pointer',
                 }}
-              />            
+                onClick={() => dispatch(changeIconsStatus('participate'))}
+              />
+              </Link>
+            }
+              <Link to={'#'}>          
               <Icon 
+                className={favorite ? 'isliked' : ''}
                 name='heart' 
                 size='large'
                 style={{ 
@@ -34,8 +64,11 @@ function EventCardSecondary({ event, params }) {
                   marginTop: '0.6em',
                   cursor: 'pointer',
                 }}
+                onClick={() => dispatch(changeIconsStatus('favorite'))}
               />
-              <Icon 
+              </Link>
+              <Link to={'#'}>
+              <Icon
                 name='comment' 
                 size='large'
                 style={{ 
@@ -44,6 +77,8 @@ function EventCardSecondary({ event, params }) {
                   cursor: 'pointer',
                 }}
                 />
+              </Link>
+              <Link to={'#'}>
               <Icon 
                 name='share' 
                 size='large'
@@ -53,6 +88,7 @@ function EventCardSecondary({ event, params }) {
                   cursor: 'pointer',
                 }}
                 />
+              </Link>
           </section>
           <section className='event-card-secondary__details__card'>
             <Card 

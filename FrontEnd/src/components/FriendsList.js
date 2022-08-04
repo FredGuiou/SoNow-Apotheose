@@ -79,7 +79,7 @@ function FriendsList() {
           />
         </Form>
         <div className='friends__list'>
-        {
+          {
             searchResults.length > 0
             &&
             searchResults.map((u) => (

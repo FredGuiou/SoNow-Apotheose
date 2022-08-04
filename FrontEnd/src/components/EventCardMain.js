@@ -7,13 +7,14 @@ import { Card, Icon } from 'semantic-ui-react';
 import DateCard from './DateCard';
 
 import "../styles/eventCardMain.scss";
-import { getEvents } from '../store/actions';
+import { changeIconsStatus, getEvents } from '../store/actions';
 import { findEventBySlug } from '../selectors/events';
-
 
 function EventCardMain() {
 
   const dispatch = useDispatch();
+  
+  const { participate, favorite }  = useSelector((state) => state.user.iconsStatus) || { participate: false, favorite: false };
 
   useEffect(() => {
     dispatch(getEvents());
@@ -41,7 +42,8 @@ function EventCardMain() {
               />
             <section className='event-description__details'>
             <section className='event-description__details__social-icons'>
-              <Icon 
+              <Icon
+                className={participate ? 'isLiked' : ''}
                 name='check square' 
                 size='large'
                 style={{ 
@@ -49,8 +51,10 @@ function EventCardMain() {
                   marginTop: '0.6em',
                   cursor: 'pointer',
                 }}
+                onClick={() => dispatch(changeIconsStatus('participate'))}
               />            
               <Icon 
+                className={favorite ? 'isliked' : ''}
                 name='heart' 
                 size='large'
                 style={{ 
@@ -58,6 +62,7 @@ function EventCardMain() {
                   marginTop: '0.6em',
                   cursor: 'pointer',
                 }}
+                onClick={() => dispatch(changeIconsStatus('favorite'))}
               />
           </section>
               <section className="event-description__details__card">

@@ -10,5 +10,5 @@ export function shuffle(events) {
     const j = Math.floor(Math.random() * (i + 1));
     [events[i], events[j]] = [events[j], events[i]];
   }
-  return events;
+  return events; 
 }

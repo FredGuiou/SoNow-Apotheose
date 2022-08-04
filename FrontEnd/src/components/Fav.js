@@ -20,7 +20,6 @@ function Fav() {
 
   const favorites = useSelector((state) => state.user.favorites.list) || [];
   const activeItem = useSelector((state) => state.user.favorites.activeItem);
-  console.log(activeItem);
 
   return (
     <div className="fav">

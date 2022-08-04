@@ -23,7 +23,6 @@ const NewYork = { lat: 40.730610, long: -73.935242 };
 // Use of Haversine formula 
 // Result converted from meters to kilometers
 const m = DistanceCalculator.calculate(Tokyo, NewYork)/1000;
-console.log(m);
 */
 
 function App() {

@@ -51,7 +51,7 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch(getEventsAttendingSuccess(response.data));
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
         store.dispatch(getEventsAttendingError());
       }); 
       
@@ -80,7 +80,7 @@ const usersMiddleware = (store) => (next) => (action) => {
       store.dispatch(getFavoritesSuccess(response.data));
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.message);
       store.dispatch(getFavoritesError());
     });
 
@@ -106,7 +106,7 @@ const usersMiddleware = (store) => (next) => (action) => {
         store.dispatch(getFollowersSuccess(response.data));
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
         store.dispatch(getFollowersError());
       });
 
@@ -129,11 +129,10 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     axios(config)
       .then((response) => {
-        console.log(response.data);
         store.dispatch(getFollowedSuccess(response.data));
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
         store.dispatch(getFollowedError());
       });
 
@@ -156,11 +155,11 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     axios(config)
     .then((response) => {
-      console.log(response.data);
+
       store.dispatch(getUserSuccess(response.data));
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.message);
       store.dispatch(getUserError());
     });
 
@@ -184,7 +183,7 @@ const usersMiddleware = (store) => (next) => (action) => {
       store.dispatch(getUsersSuccess(response.data));
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.message);
       store.dispatch(getUsersError());
     });
   

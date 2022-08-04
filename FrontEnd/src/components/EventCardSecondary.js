@@ -12,7 +12,6 @@ function EventCardSecondary({ event, params }) {
   const dispatch = useDispatch();
 
   const { participate, favorite }  = useSelector((state) => state.user.iconsStatus) || { participate: false, favorite: false };
-  console.log(participate);
 
   return (
     <Link to={`/event/${event.slug}`}>

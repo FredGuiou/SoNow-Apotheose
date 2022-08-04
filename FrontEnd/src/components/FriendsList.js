@@ -42,11 +42,13 @@ function FriendsList() {
       <Menu className='friends__menu' inverted pointing secondary>
           <div className='friends__menu__main'>
           <Menu.Item
+            className='friends__menu__item'
             name='Trouver des contacts'
             active={activeItem === 'Trouver des contacts'}
             onClick={()=> dispatch(changeFriendsActiveItem('Trouver des contacts'))}
           />
           <Menu.Item
+          className='friends__menu__item'
             name='Abonnes'
             active={activeItem === 'Abonnes'}
             onClick={()=> {
@@ -54,6 +56,7 @@ function FriendsList() {
             }}
           />
           <Menu.Item
+            className='friends__menu__item'
             name='Abonnements'
             active={activeItem === 'Abonnements'}
             onClick={()=> {

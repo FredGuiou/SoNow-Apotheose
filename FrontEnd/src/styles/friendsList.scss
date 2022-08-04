@@ -29,3 +29,22 @@
     }
 
 }
+
+@media screen and (max-width: 430px) {
+  
+  .friends__menu {
+    height: 18vh;
+  }
+  
+  .friends__menu__main {
+    margin: 0 auto;
+    flex-direction: column;
+  } 
+
+  .friends__menu__item {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+  } 
+
+}

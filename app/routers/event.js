@@ -45,4 +45,9 @@ router
     .post(controllerHandler(controller.addAttendEvent))
     .delete(controllerHandler(controller.delAttendEvent));
 
+router
+    .route('/:event_slug')
+    .get(controllerHandler(controller.getOneEventBySlug));
+
+
 module.exports = router;

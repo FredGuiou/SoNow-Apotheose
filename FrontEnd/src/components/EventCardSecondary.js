@@ -17,7 +17,6 @@ function EventCardSecondary({ event, params }) {
   return (
     <Link to={`/event/${event.slug}`}>
       <div className={params === 'autour-de-moi'? 'event-card-secondary' : 'event-card-secondary search' }>
-        {/* En attente envoie du lien des images*/}
         <img
           className={params === 'autour-de-moi'? 'event-card-secondary__img search' : 'event-card-secondary__img'}
           src={event.media}
@@ -121,8 +120,7 @@ function EventCardSecondary({ event, params }) {
                   paddingBottom: '0.6rem'
                 }}
               >
-              Jean-Michel
-              {/* {event.code_user_manager} */}
+                {event.user_manager}
               </Card.Header>
               <Card.Meta
                 style={{
@@ -140,7 +138,7 @@ function EventCardSecondary({ event, params }) {
                 {event.metadescription}
               </Card.Description>
               <Card.Content className={params === 'autour-de-moi'? 'event-card-secondary__details__card__labels hidden' : 'event-card-secondary__details__card__labels'}>
-                {/* En attente ajout des tags à l'envoie des évènements */}
+              
                 {/*
                   event.tag.map((t) => {
                     return (

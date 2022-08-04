@@ -1,23 +1,28 @@
+import { useSelector, useDispatch} from 'react-redux';
+import { useEffect } from 'react';
 import ProtectedRoute from './ProtectedRoute';
 import { Form, Container } from 'semantic-ui-react';
 
-import EventCardSecondary from './EventCardSecondary';
+import SearchEventCard from './SearchEventCard';
 import SearchCategories from './SearchCategories';
-import events from '../data/eventsData';
 
-import { changeEventsSearch, submitEventsSearch } from '../store/actions';
-import { useSelector, useDispatch} from 'react-redux';
+import { shuffle } from '../selectors/tags';
+import { getEvent, getTags, changeEventsSearch, submitEventsSearch } from '../store/actions';
 
 import '../styles/search.scss';
 
 function Search() {
 
-  const event = events.find((e) => e.id === 12);
-
   const dispatch = useDispatch();
-  const { 
-    searchInput
-  } = useSelector((state) => state.events);
+
+  useEffect(() => {
+    dispatch(getTags());
+    dispatch(getEvent());
+  }, [dispatch]);
+
+  const { searchInput } = useSelector((state) => state.events);
+  const tags = useSelector((state) => state.tags.list) || [];
+  const event = useSelector((state) => state.event);
 
   return (
     <div className='search-container'>
@@ -32,9 +37,8 @@ function Search() {
       <Container
         className='search-container__container'
       >
-        <EventCardSecondary 
+        <SearchEventCard
           event={event} 
-          params={'autour-de-moi'}
         />
       </Container>
       <Container
@@ -46,9 +50,11 @@ function Search() {
           backgroundColor: 'black',
         }}
       >
-        <SearchCategories event={event} />
-        <SearchCategories event={event} />
-        <SearchCategories event={event} />
+        {
+          shuffle(tags).map((t) => (
+            <SearchCategories tag={t} />
+          ))
+        }
       </Container>
     </div>
   );

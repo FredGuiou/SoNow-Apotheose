@@ -1,22 +1,19 @@
 import { Button, Image } from 'semantic-ui-react';
 
-import profile from '../images/profile.jpg'
 import "../styles/userAvatar.scss"; 
 
-function UserAvatar({user, isFollower }) {
+function UserAvatar({user, isFollower, params}) {
   return (
     <div className="user-avatar">
-      {/* src de l'image à dynamiser */}
-      <Image src={profile} alt={user.nickname} avatar
+      <Image src={user.profile_picture} alt={user.nickname} avatar
         style={{
           height: '10vh',
           width: '10vh'
         }}
       />
       <p>{user.nickname}</p>
-      {/* Nombre d'amis à dynamiser 
-      <p>12 amis en communs</p>
-      */}
+      {
+        params === 'friends' &&
       <Button
         content={!isFollower ? 'Voir le profil' : 'Ajouter'}
         className='user-avatar__btn' 
@@ -27,6 +24,7 @@ function UserAvatar({user, isFollower }) {
           color: 'white',
         }}
       />
+      }
     </div>
   );
 }

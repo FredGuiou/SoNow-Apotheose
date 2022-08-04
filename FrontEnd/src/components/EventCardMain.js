@@ -1,11 +1,14 @@
-import { Card, Icon, Label } from 'semantic-ui-react';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { Card, Icon } from 'semantic-ui-react';
+
 import DateCard from './DateCard';
 
 import "../styles/eventCardMain.scss";
-
-import events from '../data/eventsData';
-import { changeIconsStatus } from '../store/actions';
+import { changeIconsStatus, getEvents } from '../store/actions';
+import { findEventBySlug } from '../selectors/events';
 
 function EventCardMain() {
 
@@ -13,11 +16,24 @@ function EventCardMain() {
   
   const { participate, favorite }  = useSelector((state) => state.user.iconsStatus) || { participate: false, favorite: false };
 
-  const event = events.find((e) => e.slug === 'pool-party');
+  useEffect(() => {
+    dispatch(getEvents());
+  }, [dispatch]);
+
+  const { slug } = useParams();
+
+  const event = useSelector((state) => findEventBySlug(state.events.list, slug));
+
+  // const event = useSelector((state) => findEventBySlug(state.events.list, slug));
+
+  // const event = events.find((e) => e.slug === 'pool-party');
   
   return (
+    
+      
     <div className="event-card">
-        <div className='description-container' key={event.id}>
+        <div className='description-container'>
+          { event &&
           <div className="event-description">
               <img
                 className="event-description__img"
@@ -79,8 +95,7 @@ function EventCardMain() {
                       paddingBottom: '0.6rem'
                     }}
                   >
-                    Jean-Michel
-                    {/* {event.code_user_manager} */}
+                    {event.code_user_manager}
               </Card.Header>
                   <Card.Meta
                     style={{
@@ -98,7 +113,7 @@ function EventCardMain() {
                     {event.description}
                   </Card.Description>
                   <Card.Content>
-                    {
+                    {/*
                       event.tag.map((t) => {
                         return (
                           <Label 
@@ -110,7 +125,7 @@ function EventCardMain() {
                           </Label>
                         )
                       })
-                    }
+                    */}
                   </Card.Content>
                 </Card>
                 <section className="event-description__details__card__participants">
@@ -120,9 +135,11 @@ function EventCardMain() {
                       color:'white'
                     }} 
                   />
+                  {/*
                   <p className="event-description__details__card__participants__content" >
                     {event.user_attend_event.length} participants
                   </p>
+                  */}
                 </section>
                 <section className="event-description__details__card__date">
                 <DateCard 
@@ -132,6 +149,7 @@ function EventCardMain() {
               </section>
             </section>
         </div>
+        }
       </div>
     </div>
   );

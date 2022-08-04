@@ -88,7 +88,22 @@ module.exports = {
   },
 
 
+    //Rechercher un évènement par son slug.
+    async findBySlug(eventSlug) {
+      const preparedQuery = {
+        text: `
+        SELECT get_event_with_infos($1)
+        `,
+        values: [`${eventSlug}`],
+      };
+      const result = await client.query(preparedQuery);
+      if (result.rowCount === 0) {
+        return null;
+      };
 
+      return result.rows.map(eventWithInfo=> eventWithInfo.get_event_with_infos);
+
+    },
 
 
 
@@ -129,7 +144,7 @@ module.exports = {
       return null;
     }
 
-    return result.rows;
+    return result.rows.map(eventByTag=> eventByTag.get_event_by_tag);
 
   },
 

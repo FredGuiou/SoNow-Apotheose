@@ -1,7 +1,7 @@
 import HorizontalScroll from 'react-scroll-horizontal';
 import EventCardTertiary from './EventCardTertiary';
 
-function SearchCategories({ event}) {
+function SearchCategories({ tag }) {
   return (
     <>
       <h1 style={{
@@ -10,20 +10,15 @@ function SearchCategories({ event}) {
         paddingBottom: '0.5rem',
       }} 
       > 
-        {`${event.flag} >`} 
+        {`${tag.name} >`} 
       </h1>
       <HorizontalScroll reverseScroll={true}>
         <div className='scroll-element-container'>
-          <EventCardTertiary event={event} />
-          <EventCardTertiary event={event} />
-          <EventCardTertiary event={event} />
-          <EventCardTertiary event={event} />
-          <EventCardTertiary event={event} />
-          <EventCardTertiary event={event} />
-          <EventCardTertiary event={event} />
-          <EventCardTertiary event={event} />
-          <EventCardTertiary event={event} />
-          <EventCardTertiary event={event} />
+          {
+            tag.events.map((e) => (
+              <EventCardTertiary event={e} />
+            ))
+          }
         </div>
       </HorizontalScroll>
     </>

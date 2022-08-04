@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { Form, Menu } from 'semantic-ui-react';
 
-import { getFollowed, getFollowers, getUsers } from '../store/actions';
-// import users from '../data/usersData';
-
 import {
+  getFollowed, 
+  getFollowers,
+  getUsers, 
   changeUsersSearchInput,
   changeFriendsActiveItem,
   submitUsersSearch
@@ -16,8 +16,6 @@ import "../styles/friendsList.scss";
 import UserAvatar from './UserAvatar';
 
 function FriendsList() {
-
-  console.log('friendlist');
 
   const dispatch = useDispatch();
   
@@ -44,28 +42,24 @@ function FriendsList() {
       <Menu className='friends__menu' inverted pointing secondary>
           <div className='friends__menu__main'>
           <Menu.Item
+            className='friends__menu__item'
             name='Trouver des contacts'
             active={activeItem === 'Trouver des contacts'}
             onClick={()=> dispatch(changeFriendsActiveItem('Trouver des contacts'))}
           />
           <Menu.Item
-            name='Trouver des contacts'
-            active={activeItem === 'Trouver des contacts'}
-            onClick={()=> dispatch(changeFriendsActiveItem('Trouver des contacts'))}
-          />
-          <Menu.Item
+          className='friends__menu__item'
             name='Abonnes'
             active={activeItem === 'Abonnes'}
             onClick={()=> {
-              
               dispatch(changeFriendsActiveItem('Abonnes'));
             }}
           />
           <Menu.Item
+            className='friends__menu__item'
             name='Abonnements'
             active={activeItem === 'Abonnements'}
             onClick={()=> {
-              
               dispatch(changeFriendsActiveItem('Abonnements')); 
             }}
           />
@@ -92,6 +86,7 @@ function FriendsList() {
               <UserAvatar 
                 key={u.id}
                 user={u} 
+                params={'friends'}
                 isFollower={isFollower(followed, u.id)}
               />
             ))   

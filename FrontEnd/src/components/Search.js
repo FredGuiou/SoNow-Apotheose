@@ -6,6 +6,7 @@ import { Form, Container } from 'semantic-ui-react';
 import SearchEventCard from './SearchEventCard';
 import SearchCategories from './SearchCategories';
 
+import { shuffle } from '../selectors/tags';
 import { getEvent, getTags, changeEventsSearch, submitEventsSearch } from '../store/actions';
 
 import '../styles/search.scss';
@@ -50,7 +51,7 @@ function Search() {
         }}
       >
         {
-          tags.map((t) => (
+          shuffle(tags).map((t) => (
             <SearchCategories tag={t} />
           ))
         }

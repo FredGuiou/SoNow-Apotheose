@@ -90,8 +90,7 @@ function EventCardMain() {
                       paddingBottom: '0.6rem'
                     }}
                   >
-                    Jean-Michel
-                    {/* {event.code_user_manager} */}
+                    {event.code_user_manager}
               </Card.Header>
                   <Card.Meta
                     style={{

@@ -101,7 +101,7 @@ module.exports = {
         return null;
       };
 
-      return result.rows[0];
+      return result.rows.map(eventWithInfo=> eventWithInfo.get_event_with_infos);
 
     },
 
@@ -144,7 +144,7 @@ module.exports = {
       return null;
     }
 
-    return result.rows;
+    return result.rows.map(eventByTag=> eventByTag.get_event_by_tag);
 
   },
 

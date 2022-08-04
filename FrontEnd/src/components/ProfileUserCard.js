@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Header, Icon, Image, Menu } from 'semantic-ui-react';
+import { Icon, Image, Menu } from 'semantic-ui-react';
 
 import { changeProfilActiveItem, logout } from '../store/actions';
 import "../styles/profileUserCard.scss";
@@ -19,7 +19,7 @@ function ProfileUserCard({ user, nbFollowed, nbFollowers }) {
   const nbOfAttendingEvents = (useSelector((state) => state.user.attending.list) || []).length;
 
   return (
-    <Header
+    <header
       className='user-card'
       attached='top' 
       style={{
@@ -43,17 +43,19 @@ function ProfileUserCard({ user, nbFollowed, nbFollowers }) {
           />
         </div>
         <section className='user-card__main__counters'>
+          {/*
           <div className='user-card__main__counters__item'>
             <p>{nbOfAttendingEvents}</p>
             <p>Evènements</p>
           </div>
+          */}
           <div className='user-card__main__counters__item'>
             <p>{nbFollowed}</p>
-            <p>Abonnements</p>
+            <p className='user-card__main__counters__item__content'>Abonnements</p>
           </div>
           <div className='user-card__main__counters__item'>
             <p>{nbFollowers}</p>
-            <p>Abonnés</p>
+            <p className='user-card__main__counters__item__content'>Abonnés</p>
           </div>
         </section>
         <section className='user-card__main__icons'>
@@ -61,16 +63,14 @@ function ProfileUserCard({ user, nbFollowed, nbFollowers }) {
             <Icon 
               circular 
               name='setting'
-              size='large'
-              style={{ color: 'white', margin: '0.5em'}}
+              style={{ color: 'white'}}
             />
           </Link>
           <Link to='/'>  
             <Icon 
               circular 
               name='log out' 
-              size='large' 
-              style={{ color: 'white', margin: '0.5em'}} 
+              style={{ color: 'white'}} 
               onClick={()=>dispatch(logout())}
             />
           </Link>
@@ -87,18 +87,21 @@ function ProfileUserCard({ user, nbFollowed, nbFollowers }) {
         }}
       >
         <Menu.Item
+          className='user-card__menu__item' 
           name='Mes événements'
           active={activeItem === 'Mes événements'}
           icon={{ name:'checked calendar', link: true}}
           onClick={()=> dispatch(changeProfilActiveItem('Mes événements'))}
         />
         <Menu.Item
+          className='user-card__menu__item' 
           name='Ajouter un événement'
           active={activeItem === 'Ajouter un événement'}
           icon={{ name:'add', link: true}}
           onClick={()=> dispatch(changeProfilActiveItem('Ajouter un événement'))}
         />
         <Menu.Item
+          className='user-card__menu__item' 
           name='Trouver des contacts'
           active={activeItem === 'Trouver des contacts'}
           icon={{ name:'user plus', link: true}}
@@ -108,7 +111,7 @@ function ProfileUserCard({ user, nbFollowed, nbFollowers }) {
           }}
         />
       </Menu>
-    </ Header>
+    </header>
   )
 };
 

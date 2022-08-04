@@ -49,6 +49,12 @@
     flex-direction: column;
   }
 
+  .user-card__menu__item {
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+  }
+
 }
 
 @media screen and (max-width: 470px) {

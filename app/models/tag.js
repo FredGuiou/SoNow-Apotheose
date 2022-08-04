@@ -10,7 +10,7 @@ module.exports = {
       return null;
     };
 
-    return result.rows;
+    return result.rows.map(tagWithEvents=> tagWithEvents.get_all_tag_with_event);
   },
 
   async findAll() {

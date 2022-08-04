@@ -84,8 +84,7 @@ function EventCardSecondary({ event, params }) {
                   paddingBottom: '0.6rem'
                 }}
               >
-              Jean-Michel
-              {/* {event.code_user_manager} */}
+                {event.user_manager}
               </Card.Header>
               <Card.Meta
                 style={{
@@ -103,7 +102,7 @@ function EventCardSecondary({ event, params }) {
                 {event.metadescription}
               </Card.Description>
               <Card.Content className={params === 'autour-de-moi'? 'event-card-secondary__details__card__labels hidden' : 'event-card-secondary__details__card__labels'}>
-                {/* En attente ajout des tags à l'envoie des évènements */}
+              
                 {/*
                   event.tag.map((t) => {
                     return (

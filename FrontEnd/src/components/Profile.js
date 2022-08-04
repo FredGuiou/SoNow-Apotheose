@@ -8,7 +8,6 @@ import EventCardTertiary from './EventCardTertiary';
 import ProfileUserCard from './ProfileUserCard';
 import "../styles/profile.scss";
 
-// Import data en dur pour préparer la connexion API 
 import events from '../data/eventsData';
 
 function Profile() {

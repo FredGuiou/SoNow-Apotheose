@@ -1,107 +1,89 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Grid, Header, Icon, Image, Menu } from 'semantic-ui-react';
+import { Header, Icon, Image, Menu } from 'semantic-ui-react';
 
 import { changeProfilActiveItem, logout } from '../store/actions';
-import profile from '../images/profile.jpg'
-import "../styles/profileUserCard.scss"
+import "../styles/profileUserCard.scss";
 
-function ProfileUserCard({ user }) {
+function ProfileUserCard({ user, nbFollowed, nbFollowers }) {
 
   const dispatch = useDispatch();
   const navigate= useNavigate();
 
+  useEffect(() => {
+
+  }, [dispatch]);
+
   const activeItem = useSelector((state) => state.user.profil.activeItem);
-  
+  const nbOfAttendingEvents = (useSelector((state) => state.user.attending.list) || []).length;
+
   return (
-  <Header attached='top' style={{backgroundColor: 'black', border: 'none'}}>  
-    <Grid
+    <Header
+      className='user-card'
+      attached='top' 
       style={{
+        backgroundColor: 'black', 
+        border: 'none',
         display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        flexDirection: 'column'
       }}
-    >
-      <Grid.Column 
-        width={3}
-      >
-        <div style={{margin: '0.5em'}}>
-          <p className='profile-counter__name'>{user.nickname}</p>
-          <Image circular src={profile} size='tiny'/>
+    >  
+      <div className='user-card__main'>
+        <div className='user-card__main__avatar'>
+          <p className='user-card__main__avatar__name'>{user.nickname}</p>
+          <Image 
+            avatar
+            src={user.profile_picture} 
+            alt={user.nickname} 
+            style={{
+              height: '10vh',
+              width: '10vh'
+            }}
+          />
         </div>
-      </Grid.Column>
-      <Grid.Column
-      width={8}
-      style={{
-        color:'white',
-        display: 'flex',
-      }}
-      >
-        <Container fluid
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            margin: '0.5em'
-          }}
-        >
-          {/* En attente du back */}
-          <p className='profile-counter__content'>562</p>
-          <p className='profile-counter__title'>Evènements</p>
-        </Container>
-        <Container fluid
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            margin: '0.5em'
-          }} 
-        >
-          {/* En attente du back */}
-          <p className='profile-counter__content'>1364</p>
-          <p className='profile-counter__title'>Abonnements</p>
-        </Container>
-        <Container fluid
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            margin: '0.5em'
-          }} 
-        >
-          {/* En attente du back */}
-          <p className='profile-counter__content'>698</p>
-          <p className='profile-counter__title'>Abonnés</p>
-        </Container>
-        </Grid.Column>
-        <Grid.Column
-        width={3}
-        >
+        <section className='user-card__main__counters'>
+          <div className='user-card__main__counters__item'>
+            <p>{nbOfAttendingEvents}</p>
+            <p>Evènements</p>
+          </div>
+          <div className='user-card__main__counters__item'>
+            <p>{nbFollowed}</p>
+            <p>Abonnements</p>
+          </div>
+          <div className='user-card__main__counters__item'>
+            <p>{nbFollowers}</p>
+            <p>Abonnés</p>
+          </div>
+        </section>
+        <section className='user-card__main__icons'>
           <Link to='#'>  
-            <Icon circular name='setting' size='large' style={{ color: 'white', margin: '0.5em'}} />
+            <Icon 
+              circular 
+              name='setting'
+              size='large'
+              style={{ color: 'white', margin: '0.5em'}}
+            />
           </Link>
           <Link to='/'>  
             <Icon 
-              circular name='log out' 
+              circular 
+              name='log out' 
               size='large' 
               style={{ color: 'white', margin: '0.5em'}} 
               onClick={()=>dispatch(logout())}
             />
           </Link>
-      </Grid.Column>
-    </Grid>
-    <Header.Subheader
-      style={{
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        color: 'white',
-        marginBottom: '0.5em',
-      }}
-    >
-      <Menu className='friends__menu' inverted pointing secondary
+        </section>
+      </div>
+      <Menu 
+        className='user-card__menu' 
+        inverted 
+        pointing 
+        secondary
         style={{
           border: 'none',
+          margin: '0 auto',
         }}
       >
         <Menu.Item
@@ -126,8 +108,7 @@ function ProfileUserCard({ user }) {
           }}
         />
       </Menu>
-    </Header.Subheader>
-  </Header>
+    </ Header>
   )
 };
 

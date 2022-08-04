@@ -83,6 +83,7 @@ function FriendsList() {
               <UserAvatar 
                 key={u.id}
                 user={u} 
+                params={'friends'}
                 isFollower={isFollower(followed, u.id)}
               />
             ))   

@@ -1,7 +1,8 @@
 import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getEventsAttending, getUser } from '../store/actions';
+import { getEventsAttending, getUser,   getFollowed, 
+  getFollowers, } from '../store/actions';
 
 import ProtectedRoute from './ProtectedRoute';
 import EventCardTertiary from './EventCardTertiary';
@@ -15,15 +16,21 @@ function Profile() {
   useEffect(() => {
     dispatch(getUser());
     dispatch(getEventsAttending())
+    dispatch(getFollowed());
+    dispatch(getFollowers());
   }, [dispatch]);
 
   const user = useSelector((state) => state.user);
   const events = useSelector((state) => state.user.attending.list) || []; 
+  const followed = useSelector((state) => state.user.followed.list) || [];
+  const followers = useSelector((state) => state.user.followers.list) || [];
 
   return (
     <div className="profile-container">
       <ProfileUserCard 
         user={user}
+        nbFollowers={followers.length}
+        nbFollowed={followed.length}
       />
       <div className='profile-container__event'>
         {

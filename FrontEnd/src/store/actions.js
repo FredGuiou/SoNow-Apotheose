@@ -9,6 +9,9 @@ export const CHANGE_SIGNUP_INPUTS = 'CHANGE_SIGNUP_INPUTS';
 export const GET_EVENT = 'GET_EVENT';
 export const GET_EVENT_ERROR = 'GET_EVENT_ERROR';
 export const GET_EVENT_SUCCESS = 'GET_EVENT_SUCCESS';
+export const GET_TAGS = 'GET_TAGS';
+export const GET_TAGS_ERROR = 'GET_TAGS_ERROR';
+export const GET_TAGS_SUCCESS = 'GET_TAGS_SUCCESS';
 export const GET_EVENTS_ATTENDING = 'GET_EVENTS_ATTENDING';
 export const GET_EVENTS_ATTENDING_ERROR = 'GET_EVENTS_ATTENDING_ERROR';
 export const GET_EVENTS_ATTENDING_SUCCESS = 'GET_EVENTS_ATTENDING_SUCCESS';
@@ -215,6 +218,19 @@ export const getUsersSuccess= (users) => ({
 
 export const getUsersError= () => ({
   type: GET_USERS_ERROR,
+});
+
+export const getTags= () => ({
+  type: GET_TAGS,
+});
+
+export const getTagsSuccess= (tags) => ({
+  type: GET_TAGS_SUCCESS,
+  tags
+});
+
+export const getTagsError= () => ({
+  type: GET_TAGS_ERROR,
 });
 
 export const getUser= () => ({

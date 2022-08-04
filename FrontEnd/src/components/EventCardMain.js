@@ -1,12 +1,17 @@
 import { Card, Icon, Label } from 'semantic-ui-react';
-
+import { useSelector, useDispatch } from 'react-redux';
 import DateCard from './DateCard';
 
 import "../styles/eventCardMain.scss";
 
 import events from '../data/eventsData';
+import { changeIconsStatus } from '../store/actions';
 
 function EventCardMain() {
+
+  const dispatch = useDispatch();
+  
+  const { participate, favorite }  = useSelector((state) => state.user.iconsStatus) || { participate: false, favorite: false };
 
   const event = events.find((e) => e.slug === 'pool-party');
   
@@ -21,7 +26,8 @@ function EventCardMain() {
               />
             <section className='event-description__details'>
             <section className='event-description__details__social-icons'>
-              <Icon 
+              <Icon
+                className={participate ? 'isLiked' : ''}
                 name='check square' 
                 size='large'
                 style={{ 
@@ -29,8 +35,10 @@ function EventCardMain() {
                   marginTop: '0.6em',
                   cursor: 'pointer',
                 }}
+                onClick={() => dispatch(changeIconsStatus('participate'))}
               />            
               <Icon 
+                className={favorite ? 'isliked' : ''}
                 name='heart' 
                 size='large'
                 style={{ 
@@ -38,6 +46,7 @@ function EventCardMain() {
                   marginTop: '0.6em',
                   cursor: 'pointer',
                 }}
+                onClick={() => dispatch(changeIconsStatus('favorite'))}
               />
           </section>
               <section className="event-description__details__card">

@@ -118,10 +118,15 @@
       right: 1rem;
       display: flex;
       flex-direction: column;
+
     }
 
   }
 
+}
+
+.isLiked {
+  color: #F30067 !important;
 }
 
 @media screen and (max-width: 370px) {

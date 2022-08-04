@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 import { 
+  GET_EVENTS_ATTENDING,
+  getEventsAttendingError,
+  getEventsAttendingSuccess,
   GET_FAVORITES,
   getFavoritesError,
   getFavoritesSuccess,
@@ -18,95 +21,123 @@ import {
   getUsersError,
   SUBMIT_USERS_SEARCH, 
   submitUsersSearchSuccess,
-  submitUsersSearchError
+  submitUsersSearchError,
 } from '../actions';
 
 const usersMiddleware = (store) => (next) => (action) => {
 
-if (action.type === GET_FAVORITES) {
-  next(action); 
+  if (action.type === GET_EVENTS_ATTENDING) {
 
-  const state = store.getState();
-  const id = localStorage.getItem('id');
+    next(action);
+  
+    const state = store.getState();
+    const id = localStorage.getItem('id');
+  
+    const config = {   
+      method: 'post',
+      url: `http://sonow.herokuapp.com/api/event/getattend`, 
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `${state.user.accessToken}`
+      }, 
+      data: {
+        user_id: id
+      }
+    };
+  
+    axios(config)
+      .then((response) => {
+        store.dispatch(getEventsAttendingSuccess(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+        store.dispatch(getEventsAttendingError());
+      }); 
+      
+  }  else if (action.type === GET_FAVORITES) {
+  
+    next(action); 
 
-  const config = {   
-    method: 'post',
-    url: `http://sonow.herokuapp.com/api/event/getbookmarks`, 
-    headers: { 
-      'content-type': 'application/json; charset=utf-8', 
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': `${state.user.accessToken}`
-    }, 
-    data: {
-      user_id : id,
-    }
-  };
+    const state = store.getState();
+    const id = localStorage.getItem('id');
 
-  axios(config)
-  .then((response) => {
-    store.dispatch(getFavoritesSuccess(response.data));
-  })
-  .catch((error) => {
-    console.log(error);
-    store.dispatch(getFavoritesError());
-  });
+    const config = {   
+      method: 'post',
+      url: `http://sonow.herokuapp.com/api/event/getbookmarks`, 
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `${state.user.accessToken}`
+      }, 
+      data: {
+        user_id : id,
+      }
+    };
 
-} else if (action.type === GET_FOLLOWERS) {
-
-  next(action);
-
-  const state = store.getState();
-  const id = localStorage.getItem('id');
-
-  const config = {   
-    method: 'get',
-    url: `http://sonow.herokuapp.com/api/user/${id}/followers`, 
-    headers: { 
-      'content-type': 'application/json; charset=utf-8', 
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': `${state.user.accessToken}`
-    }, 
-  };
-
-  axios(config)
+    axios(config)
     .then((response) => {
-      store.dispatch(getFollowersSuccess(response.data));
+      store.dispatch(getFavoritesSuccess(response.data));
     })
     .catch((error) => {
       console.log(error);
-      store.dispatch(getFollowersError());
+      store.dispatch(getFavoritesError());
     });
 
-}
+  } else if (action.type === GET_FOLLOWERS) {
 
-else if (action.type === GET_FOLLOWED) {
+    next(action);
 
-  next(action);
+    const state = store.getState();
+    const id = localStorage.getItem('id');
 
-  const state = store.getState();
-  const id = localStorage.getItem('id');
+    const config = {   
+      method: 'get',
+      url: `http://sonow.herokuapp.com/api/user/${id}/followers`, 
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `${state.user.accessToken}`
+      }, 
+    };
 
-  const config = {   
-    method: 'get',
-    url: `http://sonow.herokuapp.com/api/user/${id}/followed`, 
-    headers: { 
-      'content-type': 'application/json; charset=utf-8', 
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': `${state.user.accessToken}`
-    }, 
-  };
+    axios(config)
+      .then((response) => {
+        store.dispatch(getFollowersSuccess(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+        store.dispatch(getFollowersError());
+      });
 
-  axios(config)
-    .then((response) => {
-      console.log(response.data);
-      store.dispatch(getFollowedSuccess(response.data));
-    })
-    .catch((error) => {
-      console.log(error);
-      store.dispatch(getFollowedError());
-    });
+  } else if (action.type === GET_FOLLOWED) {
 
-} else if (action.type === GET_USER) {
+    next(action);
+
+    const state = store.getState();
+    const id = localStorage.getItem('id');
+
+    const config = {   
+      method: 'get',
+      url: `http://sonow.herokuapp.com/api/user/${id}/followed`, 
+      headers: { 
+        'content-type': 'application/json; charset=utf-8', 
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `${state.user.accessToken}`
+      }, 
+    };
+
+    axios(config)
+      .then((response) => {
+        console.log(response.data);
+        store.dispatch(getFollowedSuccess(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+        store.dispatch(getFollowedError());
+      });
+
+  } else if (action.type === GET_USER) {
 
     next(action);
 

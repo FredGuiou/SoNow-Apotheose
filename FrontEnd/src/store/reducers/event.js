@@ -6,7 +6,14 @@ import {
 } from '../actions'; 
 
 const initialState = {
-  activeEvent: null,
+  id: null, 
+  title: '',
+  metadescription: '',
+  description: '',
+  start: '2022-11-22T19:00:00.000Z',
+  media: '', 
+  code_user_manager: null, 
+  activeEvent: 1,
   isLoading: false
 };
 

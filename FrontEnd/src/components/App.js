@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 // import DistanceCalculator from 'distance-calculator-js';
 
+import About from './About';
 import Authentification from './Authentification';
 import CreateAccount from './CreateAccount';
 import CreateEvent from './CreateEvent';
@@ -50,6 +51,13 @@ function App() {
   return (
     <div className='App'>
       <Routes>
+        <Route path="/a-propos"
+          element={(
+            <Page title="À propos">
+              <About />
+            </Page>
+          )} 
+        />
         <Route
           path='/'
           element={(

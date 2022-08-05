@@ -25,6 +25,7 @@ return (
               <div className="login-container__form__footer">
               <p>Vous n'avez pas encore de compte ?</p>
               <Link className='login-container__form__footer__link' to="/creer-un-compte">Inscrivez-vous</Link>
+              <Link className="login-container__form__footer__link" to="/a-propos">À propos</Link>
               </div>
             </div>
         </div>

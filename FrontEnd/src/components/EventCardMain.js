@@ -14,7 +14,7 @@ function EventCardMain() {
 
   const dispatch = useDispatch();
   
-  const { participate, favorite }  = useSelector((state) => state.user.iconsStatus) || { participate: false, favorite: false };
+  const { iconParticipate: participate, iconFavorite: favorite }  = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getEvents());
@@ -39,26 +39,24 @@ function EventCardMain() {
             <section className='event-description__details'>
             <section className='event-description__details__social-icons'>
               <Icon
-                className={participate ? 'isLiked' : ''}
+                className={participate ? 'participate-is-liked' : 'participate-is-disliked'}
                 name='check square' 
                 size='large'
                 style={{ 
-                  color: '#E0E0E0',
                   marginTop: '0.6em',
                   cursor: 'pointer',
                 }}
-                onClick={() => dispatch(changeIconsStatus('participate'))}
+                onClick={() => dispatch(changeIconsStatus('iconParticipate'))}
               />            
               <Icon 
-                className={favorite ? 'isliked' : ''}
+                className={favorite ? 'favorite-is-liked' : 'favorite-is-disliked'}
                 name='heart' 
                 size='large'
                 style={{ 
-                  color: '#E0E0E0',
                   marginTop: '0.6em',
                   cursor: 'pointer',
                 }}
-                onClick={() => dispatch(changeIconsStatus('favorite'))}
+                onClick={() => dispatch(changeIconsStatus('iconFavorite'))}
               />
           </section>
               <section className="event-description__details__card">

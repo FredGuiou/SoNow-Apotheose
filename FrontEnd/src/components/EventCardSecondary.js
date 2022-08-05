@@ -11,7 +11,7 @@ function EventCardSecondary({ event, params }) {
 
   const dispatch = useDispatch();
 
-  const { participate, favorite }  = useSelector((state) => state.user.iconsStatus) || { participate: false, favorite: false };
+  const { iconParticipate: participate, iconFavorite: favorite }  = useSelector((state) => state.user);
 
   return (
     <Link to={`/event/${event.slug}`}>
@@ -23,47 +23,28 @@ function EventCardSecondary({ event, params }) {
         />
         <section className='event-card-secondary__details'>
           <section className={params === 'autour-de-moi'? 'event-card-secondary__details__social-icons hidden' : 'event-card-secondary__details__social-icons'}>
-          {
-            participate &&
               <Link to={'#'}>
                 <Icon
+                  className={participate ? 'participate-is-liked' : 'participate-is-disliked'}
                   name='check square' 
                   size='large'
                   style={{ 
-                    color: '#F30067',
                     marginTop: '0.6em',
                     cursor: 'pointer',
                   }}
-                  onClick={() => dispatch(changeIconsStatus('participate'))}
+                  onClick={() => dispatch(changeIconsStatus('iconParticipate'))}
                 />
               </Link>
-          }
-          {
-            !participate && 
-              <Link to={'#'}>
-              <Icon
-                name='check square' 
-                size='large'
-                style={{ 
-                  color: '#E0E0E0',
-                  marginTop: '0.6em',
-                  cursor: 'pointer',
-                }}
-                onClick={() => dispatch(changeIconsStatus('participate'))}
-              />
-              </Link>
-            }
               <Link to={'#'}>          
               <Icon 
-                className={favorite ? 'isliked' : ''}
+                className={favorite ? 'favorite-is-liked' : 'favorite-is-disliked'}
                 name='heart' 
                 size='large'
                 style={{ 
-                  color: '#E0E0E0',
                   marginTop: '0.6em',
                   cursor: 'pointer',
                 }}
-                onClick={() => dispatch(changeIconsStatus('favorite'))}
+                onClick={() => dispatch(changeIconsStatus('iconFavorite'))}
               />
               </Link>
               <Link to={'#'}>

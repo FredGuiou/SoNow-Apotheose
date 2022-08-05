@@ -20,6 +20,7 @@ function Search() {
     searchResults,
     hasSearchError,
   } = useSelector((state) => state.events);
+  const event = useSelector((state) => state.event);
 
   const tags = useSelector((state) => state.tags.list) || [];
 
@@ -30,7 +31,7 @@ function Search() {
 
   return (
     <div className='search-container'>
-      <Form onSubmit={()=> dispatch(submitEventsSearch())}>
+      <Form onSubmit={()=> {if (searchInput !== '') {dispatch(submitEventsSearch())}}}>
         <Form.Input
         loading={isSearchLoading}
           icon={{ name:'sliders horizontal', link: true}}
@@ -43,37 +44,50 @@ function Search() {
         className='search-container__container'
       >
         {
-          searchResults.map((event) => {
+          (searchResults.length > 0 && searchInput !== '')
+          &&
+          searchResults.map((e) => {
             return (
               <SearchEventCard
-                key={event.id}
-                event={event}
+                key={e.id}
+                event={e}
               />
             );
-          }
-        )}
-        <div className='search-container__container__error'>
+          })
+        } 
         {
           hasSearchError &&
-          <p>
-            Aucun événement pour "{searchInput}"
-          </p>
+            <div className='search-container__container__error'>
+              <p> Aucun événement pour "{searchInput}"</p>
+            </div>
         }
-        </div>
-      </Container>
-      <Container
-        style={{
-          width: '100%',
-          height: '250px',
-          margin: '1rem auto',
-          borderRadius: '30px',
-          backgroundColor: 'black',
-        }}
-      >
         {
-          tags.map((t) => (
-            <SearchCategories tag={t} />
-          ))
+          (searchResults.length === 0  || searchInput === '') 
+          &&
+          <>
+            <Container
+              className='search-container__container'
+            >
+              <SearchEventCard
+                event={event} 
+              />
+            </Container>
+            <Container
+              style={{
+                width: '100%',
+                height: '250px',
+                margin: '1rem auto',
+                borderRadius: '30px',
+                backgroundColor: 'black',
+              }}
+            >
+              {
+                tags.map((t) => (
+                  <SearchCategories tag={t} />
+                ))
+              }
+            </Container>
+          </>
         }
       </Container>
     </div>

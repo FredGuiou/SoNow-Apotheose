@@ -38,6 +38,7 @@ export const GET_USERS = 'GET_USERS';
 export const GET_USERS_ERROR = 'GET_USERS_ERROR'; 
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const LOGOUT = 'LOGOUT';
+export const REMOVE_SEARCH_ERROR = 'REMOVE_SEARCH_ERROR';
 export const SUBMIT_EVENTS_SEARCH = 'SUBMIT_EVENTS_SEARCH';
 export const SUBMIT_EVENTS_SEARCH_SUCCESS = 'SUBMIT_EVENTS_SEARCH_SUCCESS';
 export const SUBMIT_EVENTS_SEARCH_ERROR = 'SUBMIT_EVENTS_SEARCH_ERROR';
@@ -285,4 +286,8 @@ export const logout = () => ({
 export const changeIconsStatus = (iconsName) => ({
   type: CHANGE_ICONS_STATUS,
   iconsName,
+});
+
+export const removeSearchError = () => ({
+  type: REMOVE_SEARCH_ERROR,
 });

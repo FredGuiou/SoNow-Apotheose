@@ -1,8 +1,29 @@
 .about-container {
-  width: 80%;
+  width: 100%;
   height: 100vh;
   margin: 0 auto;
   overflow-y: scroll;
+  
+  &__video {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    &__content {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
   &__header {
     display: flex;
@@ -12,9 +33,27 @@
     margin-bottom: 1rem;
 
     &__title {
+      position: relative;
+      font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
       font-size: 1.5rem;
-      font-weight: bold;
+      font-weight: 700;
       color: #fff;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    &__meta {
+      font-size: 0.9rem;
+      color: #8d8d8d;
+      font-weight: 400;
+      text-align: center;
     }
   }
 }

@@ -6,7 +6,7 @@ import { Form, Container } from 'semantic-ui-react';
 import SearchEventCard from './SearchEventCard';
 import SearchCategories from './SearchCategories';
 
-import { getEvent, getTags, changeEventsSearch, submitEventsSearch } from '../store/actions';
+import { getEvent, getTags, changeEventsSearch, submitEventsSearch, removeSearchError } from '../store/actions';
 
 import '../styles/search.scss';
 
@@ -37,7 +37,12 @@ function Search() {
           icon={{ name:'sliders horizontal', link: true}}
           placeholder='Rechercher...'
           value={searchInput}
-          onChange={(e)=> dispatch(changeEventsSearch(e.target.value))}
+          onChange={(e)=> {
+            dispatch(changeEventsSearch(e.target.value))
+            if (e.target.value === '') {
+              dispatch(removeSearchError());
+            }
+          }}
         />
       </Form>
       <Container

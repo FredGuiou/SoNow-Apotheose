@@ -3,6 +3,7 @@ import {
   GET_EVENTS,
   GET_EVENTS_ERROR, 
   GET_EVENTS_SUCCESS,
+  REMOVE_SEARCH_ERROR,
   SUBMIT_EVENTS_SEARCH,
   SUBMIT_EVENTS_SEARCH_SUCCESS,
   SUBMIT_EVENTS_SEARCH_ERROR,
@@ -42,6 +43,11 @@ const reducer = (state = initialState, action) => {
         isGetEventsLoading: false,
         hasGetEventsError: true, 
       };
+      case REMOVE_SEARCH_ERROR:
+        return {
+          ...state,
+          hasSearchError: false, 
+        };  
     case SUBMIT_EVENTS_SEARCH:
       return {
         ...state,

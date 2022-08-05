@@ -9,8 +9,6 @@ import { changeIconsStatus } from '../store/actions';
 
 function EventCardSecondary({ event, params }) {
 
-  console.log(event.user_pin);
-
   const dispatch = useDispatch();
 
   const { participate, favorite }  = useSelector((state) => state.user.iconsStatus) || { participate: false, favorite: false };

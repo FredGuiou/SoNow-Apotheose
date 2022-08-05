@@ -26,7 +26,6 @@ function Search() {
 
   useEffect(() => {
     dispatch(getTags());
-    dispatch(getEvent());
   }, [dispatch]);
 
   return (
@@ -82,7 +81,7 @@ function Search() {
               style={{
                 width: '100%',
                 height: '250px',
-                margin: '1rem auto',
+                margin: '0 auto',
                 borderRadius: '30px',
                 backgroundColor: 'black',
               }}

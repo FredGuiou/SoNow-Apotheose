@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Card, Icon, Label } from 'semantic-ui-react';
 
-import ErrorBoundary from './ErrorBoundary.js';
-
 import DateCard from './DateCard';
 
 import '../styles/eventCardSecondary.scss';
@@ -11,13 +9,14 @@ import { changeIconsStatus } from '../store/actions';
 
 function EventCardSecondary({ event, params }) {
 
+  console.log(event.user_pin);
+
   const dispatch = useDispatch();
 
   const { participate, favorite }  = useSelector((state) => state.user.iconsStatus) || { participate: false, favorite: false };
 
   return (
     <Link to={`/event/${event.slug}`}>
-      <ErrorBoundary>
       <div className={params === 'autour-de-moi'? 'event-card-secondary' : 'event-card-secondary search' }>
         <img
           className={params === 'autour-de-moi'? 'event-card-secondary__img search' : 'event-card-secondary__img'}
@@ -102,6 +101,7 @@ function EventCardSecondary({ event, params }) {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
+                marginBottom: '0px',
               }}
             >
               <Card.Header
@@ -140,8 +140,7 @@ function EventCardSecondary({ event, params }) {
                 {event.metadescription}
               </Card.Description>
               <Card.Content className={params === 'autour-de-moi'? 'event-card-secondary__details__card__labels hidden' : 'event-card-secondary__details__card__labels'}>
-              
-                {/*
+                {
                   event.tag.map((t) => {
                     return (
                       <Label 
@@ -149,26 +148,11 @@ function EventCardSecondary({ event, params }) {
                       //remove white spaces to use category name as slug
                       href={`/categorie/${t.name.replace(' ', '')}`}
                       >
-                        {t.emoji} {t.name}
+                        {t.name}
                       </Label>
                     )
                   })
-                */}
-                <Label 
-                  key={1}
-                  >
-                    👯  Entre amis
-                </Label>
-                <Label 
-                  key={2}
-                  >
-                    🕺  Danse
-                </Label>
-                <Label 
-                  key={3}
-                  >
-                    🎶  Musique
-                </Label>
+                }
               </Card.Content>
             </Card>
             <section className='event-card-secondary__details__card__participants'>
@@ -178,9 +162,21 @@ function EventCardSecondary({ event, params }) {
                   color:'white'
                 }} 
               />
+              { event.user_pin.length > 1 &&
               <p className='event-card-secondary__details__card__participants__content' >
-                {/* event.user_attend_event.length*/} 412 participants
+                {event.user_pin.length} participants
               </p>
+              }
+              { event.user_pin.length === 1 &&
+              <p className='event-card-secondary__details__card__participants__content' >
+                {event.user_pin.length} participant
+              </p>
+              }
+              { event.user_pin.length === 0 &&
+              <p className='event-card-secondary__details__card__participants__content' >
+                Soyez le premier participant ! 
+              </p>
+              }
             </section>
             <section className='event-card-secondary__details__card__date'>
               <DateCard 
@@ -190,7 +186,6 @@ function EventCardSecondary({ event, params }) {
           </section>
         </section>
       </div>
-      </ErrorBoundary>
     </Link>
   );
 }

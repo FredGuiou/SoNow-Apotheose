@@ -8,10 +8,10 @@ import {
 const initialState = {
   id: 1, 
   title: 'The Cure',
-  metadescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque efficitur ex nec mauris semper ultrices.',
+  metadescription: 'Lorem ipsum dolor sit amet',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempor nisi ligula, a varius elit viverra ac. Aenean et libero eget quam euismod fringilla quis eu ipsum. In sagittis orci id euismod ornare. Ut ac erat nec metus imperdiet porta. Pellentesque vitae aliquet purus, ac sagittis nisl. Fusce elementum lobortis odio in scelerisque. Mauris massa leo, auctor non sem sed, tempus pharetra massa. In urna nulla, viverra quis sollicitudin non, bibendum non orci.',
   start: '2022-11-22T19:00:00.000Z',
-  media: 'https://res.cloudinary.com/sonow/image/upload/v1659513252/THE_CURE_f33j6d.jpg', 
+  media: 'https://res.cloudinary.com/sonow/image/upload/v1659696227/quality/the-cure_unvg85.jpg', 
   code_user_manager: 1, 
   activeEvent: 1,
   isLoading: false

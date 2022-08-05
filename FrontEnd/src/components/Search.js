@@ -56,10 +56,11 @@ function Search() {
           })
         } 
         {
-          hasSearchError &&
-            <div className='search-container__container__error'>
-              <p> Aucun événement pour "{searchInput}"</p>
-            </div>
+          hasSearchError && searchInput !== '' 
+          &&
+          <div className='search-container__container__error'>
+            <p> Aucun événement pour "{searchInput}"</p>
+          </div>
         }
         {
           (searchResults.length === 0  || searchInput === '') 

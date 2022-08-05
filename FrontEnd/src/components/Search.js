@@ -6,7 +6,7 @@ import { Form, Container } from 'semantic-ui-react';
 import SearchEventCard from './SearchEventCard';
 import SearchCategories from './SearchCategories';
 
-import { getEvent, getTags, changeEventsSearch, submitEventsSearch, removeSearchError } from '../store/actions';
+import { getTags, changeEventsSearch, submitEventsSearch, removeSearchError } from '../store/actions';
 
 import '../styles/search.scss';
 

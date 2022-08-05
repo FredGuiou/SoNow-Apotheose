@@ -8,15 +8,15 @@ module.exports = {
       //Je prépare une requête sql séparément pour éviter les injections.
       //J'utilise les jetons sql également par souci de sécurité
 
-      const result = await client.query("SELECT * FROM get_events_with_manager()");
+      const result = await client.query("SELECT get_all_events_with_infos()");
       if(!result)
       
       if (result.rowCount === 0) {
         return null;
       };
 
-      return result.rows;
-
+      return result.rows.map(allEventsWithInfo => allEventsWithInfo.get_all_events_with_infos);
+      
   },
 
 

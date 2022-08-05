@@ -70,6 +70,22 @@
   }
 }
 
+.participate-is-liked {
+  color: #47e916;
+}
+
+.favorite-is-liked {
+  color: #f30067;
+}
+
+.participate-is-disliked {
+  color: #e0e0e0;
+}
+
+.favorite-is-disliked {
+  color: #e0e0e0;
+}
+
 @media screen and (max-width: 370px) {
   .event-card-secondary {
     &__details {

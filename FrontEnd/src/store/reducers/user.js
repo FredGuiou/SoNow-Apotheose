@@ -74,7 +74,7 @@ const initialState = {
     isLoading: false, 
   },
   iconParticipate: false,
-  iconfavorite: false,
+  iconFavorite: false,
 };
 
 const reducer = (state = initialState, action) => {

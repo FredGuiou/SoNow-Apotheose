@@ -125,8 +125,20 @@
 
 }
 
-.isLiked {
-  color: #F30067 !important;
+.participate-is-liked {
+  color: #47e916;
+}
+
+.favorite-is-liked {
+  color: #f30067;
+}
+
+.participate-is-disliked {
+  color: #e0e0e0;
+}
+
+.favorite-is-disliked {
+  color: #e0e0e0;
 }
 
 @media screen and (max-width: 370px) {

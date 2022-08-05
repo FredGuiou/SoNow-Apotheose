@@ -51,7 +51,7 @@ const eventsMiddleware = (store) => (next) => (action) => {
 
     const config = {
       method: 'get',
-      url: `http://sonow.herokuapp.com/api/event/${id}`, 
+      url: `https://sonow.herokuapp.com/api/event/${id}`, 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -73,7 +73,7 @@ const eventsMiddleware = (store) => (next) => (action) => {
       
       const config = {   
         method: 'get',
-        url: 'http://sonow.herokuapp.com/api/tag/withevents', 
+        url: 'https://sonow.herokuapp.com/api/tag/withevents', 
         headers: { 
           'content-type': 'application/json; charset=utf-8', 
           'Access-Control-Allow-Origin': '*',

@@ -14,7 +14,8 @@ const initialState = {
   media: 'https://res.cloudinary.com/sonow/image/upload/v1659696227/quality/the-cure_unvg85.jpg', 
   code_user_manager: 1, 
   activeEvent: 1,
-  isLoading: false
+  isLoading: false,
+  slug: 'the-cure'
 };
 
 const reducer = (state = initialState, action) => {

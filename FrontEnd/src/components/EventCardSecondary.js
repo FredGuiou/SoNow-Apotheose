@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Card, Icon, Label } from 'semantic-ui-react';
 
+import ErrorBoundary from './ErrorBoundary.js';
+
 import DateCard from './DateCard';
 
 import '../styles/eventCardSecondary.scss';
@@ -15,6 +17,7 @@ function EventCardSecondary({ event, params }) {
 
   return (
     <Link to={`/event/${event.slug}`}>
+      <ErrorBoundary>
       <div className={params === 'autour-de-moi'? 'event-card-secondary' : 'event-card-secondary search' }>
         <img
           className={params === 'autour-de-moi'? 'event-card-secondary__img search' : 'event-card-secondary__img'}
@@ -187,6 +190,7 @@ function EventCardSecondary({ event, params }) {
           </section>
         </section>
       </div>
+      </ErrorBoundary>
     </Link>
   );
 }

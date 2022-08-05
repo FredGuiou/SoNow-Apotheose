@@ -23,10 +23,6 @@ function EventCardMain() {
   const { slug } = useParams();
 
   const event = useSelector((state) => findEventBySlug(state.events.list, slug));
-
-  // const event = useSelector((state) => findEventBySlug(state.events.list, slug));
-
-  // const event = events.find((e) => e.slug === 'pool-party');
   
   return (
     
@@ -112,21 +108,6 @@ function EventCardMain() {
                   >
                     {event.description}
                   </Card.Description>
-                  <Card.Content>
-                    {/*
-                      event.tag.map((t) => {
-                        return (
-                          <Label 
-                          key={t.id}
-                          //remove white spaces to use category name as slug
-                          href={`/categorie/${t.name.replace(' ', '')}`}
-                          >
-                            {t.emoji} {t.name}
-                          </Label>
-                        )
-                      })
-                    */}
-                  </Card.Content>
                 </Card>
                 <section className="event-description__details__card__participants">
                   <Icon 
@@ -135,11 +116,21 @@ function EventCardMain() {
                       color:'white'
                     }} 
                   />
-                  {/*
-                  <p className="event-description__details__card__participants__content" >
-                    {event.user_attend_event.length} participants
-                  </p>
-                  */}
+                    { event.user_pin.length > 1 &&
+                    <p className='event-card-secondary__details__card__participants__content' >
+                      {event.user_pin.length} participants
+                    </p>
+                    }
+                    { event.user_pin.length === 1 &&
+                    <p className='event-card-secondary__details__card__participants__content' >
+                      {event.user_pin.length} participant
+                    </p>
+                    }
+                    { event.user_pin.length === 0 &&
+                    <p className='event-card-secondary__details__card__participants__content' >
+                      Soyez le premier participant ! 
+                    </p>
+                    }
                 </section>
                 <section className="event-description__details__card__date">
                 <DateCard 

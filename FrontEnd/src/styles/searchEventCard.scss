@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  margin: 1rem;
+  margin: 1rem auto;
   border-radius: 30px;
 
   &__img {
@@ -19,7 +19,7 @@
     position: absolute;
     bottom : 1.5rem;
     left: 0px;
-    height: 3.4rem;
+    height: 4.4rem;
     width: inherit;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -36,7 +36,7 @@
   &__date {
     position: absolute;
     margin-left: -0.4rem;
-    bottom : 0.95rem;
+    bottom : 3.25rem;
     left: 1rem;
     z-index: 1;
   }

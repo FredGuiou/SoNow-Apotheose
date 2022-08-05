@@ -141,9 +141,9 @@ function CreateAccount() {
                         isRegistered && navigate('/')
                       }
                   </Form>
-                  <div className="create-account__form-footer">
+                  <div className="account-container__form__footer">
                     <p>Vous avez déjà un compte ?</p>
-                      <Link className='create-account__form__footer__link' to='/'>Connectez-vous</Link>
+                      <Link className='account-container__form__footer__link' to='/'>Connectez-vous</Link>
                   </div> 
               </div>
             </div>

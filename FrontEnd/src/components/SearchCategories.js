@@ -6,8 +6,8 @@ function SearchCategories({ tag }) {
     <>
       <h1 style={{
         display: 'inline-block',
-        margin: '1rem',
-        paddingBottom: '0.5rem',
+        marginLeft: '1rem',
+        marginTop: '0.5rem'
       }} 
       > 
         {`${tag.name} >`} 

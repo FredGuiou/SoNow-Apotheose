@@ -59,6 +59,10 @@
         &__link {
           font-weight: 500;
           color: #f30067;
+  
+          &:hover {
+            color: #f30067;
+          }
         }
       
       }

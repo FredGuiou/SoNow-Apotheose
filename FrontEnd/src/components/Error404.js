@@ -7,7 +7,6 @@ function Error404() {
 
   const navigate = useNavigate();
   
-
   return (
     <Container className="create-account"
       style={{ 

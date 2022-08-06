@@ -65,13 +65,13 @@ function ProfileUserCard({ user, nbFollowed, nbFollowers }) {
               name='setting'
               style={{ color: 'white'}}
             />
-          </Link>
-          <Link to='/'>  
-            <Icon 
+          </Link> 
+          <Link to='/'>
+            <Icon
               circular 
               name='log out' 
-              style={{ color: 'white'}} 
-              onClick={()=>dispatch(logout())}
+              style={{ color: 'white'}}
+              onClick={() => dispatch(logout())}
             />
           </Link>
         </section>
@@ -84,6 +84,7 @@ function ProfileUserCard({ user, nbFollowed, nbFollowers }) {
         style={{
           border: 'none',
           margin: '0 auto',
+          marginBottom: '1rem',
         }}
       >
         <Menu.Item

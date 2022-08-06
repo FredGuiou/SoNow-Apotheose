@@ -1,6 +1,6 @@
 import {
   CHANGE_FRIENDS_ACTIVE_ITEM, 
-  CHANGE_FAVORITES_ACTIVE_ITEM, 
+  CHANGE_FAVORITES_ACTIVE_ITEM,
   CHANGE_ICONS_STATUS,
   CHANGE_LOGIN_INPUTS, 
   CHANGE_PROFIL_ACTIVE_ITEM,
@@ -75,6 +75,8 @@ const initialState = {
   },
   iconParticipate: false,
   iconFavorite: false,
+
+  confirmStatus: false,
 };
 
 const reducer = (state = initialState, action) => {

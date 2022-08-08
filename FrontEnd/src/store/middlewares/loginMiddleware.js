@@ -9,9 +9,11 @@ const loginMiddleware = (store) => (next) => (action) => {
 
     const state = store.getState();
 
+    let url = 'https://sonow.herokuapp.com/api/user/login/'
+
     const config = {   
       method: 'post',
-      url: 'https://sonow.herokuapp.com/api/user/login/', 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*'
@@ -37,9 +39,11 @@ const loginMiddleware = (store) => (next) => (action) => {
     } else if (action.type === LOGOUT) {
     next(action);
 
+    let url = 'https://sonow.herokuapp.com/api/user/logout/'
+
     const config = {   
       method: 'get',
-      url: 'https://sonow.herokuapp.com/api/user/logout/', 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*'

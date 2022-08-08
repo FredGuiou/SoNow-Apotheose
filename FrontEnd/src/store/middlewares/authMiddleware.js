@@ -9,9 +9,12 @@ const authMiddleware = (store) => (next) => (action) => {
 
     const state = store.getState();
 
+    let url = 'https://sonow.herokuapp.com/api/user/signup/'
+
     const config = {   
       method: 'post',
-      url: 'https://sonow.herokuapp.com/api/user/signup/', 
+      url: url + '?nocache=' + new Date().getTime(),
+
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*'

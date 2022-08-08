@@ -32,10 +32,12 @@ const usersMiddleware = (store) => (next) => (action) => {
   
     const state = store.getState();
     const id = localStorage.getItem('id');
+
+    let url = `https://sonow.herokuapp.com/api/event/getattend/`;
   
     const config = {   
       method: 'post',
-      url: `https://sonow.herokuapp.com/api/event/getattend/`, 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -62,9 +64,11 @@ const usersMiddleware = (store) => (next) => (action) => {
     const state = store.getState();
     const id = localStorage.getItem('id');
 
+    let url = `https://sonow.herokuapp.com/api/event/getbookmarks/`;
+
     const config = {   
       method: 'post',
-      url: `https://sonow.herokuapp.com/api/event/getbookmarks/`, 
+      url: url + '?nocache=' + new Date().getTime(),
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -91,9 +95,11 @@ const usersMiddleware = (store) => (next) => (action) => {
     const state = store.getState();
     const id = localStorage.getItem('id');
 
+    let url = `https://sonow.herokuapp.com/api/user/${id}/followers/`;
+
     const config = {   
       method: 'get',
-      url: `https://sonow.herokuapp.com/api/user/${id}/followers/`, 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -117,9 +123,11 @@ const usersMiddleware = (store) => (next) => (action) => {
     const state = store.getState();
     const id = localStorage.getItem('id');
 
+    let url = `https://sonow.herokuapp.com/api/user/${id}/followed/`;
+
     const config = {   
       method: 'get',
-      url: `https://sonow.herokuapp.com/api/user/${id}/followed/`, 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -143,9 +151,11 @@ const usersMiddleware = (store) => (next) => (action) => {
     const state = store.getState();
     const id = localStorage.getItem('id');
 
+    let url = `https://sonow.herokuapp.com/api/user/${id}/`;
+
     const config = {   
       method: 'get',
-      url: `https://sonow.herokuapp.com/api/user/${id}/`, 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -168,9 +178,11 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     const state = store.getState();
 
+    let url = `https://sonow.herokuapp.com/api/user/`;
+
     const config = {   
       method: 'get',
-      url: `https://sonow.herokuapp.com/api/user/`, 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -193,9 +205,11 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     const state = store.getState();
 
+    let url = `https://sonow.herokuapp.com/api/user/search/`;
+
     const config = {   
       method: 'post',
-      url: 'https://sonow.herokuapp.com/api/user/search/', 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',

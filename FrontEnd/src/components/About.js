@@ -39,7 +39,7 @@ function About() {
                             <a href='https://github.com/LQ-Sebastien' target='_blank' rel='noopener noreferrer'>
                               <img src={gitHub} alt='github' />
                             </a>
-                            <a href ='https://twitter.com/SebastienKronik' target='_blank' rel='noopener noreferrer'>
+                            <a href ='https://twitter.com/LQSebastien' target='_blank' rel='noopener noreferrer'>
                               <img src={twitter} alt='twitter' />
                             </a>
                         </div>  

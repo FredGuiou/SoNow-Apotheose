@@ -1,4 +1,4 @@
-import HorizontalScroll from 'react-scroll-horizontal';
+// import HorizontalScroll from 'react-scroll-horizontal';
 import EventCardTertiary from './EventCardTertiary';
 
 function SearchCategories({ tag }) {
@@ -12,7 +12,7 @@ function SearchCategories({ tag }) {
       > 
         {`${tag.name} >`} 
       </h1>
-      <HorizontalScroll reverseScroll={true}>
+      {/* <HorizontalScroll reverseScroll={true}> */}
         <div className='scroll-element-container'>
           {
             tag.events.map((e) => (
@@ -20,7 +20,7 @@ function SearchCategories({ tag }) {
             ))
           }
         </div>
-      </HorizontalScroll>
+      {/* </HorizontalScroll> */}
     </>
   )
 }; 

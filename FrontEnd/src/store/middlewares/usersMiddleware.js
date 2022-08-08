@@ -35,7 +35,7 @@ const usersMiddleware = (store) => (next) => (action) => {
   
     const config = {   
       method: 'post',
-      url: `https://sonow.herokuapp.com/api/event/getattend`, 
+      url: `https://sonow.herokuapp.com/api/event/getattend/`, 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -64,7 +64,7 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     const config = {   
       method: 'post',
-      url: `https://sonow.herokuapp.com/api/event/getbookmarks`, 
+      url: `https://sonow.herokuapp.com/api/event/getbookmarks/`, 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -93,7 +93,7 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     const config = {   
       method: 'get',
-      url: `https://sonow.herokuapp.com/api/user/${id}/followers`, 
+      url: `https://sonow.herokuapp.com/api/user/${id}/followers/`, 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -119,7 +119,7 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     const config = {   
       method: 'get',
-      url: `https://sonow.herokuapp.com/api/user/${id}/followed`, 
+      url: `https://sonow.herokuapp.com/api/user/${id}/followed/`, 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -145,7 +145,7 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     const config = {   
       method: 'get',
-      url: `https://sonow.herokuapp.com/api/user/${id}`, 
+      url: `https://sonow.herokuapp.com/api/user/${id}/`, 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -170,7 +170,7 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     const config = {   
       method: 'get',
-      url: `https://sonow.herokuapp.com/api/user`, 
+      url: `https://sonow.herokuapp.com/api/user/`, 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -195,7 +195,7 @@ const usersMiddleware = (store) => (next) => (action) => {
 
     const config = {   
       method: 'post',
-      url: 'https://sonow.herokuapp.com/api/user/search', 
+      url: 'https://sonow.herokuapp.com/api/user/search/', 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',

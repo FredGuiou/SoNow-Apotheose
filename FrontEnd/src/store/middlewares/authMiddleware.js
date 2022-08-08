@@ -11,7 +11,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
     const config = {   
       method: 'post',
-      url: 'https://sonow.herokuapp.com/api/user/signup', 
+      url: 'https://sonow.herokuapp.com/api/user/signup/', 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*'

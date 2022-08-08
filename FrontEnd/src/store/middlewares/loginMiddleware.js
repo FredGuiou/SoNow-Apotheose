@@ -11,7 +11,7 @@ const loginMiddleware = (store) => (next) => (action) => {
 
     const config = {   
       method: 'post',
-      url: 'https://sonow.herokuapp.com/api/user/login', 
+      url: 'https://sonow.herokuapp.com/api/user/login/', 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*'
@@ -39,7 +39,7 @@ const loginMiddleware = (store) => (next) => (action) => {
 
     const config = {   
       method: 'get',
-      url: 'https://sonow.herokuapp.com/api/user/logout', 
+      url: 'https://sonow.herokuapp.com/api/user/logout/', 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*'

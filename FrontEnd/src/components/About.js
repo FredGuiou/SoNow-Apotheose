@@ -76,7 +76,7 @@ function About() {
                             <a href='https://github.com/ElinorCm' target='_blank' rel='noopener noreferrer'>
                               <img src={gitHub} alt='github' />
                             </a>
-                            <a href ='https://twitter.com/' target='_blank' rel='noopener noreferrer'>
+                            <a href ='https://twitter.com/e_linor' target='_blank' rel='noopener noreferrer'>
                               <img src={twitter} alt='twitter' />
                             </a>
                         </div>  

@@ -21,9 +21,11 @@ const eventsMiddleware = (store) => (next) => (action) => {
     next(action);
     const state = store.getState();
 
+    let url = 'https://sonow.herokuapp.com/api/event/'
+
     const config = {   
       method: 'get',
-      url: 'https://sonow.herokuapp.com/api/event/', 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8',
         'Access-Control-Allow-Origin': '*',
@@ -49,9 +51,11 @@ const eventsMiddleware = (store) => (next) => (action) => {
     const state = store.getState();
     const id = state.event.activeEvent.toString();
 
+    let url = `https://sonow.herokuapp.com/api/event/${id}/`;
+
     const config = {
       method: 'get',
-      url: `https://sonow.herokuapp.com/api/event/${id}/`, 
+      url: url + '?nocache=' + new Date().getTime(), 
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
@@ -70,10 +74,12 @@ const eventsMiddleware = (store) => (next) => (action) => {
     } else if (action.type === GET_TAGS) {
       next(action);
       const state = store.getState();
+
+      let url = 'https://sonow.herokuapp.com/api/tag/withevents/';
       
       const config = {   
         method: 'get',
-        url: 'https://sonow.herokuapp.com/api/tag/withevents/', 
+        url: url + '?nocache=' + new Date().getTime(), 
         headers: { 
           'content-type': 'application/json; charset=utf-8', 
           'Access-Control-Allow-Origin': '*',
@@ -93,10 +99,12 @@ const eventsMiddleware = (store) => (next) => (action) => {
   } else if (action.type === SUBMIT_EVENTS_SEARCH) {
     next(action);
     const state = store.getState();
+
+    let url = 'https://sonow.herokuapp.com/api/event/search/';
     
     const config = {   
       method: 'post',
-      url: 'https://sonow.herokuapp.com/api/event/search/', 
+      url: url + '?nocache=' + new Date().getTime(),
       headers: { 
         'content-type': 'application/json; charset=utf-8', 
         'Access-Control-Allow-Origin': '*',
